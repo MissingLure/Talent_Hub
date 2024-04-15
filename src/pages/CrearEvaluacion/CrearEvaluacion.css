@@ -1,0 +1,14 @@
+.create-evaluation input{
+    width: 200px;
+}
+
+.create-evaluation select{
+    width: 210px;
+    margin-right: 5px;
+}
+
+.competencias-container {
+    margin: 20px;
+    height: 500px;
+    overflow-y: auto;
+}
