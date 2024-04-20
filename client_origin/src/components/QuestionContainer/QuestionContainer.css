@@ -1,0 +1,36 @@
+.question-container {
+    display: flex;
+    margin: 10px;
+    width: 95%;
+    background-color: #F8F8F8;
+}
+
+.content {
+
+
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 80%;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actions button {
+    height: 30px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 2px;
+    color: white;
+}
+
+.modify-button {
+    background-color: #5BA4FC;
+}
+
+.delete-button {
+    background-color: #FC3D39;
+}
