@@ -1,13 +1,15 @@
 const crypto = require("crypto");
 const { async } = require("q");
+
+const {DB_Config} = require("../config.js")
 const knex = require("knex")({
-    client: 'mssql',
+    client: 'mysql2',
     connection: {
-        server: process.env.TALENT_HUB_SERVER,
-        user: process.env.TALENT_HUB_USER,
-        password: process.env.TALENT_HUB_PASSWORD,
-        database: process.env.TALENT_HUB_DB,
-        options: process.env.TALENT_HUB_PORT,
+        host: DB_Config.TALENT_HUB_SERVER,
+        port: DB_Config.TALENT_HUB_PORT,
+        user: DB_Config.TALENT_HUB_USER,
+        password: DB_Config.TALENT_HUB_PASSWORD,
+        database: DB_Config.TALENT_HUB_DB,
     },
 });
 

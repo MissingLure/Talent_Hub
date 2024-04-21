@@ -32,6 +32,7 @@ async function login(request, response) {
                 const employee = await getEmployeeById(user.id_empleado);
                 
                 //Generar token
+                console.log(process.env.TALENT_HUB_DB)
                 const accessToken = jwt.sign(
                     {
                         email: user.correo,
@@ -40,11 +41,14 @@ async function login(request, response) {
                         primer_apellido: employee.primer_apellido,
                         rol: user.rol
                     },
+                    
                     process.env.ACCESS_TOKEN_SECRET,
                     {
                         expiresIn: process.env.ACCESS_TOKEN_EXPIRATION,
                     }
                 );
+
+                console.log(process.env.TALENT_HUB_DB)
 
                 const refreshToken = jwt.sign(
                     {

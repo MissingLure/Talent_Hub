@@ -1,15 +1,19 @@
+const {DB_Config} = require("../config.js")
 const crypto = require("crypto");
 const { async } = require("q");
+
+
 const knex = require("knex")({
-    client: 'mssql',
+    client: 'mysql2',
     connection: {
-        server: process.env.TALENT_HUB_SERVER,
-        user: process.env.TALENT_HUB_USER,
-        password: process.env.TALENT_HUB_PASSWORD,
-        database: process.env.TALENT_HUB_DB,
-        options: process.env.TALENT_HUB_PORT,
+        host: DB_Config.TALENT_HUB_SERVER,
+        port: DB_Config.TALENT_HUB_PORT,
+        user: DB_Config.TALENT_HUB_USER,
+        password: DB_Config.TALENT_HUB_PASSWORD,
+        database: DB_Config.TALENT_HUB_DB,
     },
 });
+
 
 async function agregarEmpleado(empleado) {
     try {
@@ -37,6 +41,7 @@ async function agregarEmpleado(empleado) {
 async function crearUsuario(usuarioData) {
     try {
         const result = await knex('usuarios').insert(usuarioData);
+
         return result;
     } catch(error) {
         console.log(error);
