@@ -17,16 +17,16 @@ const knex = require("knex")({
 
 async function agregarEmpleado(empleado) {
     try {
-        const result = await knex.raw('EXEC CrearEmpleado ?,?,?,?,?,?,?,?,?,?,?', [
+        const result = await knex.raw('CALL CrearEmpleado ?,?,?,?,?,?,?,?,?,?,?', [
             empleado.primer_nombre,
             empleado.segundo_nombre,
             empleado.primer_apellido,
             empleado.segundo_apellido,
             empleado.telefono,
+            empleado.fecha_nacimiento,
             empleado.numero_identidad,
             empleado.direccion,
             empleado.correo,
-            empleado.fecha_nacimiento,
             empleado.id_perfil_puesto,
             empleado.id_departamento
         ]);
