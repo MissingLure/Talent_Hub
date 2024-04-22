@@ -33,6 +33,9 @@
     "web-vitals": "^2.1.4",
     "webpack": "^5.89.0"
   },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
   "scripts": {
     "start": "concurrently \"nodemon ./index.js\" \"cd ./client && npm run dev\"",
     "build": "react-scripts build",
