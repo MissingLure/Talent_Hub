@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #d8d8db;
 }
 
 .competencias-container {
@@ -12,7 +13,7 @@
 }
 
 .competencia-card {
-  background-color: #2a2942;
+  background-color: #413bbb;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   margin: 10px;
@@ -28,11 +29,11 @@
 }
 
 .competencia-card:nth-child(odd) {
-  background-color: #991922;
+  background-color: #90AFDB;
 }
 
 .competencia-card:nth-child(even) {
-  background-color: #cd1c2c;
+  background-color: #23486D;
 }
 
 .modal-container {
@@ -46,7 +47,7 @@
   max-width: 400px;
   margin: auto;
   padding: 20px;
-  background-color: #2a2942;
+  background-color: #333347;
   color: white;
 }
 
@@ -71,7 +72,7 @@
 }
 
 .information {
-  background-color: #991922;
+  background-color: #90AFDB;
   margin-bottom: 10px;
   border-radius: 10px;
   padding-left: 10px;

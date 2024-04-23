@@ -112,7 +112,7 @@ const Encuesta = () => {
   return (
     <div className="create-questions">
       <Navbar />
-      <h2 className="tituloCrearEncuesta">Crear Encuesta</h2>
+      <h2 className="tituloCrearEncuesta"><b>Crear Encuesta</b> </h2>
 
       <form
         onSubmit={(e) => {

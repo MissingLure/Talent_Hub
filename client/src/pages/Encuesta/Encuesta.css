@@ -1,5 +1,6 @@
 
 .create-questions {
+    background-color: #d8d8db;
     width: 100%;
     display: flex;
     flex-direction: column;

@@ -1,22 +1,24 @@
 .data-container {
-    margin-top: 10px;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-top: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
     display: flex;
-    background-color: #991922;
+    border-radius: 6px;
+    background-color: #b0cdfa;
     height: 50px;
-    color: white;
+    color: black;
     font-weight: 700;
 }
 
 .main-content {
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: flex;
 }
 
 .info {
     width: 50%;
+    border-radius: 6px;
 }
 .actions {
     width: 50%;
@@ -27,32 +29,39 @@
 .actions button {
     width: 100px;
     height: 30px;
+    border-radius: 6px;
     margin: 5px;
     border: none;
-    border-radius: 2px;
+    border-radius: 6px;
     color: white;
 }
 
 .primary-button {
-    background-color: #5BA4FC;
+    border-radius: 6px;
+    background-color: #8FACDE;
 }
 
 .primary-button:hover {
-    background-color: #2f8dff;
+    border-radius: 6px;
+    background-color: #1889f3;
 }
 
 .secondary-button {
-    background-color: #ffbd03;
+    border-radius: 6px;
+    background-color: #6784B5;
 }
 
 .secondary-button:hover {
+    border-radius: 6px;
     background-color: #e3a600;
 }
 
 .tertiary-button {
-    background-color: #cd1c2c;
+    border-radius: 6px;
+    background-color: #3F5F8C;
 }
 
 .tertiary-button:hover {
+    border-radius: 6px;
     background-color: #be0600;
 }

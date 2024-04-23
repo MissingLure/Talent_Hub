@@ -70,7 +70,7 @@ const BibliotecaCompetencias = () =>  {
     
     <div className="biblioteca-competencias">
       <Navbar/>
-      <h1>Biblioteca de Competencias</h1>
+      <h2><b>Biblioteca De Competencias</b></h2>
       <div className="competencias-container">
         {competencias.map((competencia, index) => (
           <a className="competencia-card" key={index} value={competencia.id_competencia} onClick={() => handleGetCompetencia(competencia.id_competencia)}>
@@ -85,18 +85,19 @@ const BibliotecaCompetencias = () =>  {
           <div className='information-container'>
             <h2>{competencia.nombre_competencia}</h2>
             
-            {detalles.length > 0 ? (
-              detalles.map((detalle) => (
-                <div>
-                  <div className='information'>
-                    <h4>{detalle.comportamiento}</h4>
-                    <p>{detalle.pregunta}</p>
+              {detalles.length > 0 ? (
+                detalles.map((detalle, index) => ( 
+                  <div key={index}> {}
+                    <div className='information'>
+                      <h4>{detalle.comportamiento}</h4>
+                      <p>{detalle.pregunta}</p>
+                    </div>
                   </div>
-                </div>
-              ))
-            ) : (
-              <p>No hay datos.</p>
-            )}
+                ))
+              ) : (
+                <p>No hay datos.</p>
+              )}
+
           </div>
             <button onClick={handleClosePopup}>Cerrar</button>
           </div>
