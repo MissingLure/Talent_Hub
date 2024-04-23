@@ -1,0 +1,38 @@
+.BibliotecaHabilidades {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+  
+  .habilidades-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  
+  .habilidades-card {
+    background-color: #2a2942;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 10px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    color: #fff;
+  }
+  
+  .habilidades-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .habilidades-card:nth-child(odd) {
+    background-color: #23486D;
+  }
+  
+  .habilidades-card:nth-child(even) {
+    background-color: #90AFDB;
+  }
+  

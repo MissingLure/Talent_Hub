@@ -1,0 +1,67 @@
+.data-container {
+    margin-top: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+    display: flex;
+    border-radius: 6px;
+    background-color: #b0cdfa;
+    height: 50px;
+    color: black;
+    font-weight: 700;
+}
+
+.main-content {
+    border-radius: 10px;
+    margin-bottom: 5px;
+    display: flex;
+}
+
+.info {
+    width: 50%;
+    border-radius: 6px;
+}
+.actions {
+    width: 50%;
+    display: flex;
+}
+
+
+.actions button {
+    width: 100px;
+    height: 30px;
+    border-radius: 6px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+}
+
+.primary-button {
+    border-radius: 6px;
+    background-color: #8FACDE;
+}
+
+.primary-button:hover {
+    border-radius: 6px;
+    background-color: #1889f3;
+}
+
+.secondary-button {
+    border-radius: 6px;
+    background-color: #6784B5;
+}
+
+.secondary-button:hover {
+    border-radius: 6px;
+    background-color: #e3a600;
+}
+
+.tertiary-button {
+    border-radius: 6px;
+    background-color: #3F5F8C;
+}
+
+.tertiary-button:hover {
+    border-radius: 6px;
+    background-color: #be0600;
+}

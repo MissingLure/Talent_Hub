@@ -1,0 +1,61 @@
+
+.create-questions {
+    background-color: #d8d8db;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputs{
+    width: 400px;
+    height: 30px;
+}
+.Buscar{
+    width: 200px;
+    height: 30px;
+    margin-left: auto;
+    background-color: powderblue;
+}
+.Eliminar{
+    width: 20px;
+    height: 60px;
+    background-color:crimson;
+    color: aliceblue;
+    cursor: pointer;
+}
+.Fin{
+    width: 200px;
+    height: 60px;
+    background-color:teal;
+    color: aliceblue;
+    cursor: pointer;
+}
+.Agregar{
+    width: 200px;
+    height: 30px;
+    margin-left: auto;
+    background-color:cornflowerblue;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.create-questions label {
+    width: 100px;
+}
+
+.create-questions div {
+    margin: 5px;
+}
+
+.create-questions select {
+    width: 300px;
+    height: 30px;
+}
+
+.create-questions button {
+    border: none;
+    width: 150px;
+    height: 30px;
+}

@@ -1,0 +1,289 @@
+.dashboard-container {
+    background-color: #d8d8db;
+
+}
+
+.header-image{
+    width: 100%;
+    height: 100%;
+}
+/* -------------------------- */
+
+
+.avatar-image {
+    display: flex;
+    width: 250px;
+    height: 250px;
+    margin-top: 40px; 
+    margin-left: 100px;
+    background-color: #9496AE;
+    border: 3px solid #2E2D40;
+    z-index: 1;
+}
+
+.unknown-box {
+    width: 255px;
+    height: 30px;
+    background-color: #23486d;
+    color: #ffffff;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 0px; 
+    margin-left: 100px;
+    position: relative;
+    z-index: 0;
+}
+/* -------------------------- */
+.Potential-Assessment-box {
+    width: 355px; 
+    height: 30px; 
+    background-color: #133c66;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    border: 1.5px solid #000000;
+    line-height: 30px; 
+    margin-top: 100px;
+    margin-left:50px;
+}
+
+
+.Performance_Assessment-box {
+    width: 355px; 
+    height: 30px; 
+    background-color: #133c66;
+    font-weight: bold;
+    color: #ffffff;
+    border: 1.5px solid #000000;
+    text-align: center;
+    line-height: 30px; 
+    margin-top: 100px;
+    margin-left:50px;
+}
+
+.Competencies_Assessment-box{
+    width: 355px; 
+    height: 30px; 
+    background-color: #133c66;
+    font-weight: bold;
+    color: #ffffff;
+    border: 1.5px solid #000000;
+    text-align: center;
+    line-height: 30px; 
+    margin-top: 100px;
+    margin-left:50px;
+}
+.ranking{
+    width: 200px; 
+    height: 30px; 
+    background-color: #f5f5f5;
+    font-weight: bold;
+    color: #000000;
+    text-align: left;
+    line-height: 30px; 
+    margin-top: 100px;
+    margin-left: 50px;
+}
+.ranking-box{
+    width:100px; 
+    height: 30px; 
+    background-color: #2E2D40;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    line-height: 30px; 
+    margin-top: -30px;
+    margin-left: 150px;
+
+}
+/* -------------------------- */
+.info-table {
+    margin-top: -900px;
+    width: 50%;
+    margin-left:600px;
+    background-color:#ffffff;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #000000;
+}
+
+td {
+    padding: 8px;
+    border: 1.5px solid #0b0b0b;
+}
+
+td:first-child {
+    font-weight: bold;
+    background-color:#23486d;
+    color: white;
+    width: 30%;
+}
+/* -------------------------- */
+.career-table {
+    margin-top: 100px;
+    width: 50%;
+    margin-left: 600px;
+    background-color:#ffffff;
+}
+
+.career-table table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.title {
+    background-color: #072039;
+    color: white;
+    border: 1.5px solid #0b0b0b;
+    text-align: center;
+    font-size: 20px;
+}
+
+.column {
+    background-color: white;
+    width: 50%;
+    color: white;
+    font-weight: bold;
+    text-align: right;
+    
+}
+
+
+
+
+/* -------------------------- */
+.performance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 10px;
+    width: 50%;
+    margin: 100px;
+    margin-left:600px; 
+    position: relative;
+}
+
+.grid-item {
+    background-color:#7b0f18;
+    padding: 70px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-align:start;
+    border: 3px solid #000000;
+    position: relative;
+}
+
+/*flechas*/
+.grid-item:nth-child(9)::before {
+    content: '';
+    position: absolute;
+    top: -430px; 
+    left: -620px; 
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 45px solid #133c66;
+}
+
+.grid-item:nth-child(9)::after {
+    content: 'POTENCIAL'; 
+    position: absolute;
+    top: -390px; 
+    left: -600px;
+    width: 40px; 
+    height: 580px; 
+    background-color: #133c66;
+    text-align: center;
+    color: aliceblue;
+    font-size: 24px; 
+    font-weight: bold;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    padding: 50px 0;
+}
+
+
+.grid-item:nth-child(8)::before {
+    content: '';
+    position: absolute;
+    top: 205px; 
+    left: 440px;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 45px solid #133c66; 
+    transform: rotate(-90deg);
+}
+
+.grid-item:nth-child(8)::after {
+    content: 'DESEMPEÑO & COMPETENCIA'; 
+    position: absolute;
+    top: 210px; 
+    left: -280px;
+    width: 730px; 
+    height: 40px;
+    background-color: #133c66;
+    text-align:center;
+    color: aliceblue;
+    font-size: 24px; 
+    font-weight: bold;
+    padding: 15px 0;
+}
+
+/* -------------------------- */
+.CultureWorkClimateSurvey-box{
+    width: 400px; 
+    height: 30px; 
+    background-color: #133c66;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    line-height: 30px; 
+    margin-top: 100px;
+    margin-left: 30px;
+}
+/* -------------------------- */
+
+.Recommendations table {
+    width: 400px; 
+    height: 30px; 
+    background-color: #133c66;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    line-height: 30px; 
+    margin-top: -200px;
+    margin-left:30px;
+    border-collapse: collapse;
+    border: 1px solid #000000;
+}
+
+.Recommendations th,
+.Recommendations td {
+    padding: 8px;
+    border: 1px solid #0b0b0b;
+    text-align: center;
+    background-color: #28282b;
+}
+
+.Recommendations .title {
+    background-color: #133c66;
+    color: #ffffff;
+    text-align: center;
+    font-size: 20px;
+}
+
+.Recommendations .column1 {
+    background-color: #76778B;
+    width: 50px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+

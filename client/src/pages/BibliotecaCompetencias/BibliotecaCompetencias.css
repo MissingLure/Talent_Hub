@@ -1,0 +1,89 @@
+.biblioteca-competencias {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #d8d8db;
+}
+
+.competencias-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.competencia-card {
+  background-color: #413bbb;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 10px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  color: #fff;
+}
+
+.competencia-card:hover {
+  transform: scale(1.05);
+}
+
+.competencia-card:nth-child(odd) {
+  background-color: #90AFDB;
+}
+
+.competencia-card:nth-child(even) {
+  background-color: #23486D;
+}
+
+.modal-container {
+  display: flex;
+  justify-content: center;
+}
+
+.information-modal {
+  border: none;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background-color: #333347;
+  color: white;
+}
+
+.information-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.content-container {
+}
+
+.actions-container {
+  display: flex;
+  justify-content: center;
+}
+
+.actions-container button{
+  border: none;
+  width: 100px;
+  height: 30px;
+  background-color: #64637a;
+  color: white;
+}
+
+.information {
+  background-color: #90AFDB;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.actions-container button:hover{
+  border: none;
+  width: 100px;
+  height: 30px;
+  background-color: #4d4c5f;
+}
