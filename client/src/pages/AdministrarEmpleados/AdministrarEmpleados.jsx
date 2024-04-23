@@ -105,6 +105,10 @@ const AdministarEmpleados = () => {
         setShowBossPopu(false);
     };
 
+    const acceptMessage = () =>{
+        setSuccess(true);
+    }
+
     useEffect(() => {
         handleGetEmployees();
         handleGetBosses();
@@ -113,12 +117,7 @@ const AdministarEmpleados = () => {
     return(
         <div className="administrar-empleados">
             <Navbar/>
-            <h2>Administrar Empleados</h2>
-            <div className="add-button">
-                <button onClick={() => setShowPopup(true)}>
-                    Crear Empleado
-                </button>
-            </div>
+            <h2 ><b>EMPLEADOS</b></h2>
             <div className="search-options">
                 <div>
                     <label>Filtro</label>
@@ -131,45 +130,53 @@ const AdministarEmpleados = () => {
                 </div>
             </div>
             <div className="body-container">
-                <div className="list-container">
-                    {empleados.length > 0 ? (
-                        empleados.map((empleado) => (
-                            <div>
-                                <DataContainer
-                                    primaryValue={empleado.primer_nombre}
-                                    secondaryValue={empleado.primer_apellido}
-                                    hasPrimary={true}
-                                    primaryAction={"Información"}
-                                    hasSecondary={true}
-                                    secondaryAction={"Modificar"}
-                                    onPrimaryAction={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}
-                                    hasTertitary={true}
-                                    tertiaryAction={"Eliminar"}
-                                />
-                            </div>
-                        ))
-                    ) : (
-                        <p>No hay datos.</p>
-                    )}
-                </div>
+            <div className="list-container">
+                {empleados.length > 0 ? (
+                    empleados.map((empleado) => (
+                        <div key={empleado.id_empleado}>
+                            <DataContainer
+                                primaryValue={empleado.primer_nombre}
+                                secondaryValue={empleado.primer_apellido}
+                                hasPrimary={true}
+                                primaryAction={"Información"}
+                                hasSecondary={true}
+                                secondaryAction={"Modificar"}
+                                onPrimaryAction={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}
+                                hasTertitary={true}
+                                tertiaryAction={"Eliminar"}
+                            />
+                        </div>
+                    ))
+                ) : (
+                    <p>No hay datos.</p>
+                )}
+            </div>
+            </div>
+
+            <div className="add-button">
+                <button onClick={() => setShowPopup(true)}>
+                    Crear Empleado
+                </button>
             </div>
             {showBossPopup && (
                 <div className="popup">
                     <div className="information-popup-content">
                         <div className="employee-info">
-                            <h4>Empleado</h4>
+                            <h3><b>Empleado</b></h3>
                             <label>{employee.primer_nombre} {employee.primer_apellido}</label>
 
                         </div>
                         <div className="boss-info">
                             {hasBoss ? (
                                 <div>
-                                    <div><h4>Jefe</h4></div>
+                                    <h3><b>Jefe</b></h3>
                                     <label>{boss.primer_nombre} {boss.primer_apellido}</label>
+                                    
                                 </div>
+                                
                             ) : (
                                 <div>
-                                    <div><h4>Jefe</h4></div>
+                                    <h3><b>Jefe</b></h3>
                                     <label>Asignar jefe: </label>
                                     <select onChange={(e) => setSelectedBoss(e.target.value)}>
                                         <option selected disabled hidden>Seleccionar...</option>
@@ -200,7 +207,7 @@ const AdministarEmpleados = () => {
                         <CrearEmpleado
                         open={addEmployee}
                         cancel={() => setAddEmployee(false)}
-                    />
+                    /> 
                         <button onClick={handleClosePopup}>Cerrar</button>
                     </div>
                 </div>

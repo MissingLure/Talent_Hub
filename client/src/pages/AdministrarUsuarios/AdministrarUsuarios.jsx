@@ -99,7 +99,7 @@ const AdministarUsuarios = () => {
     return(
         <div className="administrar-usuarios">
             <Navbar/>
-            <h2>Administrar Usuarios</h2>
+            <h2><b>Administrar Usuarios</b></h2>
             <div className="search-options">
                 <div>
                     <label>Filtro</label>
@@ -137,12 +137,12 @@ const AdministarUsuarios = () => {
             {showAddUserPopup && (
                 <div className="popup">
                 <div className="popup-content">
-                    <h3>{employee.primer_nombre} {employee.primer_apellido}</h3>
+                    <h3><b><i>{employee.primer_nombre} {employee.primer_apellido}</i></b></h3>
                     <div className="modal-body">
                         {errorMessages.length > 0 ? (
                             <div className="create-user-form">
                                 <div className="user-create-form">
-                                    <h4>Crear Usuario</h4>
+                                    <h4><b>Crear Usuario</b></h4>
                                     <div>
                                         <select onChange={(e) => setRol(e.target.value)}>
                                             <option>Seleccionar rol</option>

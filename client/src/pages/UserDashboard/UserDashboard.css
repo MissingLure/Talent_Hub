@@ -1,5 +1,5 @@
 .dashboard-container {
-    background-color: white;
+    background-color: #d8d8db;
 
 }
 
@@ -24,7 +24,7 @@
 .unknown-box {
     width: 255px;
     height: 30px;
-    background-color: #2E2D40;
+    background-color: #23486d;
     color: #ffffff;
     text-align: center;
     line-height: 30px;
@@ -37,34 +37,41 @@
 .Potential-Assessment-box {
     width: 355px; 
     height: 30px; 
-    background-color: #9a1622;
+    background-color: #133c66;
     font-weight: bold;
     color: #ffffff;
     text-align: center;
+    border: 1.5px solid #000000;
     line-height: 30px; 
     margin-top: 100px;
+    margin-left:50px;
 }
+
 
 .Performance_Assessment-box {
     width: 355px; 
     height: 30px; 
-    background-color: #9a1622;
+    background-color: #133c66;
     font-weight: bold;
     color: #ffffff;
+    border: 1.5px solid #000000;
     text-align: center;
     line-height: 30px; 
-    margin-top: 200px;
+    margin-top: 100px;
+    margin-left:50px;
 }
 
 .Competencies_Assessment-box{
     width: 355px; 
     height: 30px; 
-    background-color: #9a1622;
+    background-color: #133c66;
     font-weight: bold;
     color: #ffffff;
+    border: 1.5px solid #000000;
     text-align: center;
     line-height: 30px; 
-    margin-top: 200px;
+    margin-top: 100px;
+    margin-left:50px;
 }
 .ranking{
     width: 200px; 
@@ -72,9 +79,10 @@
     background-color: #f5f5f5;
     font-weight: bold;
     color: #000000;
-    text-align: center;
+    text-align: left;
     line-height: 30px; 
-    margin-top: 200px;
+    margin-top: 100px;
+    margin-left: 50px;
 }
 .ranking-box{
     width:100px; 
@@ -90,9 +98,9 @@
 }
 /* -------------------------- */
 .info-table {
-    margin-top: -1099px;
+    margin-top: -900px;
     width: 50%;
-    margin-left:700px;
+    margin-left:600px;
     background-color:#ffffff;
 
 }
@@ -105,19 +113,20 @@ table {
 
 td {
     padding: 8px;
-    border: 1px solid #0b0b0b;
+    border: 1.5px solid #0b0b0b;
 }
 
 td:first-child {
     font-weight: bold;
-    background-color:#76778B;
+    background-color:#23486d;
+    color: white;
     width: 30%;
 }
 /* -------------------------- */
 .career-table {
     margin-top: 100px;
     width: 50%;
-    margin-left: 700px;
+    margin-left: 600px;
     background-color:#ffffff;
 }
 
@@ -127,8 +136,9 @@ td:first-child {
 }
 
 .title {
-    background-color: #9a1622;
+    background-color: #072039;
     color: white;
+    border: 1.5px solid #0b0b0b;
     text-align: center;
     font-size: 20px;
 }
@@ -136,6 +146,7 @@ td:first-child {
 .column {
     background-color: white;
     width: 50%;
+    color: white;
     font-weight: bold;
     text-align: right;
     
@@ -151,41 +162,42 @@ td:first-child {
     grid-gap: 10px;
     width: 50%;
     margin: 100px;
-    margin-left:700px; 
+    margin-left:600px; 
     position: relative;
 }
 
 .grid-item {
-    background-color:#76778B;
+    background-color:#7b0f18;
     padding: 70px;
-    color: rgb(0, 0, 0);
+    font-weight: bold;
+    color: rgb(255, 255, 255);
     text-align:start;
-    border: 1px solid #ccc;
+    border: 3px solid #000000;
     position: relative;
 }
 
-
+/*flechas*/
 .grid-item:nth-child(9)::before {
     content: '';
     position: absolute;
-    top: -235px; 
+    top: -430px; 
     left: -620px; 
     border-left: 40px solid transparent;
     border-right: 40px solid transparent;
-    border-bottom: 45px solid #2E2D40;
+    border-bottom: 45px solid #133c66;
 }
 
 .grid-item:nth-child(9)::after {
-    content: 'Potential'; 
+    content: 'POTENCIAL'; 
     position: absolute;
-    top: -200px; 
+    top: -390px; 
     left: -600px;
     width: 40px; 
-    height: 150px; 
-    background-color: #2E2D40;
+    height: 580px; 
+    background-color: #133c66;
     text-align: center;
     color: aliceblue;
-    font-size: 16px; 
+    font-size: 24px; 
     font-weight: bold;
     writing-mode: vertical-lr;
     transform: rotate(180deg);
@@ -197,24 +209,24 @@ td:first-child {
     content: '';
     position: absolute;
     top: 205px; 
-    left: 242px;
+    left: 440px;
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
-    border-top: 45px solid #2E2D40; 
+    border-top: 45px solid #133c66; 
     transform: rotate(-90deg);
 }
 
 .grid-item:nth-child(8)::after {
-    content: 'Performance'; 
+    content: 'DESEMPEÑO & COMPETENCIA'; 
     position: absolute;
     top: 210px; 
-    left: -50px;
-    width: 300px; 
-    height: 5px;
-    background-color: #2E2D40;
+    left: -280px;
+    width: 730px; 
+    height: 40px;
+    background-color: #133c66;
     text-align:center;
     color: aliceblue;
-    font-size: 16px; 
+    font-size: 24px; 
     font-weight: bold;
     padding: 15px 0;
 }
@@ -223,26 +235,26 @@ td:first-child {
 .CultureWorkClimateSurvey-box{
     width: 400px; 
     height: 30px; 
-    background-color: #9a1622;
+    background-color: #133c66;
     font-weight: bold;
     color: #ffffff;
     text-align: center;
     line-height: 30px; 
-    margin-top: 300px;
-    margin-left: 900px;
+    margin-top: 100px;
+    margin-left: 30px;
 }
 /* -------------------------- */
 
 .Recommendations table {
     width: 400px; 
     height: 30px; 
-    background-color: #9a1622;
+    background-color: #133c66;
     font-weight: bold;
     color: #ffffff;
     text-align: center;
     line-height: 30px; 
-    margin-top: 300px;
-    margin-left: 900px;
+    margin-top: -200px;
+    margin-left:30px;
     border-collapse: collapse;
     border: 1px solid #000000;
 }
@@ -252,11 +264,11 @@ td:first-child {
     padding: 8px;
     border: 1px solid #0b0b0b;
     text-align: center;
-    background-color: #ffffff;
+    background-color: #28282b;
 }
 
 .Recommendations .title {
-    background-color: #9a1622;
+    background-color: #133c66;
     color: #ffffff;
     text-align: center;
     font-size: 20px;

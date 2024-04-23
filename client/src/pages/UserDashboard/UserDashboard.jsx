@@ -31,41 +31,51 @@ const UserDashboard = () => {
             <img src={avatar} alt="avatar" className="avatar-image" />
 
             <div className="unknown-box">
-                    Unknown
+            <td>{employeeData.primer_nombre} {employeeData.primer_apellido}</td>
             </div>
 
             <div className="Potential-Assessment-box">
-            Performance Assessment
+            Evaluación de Potencial
+            <td style={{ backgroundColor: 'white', color:'black' }}>Este empleado no sirve</td>
             </div>
+            
 
             <div className="Performance_Assessment-box">
-            Performance Assessment
+            Evaluación de Desempeño 
+            <td style={{ backgroundColor: 'white', color:'black' }}>Este empleado no sirve</td>
             </div>
 
             <div className="Competencies_Assessment-box">
-            Performance Assessment
+            Evaluación de Competencias
+            <td style={{ backgroundColor: 'white', color:'black' }}>Este empleado no sirve</td>
             </div>
 
             <div className="ranking">
             Ranking
             </div>
             <div className="ranking-box">
-            90%
+            {employeeData.ranking}
+            </div>
+            <div className="CultureWorkClimateSurvey-box">
+            Culture & Work Climate Survey
             </div>
 
             <div className="info-table">
                 <table>
                     <tbody>
                         <tr>
-                            <td>Name:</td>
+                        <th colSpan="3" className="title">Información</th>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
                             <td>{employeeData.primer_nombre} {employeeData.primer_apellido}</td>
                         </tr>
                         <tr>
-                            <td>Position:</td>
-                            <td>OD Country Manager</td>
+                            <td>Position</td>
+                            <td>{employeeData.perfilPuesto}</td>
                         </tr>
                         <tr>
-                            <td>Facility / Area:</td>
+                            <td>Facility / Area</td>
                             <td>Acme Facility – Organizational Development</td>
                         </tr>
                     </tbody>
@@ -76,22 +86,22 @@ const UserDashboard = () => {
                 <table>
                     <tbody>
                         <tr>
-                            <th colSpan="2" className="title">Career</th>
+                            <th colSpan="2" className="title">Carrera</th>
                         </tr>
                         <tr>
-                            <td className="column1">2016:</td>
+                            <td className="column1">2016</td>
                             <td>OD Coordinator</td>
                         </tr>
                         <tr>
-                            <td className="column1">2019:</td>
+                            <td className="column1">2019</td>
                             <td>OD Superintendent</td>
                         </tr>
                         <tr>
-                            <td className="column1">2021:</td>
+                            <td className="column1">2021</td>
                             <td>OD Manager</td>
                         </tr>
                         <tr>
-                            <td className="column1">2023:</td>
+                            <td className="column1">2023</td>
                             <td>OD Country Manager</td>
                         </tr>
                     </tbody>
@@ -106,9 +116,7 @@ const UserDashboard = () => {
                 ))}
             </div>
 
-            <div className="CultureWorkClimateSurvey-box">
-            Culture & Work Climate Survey
-            </div>
+            
 
             <div className="Recommendations">
     <table>
@@ -135,6 +143,7 @@ const UserDashboard = () => {
         </tbody>
     </table>
 </div>        
+<div></div>
             </div>
             
 

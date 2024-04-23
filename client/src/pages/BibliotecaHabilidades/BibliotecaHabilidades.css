@@ -1,8 +1,8 @@
 .BibliotecaHabilidades {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   }
   
   .habilidades-container {
@@ -29,10 +29,10 @@
   }
   
   .habilidades-card:nth-child(odd) {
-    background-color: #991922;
+    background-color: #23486D;
   }
   
   .habilidades-card:nth-child(even) {
-    background-color: #cd1c2c;
+    background-color: #90AFDB;
   }
   

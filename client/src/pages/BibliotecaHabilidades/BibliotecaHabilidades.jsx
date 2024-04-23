@@ -3,7 +3,7 @@ import './BibliotecaHabilidades.css';
 import Navbar from "../../components/Navbar/Navbar";
 import axios from 'axios';
 
-const competencias = [
+const habilidades = [
   'Adaptabilidad',
   'Análisis de Datos de Producción',
   'Capacidad Analítica',
@@ -47,7 +47,7 @@ function BibliotecaHabilidades() {
   return (
     <div className="BibliotecaHabilidades">
       <Navbar/>
-      <h1>Biblioteca de Habilidades</h1>
+      <h1><b>Biblioteca De Habilidades</b></h1>
 
       <div className="habilidades-container">
         {habilidades.map((habilidad, index) => (
@@ -56,8 +56,9 @@ function BibliotecaHabilidades() {
           </a>
         ))}
       </div>
+
     </div>
   );
 }
 
-export default BibliotecaHabilidades;
+export default BibliotecaHabilidades;

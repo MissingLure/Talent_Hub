@@ -65,25 +65,23 @@ const CrearEmpleado = ({open, accept, cancel}) => {
             idDepartamento: departamento, 
         };
 
-        const closeMessage = () => {
-            setPrimerNombre('');
-            setSegundoNombre('');
-            setPrimerApellido('');
-            setSegundoApellido('');
-            setTelefono('');
-            setIdentidad('');
-            setDireccion('');
-            setCorreo('');
-            setFechaNacimiento(fechaNacimientoFormateada);
-            setFechaIngreso(fechaActualFormateada);
-            setPerfilPuesto('');
-            setDepartamento('');
-            setSuccess(false);
+    const closeMessage = () => {
+        setPrimerNombre('');
+        setSegundoNombre('');
+        setPrimerApellido('');
+        setSegundoApellido('');
+        setTelefono('');
+        setIdentidad('');
+        setDireccion('');
+        setCorreo('');
+        setFechaNacimiento(fechaNacimientoFormateada);
+        setFechaIngreso(fechaActualFormateada);
+        setPerfilPuesto('');
+        setDepartamento('');
+        setSuccess(false);
+        window.location.reload();
         
-            if (success) {
-                window.location.reload();
-            }
-        }
+    }
 
         axios.post('http://localhost:4000/create/agregar-empleado', empleado)
             .then((response) => {
@@ -130,7 +128,7 @@ const CrearEmpleado = ({open, accept, cancel}) => {
     return (
         <div className="main-container">
             <form>
-                    <h4>Registro de Empleado</h4>
+                    <h4><b>Registro de Empleado</b></h4>
                     <div>
                         <input placeholder="Primer Nombre" onChange={(e) => setPrimerNombre(e.target.value)}/>
                     </div>

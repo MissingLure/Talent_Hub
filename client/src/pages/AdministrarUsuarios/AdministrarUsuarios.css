@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #cccccf;
 }
 
 .search-options {
@@ -51,10 +52,12 @@
     justify-content: center;
     flex-direction: column;
     height: 200px;
+
 }
 
 .user-create-form div {
     margin-bottom: 5px;
+    background-color: 133c66;
 }
 
 .error-message {
@@ -75,7 +78,7 @@
   }
   
   .information-container {
-    background-color: #991922;
+    background-color: #133c66;
     color:white;
     padding: 10px;
     padding-top: 1px;
