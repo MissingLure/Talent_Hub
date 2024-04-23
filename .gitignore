@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .env
+/.vscode/launch.json
 
 # testing
 /coverage
