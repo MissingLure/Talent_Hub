@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #d8d8db;
 }
 
 .questions-admin-container select{
@@ -56,10 +57,10 @@
 }
 
 .actions {
-    margin-top: 20px;
+    margin-top: 5px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    text-align: center;
 }
 
 .habilidades-container {
@@ -74,7 +75,7 @@
 }
 
 .habilidad-container {
-    background-color: white;
+    background-color: #926aaf;
     height: 40px;
     width: 90%;
     margin: 10px;

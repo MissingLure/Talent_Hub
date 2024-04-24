@@ -1,6 +1,7 @@
 
 .Inicio {
     width: 100%;
+    background-color: #d8d8db;
   }
   
   .Empleados-TITULO {
@@ -16,14 +17,14 @@
     flex-wrap: wrap;
   }
 
-  .competencia-container {
+  .competencias-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
   }
-  .competencia-card button {
+  .competencia-cards button {
     background-color: transparent;
     border: none;
     padding: 0;
@@ -31,14 +32,14 @@
     color: #fff; 
   }
   
-  .competencia-card button:hover {
+  .competencia-cards button:hover {
     color: #000; 
   }
-  .competencia-card:nth-child(odd) {
+  .competencia-cards:nth-child(odd) {
     background-color: #991922;
   }
   
-  .competencia-card:nth-child(even) {
+  .competencia-cards:nth-child(even) {
     background-color: #cd1c2c;
   }
 

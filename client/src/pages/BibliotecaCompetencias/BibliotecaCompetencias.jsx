@@ -23,7 +23,7 @@ const BibliotecaCompetencias = () =>  {
       
     })
     .catch((error) => {
-
+      console.log(error);
     })
   };
 
@@ -50,7 +50,7 @@ const BibliotecaCompetencias = () =>  {
       setSHowPopup(true);
     })
     .catch((error) => {
-
+      console.log(error);
     })
   };
 
@@ -66,8 +66,8 @@ const BibliotecaCompetencias = () =>  {
   useEffect(() => {
     handleCompetencias();
   }, []);
+
   return (
-    
     <div className="biblioteca-competencias">
       <Navbar/>
       <h2><b>Biblioteca De Competencias</b></h2>

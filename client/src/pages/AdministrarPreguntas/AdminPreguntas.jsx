@@ -126,7 +126,7 @@ const AdminPreguntas = () => {
     return(
         <div className="questions-admin-container">
             <Navbar/>
-            <h2>Administrar Evaluaciones</h2>
+            <h2><b>Administrar Evaluaciones</b></h2>
             <div className="evaluations-actions">
                 <Link className="nav-link" onClick={handleAssignPositionsOpen}>
                     Asignar Evaluación
@@ -170,7 +170,7 @@ const AdminPreguntas = () => {
                 <div className="popup">
                     <div className="popup-content">
                         <div>
-                            <h4>Administrar Perfil de Puesto</h4>
+                            <h4><b>Administrar Perfil de Puesto</b></h4>
                             <select onChange={(e) => setIdPuesto(e.target.value)}>
                                 <option selected disabled hidden>Seleccionar perfil de puesto...</option>
                                 {puestos.length > 0 ?(

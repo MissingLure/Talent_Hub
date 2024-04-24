@@ -41,6 +41,27 @@ const Inicio = () => {
   const decoded = jwtDecode(accessToken);
   const employeeData = JSON.parse(localStorage.getItem('employeeData'));
   const navigate = useNavigate();
+  const [employee, setEmployee] = useState([]);
+
+  const handleEmpleados=()=>{
+    axios.get('http://localhost:4000/data/obtener-empleados')
+    .then((response)=>{
+      setEmployee(response.data.data);
+    })
+    .catch((error)=>{
+      console.log(error.response.data.data);
+    })
+  };
+
+  const handleGetEmployee = (idEmployee)=>{
+    axios.post('http://localhost:4000/data/obtener-empleado', {idEmployee: idEmployee})
+    .then((response) => {
+      setEmployee(response.data.data);
+  })
+  .catch((error) => {
+    console.log(error.response.data.data);
+})
+};
    
   return (
       <div className="Inicio">
@@ -54,7 +75,22 @@ const Inicio = () => {
           maxWidth: '100%',
           display: 'block',
         }}
-      />      </div>
+      />      
+      {/* <div className="Empleados-TITULO">
+        <h2><b>Empleados</b></h2>
+        <div className="Empleados-container">
+          <div className="competencias-container">
+            {employee.map((employee, index)=>(
+              <a className="competencias-card" key={index} value ={employee.idEmployee} onClick={() => handleGetEmployee(employee.idEmployee)}>
+                {employee.nombresEmpleados}
+              </a>
+            ))}
+            </div>
+      </div>
+        </div> */}
+      
+
+      </div>
   );
 }
 

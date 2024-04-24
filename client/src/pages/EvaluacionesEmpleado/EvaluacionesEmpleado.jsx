@@ -89,7 +89,7 @@ const EvaluacionesEmpleado = () => {
   return (
       <div className="Inicio">
           <Navbar />
-          <div className="Empleados-TITULO">
+          <div className="Empleadonpm starts-TITULO">
               <h1>Empleados</h1>
               <div className="Empleados-container">
                   {decoded.rol == 0 && (

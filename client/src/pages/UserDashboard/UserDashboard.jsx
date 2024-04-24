@@ -34,6 +34,13 @@ const UserDashboard = () => {
             <td>{employeeData.primer_nombre} {employeeData.primer_apellido}</td>
             </div>
 
+            <div className="ranking">
+            Ranking
+            </div>
+            <div className="ranking-box">
+            {employeeData.ranking}
+            </div>
+
             <div className="Potential-Assessment-box">
             Evaluación de Potencial
             <td style={{ backgroundColor: 'white', color:'black' }}>Este empleado no sirve</td>
@@ -50,12 +57,6 @@ const UserDashboard = () => {
             <td style={{ backgroundColor: 'white', color:'black' }}>Este empleado no sirve</td>
             </div>
 
-            <div className="ranking">
-            Ranking
-            </div>
-            <div className="ranking-box">
-            {employeeData.ranking}
-            </div>
             <div className="CultureWorkClimateSurvey-box">
             Culture & Work Climate Survey
             </div>

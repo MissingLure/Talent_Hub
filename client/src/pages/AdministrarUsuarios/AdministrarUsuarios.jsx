@@ -116,7 +116,7 @@ const AdministarUsuarios = () => {
                 <div className="list-container">
                     {empleados.length > 0 ? (
                         empleados.map((empleado) => (
-                            <div>
+                            <div key={empleado.id_empleado}>
                                 <DataContainer
                                     primaryValue={empleado.primer_nombre}
                                     secondaryValue={empleado.primer_apellido}

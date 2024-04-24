@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #991922;
+    background-color: #47014c;
     width: 100%;
     margin: 0 auto;
     max-width: 100%;
@@ -24,20 +24,26 @@
 
 
 .nav-item {
-    width: 100px;
+    width: 150px;
     margin-left: 5px;
     padding: 5px;
     color: white;
     font-size: large;
-    height: 78%;
+    height: 100%;
     cursor: pointer;
     text-decoration: none;
 
 }
 
 .nav-item:hover {
-    background-color: #991922;
+    background-color: rgb(102, 35, 106);
 }
+
+/* .logo-container img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+  } */
 
 .dropdown {
     background-color: antiquewhite;
@@ -51,7 +57,8 @@
 
 .nav-link {
     color: white;
-    background-color: #333356;
+    background-color: #6b6b7b;
+    border: 1px solid black;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -74,7 +81,7 @@
     width: 100px;
     margin: 5px;
     padding: 5px;
-    background-color: #444462;
+    background-color: #4a4a4d;
     color: white;
     border-radius: 20px;
     height: 25px;

@@ -11,9 +11,9 @@ import CrearCompetencias from './pages/CrearCompetencias/CrearCompetencias';
 import CompetenciaHabilidad from './pages/CompetenciaHabilidad/CompetenciaHabilidad';
 import AdministrarPreguntas from './pages/AdministrarPreguntas/AdminPreguntas';
 import BibliotecaCompetencias from './pages/BibliotecaCompetencias/BibliotecaCompetencias';
+import BibliotecaHabilidades from './pages/BibliotecaHabilidades/BibliotecaHabilidades';
 import Inicio from './pages/Inicio/Inicio';
 import AdministrarEncuestas from './pages/AdministrarEncuestas/AministrarEncuestas';
-import BibliotecaHabilidades from './pages/BibliotecaHabilidades/BibliotecaHabilidades';
 import CrearEncuestas from './pages/Encuesta/Encuesta';
 import EncuestasEmpleado from './pages/Encuestas/Encuestas';
 

@@ -90,6 +90,7 @@ const Navbar = ({roleValue}) => {
                   <Link className="nav-link" to="/crear-encuestas">
                     Crear Encuesta
                   </Link>
+                  
                 </li>
               )}
               {rol == 1 && (
@@ -136,6 +137,11 @@ const Navbar = ({roleValue}) => {
                   Habilidades
                 </Link>
               </li>
+              {/* <li onClick={handleClickSubOption}>
+              <Link className="nav-link" to ="/box-grid">
+                    9 Box Grid
+                  </Link>
+              </li> */}
             </ul>
           )}
         </li>
