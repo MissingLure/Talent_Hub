@@ -1,6 +1,10 @@
 .dashboard-container {
     background-color: #d8d8db;
     width: 100%;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
     animation: fadeInAnimation 1s forwards; 
 }
 

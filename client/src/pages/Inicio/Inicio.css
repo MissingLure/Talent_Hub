@@ -2,6 +2,7 @@
 .Inicio {
     width: 100%;
     background-color: #d8d8db;
+    animation: fadeInAnimation 1s forwards; 
   }
   
   .Empleados-TITULO {
