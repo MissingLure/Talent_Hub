@@ -85,6 +85,7 @@ const CompetenciaHabilidad = () => {
       console.log(response.data.details);
       setResponseMessage(response.data.details);
       setPreguntaEnviada(true); // Marcar la pregunta como enviada
+      alert("Preguntas añadidas con exito!");
     })
     .catch((error) => {
       setErrorMessages(error.response.data.details);
@@ -99,7 +100,7 @@ const CompetenciaHabilidad = () => {
     return(
       <div className="create-questions">
         <Navbar/>
-        <h2 className="tituloCrearEncuesta">Crear Parametros de Evaluación</h2>
+        <h2 className="tituloCrearEncuesta"><b>Crear Parametros de Evaluación</b></h2>
         <form
       onSubmit={(e) => {
         e.preventDefault();
@@ -198,7 +199,14 @@ const CompetenciaHabilidad = () => {
         <button type="submit" onClick={handleAgregarPregunta} disabled={preguntaEnviada}>
         Crear
       </button>
+        </div>
 
+        <div>
+          <div className="create-questions" >
+            <Link className="create-questions" to = "/administrar-preguntas">
+            Regresar
+            </Link>
+          </div>
         </div>
         
         <div>

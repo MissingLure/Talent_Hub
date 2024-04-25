@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';  // Asegúrate de tener tu archivo de estilos CSS
 import { jwtDecode } from "jwt-decode";
+import logo from '../../images/hanes-logo.png';
 
 const Navbar = ({roleValue}) => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
@@ -46,6 +47,9 @@ const Navbar = ({roleValue}) => {
   return (
     <nav className="navbar">
       <ul className="nav-list">
+        <li className='logo'>
+        <img src={logo}/>
+        </li>
         <li className="nav-item">
             <Link className='nav-item' to="/inicio">Inicio</Link>
         </li>
@@ -59,6 +63,9 @@ const Navbar = ({roleValue}) => {
                   <Link className="nav-link" to="/administrar-preguntas">
                     Administrar Evaluaciones
                   </Link>
+                  <Link className="nav-link" to="/box-grid">
+                    9 Box Grid
+                  </Link>
                 </li>
               )}
               {rol == 1 && (
@@ -67,6 +74,7 @@ const Navbar = ({roleValue}) => {
                     Evaluar Empleados
                   </Link>
                 </li>
+                
               )}
             </ul>
           )}
@@ -80,8 +88,7 @@ const Navbar = ({roleValue}) => {
         {(rol == 0 ||  rol == 2) &&(
           <li
           className="nav-item"
-          onMouseEnter={() => handleDropdown("encuestas")}
-        >
+          onMouseEnter={() => handleDropdown("encuestas")}>
           Encuestas
           {dropdownOpen === "encuestas" && (
             <ul className="dropdown">
@@ -137,11 +144,9 @@ const Navbar = ({roleValue}) => {
                   Habilidades
                 </Link>
               </li>
-              {/* <li onClick={handleClickSubOption}>
-              <Link className="nav-link" to ="/box-grid">
-                    9 Box Grid
-                  </Link>
-              </li> */}
+
+              
+              
             </ul>
           )}
         </li>

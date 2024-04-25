@@ -17,7 +17,9 @@ const AdminPreguntas = () => {
     const [nombreHabilidad, setNombreHabilidad] = useState('');
 
     const [showAdminPositions, setShowAdminPositions] = useState(false);
+    const [showCrearPreguntas, setShowCrearPreguntas] = useState(false);
 
+    //para Asignar Evaluacion
     const handleGetPuestos = () => {
         axios.get('http://localhost:4000/data/obtener-puestos')
             .then((response) => {
@@ -117,11 +119,19 @@ const AdminPreguntas = () => {
         setNombreHabilidad('');
     }
     
+    const handleCrearPreguntaOpen = ()=>{
+        setShowCrearPreguntas(true);
+    }
+
+    const handleCrearPreguntaClose = () =>{
+        setShowCrearPreguntas(false);
+    }
 
     useEffect(() => {
         handleGetPuestos();
         handleGetHabilidades();
     }, []);
+    
 
     return(
         <div className="questions-admin-container">
@@ -230,6 +240,17 @@ const AdminPreguntas = () => {
                         <div className='actions'>
                             <button onClick={handleAssignPositionsClose}>Cancelar</button>
                             <button onClick={handleAsignarHabilidades}>Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {showCrearPreguntas &&(
+                <div className="popup">
+                    <div className="popup-content">
+                        <div>
+                            <h4><b>Crear Paramentros de Preguntas</b></h4>
+                            
                         </div>
                     </div>
                 </div>

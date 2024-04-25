@@ -76,7 +76,7 @@ const Inicio = () => {
           display: 'block',
         }}
       />      
-      { <div className="Empleados-TITULO">
+      {/* { <div className="Empleados-TITULO">
         <h2><b>Empleados</b></h2>
         <div className="Empleados-container">
           <div className="competencia-container">
@@ -87,7 +87,7 @@ const Inicio = () => {
             ))}
             </div>
       </div>
-        </div> }
+        </div> } */}
       
 
       </div>

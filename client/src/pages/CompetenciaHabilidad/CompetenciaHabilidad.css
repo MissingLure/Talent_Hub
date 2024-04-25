@@ -3,12 +3,14 @@
     display:block;
     flex-direction: column;
     align-items: center;
+    animation: fadeInAnimation 1s forwards; 
   }
   .create-questions {
       display: flex;
       flex-direction: column;
       align-items: center;
       background-color: rgb(255, 255, 255);
+      animation: fadeInAnimation 1s forwards; 
     }
   
     .create-questions h2 {
@@ -44,7 +46,7 @@
       border: none;
       width: 200px;
       height: 50px;
-      background-color: #007bff;
+      background-color: #fcfcfc;
       color: white;
       font-size: 18px;
       border-radius: 8px;
