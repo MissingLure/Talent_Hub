@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #47014c;
+    background-color: #333356;
     width: 100%;
     margin: 0 auto;
     max-width: 100%;
@@ -36,7 +36,7 @@
 }
 
 .nav-item:hover {
-    background-color: rgb(102, 35, 106);
+    background-color: #515189;
 }
 
 /* .logo-container img {

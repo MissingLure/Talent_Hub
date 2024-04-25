@@ -14,7 +14,7 @@ const BibliotecaCompetencias = () =>  {
   const [showPopup, setSHowPopup] = useState(false);
   const [showAssignPositions, setShowAssignPositions] = useState(false);
 
-  const [puestos, setPuestos] = useState()
+  const [puestos, setPuestos] = useState();
 
   const handleCompetencias = () => {
     axios.get('http://localhost:4000/data/obtener-competencias')

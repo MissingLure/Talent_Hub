@@ -18,14 +18,14 @@
     flex-wrap: wrap;
   }
 
-  .competencias-container {
+  .competencia-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
   }
-  .competencia-cards button {
+  .competencia-card button {
     background-color: transparent;
     border: none;
     padding: 0;
@@ -37,7 +37,7 @@
     color: #000; 
   }
   .competencia-cards:nth-child(odd) {
-    background-color: #991922;
+    background-color: #ce575e;
   }
   
   .competencia-cards:nth-child(even) {

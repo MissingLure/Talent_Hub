@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   background-color: #d8d8db;
+  animation: fadeInAnimation 1s forwards; 
   }
   
   .habilidades-container {
@@ -31,11 +32,11 @@
   }
   
   .habilidades-card:nth-child(odd) {
-    background-color: #794a76;
+    background-color: #333356;
   }
   
   .habilidades-card:nth-child(even) {
-    background-color: #4d304b;
+    background-color: #43435c;
   }
 
   .modal-container {

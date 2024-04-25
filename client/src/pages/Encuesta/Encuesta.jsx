@@ -98,8 +98,8 @@ const Encuesta = () => {
       lenguaje: lenguaje,
       preguntas: preguntas,
     };
-    axios
-      .post("http://localhost:4000/create/crear-encuesta", encuestaData)
+    
+    axios.post("http://localhost:4000/create/crear-encuesta", encuestaData)
       .then((response) => {
         console.log(response.data.details);
         setResponseMessage(response.data.details);
@@ -122,7 +122,7 @@ const Encuesta = () => {
       >
       </form>
 
-      <div className="login-form">
+      <div className="logins-form">
         <div>
           <label>Nombre:</label>
         </div>
@@ -173,7 +173,8 @@ const Encuesta = () => {
             selectableRows
             onSelectedRowsChange={handleSelectedRowsChange}
             fixedHeader
-            pagination
+            // pagination
+            style={{ width: '50%' }} 
           ></DataTable>
         </div>
         <br />
@@ -183,7 +184,7 @@ const Encuesta = () => {
           </button>
         </div>
         <br />
-        <br />
+        {/* <br /> */}
         <div>
           <button className="Fin" onClick={handleAgregarPregunta}>
             Finalizar Encuesta

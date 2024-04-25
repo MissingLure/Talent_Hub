@@ -5,6 +5,7 @@
      justify-content: center; 
      align-items: center; 
     background-color: #cccccf;
+    animation: fadeInAnimation 1s forwards; 
 }
 
 .add-button {
@@ -34,9 +35,9 @@
 }
 
 .search-options {
-    /* margin: 10px; */
-    background-color: rgb(232, 232, 232);
-    width: 350px;
+    margin: 10px;
+    background-color: #d3d1d1;
+    width: 250px;
     height: 60px;
     margin-left: 100px;
     border-radius: 5px;
@@ -47,7 +48,7 @@
 }
 
 .search-options select {
-    width: 150px;
+    width: 100px;
     height: 28px;
     margin-left: 5px;
     margin-right: 5px;
@@ -74,16 +75,16 @@
     display: flex;
     border-radius: 6px;
     justify-content: center;
-    background-color:#65707b;
-    width:900px;
+    background-color:#444462;
+    width:700px;
 }
 
 .list-container {
     overflow-y: auto;
     border-radius: 6px;
-    width: 1400px;
+    width: 2000px;
     height: 500px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .search-button:hover {

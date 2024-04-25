@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   background-color: #d8d8db;
+  animation: fadeInAnimation 1s forwards; 
 }
 
 .competencias-container {
@@ -30,11 +31,11 @@
 }
 
 .competencia-card:nth-child(odd) {
-  background-color: #794a76;
+  background-color: #760025;
 }
 
 .competencia-card:nth-child(even) {
-  background-color: #4d304b;
+  background-color: #991942;
 }
 
 .modal-container {

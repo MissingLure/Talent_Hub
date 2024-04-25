@@ -21,6 +21,7 @@ const UserDashboard = () => {
     const accessToken = localStorage.getItem('accessToken');
     const decoded = jwtDecode(accessToken);
     const employeeData = JSON.parse(localStorage.getItem('employeeData'));
+    const datos = JSON.parse(localStorage.getItem(''));
 
     return (
         <div className="dashboard-container">
@@ -73,7 +74,7 @@ const UserDashboard = () => {
                         </tr>
                         <tr>
                             <td>Position</td>
-                            <td>{employeeData.perfilPuesto}</td>
+                            <td>{employeeData.primer_apellido}</td>
                         </tr>
                         <tr>
                             <td>Facility / Area</td>

@@ -5,12 +5,13 @@
     justify-content: center;
     align-items: center;
     background-color: #cccccf;
+    animation: fadeInAnimation 1s forwards; 
 }
 
 .search-options {
     margin: 10px;
     background-color: rgb(232, 232, 232);
-    width: 70%;
+    width: 50%;
     height: 60px;
     border-radius: 5px;
     display: flex;
@@ -43,7 +44,7 @@
 
 .list-container {
     height: 600px;
-    width: 600px;
+    width: 650px;
     overflow-y: auto;
 }
 
@@ -57,14 +58,12 @@
 
 .user-create-form div {
     margin-bottom: 5px;
-    background-color: 133c66;
+    background-color: #133c66;
 }
 
 .error-message {
-    color: #ED0800;
+    color: #e90800;
 }
-
-
 
 
   .create-user-modal {

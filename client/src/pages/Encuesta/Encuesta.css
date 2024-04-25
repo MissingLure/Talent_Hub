@@ -1,6 +1,6 @@
 
 .create-questions {
-    background-color: #d8d8db;
+    background-color:#d8d8db;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -8,27 +8,39 @@
     align-items: center;
 }
 
+.logins-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #64637A ;
+    ;
+  }
+
 .inputs{
     width: 400px;
     height: 30px;
 }
+
 .Buscar{
     width: 200px;
     height: 30px;
     margin-left: auto;
-    background-color: powderblue;
+    background-color: #2e2d40;
 }
 .Eliminar{
     width: 20px;
     height: 60px;
-    background-color:crimson;
+    background-color:#2e2d40;
     color: aliceblue;
     cursor: pointer;
 }
 .Fin{
     width: 200px;
     height: 60px;
-    background-color:teal;
+    background-color:#2e2d40;
     color: aliceblue;
     cursor: pointer;
 }
@@ -36,7 +48,7 @@
     width: 200px;
     height: 30px;
     margin-left: auto;
-    background-color:cornflowerblue;
+    background-color:#2e2d40;
     color: aliceblue;
     cursor: pointer;
 }

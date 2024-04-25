@@ -76,18 +76,18 @@ const Inicio = () => {
           display: 'block',
         }}
       />      
-      {/* <div className="Empleados-TITULO">
+      { <div className="Empleados-TITULO">
         <h2><b>Empleados</b></h2>
         <div className="Empleados-container">
-          <div className="competencias-container">
+          <div className="competencia-container">
             {employee.map((employee, index)=>(
-              <a className="competencias-card" key={index} value ={employee.idEmployee} onClick={() => handleGetEmployee(employee.idEmployee)}>
+              <a className="competencia-card" key={index} value ={employee.idEmployee} onClick={() => handleGetEmployee(employee.idEmployee)}>
                 {employee.nombresEmpleados}
               </a>
             ))}
             </div>
       </div>
-        </div> */}
+        </div> }
       
 
       </div>

@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    animation: fadeInAnimation 1s forwards; 
 }
 
 .titulo_available{
