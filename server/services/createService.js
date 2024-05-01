@@ -15,22 +15,18 @@ const knex = require("knex")({
 
 async function agregarEmpleado(empleado) {
   try {
-    const result = await knex.raw(
-      "CALL CrearEmpleado(?,?,?,?,?,?,?,?,?,?,?);",
-      [
-        empleado.primer_nombre,
-        empleado.segundo_nombre,
-        empleado.primer_apellido,
-        empleado.segundo_apellido,
-        empleado.telefono,
-        empleado.fecha_nacimiento,
-        empleado.numero_identidad,
-        empleado.direccion,
-        empleado.correo,
-        empleado.id_perfil_puesto,
-        empleado.id_departamento,
-      ]
-    );
+    const result = await knex.raw("CALL CrearEmpleado(?,?,?,?,?,?,?,?,?,?);", [
+      empleado.primer_nombre,
+      empleado.segundo_nombre,
+      empleado.primer_apellido,
+      empleado.segundo_apellido,
+      empleado.telefono,
+      empleado.fecha_nacimiento,
+      empleado.numero_identidad,
+      empleado.direccion,
+      empleado.id_perfil_puesto,
+      empleado.id_departamento,
+    ]);
     return result;
   } catch (error) {
     console.log(error);
@@ -40,7 +36,21 @@ async function agregarEmpleado(empleado) {
 
 async function crearUsuario(usuarioData) {
   try {
-    const result = await knex("usuarios").insert(usuarioData);
+    const result = await knex("usuarios")
+      .insert(usuarioData)
+      .returning("id_competencia");
+
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}
+
+async function crearCompetenciaService(newCompetencia) {
+  try {
+    const result = await knex("competencias").insert(newCompetencia);
 
     return result;
   } catch (error) {
@@ -49,75 +59,56 @@ async function crearUsuario(usuarioData) {
   }
 }
 
-async function crearEvaluacion(evaluacionData) {
+async function crearDepartamentoService(newDepartamento) {
   try {
-  } catch (error) {
-    console.log(error);
-  }
-}
+    const { nombre_departamento, id_jefe } = newDepartamento;
 
-async function crearCompetencia(competenciaData) {
-  try {
-    const result = await knex("competencias").insert(competenciaData);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-async function crearPregunta(preguntaData) {
-  try {
-    const result = await knex("evaluaciones_comportamientos").insert(
-      preguntaData
+    const result = knex.raw(
+      `INSERT INTO departamentos(id_departamento, nombre_departamento,
+    id_jefe) VALUES(GENERAR_ID_DEPARTAMENTO(), ?, ?)`,
+      [nombre_departamento, id_jefe]
     );
+
     return result;
   } catch (error) {
+    console.log(error);
     return false;
   }
 }
 
-async function crearEncuesta(encuestaData) {
+async function crearPerfilPuestoService(newPerfilPuesto) {
   try {
-    const result = await knex.raw(
-      "DECLARE @NuevoID INT; EXEC dbo.InsertarEncuesta ?, ?, ?, @NuevoID OUTPUT; SELECT @NuevoID AS IDGenerado",
-      [
-        encuestaData.tipo_encuesta,
-        encuestaData.nombre_encuesta,
-        encuestaData.lenguaje,
-      ]
+    const { nombre_perfil, id_departamento, numero_plazas, id_requisito } =
+      newPerfilPuesto;
+
+    const result = knex.raw(
+      `INSERT INTO perfiles_puestos VALUES(GENERAR_ID_PERFIL_PUESTO(), ?, ?, ?, ?)`,
+      [nombre_perfil, id_departamento, numero_plazas, id_requisito]
     );
 
-    //const nuevoID = result[0][0].NuevoID;
-    return result[0].IDGenerado;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-async function crearPreguntaEncuesta(preguntaData) {
-  try {
-    const result = await knex("preguntas").insert(preguntaData);
     return result;
   } catch (error) {
-    console.error(error);
+    console.log(error);
+    return false;
   }
 }
 
-async function insertarHabilidades(habilidadData) {
+async function crearRequisitoService(newRequisito) {
   try {
-    const result = await knex("perfil_puesto_habilidades").insert(
-      habilidadData
-    );
+    const result = knex("requisitos").insert(newRequisito);
+
+    return result;
   } catch (error) {
     console.log(error);
+    return false;
   }
 }
 
 module.exports = {
   agregarEmpleado,
   crearUsuario,
-  crearCompetencia,
-  crearPregunta,
-  crearEncuesta,
-  crearPreguntaEncuesta,
-  insertarHabilidades,
+  crearCompetenciaService,
+  crearDepartamentoService,
+  crearPerfilPuestoService,
+  crearRequisitoService,
 };

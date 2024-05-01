@@ -15,7 +15,6 @@
     for(const field in employee) {
         if (!employee[field]) {
             emptyFields.push(field);
-            console.log(field);
         }
     }
     return emptyFields;

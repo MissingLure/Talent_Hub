@@ -1,14 +1,6 @@
 const { response, request } = require("express");
 const { isEmail, emptyFields, isPassword } = require("../utils/validator");
-const {
-  agregarEmpleado,
-  crearUsuario,
-  crearCompetencia,
-  crearPregunta,
-  crearEncuesta,
-  crearPreguntaEncuesta,
-  insertarHabilidades,
-} = require("../services/createService");
+const createService = require("../services/createService");
 const { encryptPassword, generateSalt } = require("../crypto/encryption");
 const { emailExists, employeeExists } = require("./validationController");
 
@@ -22,7 +14,6 @@ async function agregar_empleado(request, response) {
     telefono,
     numeroIdentidad,
     direccion,
-    correo,
     fechaNacimiento,
     idPerfilPuesto,
     idDepartamento,
@@ -36,7 +27,6 @@ async function agregar_empleado(request, response) {
     telefono: telefono,
     numero_identidad: numeroIdentidad,
     direccion: direccion,
-    correo: correo,
     fecha_nacimiento: fechaNacimiento,
     id_perfil_puesto: idPerfilPuesto,
     id_departamento: idDepartamento,
@@ -44,14 +34,9 @@ async function agregar_empleado(request, response) {
 
   if (emptyFields(empleado).length > 0) {
     errorMessages.push("No pueden haber campos vacíos.");
-  }
-
-  if (!isEmail(correo)) {
-    errorMessages.push("El correo ingresado tiene un formato incorrecto.");
-  }
-
-  if (await emailExists(correo)) {
-    errorMessages.push("El correo ingresado ya existe.");
+    return response.status(401).send({
+      details: errorMessages,
+    });
   }
 
   if (await employeeExists(numeroIdentidad)) {
@@ -64,7 +49,8 @@ async function agregar_empleado(request, response) {
     });
   } else {
     //Si no hay ningun problema con los datos
-    const result = await agregarEmpleado(empleado);
+    const result = await createService.agregarEmpleado(empleado);
+    console.log(result);
     if (result) {
       response.send({
         success: true,
@@ -72,7 +58,7 @@ async function agregar_empleado(request, response) {
       });
     } else {
       errorMessages.push("Error al tratar de agregar empleado.");
-      response.send({
+      response.status(500).send({
         success: false,
         details: errorMessages,
       });
@@ -90,6 +76,7 @@ async function crear_usuario(request, response) {
     sal: "sal",
     rol: rol,
   };
+
   if (!isEmail(correo)) {
     errorMessages.push("Formato de correo invalido.");
   }
@@ -112,7 +99,7 @@ async function crear_usuario(request, response) {
     const encryptedPassword = encryptPassword(contrasena, salt);
     userData.contrasena = encryptedPassword;
     userData.sal = salt;
-    const result = await crearUsuario(userData);
+    const result = await createService.crearUsuario(userData);
     if (result) {
       response.send({
         success: true,
@@ -128,96 +115,94 @@ async function crear_usuario(request, response) {
   }
 }
 
-async function crear_pregunta(request, response) {
+async function crear_competencia(req, res) {
   const errorMessages = [];
-  const {
-    idCompetencia,
-    idHabilidad,
-    pregunta,
-    comportamiento,
-    lenguaje,
-    tipo,
-  } = request.body;
-  const preguntaData = {
-    id_competencia: idCompetencia,
-    id_habilidad: idHabilidad,
-    pregunta: pregunta,
-    comportamiento: comportamiento,
-    lenguaje: lenguaje,
-    tipo: tipo,
-  };
-  if (emptyFields(preguntaData).length > 0) {
-    console.log("Hay campos vacios.");
-    errorMessages.push("No pueden haber campos vacíos.");
-    response.status(401).send({
-      success: false,
-      details: errorMessages,
-    });
+
+  const newCompetencia = req.body;
+
+  if (emptyFields(newCompetencia).length > 0) {
+    errorMessages.push("No se puede dejar campos vacios");
+  }
+
+  if (errorMessages.length) {
+    return res.status(400).send({ details: errorMessages });
+  }
+
+  const result = await createService.crearCompetenciaService(newCompetencia);
+
+  if (result) {
+    return res.send({ success: "True", details: "Competencia Creada", result });
   } else {
-    const result = await crearPregunta(preguntaData);
-    if (result) {
-      response.send({
-        success: true,
-        details: "Pregunta creada exitosamente.",
-      });
-    } else {
-      errorMessages.push("Error al tratar de crear pregunta.");
-      response.send({
-        success: false,
-        details: errorMessages,
-      });
-    }
+    errorMessages.push("No se pudo crear la competencia");
+    return res.status(500).send({ success: "False", details: errorMessages });
   }
 }
 
-async function crear_encuesta(request, response) {
-  const preguntasArr = [];
+async function crear_departamento(req, res) {
   const errorMessages = [];
-  const { tipoEncuesta, nombreEncuesta, lenguaje, preguntas } = request.body;
-  const encuestaData = {
-    tipo_encuesta: tipoEncuesta,
-    nombre_encuesta: nombreEncuesta,
-    lenguaje: lenguaje,
-  };
 
-  if (emptyFields(encuestaData).length > 0) {
-    errorMessages.push("No pueden haber campos vacíos.");
-    response.status(401).send({
-      success: false,
-      details: errorMessages,
+  const newDepartamento = req.body;
+
+  if (!newDepartamento.nombre_departamento)
+    errorMessages.push("Debe de escribir un nombre del departamento");
+
+  if (errorMessages.length) {
+    return res.status(400).send({ details: errorMessages });
+  }
+
+  const result = await createService.crearDepartamentoService(newDepartamento);
+
+  if (result) {
+    return res.send({
+      success: "True",
+      details: "Departamento Creado",
+      result,
     });
   } else {
-    const idEncuesta = await crearEncuesta(encuestaData);
-    for (const pregunta of preguntas) {
-      preguntasArr.push({ id_encuesta: idEncuesta, pregunta: pregunta });
-    }
-
-    for (const pregunta of preguntasArr) {
-      const result = await crearPreguntaEncuesta(pregunta);
-      console.log(result);
-    }
-
-    response.send({
-      success: true,
-      details: "Encuesta creada exitosamente.",
-    });
+    errorMessages.push("No se pudo crear la competencia");
+    return res.status(500).send({ success: "False", details: errorMessages });
   }
 }
 
-async function asignar_habilidades(request, response) {
-  const { idPuesto, habilidades } = request.body;
-  for (const habilidad of habilidades) {
-    const result = await insertarHabilidades({
-      id_pefil_puesto: idPuesto,
-      id_habilidad: habilidad.idHabilidad,
+async function crear_perfilPuesto(req, res) {
+  const errorMessages = [];
+
+  const newPerfilPuesto = req.body;
+
+  const result = await createService.crearPerfilPuestoService(newPerfilPuesto);
+
+  if (result) {
+    return res.send({
+      success: "True",
+      details: "Perfil de Puesto Creado",
+      result,
     });
+  } else {
+    errorMessages.push("No se pudo crear la competencia");
+    return res.status(500).send({ success: "False", details: errorMessages });
+  }
+}
+
+async function crear_requisito(req, res) {
+  const errorMessages = [];
+
+  const newRequisito = req.body;
+
+  const result = await createService.crearRequisitoService(newRequisito);
+
+  if (result) {
+    return res.send({ success: "True", details: "Requisito Creado", result });
+  } else {
+    errorMessages.push("No se pudo crear el requisito");
+    return res.status(500).send({ success: "False", details: errorMessages });
   }
 }
 
 module.exports = {
   agregar_empleado,
   crear_usuario,
-  crear_pregunta,
-  crear_encuesta,
-  asignar_habilidades,
+  crear_competencia,
+  crear_departamento,
+  crear_perfilPuesto,
+  crear_requisito,
 };
