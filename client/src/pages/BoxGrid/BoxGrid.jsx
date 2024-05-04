@@ -1,8 +1,9 @@
-import React from "react";
-import "./BoxGrid.css"
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import QuestionContainer from "../../components/QuestionContainer/QuestionContainer";
+import "./BoxGrid.css";
+import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
-import { Nav } from "react-bootstrap";
-
 const BoxGrid = () =>{
     const items = [
         "UNREALIZED TALENT",
@@ -15,16 +16,20 @@ const BoxGrid = () =>{
         "CONSISTENT PERFORMER",
         "TECHNICAL EXPERT",
     ];
-
-    <div className="box-container">
+    
+    return(
+    <div className="box-grid-container">
         <Navbar/>
-
-        <div className="performance-grid">
+        <h2><b>9 Box Grid</b></h2>
+        <div className="performances-grid">
             {items.map((item, index) =>(
-                <div key ={index} className="grid-item">
+                <div key ={index} className="grids-item">
                     {item}
-                    </div>
+                </div>
             ))}
         </div>
     </div>
-}
+    );
+};
+
+export default BoxGrid;

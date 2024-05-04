@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './CrearCompetencias.css';
+import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
 
 function App() {
   const [competencia, setCompetencia] = useState({
@@ -22,7 +24,8 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="competences-container">
+      <Navbar/>
       <h2>Crear Competencia</h2>
       <form className='competences-form' onSubmit={handleSubmit}>
         <label htmlFor="nombre">Nombre de la Competencia:</label>
@@ -56,6 +59,11 @@ function App() {
         />
 
         <button type="submit">Crear Competencia</button>
+        <Link className="competences-container" to="/competencias">
+          <button type="submit">
+           Regresar
+          </button>
+        </Link>
       </form>
     </div>
   );

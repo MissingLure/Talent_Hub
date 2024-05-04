@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import './AdministrarUsuarios.css';
 import axios from "axios";
+import inform from '../../images/info.png';
 import Modal from "react-modal";
 import DataContainer from "../../components/DataContainer/DataContainer";
 import Navbar from "../../components/Navbar/Navbar";
@@ -10,20 +11,22 @@ import Navbar from "../../components/Navbar/Navbar";
 const AdministarUsuarios = () => {
     const [showAddUserPopup, setShowAddUserPopup] = useState(false);
     const [infoOpen, setInfoOpen] = useState(false);
+    const [puestos, setPuestos] = useState([]);
     const [errorMessages, setErrorMessages] = useState([]);
     const [responseMessage, setResponseMessage] = useState('');
     const [empleados, setEmpleados] = useState([]);
     const [userExists, setUserExists] = useState(false);
+    const [idPuesto, setIdPuesto] = useState('');
 
     //User data
     const [user, setUser] = useState(''); 
-
     const [employee, setEmployee] = useState('');
 
     //Informacion usuario
     const [numeroIdentidad, setNumeroIdentidad] = useState('');
     const [idEmpleado, setIdEmpleado] = useState('')
     const [correo, setCorreo] = useState('');
+    const [puesto, seerPuesto] = useState('');
     const [contraseña, setContrasena] = useState('');
     const [rol, setRol] = useState('');
 
@@ -56,10 +59,21 @@ const AdministarUsuarios = () => {
         setShowAddUserPopup(true);
     };
 
+    const handleGetPuestos = () => {
+        axios.get('http://localhost:4000/data/obtener-puestos')
+            .then((response) => {
+                setPuestos(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    };
+
     const handleCrearUsuario = () => {
         const userData = {
             idEmpleado: employee.id_empleado,
             rol: rol,
+            puesto: employee.puesto,
             correo: employee.correo,
             contrasena: contraseña,
         };
@@ -103,28 +117,33 @@ const AdministarUsuarios = () => {
             <div className="search-options">
                 <div>
                     <label>Filtro</label>
-                    <select>
-                        <option>Seleccionar</option>
-                        <option>Toda</option>
+                    <select onChange={(e) => setIdPuesto(e.target.value)}>
+                        <option selected disabled hidden>Seleccionar perfil...</option>
+                        {puestos.length > 0 ? (
+                            puestos.map((puesto) => (
+                                <option key={puesto.id_perfil_puesto} value={puesto.id_perfil_puesto}>{puesto.nombre_perfil}</option>
+                            ))
+                        ) : (
+                            <option>No hay datos.</option>
+                        )}
                     </select>
                     <input placeholder="Buscar..."/>
                     <button className="search-button">Buscar</button>
                 </div>
             </div>
-            <div className="body-container">
+            <div className="bodys-container">
                 
                 <div className="list-container">
                     {empleados.length > 0 ? (
                         empleados.map((empleado) => (
                             <div key={empleado.id_empleado}>
                                 <DataContainer
-                                    primaryValue={empleado.primer_nombre}
-                                    secondaryValue={empleado.primer_apellido}
-                                    onPrimaryAction={() => {handleGetUser(empleado)}}
-                                    hasPrimary={true}
-                                    primaryAction={"Ver Usuario"}
-                                    hasSecondary={true}
-                                    secondaryAction={"Modificar"}
+                                 primaryValue={empleado.primer_nombre}
+                                 secondaryValue={empleado.primer_apellido}
+                                 hasPrimary={true}
+                                 primaryAction={<img src={inform}/>}
+
+                                 onPrimaryAction={() => {handleGetUser(empleado)}}
                                 />
                             </div>
                         ))
@@ -157,7 +176,6 @@ const AdministarUsuarios = () => {
                                     <div>
                                         <input placeholder="Correo electronico" value={employee.correo}/>
                                     </div>
-                                    
                                     <div>
                                     <input type="password" placeholder="Contraseña" onChange={(e) => setContrasena(e.target.value)}/>
                                     </div>
@@ -186,6 +204,7 @@ const AdministarUsuarios = () => {
                                 <div className="information-container">
                                     <p>ID: {user.id_usuario}</p>
                                     <p>Correo: {user.correo}</p>
+                                    <p>Puesto: {employee.puesto}</p>
                                     <p>Rol: {user.rol}</p>
                                 </div>
                                 
@@ -247,6 +266,7 @@ const AdministarUsuarios = () => {
                                 <div className="information-container">
                                     <p>ID: {user.id_usuario}</p>
                                     <p>Correo: {user.correo}</p>
+                                    <p>Puesto: {puestos}</p>
                                     <p>Rol: {user.rol}</p>
                                 </div>
                                 

@@ -48,10 +48,13 @@ const Navbar = ({roleValue}) => {
     <nav className="navbar">
       <ul className="nav-list">
         <li className='logo'>
-        <img src={logo}/>
+          <Link to="/inicio">
+          <img src={logo}/>
+          </Link>
+        
         </li>
         <li className="nav-item">
-            <Link className='nav-item' to="/inicio">Inicio</Link>
+            <Link className='nav-item' to="/evaluaciones-empleado">Inicio</Link>
         </li>
         {(rol == 0 || rol == 1) && (
         <li className="nav-item" onMouseEnter={() => handleDropdown('rendimiento')}>
@@ -97,7 +100,9 @@ const Navbar = ({roleValue}) => {
                   <Link className="nav-link" to="/crear-encuestas">
                     Crear Encuesta
                   </Link>
-                  
+                  <Link className="nav-link" to="/administrar-encuestas">
+                    Crear Preguntas
+                  </Link>
                 </li>
               )}
               {rol == 1 && (

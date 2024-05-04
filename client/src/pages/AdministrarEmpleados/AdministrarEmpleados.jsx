@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import "./AdministrarEmpleados.css"
 import axios from "axios";
+import inform from '../../images/info.png';
+import search from '../../images/search.png';
+import add from '../../images/add.png';
+import DataTable from "react-data-table-component";
 import DataContainer from "../../components/DataContainer/DataContainer";
 import CrearEmpleado from "../CrearEmpleado/CrearEmpleado";
 import Navbar from "../../components/Navbar/Navbar";
@@ -18,6 +22,7 @@ const AdministarEmpleados = () => {
     const [boss, setBoss] = useState('');
     const [hasBoss, setHasBoss] = useState(false);
     const [selectedBoss, setSelectedBoss] = useState('');
+    const [email, setEmail] = useState('');
 
     const [showPopup, setShowPopup] = useState(false);
     const [showBossPopup, setShowBossPopu] = useState(false);
@@ -28,6 +33,78 @@ const AdministarEmpleados = () => {
         setShowPopup(false);
         setShowBossPopu(false);
         setSelectedBoss('');
+    }
+
+    const columns =[
+        {
+            name:"ID Empleado",
+            selector:(row)=> row.id_empleado,
+            sortable:true,
+        },
+        {
+            name:"Nombre",
+            selector:(row)=> row.primer_nombre,
+            sortable:true,
+        },
+        {
+            name:"Apellido",
+            selector:(row)=> row.primer_apellido,
+            sortable:true,
+        },
+        {
+            name:"Jefe",
+            selector:(row)=> row.boss,
+            sortable:true,
+        }
+        
+    ];
+
+//     const handleAgregarFila = () => {
+//     if (pregunta && lenguaje) {
+//       const preguntasTemp = preguntas;
+//       preguntasTemp.push(pregunta);
+//       setPreguntas(preguntasTemp);
+
+//       setData([
+//         ...data,
+//         {
+//           index: counter,
+//           Pregunta: pregunta,
+//           Lenguaje: lenguaje,
+//         },
+//       ]);
+
+//       SetBusqueda([
+//         ...Busqueda,
+//         {
+//           Pregunta: pregunta,
+//           Lenguaje: lenguaje,
+//         },
+//       ]);
+
+//       setCounter(counter + 1);
+//       setPregunta("");
+//     } else {
+//       alert("Por favor, complete todos los campos");
+//     }
+//   };
+
+    const handleBuscar = ()=>{
+        const data ={
+            email : email,
+        };
+        axios.post('http://localhost:4000/user/get-user', data)
+            .then((response) => {
+                localStorage.setItem('accessToken', response.data.accessToken);
+                localStorage.setItem('refreshToken', response.data.refreshToken);
+                localStorage.setItem('employeeData', JSON.stringify(response.data.data));
+                setErrorMessages([]);
+                setMessage("Usuario encontrado");
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+                setErrorMessages(error.response.data.details);
+            })
     }
 
     const handleGetEmployees = () => {
@@ -117,19 +194,41 @@ const AdministarEmpleados = () => {
     return(
         <div className="administrar-empleados">
             <Navbar/>
-            <h2 ><b>EMPLEADOS</b></h2>
+            <h2 ><b>Administrar Empleados</b></h2>
             <div className="search-options">
                 <div>
-                    <label>Filtro</label>
-                    <select>
-                        <option>Seleccionar</option>
-                        <option>Toda</option>
-                    </select>
-                    <input placeholder="Buscar..."/>
-                    <button className="search-button">Buscar</button>
+                <label>Filtro</label>
+                <select>
+                    
+                </select>
+                    {/* <select onChange={(e) => setIdPuesto(e.target.value)}>
+                        <option selected disabled hidden>Seleccionar perfil...</option>
+                        {puestos.length > 0 ? (
+                            puestos.map((puesto) => (
+                                <option key={puesto.id_perfil_puesto} value={puesto.id_perfil_puesto}>{puesto.nombre_perfil}</option>
+                            ))
+                        ) : (
+                            <option>No hay datos.</option>
+                        )}
+                    </select> */}
+                    <input placeholder = "Buscar..." />
+                    <button className="search-button" onClick={handleBuscar}>
+                        {/* <img src={search}/> */}
+                        Buscar
+                        </button>
+                   
+                    <button className="search-button"onClick={() => setShowPopup(true)}>
+                    {/* <img src={add}/> */}
+                    Add
+                    </button>
+                    
+                    {/* <button className="search-button">Información</button> */}
                 </div>
+                
+                
             </div>
-            <div className="body-container">
+            
+            <div className="bodys-container">
             <div className="list-container">
                 {empleados.length > 0 ? (
                     empleados.map((empleado) => (
@@ -138,13 +237,11 @@ const AdministarEmpleados = () => {
                                 primaryValue={empleado.primer_nombre}
                                 secondaryValue={empleado.primer_apellido}
                                 hasPrimary={true}
-                                primaryAction={"Información"}
-                                hasSecondary={true}
-                                secondaryAction={"Modificar"}
+                                primaryAction={<img src={inform}/>}
                                 onPrimaryAction={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}
-                                hasTertitary={true}
-                                tertiaryAction={"Eliminar"}
+                                // hasTertitary={true}
                             />
+                            {/* <button onClick={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}>{empleado.primer_nombre}{empleado.primer_apellido}</button> */}
                         </div>
                     ))
                 ) : (
@@ -153,25 +250,23 @@ const AdministarEmpleados = () => {
             </div>
             </div>
 
-            <div className="add-button">
-                <button onClick={() => setShowPopup(true)}>
-                    Crear Empleado
-                </button>
-            </div>
+            
             {showBossPopup && (
                 <div className="popup">
                     <div className="information-popup-content">
                         <div className="employee-info">
                             <h3><b>Empleado</b></h3>
                             <label>{employee.primer_nombre} {employee.primer_apellido}</label>
-
                         </div>
                         <div className="boss-info">
                             {hasBoss ? (
                                 <div>
                                     <h3><b>Jefe</b></h3>
                                     <label>{boss.primer_nombre} {boss.primer_apellido}</label>
-                                    
+                                    <div>
+                                        <button>Modificar</button>
+                                        <button>Eliminar</button>
+                                    </div>
                                 </div>
                                 
                             ) : (
@@ -194,6 +289,10 @@ const AdministarEmpleados = () => {
                             )}
                         </div>
                         
+                        {/* <div>
+                            <button onClick={handleClosePopup}>Modificar</button>
+                            <button onClick={handleClosePopup}>Eliminar</button>
+                        </div> */}
                         <div>
                             <button onClick={handleClosePopup}>Cerrar</button>
                         </div>

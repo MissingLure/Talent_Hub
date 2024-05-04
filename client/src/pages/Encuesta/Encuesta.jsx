@@ -10,6 +10,8 @@ const Encuesta = () => {
   const [lenguaje, setLenguaje] = useState("");
   const [pregunta, setPregunta] = useState("");
   const [preguntas, setPreguntas] = useState([]);
+  const [question, setQUestion] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [responseMessage, setResponseMessage] = useState([]);
   const [errorMessages, setErrorMessages] = useState([]);
   const [competencias, setCompetencias] = useState([]);
@@ -84,6 +86,16 @@ const Encuesta = () => {
     setSelectedRows(selectedIndexes);
   };
 
+  const handleGetPreguntas = () =>{
+    axios.get('http://localhost:4000/data/obtener-preguntas')
+    .then((response) => {
+      setQuestions(response.data.data);
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+  }
+
   const handleEliminarFilasMarcadas = () => {
     const newData = data.filter((row) => !selectedRows.includes(row.index));
     setData(newData);
@@ -98,7 +110,7 @@ const Encuesta = () => {
       lenguaje: lenguaje,
       preguntas: preguntas,
     };
-    
+
     axios.post("http://localhost:4000/create/crear-encuesta", encuestaData)
       .then((response) => {
         console.log(response.data.details);
@@ -160,12 +172,25 @@ const Encuesta = () => {
         <div>
           <input type="text" className="inputs" value={pregunta} onChange={(e) => setPregunta(e.target.value)} placeholder="Ingrese la pregunta" />
         </div>
+        {/* <div>
+        {questions.length > 0 ? (
+            <select onChange={(e) => setQUestion(e.target.value)}>
+              <option hidden disabled selected value="">Seleccione pregunta...</option>
+              {questions.map((question, index) => (
+                <option key = {index} value= {question.id}>{question.name}</option>
+              ))}
+            </select>
+          ) : (
+            <p>No hay datos.</p>
+          )}
+        </div> */}
         <div>
           <button className="Agregar" onClick={handleAgregarFila}>
             Agregar Pregunta
           </button>
         </div>  
-        <div>
+
+        <div style={{ height: 40, width: '100%' }}>
           <DataTable
             id="Data"
             columns={columns}
@@ -173,10 +198,16 @@ const Encuesta = () => {
             selectableRows
             onSelectedRowsChange={handleSelectedRowsChange}
             fixedHeader
-            // pagination
-            style={{ width: '50%' }} 
-          ></DataTable>
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 5 },
+              },
+            }}
+            pageSizeOptions={[5, 10]}
+            checkboxSelection
+          />
         </div>
+
         <br />
         <div>
           <button className="Eliminar" onClick={handleEliminarFilasMarcadas}>

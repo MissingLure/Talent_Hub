@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './Login.css';
 import logo from '../../images/hanes-logo.png';
+import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
@@ -8,7 +9,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessages, setErrorMessages] = useState([]);
-    const [login, setLogin] = useState(false);
+    // const [login, setLogin] = useState(false);
     const navigate = useNavigate();
 
     const handleLogin = () => {
@@ -32,6 +33,7 @@ const Login = () => {
 
     return (
         <div className="login">
+            <div className="bar"> </div>
             <div className="login-form">
                 <div className="logo-container">
                     <img src={logo}/>
@@ -39,15 +41,19 @@ const Login = () => {
                 <form className="form-container">
                     <h4>INICIO DE SESIÓN</h4>
                     <div>
-                        <p>CORREO ELECTRONICO</p>
-                        <input type="text" onChange={(e) => setEmail(e.target.value)}/>
+                        <p >CORREO ELECTRONICO</p>
+                        <input placeholder= "Correo Electronico" type="text" onChange={(e) => setEmail(e.target.value)}/>
                     </div>
                     <div>
                         <p>CONTRASEÑA</p>
-                        <input type="password" onChange={(e) => setPassword(e.target.value)}/>
+                        <input placeholder= "Contraseña"  type="password" onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     <div>
-                        <a>¿Olvidaste tu contraseña?</a>
+                    <div  >
+                        {/* <Link className="a">
+                        ¿Olvidaste la contraseña?
+                        </Link> */}
+                    </div>
                     </div>
                     <div>
                         <button onClick={handleLogin} type="button">Iniciar Sesión</button>

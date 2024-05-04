@@ -32,17 +32,32 @@
   }
   
   .habilidades-card:nth-child(odd) {
-    background-color: #333356;
+    background-color: #760025;
   }
   
   .habilidades-card:nth-child(even) {
-    background-color: #43435c;
+    background-color: #991942;
   }
 
   .modal-container {
     display: flex;
     justify-content: center;
   }
+
+
+.BibliotecaHabilidades  button{
+  background-color: #333356;
+  border-radius: 20px;
+  width: 150px;
+  height:auto;
+  color:white;
+  margin-left: 1000px;
+  margin-bottom: 20px;
+  margin-top: -20px;
+}
+.BibliotecaHabilidades button:hover{
+  background-color: #3d7d40;
+}
 
 .information-modal {
   border: none;
