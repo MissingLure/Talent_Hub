@@ -63,7 +63,7 @@ async function crearDepartamentoService(newDepartamento) {
   try {
     const { nombre_departamento, id_jefe } = newDepartamento;
 
-    const result = knex.raw(
+    const result = await knex.raw(
       `INSERT INTO departamentos(id_departamento, nombre_departamento,
     id_jefe) VALUES(GENERAR_ID_DEPARTAMENTO(), ?, ?)`,
       [nombre_departamento, id_jefe]
@@ -81,7 +81,7 @@ async function crearPerfilPuestoService(newPerfilPuesto) {
     const { nombre_perfil, id_departamento, numero_plazas, id_requisito } =
       newPerfilPuesto;
 
-    const result = knex.raw(
+    const result = await knex.raw(
       `INSERT INTO perfiles_puestos VALUES(GENERAR_ID_PERFIL_PUESTO(), ?, ?, ?, ?)`,
       [nombre_perfil, id_departamento, numero_plazas, id_requisito]
     );
@@ -95,7 +95,20 @@ async function crearPerfilPuestoService(newPerfilPuesto) {
 
 async function crearRequisitoService(newRequisito) {
   try {
-    const result = knex("requisitos").insert(newRequisito);
+    const result = await knex("requisitos").insert(newRequisito);
+
+    return result;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}
+
+async function crearHabilidadCompetenciaService(newHabilidadCompetencia) {
+  try {
+    const result = await knex("competencia_habilidad").insert(
+      newHabilidadCompetencia
+    );
 
     return result;
   } catch (error) {
@@ -111,4 +124,5 @@ module.exports = {
   crearDepartamentoService,
   crearPerfilPuestoService,
   crearRequisitoService,
+  crearHabilidadCompetenciaService
 };

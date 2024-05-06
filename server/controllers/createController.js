@@ -198,6 +198,28 @@ async function crear_requisito(req, res) {
   }
 }
 
+async function crear_habilidad_competencia(req, res) {
+  const errorMessages = [];
+
+  const newHabilidadCompetencia = req.body;
+
+  const result = await createService.crearHabilidadCompetenciaService(
+    newHabilidadCompetencia
+  );
+
+  if (result) {
+    return res.send({
+      success: "True",
+      details: "Habilida Competencia Creada",
+      result,
+    });
+  } else {
+    return res
+      .status(500)
+      .send({ success: "False", details: "No se pudo crear la habilida" });
+  }
+}
+
 module.exports = {
   agregar_empleado,
   crear_usuario,
@@ -205,4 +227,5 @@ module.exports = {
   crear_departamento,
   crear_perfilPuesto,
   crear_requisito,
+  crear_habilidad_competencia
 };
