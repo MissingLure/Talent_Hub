@@ -42,7 +42,7 @@ const Inicio = () => {
   const employeeData = JSON.parse(localStorage.getItem('employeeData'));
   const navigate = useNavigate();
   const [employee, setEmployee] = useState([]);
-
+  console.log("Raise");
   const handleEmpleados=()=>{
     axios.get('http://localhost:4000/data/obtener-empleados')
     .then((response)=>{

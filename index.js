@@ -13,6 +13,7 @@ const userRoutes = require("./server/routes/userRoutes");
 const dataRoutes = require("./server/routes/dataRoutes");
 const createRoutes = require("./server/routes/createRoutes");
 const updateRoutes = require("./server/routes/updateRoutes");
+const deleteRoutes = require("./server/routes/deleteRoutes")
 const morgan = require("morgan");
 
 app.use(morgan('dev'))
@@ -20,7 +21,7 @@ app.use("/user", userRoutes);
 app.use("/data", dataRoutes);
 app.use("/create", createRoutes);
 app.use("/update", updateRoutes);
-
+app.use ("/delete", deleteRoutes)
 
 console.log(process.env.TALENT_HUB_DB)
 
