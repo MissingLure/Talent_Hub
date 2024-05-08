@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './CrearHabilidad.css';
+import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
 
 const CrearHabilidad = () => {
   const [habilidad, setHabilidad] = useState({
@@ -21,19 +23,11 @@ const CrearHabilidad = () => {
   };
 
   return (
-    <div className="data-viewer">
-      <h2>Crear Habilidad</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="id">ID de Habilidad:</label>
-        <input
-          type="text"
-          id="id"
-          name="id"
-          value={habilidad.id}
-          readOnly
-        />
-
-        <label htmlFor="nombre">Nombre:</label>
+    <div className="ability-container">
+      <Navbar/>
+      <h1 className="tituloHabi"><b>Crear Habilidad</b></h1>
+      <form className='ability-form' onSubmit={handleSubmit}>
+        <label htmlFor="nombre"><b>Nombre de Habilidad:</b></label>
         <input
           type="text"
           id="nombre"
@@ -43,7 +37,7 @@ const CrearHabilidad = () => {
           required
         />
 
-        <label htmlFor="descripcion">Descripción:</label>
+        <label htmlFor="descripcion"><b>Descripción:</b></label>
         <textarea
           id="descripcion"
           name="descripcion"
@@ -53,17 +47,13 @@ const CrearHabilidad = () => {
           required
         ></textarea>
 
-        <label htmlFor="peso">Peso:</label>
-        <input
-          type="text"
-          id="peso"
-          name="peso"
-          value={habilidad.peso}
-          onChange={handleInputChange}
-          required
-        />
+        <div> </div>
+      
 
-        <button type="submit">Crear Habilidad</button>
+        <button type="submit" >Crear Habilidad</button>
+        <Link className="ability-container" to="/habilidades">
+          <button type="submit"> Regresar </button>
+        </Link>
       </form>
     </div>
   );

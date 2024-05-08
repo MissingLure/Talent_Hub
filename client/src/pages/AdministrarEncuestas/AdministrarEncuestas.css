@@ -1,0 +1,59 @@
+.admin-encuesta-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #d8d8db;
+    animation: fadeInAnimation 1s forwards; 
+}
+
+.admin-encuesta-container h2{
+    font-size: 24px;
+}
+
+.admin-encuesta-container label{
+    margin: 10px;
+}
+
+.admin-encuesta-container button{
+    background-color: #2e2d40;
+    color: white;
+    width:240px;
+    border-radius: 15px;
+    margin: 5px;
+}
+
+.admin-encuesta-container button:hover{
+    background-color: #1c7120;
+}
+
+.volver{
+    margin-left: -1100px;
+}
+
+.tabla-container {
+    display: flex;
+    /* border-radius: 40px; */
+    justify-content: center;
+    background-color: #a9a9a9;
+    width:auto;
+    margin-bottom: auto;
+    margin-top: 10px;
+}
+
+.admin-encuesta-container table{
+    overflow-y: auto;
+    /* height: 560px; */
+    align-items: center;
+    border-color: black;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-radius: 20px;
+    /* margin-left: 80px; */
+    width:900px;
+}
+
+.Eliminar{
+    width:10px;
+}

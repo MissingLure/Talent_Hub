@@ -3,6 +3,7 @@ import './BibliotecaCompetencias.css';
 import axios from 'axios';
 import Modal from 'react-modal';
 import Navbar from "../../components/Navbar/Navbar";
+import { Link } from "react-router-dom";
 
 
 const BibliotecaCompetencias = () =>  {
@@ -70,7 +71,14 @@ const BibliotecaCompetencias = () =>  {
   return (
     <div className="biblioteca-competencias">
       <Navbar/>
-      <h2><b>Biblioteca De Competencias</b></h2>
+      <h1><b>Biblioteca De Competencias</b></h1>
+      <div>
+        <Link className="biblioteca-competencias" to="/crear-competencias">
+          <button type="submit">
+            Crear Competencias
+          </button>
+        </Link>
+        </div>
       <div className="competencias-container">
         {competencias.map((competencia, index) => (
           <a className="competencia-card" key={index} value={competencia.id_competencia} onClick={() => handleGetCompetencia(competencia.id_competencia)}>

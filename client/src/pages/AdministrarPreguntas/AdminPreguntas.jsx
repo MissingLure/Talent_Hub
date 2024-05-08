@@ -4,6 +4,7 @@ import QuestionContainer from "../../components/QuestionContainer/QuestionContai
 import "./AdminPreguntas.css";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
+
 const AdminPreguntas = () => {
     const [errorMessages, setErrorMessages] = useState([]);
     const [questions, setQuestions] = useState([]);
@@ -83,7 +84,7 @@ const AdminPreguntas = () => {
         } else {
             axios.post('http://localhost:4000/create/asignar-habilidades', {idPuesto: idPuesto, habilidades: habilidadesPuesto})
             .then((response) => {
-
+                console.log(response.data.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -138,12 +139,10 @@ const AdminPreguntas = () => {
             <Navbar/>
             <h2><b>Administrar Evaluaciones</b></h2>
             <div className="evaluations-actions">
-                <Link className="nav-link" onClick={handleAssignPositionsOpen}>
+                <Link className="nav-link" to ="/asignar-evaluacion">
                     Asignar Evaluación
                 </Link>
-                <Link className="nav-link" to="/competencia-habilidad">
-                    Crear Pregunta
-                </Link>
+                
             </div>
 
             <div className="search-options">
@@ -153,10 +152,10 @@ const AdminPreguntas = () => {
                         <option selected disabled hidden>Seleccionar perfil...</option>
                         {puestos.length > 0 ? (
                             puestos.map((puesto) => (
-                                <option value={puesto.id_perfil_puesto}>{puesto.nombre_perfil}</option>
+                                <option key={puesto.id_perfil_puesto} value={puesto.id_perfil_puesto}>{puesto.nombre_perfil}</option>
                             ))
                         ) : (
-                            <option>No hay datos</option>
+                            <option>No hay datos.</option>
                         )}
                     </select>
                     <button onClick={handleObtenerEncuesta}>Buscar</button>
@@ -166,8 +165,8 @@ const AdminPreguntas = () => {
             <div className="questions-container">
                 {evaluacion.length > 0 ? (
                     <div>
-                        {evaluacion.map((question) => (
-                            <div>
+                        {evaluacion.map((question, index) => (
+                            <div key={index}>
                                 <p>{question[0].comportamiento}</p>
                             </div>
                         ))}
@@ -176,55 +175,58 @@ const AdminPreguntas = () => {
                     <div>No hay evaluaciones disponibles.</div>
                 )}
             </div>
+
             {showAdminPositions && (
                 <div className="popup">
                     <div className="popup-content">
-                        <div>
-                            <h4><b>Administrar Perfil de Puesto</b></h4>
-                            <select onChange={(e) => setIdPuesto(e.target.value)}>
-                                <option selected disabled hidden>Seleccionar perfil de puesto...</option>
-                                {puestos.length > 0 ?(
-                                    puestos.map((puesto) => (
-                                        <option value={puesto.id_perfil_puesto}>{puesto.nombre_perfil}</option>
-                                    ))
-                                ):(
-                                    <option>No hay datos.</option>
-                                )}
-                            </select>
-                            
-                        </div>
-                        <div>
-                            <select onChange={(e) => {
-                                let selectedIndex = e.target.value;
-                                setIdHabilidad(habilidades[selectedIndex].id_habilidad);
-                                setNombreHabilidad(habilidades[selectedIndex].nombre_habilidad)
-                            }}>
-                                <option selected disabled hidden>Seleccionar habilidad...</option>
-                                {habilidades.length > 0 ? (
-                                    habilidades.map((habilidad, index) => (
-                                        <option value={index}>{habilidad.nombre_habilidad}</option>
-                                    ))
-                                ):(
-                                    <option>No hay datos.</option>
-                                )}
-                            </select>
-                            <button type="button" onClick={() => handleAgregarHabilidad()}>Agregar</button>
-                        </div>
+                    <div>
+                    <h4><b>Administrar Perfil de Puesto</b></h4>
+                    <select  onChange={(e) => setIdPuesto(e.target.value)}>
+                        <option selected disabled hidden>Seleccionar perfil de puesto...</option>
+                        {puestos.length > 0 ? (
+                            puestos.map((puesto) => (
+                                <option key={puesto.id_perfil_puesto} value={puesto.id_perfil_puesto}>{puesto.nombre_perfil}</option>
+                            ))
+                        ) : (
+                            <option>No hay datos.</option>
+                        )}
+                    </select>
+                </div>
 
-                        <div>
-                            {errorMessages.length > 0 ? (
-                                errorMessages.map((error) => (
-                                    <p>{error}</p>
-                                ))
-                            ):(
-                                <p></p>
-                            )}
-                        </div>
+                <div>
+                    <select onChange={(e) => {
+                        let selectedIndex = e.target.value;
+                        setIdHabilidad(habilidades[selectedIndex].id_habilidad);
+                        setNombreHabilidad(habilidades[selectedIndex].nombre_habilidad);
+                    }}>
+                        <option selected disabled hidden>Seleccionar habilidad...</option>
+                        {habilidades.length > 0 ? (
+                            habilidades.map((habilidad, index) => (
+                                <option key={index} value={index}>{habilidad.nombre_habilidad}</option>
+                            ))
+                        ) : (
+                            <option>No hay datos.</option>
+                        )}
+                    </select>
+                    <button type="button" onClick={() => handleAgregarHabilidad()}>Agregar</button>
+                </div>
+
+
+                <div>
+                    {errorMessages.length > 0 ? (
+                        errorMessages.map((error, index) => (
+                            <p key={index}>{error}</p>
+                        ))
+                    ) : (
+                        <p></p> // You might consider omitting this line since it renders an empty paragraph.
+                    )}
+                </div>
+
                             
-                        <div className="habilidades-container">
+                        <div className="habilidads-container">
                             {habilidadesPuesto.length > 0 ? (
-                                habilidadesPuesto.map((habilidad) => (
-                                    <div className="habilidad-container">
+                                habilidadesPuesto.map((habilidad, index) => (
+                                    <div className="habilidad-container" key={index}>
                                         <div>
                                             <p>{habilidad.nombreHabilidad}</p>
                                         </div>
@@ -233,10 +235,11 @@ const AdminPreguntas = () => {
                                         </div>
                                     </div>
                                 ))
-                            ):(
+                            ) : (
                                 <p>No hay habilidades seleccionadas.</p>
                             )}
                         </div>
+
                         <div className='actions'>
                             <button onClick={handleAssignPositionsClose}>Cancelar</button>
                             <button onClick={handleAsignarHabilidades}>Aceptar</button>
@@ -245,16 +248,6 @@ const AdminPreguntas = () => {
                 </div>
             )}
 
-            {showCrearPreguntas &&(
-                <div className="popup">
-                    <div className="popup-content">
-                        <div>
-                            <h4><b>Crear Paramentros de Preguntas</b></h4>
-                            
-                        </div>
-                    </div>
-                </div>
-            )}
         </div>
     );
 };

@@ -1,16 +1,28 @@
 .App{
-    font-family: Arial, sans-serif;
+    font-family:'Times New Roman', Times, serif;
     display:block;
     flex-direction: column;
     align-items: center;
     animation: fadeInAnimation 1s forwards; 
   }
+
   .create-questions {
       display: flex;
       flex-direction: column;
       align-items: center;
       background-color: rgb(255, 255, 255);
       animation: fadeInAnimation 1s forwards; 
+    }
+
+    .create-form {
+      display: flex;
+      flex-direction: column;
+      width:500px;
+      align-items: center;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #64637a;
     }
   
     .create-questions h2 {
@@ -41,23 +53,24 @@
       height: 50px;
     }
   
-     Button style 
+     /* Button style  */
     .create-questions button {
       border: none;
       width: 200px;
       height: 50px;
-      background-color: #fcfcfc;
+      background-color: #2a2942;
       color: white;
       font-size: 18px;
-      border-radius: 8px;
+      border-radius: 2px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      /* transition: background-color 0.3s ease; */
     }
   
     .create-questions button:hover {
-      background-color: #0056b3;
+      background-color: #1c7120;
     }
   
     .error-message {
-      color: rgb(176, 49, 49);
+      color: #000000;
+      background-color: #991942;
     }

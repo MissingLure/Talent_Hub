@@ -1,0 +1,62 @@
+[
+    {
+        "id_Empleado": 1,
+        "correo": "employee1@example.com",
+        "password": "2oS4IhIs",
+        "rol": "Admin"
+    },
+    {
+        "id_Empleado": 2,
+        "correo": "employee2@company.com",
+        "password": "lfa2ePzo",
+        "rol": "Empleado"
+    },
+    {
+        "id_Empleado": 3,
+        "correo": "employee3@example.com",
+        "password": "LT0P3FjO",
+        "rol": "Admin"
+    },
+    {
+        "id_Empleado": 4,
+        "correo": "employee4@company.com",
+        "password": "YC9RPHyu",
+        "rol": "Empleado"
+    },
+    {
+        "id_Empleado": 5,
+        "correo": "employee5@test.org",
+        "password": "JOj9KGSr",
+        "rol": "Empleado"
+    },
+    {
+        "id_Empleado": 6,
+        "correo": "employee6@company.com",
+        "password": "VDIbUYeI",
+        "rol": "Admin"
+    },
+    {
+        "id_Empleado": 7,
+        "correo": "employee7@example.com",
+        "password": "msuMXxSK",
+        "rol": "Supervisor"
+    },
+    {
+        "id_Empleado": 8,
+        "correo": "employee8@company.com",
+        "password": "GXBU7Cof",
+        "rol": "Empleado"
+    },
+    {
+        "id_Empleado": 9,
+        "correo": "employee9@company.com",
+        "password": "JERKQ166",
+        "rol": "Supervisor"
+    },
+    {
+        "id_Empleado": 10,
+        "correo": "employee10@test.org",
+        "password": "iak92RgF",
+        "rol": "Empleado"
+    }
+]

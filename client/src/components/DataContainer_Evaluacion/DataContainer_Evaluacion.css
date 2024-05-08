@@ -47,7 +47,7 @@
 }
 
 .survey-info {
-    border-right: 2px solid rgb(195, 195, 195);
+    border-right: 2px solid #c3c3c3;
     width: 180px;
     height: 40px;
     display: flex;
@@ -58,7 +58,7 @@
 }
 
 .survey-status {
-    border-right: 2px solid rgb(195, 195, 195);
+    border-right: 2px solid #c3c3c3;
     border-bottom-left-radius: 10px;
     width: 180px;
     height: 40px;

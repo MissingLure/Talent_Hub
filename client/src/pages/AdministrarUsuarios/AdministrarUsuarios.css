@@ -1,13 +1,16 @@
 .administrar-usuarios {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #cccccf;
-    animation: fadeInAnimation 1s forwards; 
+  width: 100%; 
+  display: flex; 
+ flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  background-color: #d8d8db; 
+ animation: fadeInAnimation 1s forwards; 
 }
 
+.administrar-usuarios h2{
+  font-size: 24px;
+}
 .search-options {
     margin: 10px;
     background-color: rgb(232, 232, 232);

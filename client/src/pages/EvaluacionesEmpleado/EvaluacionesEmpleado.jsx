@@ -86,15 +86,16 @@ const EvaluacionesEmpleado = () => {
     }
   }, []);
   
-  return (
+  return(
       <div className="Inicio">
           <Navbar />
-          <div className="Empleadonpm starts-TITULO">
-              <h1>Empleados</h1>
-              <div className="Empleados-container">
+              <div className="Empleados-TITULO">
+              <h1>Evaluacion Empleados</h1>
+              <div className="row"></div>
                   {decoded.rol == 0 && (
-                      <div>
-                          <h2>CORE COMPETENCE</h2>
+                      <div className="row">
+                        <div className= "column">
+                        <h2>Core Competence</h2>
                           <div className="competencia-container">
                               {coreCompetence.map((nombre, index) => (
                                   <div key={index} className="competencia-card">
@@ -102,22 +103,29 @@ const EvaluacionesEmpleado = () => {
                                   </div>
                               ))}
                           </div>
-                          <h2>Performance Measurement</h2>
-                          <div className="competencia-container">
-                              {performanceMeasurement.map((nombre, index) => (
+
+                        </div>
+                          <div className="column">
+                            <h2>Performance Measurement</h2>
+                            <div className="competencia-container">
+                                {performanceMeasurement.map((nombre, index) => (
                                   <div key={index} className="competencia-card">
                                       <button onClick={() => handlePopup(nombre)}>{nombre}</button>
                                   </div>
-                              ))}
-                          </div>
-                          <h2>CORE POTENTIAL</h2>
-                          <div className="competencia-container">
+                                ))}
+                            </div>                            
+                         </div>
+                              <div className="column">
+                              <h2>Core Potencial</h2>
+                             <div className="competencia-container">
                               {corePotential.map((nombre, index) => (
                                   <div key={index} className="competencia-card">
                                       <button onClick={() => handlePopup(nombre)}>{nombre}</button>
                                   </div>
                               ))}
-                          </div>
+                             </div>                                
+                              </div>
+
                       </div>
                   )}
                  
@@ -147,9 +155,8 @@ const EvaluacionesEmpleado = () => {
                     </div>
                   )}
             </div>
-            </div>
-            </div>
-             );
-            }
+   </div>
+  );
+}
 
 export default EvaluacionesEmpleado;

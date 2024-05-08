@@ -109,7 +109,7 @@ const CompetenciaHabilidad = () => {
       
     ></form>
         
-        <div className="login-form">
+        <div className="create-form">
         <div>
           <label>Tipo de evaluación</label>
         </div>
@@ -134,7 +134,7 @@ const CompetenciaHabilidad = () => {
             <select onChange={(e) => setCompetencia(e.target.value)}>
               <option hidden disabled selected value="">Seleccione competencia...</option>
               {competencias.map((competencia, index) => (
-                <option value={competencia.id_competencia}>{competencia.nombre_competencia}</option>
+                <option key={index} value={competencia.id_competencia}>{competencia.nombre_competencia}</option>
               ))}
             </select>
           ) : (
@@ -144,7 +144,6 @@ const CompetenciaHabilidad = () => {
         <div>
           <label>
             Habilidad
-            
           </label>
         </div>
         <div>
@@ -202,12 +201,13 @@ const CompetenciaHabilidad = () => {
         </div>
 
         <div>
-          <div className="create-questions" >
-            <Link className="create-questions" to = "/administrar-preguntas">
+        <Link className="create-questions" to="/administrar-preguntas">
+          <button type="submit">
             Regresar
-            </Link>
-          </div>
+          </button>
+        </Link>
         </div>
+                  
         
         <div>
           {errorMessages.length > 0 ? (
@@ -221,6 +221,12 @@ const CompetenciaHabilidad = () => {
           )}
         </div>
       </div>
+
+     <br/>
+     <br/>
+
+     <br/>
+     <br/>
     </div>
   
     

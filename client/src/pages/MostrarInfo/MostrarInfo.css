@@ -1,0 +1,75 @@
+
+.paginita {
+    background-color: #aeaaaa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInAnimation 1s forwards; 
+}
+
+.title {
+    text-align: center; 
+    margin-bottom: 20px; 
+    border: none;
+}
+
+.title h2{
+    font-size: 40px; 
+    font-family: 'Times New Roman', Times, serif; 
+    font-weight: bold; 
+    color: #000000; 
+    background-color: #aeaaaa;
+    
+}
+
+.container2{
+    margin: 0 auto; 
+    width: 70%; 
+    max-height: 300px; 
+    overflow-y: auto;
+    
+
+}
+
+.container2 thead {
+    position: sticky;
+    top: 0;
+    
+}
+
+.container2 tr{
+    background-color: #333aa0;
+    color: #ffffff;
+   
+}
+
+.container2 table{
+    
+   border: 40px;
+}
+
+
+.container2 td{
+    background-color: #ffffff;
+    color:#000000;
+    
+}
+/*
+.holittas{
+    background-color: #250c0c;
+    color:antiquewhite;
+}
+*/
+/*
+.container2 table tr td:first-child {
+    background-color: #963939;
+    color:antiquewhite;
+}
+*/
+
+/*
+.container {
+    background-color: #ffffff;
+    align-items: center;
+}
+*/

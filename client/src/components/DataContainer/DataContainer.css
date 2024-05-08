@@ -1,56 +1,68 @@
 .data-container {
     margin-top: 15px;
-    margin-left: 20px;
-    margin-right: -30px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    /* margin-right: -20px; */
     display: flex;
     border-radius: 6px;
     text-justify: center;
     text-align: center;
-    background-color: #6f6e88;
+    background-color: #444462;
     height: 45px;
     color: white;
     font-weight: 700;
 }
 
+.data-container:hover{
+    background-color: #748ab0;
+    display:flex;
+}
+
 .main-content {
-    border-radius: -200px;
+    border-radius: -10px;
     margin-bottom: 5px;
-    display: flex;
+    background-color: #d9d9d9;
+    /* display: flex; */
 }
 
 .info {
-    width: 80%;
+    width: 400px;
     border-radius: 10px;
+    padding:15px;
 }
 
 .actions {
-    width: 70%;
+    width: 10%;
     border-radius: 6px;
     display: flex;
 }
 
 
 .actions button {
-    width: 100px;
-    height: 30px;
+    width: 30px;
+    height: 10px;
     border-radius: 6px;
-    margin: 5px;
+    margin: 300px;
     color: white;
 }
 
 .primary-button {
-    border-radius: 6px;
-    background-color: #8FACDE;
+    /* border-radius: 10px; */
+    width:5px;
+    height:5px;
+    background-color: #ffffff00;
 }
 
 .primary-button:hover {
     border-radius: 6px;
-    background-color: #7c95bf;
+    background-color: #f6f7f7;
 }
 
 .secondary-button {
     border-radius: 6px;
-    background-color: #6784B5;
+    width:10px;
+    height:5px;
+    background-color: #ffffff00;
 }
 
 .secondary-button:hover {
@@ -60,7 +72,9 @@
 
 .tertiary-button {
     border-radius: 6px;
-    background-color: #4b6d9d;
+    width:10px;
+    height:10px;
+    background-color: #ffffff00;
 }
 
 .tertiary-button:hover {

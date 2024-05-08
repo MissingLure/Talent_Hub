@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './CrearCompetencias.css';
+import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
 
 function App() {
   const [competencia, setCompetencia] = useState({
@@ -22,10 +24,11 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h2>Crear Competencia</h2>
+    <div className="competences-container">
+      <Navbar/>
+      <h1 className="tituloComp"><b>Crear Competencia</b></h1>
       <form className='competences-form' onSubmit={handleSubmit}>
-        <label htmlFor="nombre">Nombre de la Competencia:</label>
+        <label htmlFor="nombre"><b>Nombre de Competencia:</b></label>
         <input
           type="text"
           id="nombre"
@@ -35,7 +38,7 @@ function App() {
           required
         />
 
-        <label htmlFor="descripcion">Descripción:</label>
+        <label htmlFor="descripcion"><b>Descripción:</b></label>
         <textarea
           id="descripcion"
           name="descripcion"
@@ -45,17 +48,13 @@ function App() {
           required
         ></textarea>
 
-        <label htmlFor="peso">Peso:</label>
-        <input
-          type="text"
-          id="peso"
-          name="peso"
-          value={competencia.peso}
-          onChange={handleInputChange}
-          required
-        />
+        <div> </div>
+      
 
         <button type="submit">Crear Competencia</button>
+        <Link className="competences-container" to="/competencias">
+          <button type="submit"> Regresar </button>
+        </Link>
       </form>
     </div>
   );

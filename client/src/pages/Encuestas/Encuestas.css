@@ -1,5 +1,6 @@
 .surveys-employee {
     display: flex;
+    background-color:#d8d8db;
     flex-direction: column;
     justify-content: center;
     align-content: center;

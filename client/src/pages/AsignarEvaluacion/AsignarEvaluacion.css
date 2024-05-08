@@ -1,0 +1,93 @@
+.asign-container{
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #d8d8db;
+    animation: fadeInAnimation 1s forwards; 
+}
+
+.body-container{
+    margin:100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #64637A ;
+}
+
+.asign-container h2{
+    font-size: 24px;
+}
+
+.asign-container label{
+    font-weight: bold;
+}
+
+.agregar-habilidad {
+    margin-top: 10px;
+    width: 200px;
+    height: 30px;
+    margin-left: auto;
+    background-color:#2e2d40;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.habilidads-container {
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    background-color: #cccbcb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.habilidad-container {
+    background-color: #991922;
+    color:white;
+    height: 40px;
+    width: 90%;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eliminar-habilidad {
+    width: 20px;
+    height: 60px;
+    background-color:#2e2d40;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.finalizar {
+    margin:5px;
+    width: 200px;
+    height: 60px;
+    background-color:#2e2d40;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.asign-container button{
+    border: none;
+    width: 150px;
+    height: 30px;
+    border-radius: 20px;;
+}
+
+.asign-container button:hover{
+    background-color: #4b8473;;
+}
+
+.delete-button {
+    background-color: #64637a;
+}

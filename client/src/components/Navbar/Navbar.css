@@ -80,8 +80,9 @@
 .cerrar-sesion {
     cursor: pointer;
     width: 100px;
-    margin: 5px;
-    padding: 5px;
+    margin-top: 10px;
+    margin-left: 100px;
+    padding: 2px;
     background-color: #4a4a4d;
     color: white;
     border-radius: 20px;

@@ -3,6 +3,7 @@ import './BibliotecaHabilidades.css';
 import Navbar from "../../components/Navbar/Navbar";
 import Modal from 'react-modal';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // const habilidades = [
 //   'Adaptabilidad',
@@ -79,8 +80,14 @@ const BibliotecaHabilidades = () => {
   return (
     <div className="BibliotecaHabilidades">
       <Navbar/>
-      <h2><b>Biblioteca De Habilidades</b></h2>
-
+      <h1 className="tituloBib"><b>Biblioteca De Habilidades</b></h1>
+      <div>
+        <Link className="BibliotecaHabilidades" to="/crear-habilidades">
+          <button type="submit">
+            Crear Habilidades
+          </button>
+        </Link>
+        </div>
       <div className="habilidades-container">
         {habilidades.map((habilidad, index) => (
           <a className="habilidades-card" key={index} value={habilidad.id_habilidad} onClick={()=> handleGetHabilidad(habilidad.id_habilidad)}>
@@ -99,7 +106,7 @@ const BibliotecaHabilidades = () => {
                 detalles.map((detalle, index) => ( 
                   <div key={index}> {}
                     <div className='information'>
-                      <h4>{detalle.comportamiento}</h4>
+                      <h4>{detalle.habilidad}</h4>
                       <p>{detalle.pregunta}</p>
                     </div>
                   </div>

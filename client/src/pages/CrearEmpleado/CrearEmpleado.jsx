@@ -130,38 +130,48 @@ const CrearEmpleado = ({open, accept, cancel}) => {
             <form>
                     <h4><b>Registro de Empleado</b></h4>
                     <div>
-                        <input placeholder="Primer Nombre" onChange={(e) => setPrimerNombre(e.target.value)}/>
-                    </div>
-                    <div>
-                        <input placeholder="Segundo Nombre" onChange={(e) => setSegundoNombre(e.target.value)}/>
-                    </div>
-                    <div>
-                        <input placeholder="Primer Apellido" onChange={(e) => setPrimerApellido(e.target.value)}/>
-                    </div>
-                    <div>
-                        <input placeholder="Segundo Apellido" onChange={(e) => setSegundoApellido(e.target.value)}/>
-                    </div>
-                    <div>
-                        <input type="number" placeholder="Telefono" onChange={(e) => setTelefono(e.target.value)}/>
-                    </div>
-                    <div>
+                        <label>Numero de Identidad: </label> 
                         <input type="number" placeholder="Identidad" onChange={(e) => setIdentidad(e.target.value)}/>
                     </div>
                     <div>
+                        <label>Primer Nombre: </label>
+                        <input placeholder="Primer Nombre" onChange={(e) => setPrimerNombre(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Segundo Nombre: </label>
+                        <input placeholder="Segundo Nombre" onChange={(e) => setSegundoNombre(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Primer Apellido: </label>  
+                        <input placeholder="Primer Apellido" onChange={(e) => setPrimerApellido(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Segundo Apellido: </label> 
+                        <input placeholder="Segundo Apellido" onChange={(e) => setSegundoApellido(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Numero de Telefono: </label> 
+                        <input type="number" placeholder="Telefono" onChange={(e) => setTelefono(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Dirección: </label> 
                         <input placeholder="Dirección" onChange={(e) => setDireccion(e.target.value)}/>
                     </div>
                     <div>
+                        <label>Correo Electronico: </label> 
                         <input placeholder="Correo" onChange={(e) => setCorreo(e.target.value)}/>
                     </div>
                     <div>
-                        <label>Fecha de nacimiento</label>
+                        <label>Fecha de nacimiento: </label>
                         <input type="date" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)}/>
                     </div>
                     <div>
                         <select onChange={(e) => setPerfilPuesto(e.target.value)}>
                             <option selected disabled hidden>Seleccionar Puesto</option>
                             {puestos.map((puesto) => (
-                                <option value={puesto.id_perfil_puesto}>{puesto.nombre_perfil}</option>
+                                <option key={puesto.id_perfil_puesto} value={puesto.id_perfil_puesto}>
+                                    {puesto.nombre_perfil}
+                                </option>
                             ))}
                         </select>
                     </div>
@@ -169,7 +179,9 @@ const CrearEmpleado = ({open, accept, cancel}) => {
                         <select onChange={(e) => setDepartamento(e.target.value)}>
                             <option selected disabled hidden>Seleccionar departamento</option>
                             {departamentos.map((departamento) => (
-                                <option value={departamento.id_departamento}>{departamento.nombre_departamento}</option>
+                                <option key={departamento.id_departamento} value={departamento.id_departamento}>
+                                    {departamento.nombre_departamento}
+                                </option>
                             ))}
                         </select>
                     </div>

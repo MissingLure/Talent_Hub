@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@table-library/react-table-library": "^4.1.7",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -19,7 +21,7 @@
     "morgan": "^1.10.0",
     "mssql": "^10.0.1",
     "mysql": "^2.18.1",
-    "mysql2": "^3.9.6",
+    "mysql2": "^3.9.7",
     "npm": "^10.2.5",
     "pg": "^8.11.3",
     "react": "^18.2.0",
@@ -29,6 +31,7 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.20.1",
     "react-scripts": "5.0.1",
+    "react-table": "^7.8.0",
     "tedious": "^16.6.1",
     "web-vitals": "^2.1.4",
     "webpack": "^5.89.0"
@@ -37,7 +40,7 @@
     "nodemon": "^3.1.0"
   },
   "scripts": {
-    "start": "concurrently \"node ./index.js\" \"cd ./client && npm run dev\"",
+    "start": "concurrently \"nodemon ./index.js\" \"cd ./client && npm run dev\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
