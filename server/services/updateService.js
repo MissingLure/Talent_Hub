@@ -27,6 +27,31 @@ async function asignarJefe(employeeId, bossId) {
     }
 }
 
+async function actualizarEmpleado(employeeID,Telefono, IDPerfil, IDDepartamento, IDJefe){
+    try{
+      
+        console.log(employeeID, Telefono, IDPerfil, IDDepartamento, IDJefe)
+        const result = await knex('empleados').where('id_empleado', employeeID).update({id_perfil_puesto: IDPerfil, telefono: Telefono, id_departamento: IDDepartamento, id_jefe: IDJefe});
+        console.log (result)
+        return result;
+
+    }catch(error){
+        console.log(error);
+        return false
+    }
+}
+
+async function actualizarUsuario(employeeID){
+    try{
+
+    }catch(error){
+        console.log(error);
+        return false
+    }
+}
+
 module.exports = {
     asignarJefe,
+    actualizarEmpleado,
+    actualizarUsuario
 };
