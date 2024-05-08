@@ -69,6 +69,12 @@ const Navbar = ({roleValue}) => {
                   <Link className="nav-link" to="/box-grid">
                     9 Box Grid
                   </Link>
+                  
+                  <Link className="nav-link" to="/mostrar-info">
+                    Mostrar Info
+                  </Link>
+                  
+
                 </li>
               )}
               {rol == 1 && (

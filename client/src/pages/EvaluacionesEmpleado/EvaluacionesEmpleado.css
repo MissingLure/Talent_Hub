@@ -4,11 +4,24 @@
   }
   
   .Empleados-TITULO {
-    font-family: Arial, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
     text-align: center;
-    margin: 20px;
+    margin-bottom: 10%;
   }
-  
+
+  .column {
+    text-align: center;
+    color: black;
+    float: left;
+    width: 33%;
+    background-color: transparent;
+  }
+
+  .row::after{
+    display: table;
+    clear: both;
+  }
 
   .Empleados-container {
     display: flex;
@@ -24,7 +37,7 @@
     margin-bottom: 20px;
   }
   .competencia-card button {
-    background-color: transparent;
+    background-color: #a54747;
     border: none;
     padding: 0;
     cursor: pointer;
@@ -32,7 +45,7 @@
   }
   
   .competencia-card button:hover {
-    color: #000; 
+    color: #d6d8e2; 
   }
   .competencia-card:nth-child(odd) {
     background-color: #991922;
@@ -75,4 +88,3 @@
 .popup-content button:hover {
   background-color: #991922;
 }
-  

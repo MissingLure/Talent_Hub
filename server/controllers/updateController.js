@@ -1,6 +1,7 @@
 const { response, request } = require("express");
-const { asignarJefe } = require("../services/updateService");
+const { asignarJefe, actualizarEmpleado } = require("../services/updateService");
 const { emptyFields } = require("../utils/validator");
+const { ids } = require("webpack");
 
 async function asignar_jefe(request, response) {
     try {
@@ -24,6 +25,48 @@ async function asignar_jefe(request, response) {
     
 };
 
+async function actualizarUsuario(req, res){
+    try{
+       
+        
+    } catch(error){
+        res.status(500).send({ success: false, details: 'Error al actualizar usuario'})
+    }
+}
+
+async function actualizar_Empleado(req, res){
+    try{
+        const {employeeID} = req.params; 
+        
+        const {telefono, IDDepartamento, IDJefe, IDPerfil} = req.body
+
+        const data ={
+            telefono : telefono,
+            IDDepartamento : IDDepartamento,
+            IDJefe: IDJefe,
+            IDPerfil: IDPerfil
+        };
+  
+
+        const result = await actualizarEmpleado(employeeID, telefono, IDPerfil, IDDepartamento, IDJefe);
+        
+
+        if(!result){
+            return res.status(404).json({
+                message: "User not found."
+            })
+        }
+
+        return res.json(result)
+
+    } catch(error){
+        res.status(500).send({ success: false, details: 'Error al actualizar usuario'})
+        console.log(error.message)
+    }
+}
+
 module.exports = {
     asignar_jefe,
+    actualizar_Empleado,
+    actualizarUsuario
 };

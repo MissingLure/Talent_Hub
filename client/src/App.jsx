@@ -19,6 +19,7 @@ import AsignarEvaluacion from './pages/AsignarEvaluacion/AsignarEvaluacion';
 import AdministrarEncuestas from './pages/AdministrarEncuestas/AministrarEncuestas'
 import CrearEncuestas from './pages/Encuesta/Encuesta';
 import EncuestasEmpleado from './pages/Encuestas/Encuestas';
+import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Login/>}/>
           <Route path='/user-dashboard' element={<UserDashboard/>}/>
+          
+          <Route path='/mostrar-info' element={<MostrarInfo/>}/>
+          
           <Route path='/administrar-empleados' element={<AdministarEmpleados/>}/>
           <Route path='/administrar-usuarios' element={<AdministarUsuarios/>}/>
           <Route path='/crear-empleado' element={<CrearEmpleado/>}/>
@@ -49,5 +53,9 @@ function App() {
     </div>
   );
 }
+
+/*
+<Route path='/mostrar-info' element={<MostrarInfo/>}/>
+*/
 
 export default App;
