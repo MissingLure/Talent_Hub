@@ -16,6 +16,7 @@ import Inicio from './pages/Inicio/Inicio';
 import AdministrarEncuestas from './pages/AdministrarEncuestas/AministrarEncuestas';
 import CrearEncuestas from './pages/Encuesta/Encuesta';
 import EncuestasEmpleado from './pages/Encuestas/Encuestas';
+import ModificarUsuario from './pages/ModificarUsuarios/ModificarUsuario';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path='/habilidades'element={<BibliotecaHabilidades/>}/>
           <Route path='/crear-encuestas'element={<CrearEncuestas/>}/>
           <Route path='/encuestas-empleado'element={<EncuestasEmpleado/>}/>
+          <Route path='/modificar-usuario'element={<ModificarUsuario/>}/>
         </Routes>
       </Router>
     </div>
