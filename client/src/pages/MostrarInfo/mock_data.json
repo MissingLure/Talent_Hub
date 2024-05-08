@@ -1,0 +1,72 @@
+[
+    {
+        "nombre": "Carlos",
+        "puesto": "Contador",
+        "departamento": "Marketing",
+        "pais": "Estados Unidos",
+        "jefe": "Pedro"
+    },
+    {
+        "nombre": "Ana",
+        "puesto": "Gerente",
+        "departamento": "Tecnologia",
+        "pais": "Mexico",
+        "jefe": "Laura"
+    },
+    {
+        "nombre": "Luis",
+        "puesto": "Analista",
+        "departamento": "Contabilidad",
+        "pais": "Francia",
+        "jefe": "Elena"
+    },
+    {
+        "nombre": "Ana",
+        "puesto": "Analista",
+        "departamento": "Marketing",
+        "pais": "Mexico",
+        "jefe": "Roberto"
+    },
+    {
+        "nombre": "Juan",
+        "puesto": "Disenador",
+        "departamento": "Contabilidad",
+        "pais": "Francia",
+        "jefe": "Roberto"
+    },
+    {
+        "nombre": "Maria",
+        "puesto": "Contador",
+        "departamento": "Contabilidad",
+        "pais": "Mexico",
+        "jefe": "Roberto"
+    },
+    {
+        "nombre": "Carlos",
+        "puesto": "Gerente",
+        "departamento": "Contabilidad",
+        "pais": "Mexico",
+        "jefe": "Diego"
+    },
+    {
+        "nombre": "Carlos",
+        "puesto": "Analista",
+        "departamento": "Recursos Humanos",
+        "pais": "Francia",
+        "jefe": "Laura"
+    },
+    {
+        "nombre": "Carlos",
+        "puesto": "Gerente",
+        "departamento": "Recursos Humanos",
+        "pais": "Espaniaa",
+        "jefe": "Roberto"
+    },
+    {
+        "nombre": "Maria",
+        "puesto": "Disenador",
+        "departamento": "Ventas",
+        "pais": "Mexico",
+        "jefe": "Elena"
+    }
+]
