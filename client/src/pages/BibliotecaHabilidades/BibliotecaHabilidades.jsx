@@ -80,9 +80,9 @@ const BibliotecaHabilidades = () => {
   return (
     <div className="BibliotecaHabilidades">
       <Navbar/>
-      <h2><b>Biblioteca De Habilidades</b></h2>
+      <h1 className="tituloBib"><b>Biblioteca De Habilidades</b></h1>
       <div>
-        <Link className="BibliotecaHabilidades" to="/crear-competencias">
+        <Link className="BibliotecaHabilidades" to="/crear-habilidades">
           <button type="submit">
             Crear Habilidades
           </button>

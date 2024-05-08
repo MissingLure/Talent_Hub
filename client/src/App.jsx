@@ -8,6 +8,7 @@ import UserDashboard from './pages/UserDashboard/UserDashboard';
 import EvaluacionesEmpleado from './pages/EvaluacionesEmpleado/EvaluacionesEmpleado';
 import EvaluacionEmpleado from './pages/EvaluacionEmpleado/EvaluacionEmpleado';
 import CrearCompetencias from './pages/CrearCompetencias/CrearCompetencias';
+import CrearHabilidad from './pages/CrearHabilidad/CrearHabilidad';
 import CompetenciaHabilidad from './pages/CompetenciaHabilidad/CompetenciaHabilidad';
 import AdministrarPreguntas from './pages/AdministrarPreguntas/AdminPreguntas';
 import BibliotecaCompetencias from './pages/BibliotecaCompetencias/BibliotecaCompetencias';
@@ -32,6 +33,7 @@ function App() {
           <Route path='/evaluaciones-empleado' element={<EvaluacionesEmpleado/>}/>
           <Route path='/evaluacion-empleado' element={<EvaluacionEmpleado/>}/>
           <Route path='/crear-competencias' element={<CrearCompetencias/>}/>\
+          <Route path='/crear-habilidades' element={<CrearHabilidad/>}/>
           <Route path='/administrar-preguntas' element={<AdministrarPreguntas/>}/>
           <Route path='/competencia-habilidad' element={<CompetenciaHabilidad/>}/>
           <Route path='/competencias' element={<BibliotecaCompetencias/>}/>
