@@ -20,7 +20,9 @@ import AdministrarEncuestas from './pages/AdministrarEncuestas/AministrarEncuest
 import CrearEncuestas from './pages/Encuesta/Encuesta';
 import EncuestasEmpleado from './pages/Encuestas/Encuestas';
 import ModificarUsuario from './pages/ModificarUsuarios/ModificarUsuario';
+import ModificarEmpleado from './pages/ModificarEmpleados/ModificarEmpleado';
 import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
+
 
 function App() {
   return (
@@ -49,6 +51,7 @@ function App() {
           <Route path='/crear-encuestas'element={<CrearEncuestas/>}/>
           <Route path='/encuestas-empleado'element={<EncuestasEmpleado/>}/>
           <Route path='/modificar-usuario'element={<ModificarUsuario/>}/>
+          <Route path='/modificar-empleado'element={<ModificarEmpleado/>}/>
           <Route path='/asignar-evaluacion' element={<AsignarEvaluacion/>}/>
         </Routes>
       </Router>
