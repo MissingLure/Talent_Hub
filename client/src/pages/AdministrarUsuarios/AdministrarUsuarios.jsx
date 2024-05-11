@@ -59,15 +59,6 @@ const AdministarUsuarios = () => {
         setShowAddUserPopup(true);
     };
 
-    const handleGetPuestos = () => {
-        axios.get('http://localhost:4000/data/obtener-puestos')
-            .then((response) => {
-                setPuestos(response.data.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    };
 
     const handleCrearUsuario = () => {
         const userData = {
@@ -83,6 +74,7 @@ const AdministarUsuarios = () => {
             if (response.data.success) {
                 setResponseMessage(response.data.details);
                 setErrorMessages([]);
+                alert("Usuario creado con exito");
             } else {
                 setErrorMessages(response.data.details);
             }
@@ -110,6 +102,9 @@ const AdministarUsuarios = () => {
         handleGetEmployees();
     }, []);
 
+
+    //funciones de tabla
+  
     return(
         <div className="administrar-usuarios">
             <Navbar/>
@@ -204,7 +199,6 @@ const AdministarUsuarios = () => {
                                 <div className="information-container">
                                     <p>ID: {user.id_usuario}</p>
                                     <p>Correo: {user.correo}</p>
-                                    <p>Puesto: {employee.puesto}</p>
                                     <p>Rol: {user.rol}</p>
                                 </div>
                                 

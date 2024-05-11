@@ -11,6 +11,7 @@
 .administrar-usuarios h2{
   font-size: 24px;
 }
+
 .search-options {
     margin: 10px;
     background-color: rgb(232, 232, 232);
@@ -101,3 +102,34 @@
     background-color: #64637a;
     color: white;
   }
+
+/*contenido de la tabla*/
+.container2{
+  margin: 0 auto; 
+  width: 70%; 
+  max-height: 300px; 
+  overflow-y: auto;
+}
+
+
+.container2 thead {
+  position: sticky;
+  top: 0; 
+}
+
+.container2 tr{
+  background-color: #333aa0;
+  color: #ffffff;
+}
+
+.container2 table{
+  
+ border: 40px;
+}
+
+
+.container2 td{
+  background-color: #ffffff;
+  color:#000000;
+ 
+}

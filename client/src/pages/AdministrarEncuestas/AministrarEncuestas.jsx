@@ -75,11 +75,11 @@ const AdministrarEncuestas = () => {
     return(
         <div className="admin-encuesta-container">
           <Navbar/>
-          <div className="volver">
+          {/* <div className="volver">
             <Link to="/administrar-preguntas">
               <button className="botonVolverMenuEncuesta">Volver al Menu de Encuestas</button>
             </Link>
-          </div>
+          </div> */}
       <h2><b>Crear Preguntas</b></h2>
       
       <div>
@@ -149,11 +149,11 @@ const AdministrarEncuestas = () => {
                   checked={filasMarcadas.includes(index)}
                   onChange={() => handleMarcarFila(index)}
                 />
-              </td>
-              <td>{fila.competencia}</td>
-              <td>{fila.habilidad}</td>
-              <td>{fila.comportamiento}</td>
-              <td>{fila.pregunta}</td>
+                </td>
+                <td>{fila.competencia}</td>
+                <td>{fila.habilidad}</td>
+                <td>{fila.comportamiento}</td>
+                <td>{fila.pregunta}</td>
             </tr>
           ))}
         </tbody>

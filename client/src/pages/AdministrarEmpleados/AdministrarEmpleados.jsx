@@ -35,29 +35,29 @@ const AdministarEmpleados = () => {
         setSelectedBoss('');
     }
 
-    const columns =[
-        {
-            name:"ID Empleado",
-            selector:(row)=> row.id_empleado,
-            sortable:true,
-        },
-        {
-            name:"Nombre",
-            selector:(row)=> row.primer_nombre,
-            sortable:true,
-        },
-        {
-            name:"Apellido",
-            selector:(row)=> row.primer_apellido,
-            sortable:true,
-        },
-        {
-            name:"Jefe",
-            selector:(row)=> row.boss,
-            sortable:true,
-        }
+    // const columns =[
+    //     {
+    //         name:"ID Empleado",
+    //         selector:(row)=> row.id_empleado,
+    //         sortable:true,
+    //     },
+    //     {
+    //         name:"Nombre",
+    //         selector:(row)=> row.primer_nombre,
+    //         sortable:true,
+    //     },
+    //     {
+    //         name:"Apellido",
+    //         selector:(row)=> row.primer_apellido,
+    //         sortable:true,
+    //     },
+    //     {
+    //         name:"Jefe",
+    //         selector:(row)=> row.boss,
+    //         sortable:true,
+    //     }
         
-    ];
+    // ];
 
 //     const handleAgregarFila = () => {
 //     if (pregunta && lenguaje) {
@@ -230,10 +230,62 @@ const AdministarEmpleados = () => {
             
             <div className="bodys-container">
             <div className="list-container">
+                <div className="container3">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Acciones</th> {/* Agregamos esta columna para las acciones */}
+                            <th>ID Empleado</th>
+                            <th>Nombre Empleado</th>
+                            <th>Jefe de Empleado</th>
+                            <th>Departamento</th>
+                            <th>Puesto</th>
+                            <th>Pais</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                            {empleados.length > 0 ? (
+                                empleados.map((empleado) => (
+                                    <tr key={empleado.id_empleado}>
+                                    <td>
+                                            <input
+                                            type="checkbox"
+                                            name="eliminar"
+                                            // checked={filasMarcadas.includes(index)}
+                                            onClick={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}
+                                            />
+                                        </td>
+                                        {/* <td>
+                                            <button onClick={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}>
+                                                Información
+                                            </button>
+                                        </td> */}
+                                        <td>{empleado.id_empleado}</td>
+                                        <td>{empleado.primer_nombre}{' '}{empleado.primer_apellido}</td>
+                                        <td>{empleado.id_jefe}</td>
+                                        <td>{empleado.id_departamento}</td>
+                                        <td>{empleado.id_puesto}</td>
+                                        <td>{empleado.pais}</td>
+                                        
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="5">No hay datos.</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+    </div>
+</div>
+
+
+            {/* <div className="list-container">
                 {empleados.length > 0 ? (
                     empleados.map((empleado) => (
                         <div key={empleado.id_empleado}>
                             <DataContainer
+                            
                                 primaryValue={empleado.primer_nombre}
                                 secondaryValue={empleado.primer_apellido}
                                 hasPrimary={true}
@@ -241,13 +293,13 @@ const AdministarEmpleados = () => {
                                 onPrimaryAction={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}
                                 // hasTertitary={true}
                             />
-                            {/* <button onClick={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}>{empleado.primer_nombre}{empleado.primer_apellido}</button> */}
+                            
                         </div>
                     ))
                 ) : (
                     <p>No hay datos.</p>
                 )}
-            </div>
+            </div> */}
             </div>
 
             
@@ -264,7 +316,10 @@ const AdministarEmpleados = () => {
                                     <h3><b>Jefe</b></h3>
                                     <label>{boss.primer_nombre} {boss.primer_apellido}</label>
                                     <div>
-                                        <button>Modificar</button>
+                                        <button>
+                                            <Link to ='/modificar-empleado'>
+                                            Modificar
+                                            </Link></button>
                                         <button>Eliminar</button>
                                     </div>
                                 </div>
@@ -301,13 +356,14 @@ const AdministarEmpleados = () => {
             )}
             
             {showPopup && (
-                <div className="popup">
+                <div className="popups">
+                     <button onClick={handleClosePopup}>X</button>
                     <div className="add-employee-popup-content">
                         <CrearEmpleado
                         open={addEmployee}
                         cancel={() => setAddEmployee(false)}
                     /> 
-                        <button onClick={handleClosePopup}>Cerrar</button>
+                       
                     </div>
                 </div>
             )}
