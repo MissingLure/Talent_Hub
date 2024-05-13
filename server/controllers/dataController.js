@@ -1,5 +1,5 @@
 const { response, request } = require("express");
-const { obtenerDepartamentos, obtenerPuestos, obtenerEmpleado, obtenerCorreo, obtenerCompetencias, obtenerComportamientosPorCompetencia, obtenerEvaluaciones, obtenerPreguntas, obtenerEmpleados, obtenerHabilidades, getCompetenciaById, obtenerCompetenciaPorId, obtenerJefes, getBossByEmployee, getEmployeesByBoss, obtenerEncuestas, obtenerHabilidadesPorPuesto, obtenerEvaluacion } = require("../services/dataService");
+const { obtenerDepartamentos, obtenerPuestos, obtenerEmpleado, obtenerCorreo, obtenerCompetencias, obtenerComportamientosPorCompetencia, obtenerEvaluaciones, obtenerPreguntas, obtenerEmpleados, obtenerHabilidades, getCompetenciaById, obtenerCompetenciaPorId, obtenerJefes, getBossByEmployee, getEmployeesByBoss, obtenerEncuestas, obtenerHabilidadesPorPuesto, obtenerEvaluacion, obtenerUsuario } = require("../services/dataService");
 const { async } = require("q");
 
 async function obtener_departamentos(request, response) {
@@ -73,6 +73,15 @@ async function obtener_empleados(request, response) {
     try {
         const empleados = await obtenerEmpleados();
         response.send({success: true, data: empleados});
+    } catch(error) {
+        response.status(500).send({success: false, details: 'Error al tratar de obtener datos.'})
+    }
+}
+
+async function obtener_usuario(request, response) {
+    try {
+        const usuario = await obtenerUsuario();
+        response.send({success: true, data: usuario});
     } catch(error) {
         response.status(500).send({success: false, details: 'Error al tratar de obtener datos.'})
     }
@@ -205,5 +214,6 @@ module.exports = {
     obtener_puesto_por_id,
     obtener_encuestas,
     obtener_habilidades_por_puesto,
-    obtener_evaluacion
+    obtener_evaluacion,
+    obtener_usuario
 };

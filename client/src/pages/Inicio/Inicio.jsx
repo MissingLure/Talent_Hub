@@ -71,7 +71,7 @@ const Inicio = () => {
         alt="Logo"
         style={{
           width: '100%',
-          height: 'auto',
+          height: '772px',
           maxWidth: '100%',
           display: 'block',
         }}

@@ -1,8 +1,9 @@
 .administrar-empleados {
      width: 100%; 
+     height:100vh;
      display: flex; 
     flex-direction: column; 
-     justify-content: center; 
+     /* justify-content: center;  */
      align-items: center; 
      background-color: #d8d8db; 
     animation: fadeInAnimation 1s forwards; 
@@ -12,9 +13,6 @@
     font-size:24px;
 }
 
-.add-button {
-    margin: 5px;
-}
 
 .add-button a {
     display: flex; 
@@ -24,25 +22,35 @@
     transform: translateY(-50%);
 }
 
-.add-button button {
-    margin: 5px;
-    margin-left: 50px;
+.add-button  {
+    /* margin: 5px;
+    margin-left: 850px;
     width: 50px;
     height: 25px;
     border: none;
     border-radius: 20px;
     background-color: #525061;
-    color: #ffffff;
-    cursor: pointer;
+    color: #ffffff;*/
+    cursor: pointer; 
+    margin:5px;
+    /* margin-left: 700px; */
+    /* height: 30px; */
+    background-color: #525061;
+    border: 1.5px solid black;
+    color:white;
+    border-radius: 20px;
+    width: 30px;
+    height: 10px;
     
 }
 
-.add-button:hover button{
-    background-color: #4b8473;;
+.add-button:hover {
+    background-color: #1c7120;;
 }
 
 .search-options {
-    margin: 10px;
+    margin: 20px;
+    /* margin-top: 25px;; */
     background-color: #d3d1d1;
     width: 250px;
     height: 60px;
@@ -59,6 +67,7 @@
     height: 28px;
     margin-left: 5px;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 .search-options input {
@@ -89,42 +98,43 @@
     justify-content: center;
     background-color: #a9a9a9;
     width:1100px;
-    margin-bottom: 58px;
-    margin-top: 10px;
+    height: auto;
+    margin-bottom: 70px;
+    margin-top: 30px;
 }
 
 .list-container {
-    overflow-y: auto;
+    /* overflow-y: auto; */
     border-radius: 6px;
-    width: 200px;
+    width: 900px;
     height: 500px;
     
     /* border: 1px solid black; */
 }
-
+/* 
 .administrar-empleados table{
     margin-top: 25px; 
     width: auto; 
     /* max-height: 300px;  */
-    overflow-y: auto;
+    /* overflow-y: auto;
 }
 .administrar-empleados tr{
     background-color: #63647a;
     color: #ffffff;
-}
-/* 
+} 
+
 .administrar-empleados th{
     margin:90px
-} */
+} 
 
 
 /* .administrar-empleados td{
     background-color: #244325;
 } */
 
-.body-container:hover .add-button{
+/* .body-container:hover .add-button{
     display: flex; 
-}
+} */
 
 .search-button:hover {
     background-color: #1c7120;
@@ -144,6 +154,49 @@
     z-index: 999;
   }
 
+  /* .popups2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+} */
+
+.popups2-content{
+    background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.popups2-content h3{
+    font-size: 20px;
+    font-weight: bold;
+    margin:5px;
+}
+
+.popups2-content button{
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2a2942;
+    color: #fff;
+    cursor: pointer;
+}
+
+  .popups-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    color:black;
+    text-align: center;
+  }
   .popups button{
     margin-top:-630px;
     color:white;
@@ -167,31 +220,40 @@
 
   /*Popup de crear empleado*/
   .add-employee-popup-content {
-    /* width: 350px;
+    width: 350px;
     height: 550px;
     margin: auto;
-    background-color: #c8d4e0;
+    background-color: #63647a;
     color:black;
     padding: 25px;
     border-radius: 8px;
     border: 1.5px solid black;
     text-align: center;
     font-size: 15px;
-    line-height: 34px; */
+    line-height: 34px;
+  }
+
+  .add-employee-popup-content label{
+    margin: 5px;
+    align-items: center;
   }
 
   .add-employee-popup-content button {
-    /* margin: 5px;
+    margin: 5px;
     width: 100px;
     height: 25px;
-    padding: 3px 20px;
+    /* padding:  20px; */
     text-align: center;
-    text-size: 20px;
+    font-size: 15px;
     border: none;
     border-radius: 3px;
     background-color: #4f4e57;
     color: #fff;
-    cursor: pointer; */
+    cursor: pointer;
+  }
+
+  .add-employee-popup-content button:hover{
+    background-color: #1c7120;
   }
 
   /*Popup de información*/
@@ -211,7 +273,7 @@
     height: 25px;
     padding: 3px 20px;
     text-align: center;
-    text-size: 20px;
+    /* text-size: 20px; */
     border: none;
     border-radius: 3px;
     background-color: #636077d9;
@@ -221,37 +283,65 @@
 
   /*tabla*/
   .container3{
-    margin-top:25px; 
-    width: 900px; 
-    height: auto; 
-    margin-bottom: 25px;
+    /* margin-top:25px;  */
+    width: auto; 
+    max-height: 535px; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* margin:25px; */
     overflow-y: auto;
 }
 
 .container3 thead {
-    /* width: auto; */
+    width: 100%;
     position: sticky;
     top: 0; 
 }
 
 .container3 th{
     width:auto;
+    /* max-height: 70px; */
     background-color: #63647a;
     color: #ffffff;
-    width:auto;
+    /* border-radius: 5px; */
+    border: 1px solid black;
+    margin-bottom: 10px;
 }
 
 
 .container3 table{
-    width:auto;
+    /* width:auto;
+    margin:30px;
+    border: 1.5px solid black;
+    border-collapse: collapse;
     margin-top:25 px; 
-   /* border: 40px; */
+   /* border: 40px; */ 
+   width: 1000px;
+   border-collapse: collapse;
+   /* height: 100px; */
+   border-radius: 5px;
+   border: 1px solid #000000;
+   border-radius: 5px;
+}
+
+.container3 tr{
+    border: 1.5px solid black;
+    width: 100%;
 }
 
 
 .container3 td{
-    /* width:auto; */
+    /* width:100%;  */
+    /* border: 1.5px solid black; */
     background-color: #ffffff;
     color:#000000;
+    padding: 8px;
+    text-align: left;
+    /* border: 1.5px solid #0b0b0b;
+    border-radius: 5px; */
    
 } 
+
+.container3 td:hover{
+    background-color: #63647a;
+}

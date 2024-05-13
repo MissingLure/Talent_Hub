@@ -27,7 +27,7 @@
 .unknown-box {
     width: 255px;
     height: 30px;
-    background-color: #a06a9c;
+    background-color: #43435c;
     border-radius: 5px;
     color: #ffffff;
     text-align: center;
@@ -120,7 +120,7 @@
     border-radius: 5px;
 }
 
-table {
+.info-table table {
     width: 100%;
     border-collapse: collapse;
     border-radius: 5px;
@@ -128,13 +128,13 @@ table {
     border-radius: 5px;
 }
 
-td {
+.info-table td {
     padding: 8px;
     border: 1.5px solid #0b0b0b;
     border-radius: 5px;
 }
 
-td:first-child {
+.info-table td:first-child {
     font-weight: bold;
     background-color:#43435c;
     color: white;

@@ -15,8 +15,8 @@ const AdministarUsuarios = () => {
     const [errorMessages, setErrorMessages] = useState([]);
     const [responseMessage, setResponseMessage] = useState('');
     const [empleados, setEmpleados] = useState([]);
+    const [usuarios, setUsuarios] = useState([]);
     const [userExists, setUserExists] = useState(false);
-    const [idPuesto, setIdPuesto] = useState('');
 
     //User data
     const [user, setUser] = useState(''); 
@@ -34,6 +34,16 @@ const AdministarUsuarios = () => {
         axios.get('http://localhost:4000/data/obtener-empleados')
         .then((response) => {
             setEmpleados(response.data.data);
+        })
+        .catch((error) => {
+            setErrorMessages(error.response.data.data);
+        })
+    };
+
+    const handleGetUsuarios = () => {
+        axios.get('http://localhost:4000/data/obtener-usuario')
+        .then((response) => {
+            setUsuarios(response.data.data);
         })
         .catch((error) => {
             setErrorMessages(error.response.data.data);
@@ -59,12 +69,25 @@ const AdministarUsuarios = () => {
         setShowAddUserPopup(true);
     };
 
+    const getRoleName = (roleNumber) => {
+        switch(roleNumber) {
+            case 0:
+                return 'Admin';
+            case 1:
+                return 'Jefe';
+            case 2:
+                return 'Empleado';
+            // Agrega más casos según sea necesario
+            default:
+                return 'Unknown';
+        }
+    }
+    
 
     const handleCrearUsuario = () => {
         const userData = {
             idEmpleado: employee.id_empleado,
             rol: rol,
-            puesto: employee.puesto,
             correo: employee.correo,
             contrasena: contraseña,
         };
@@ -100,11 +123,10 @@ const AdministarUsuarios = () => {
   
     useEffect(() => {
         handleGetEmployees();
+        handleGetUsuarios();
     }, []);
 
 
-    //funciones de tabla
-  
     return(
         <div className="administrar-usuarios">
             <Navbar/>
@@ -112,21 +134,61 @@ const AdministarUsuarios = () => {
             <div className="search-options">
                 <div>
                     <label>Filtro</label>
-                    <select onChange={(e) => setIdPuesto(e.target.value)}>
-                        <option selected disabled hidden>Seleccionar perfil...</option>
-                        {puestos.length > 0 ? (
-                            puestos.map((puesto) => (
-                                <option key={puesto.id_perfil_puesto} value={puesto.id_perfil_puesto}>{puesto.nombre_perfil}</option>
-                            ))
-                        ) : (
-                            <option>No hay datos.</option>
-                        )}
-                    </select>
+                    <select></select>
                     <input placeholder="Buscar..."/>
                     <button className="search-button">Buscar</button>
                 </div>
             </div>
             <div className="bodys-container">
+            {/* <div className="list-container"> */}
+                <div className="container4">
+                <table>
+                    <thead>
+                        <tr>
+                            
+                            <th>ID Usuario</th>
+                            <th>ID Empleado</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                            {usuarios.length > 0 ? (
+                                usuarios.map((users) => (
+                                    <tr key={users.id_usuario}>
+
+                                        {/* <td>
+                                            <button onClick={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}>
+                                                Información
+                                            </button>
+                                        </td> */}
+                                        <td>{users.id_usuario}</td>
+                                        <td>{users.id_empleado}</td>
+                                        <td>{users.correo}</td>
+                                        <td>{getRoleName(users.rol)}</td>
+                                        <td>
+                                           <button onClick={() => {handleGetUser(users)}}>{<img src={inform}/>}</button>
+                                        </td>
+
+                                        
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="5">No hay datos.</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+    {/* </div> */}
+
+
+
+
+
+
+{/* 
                 
                 <div className="list-container">
                     {empleados.length > 0 ? (
@@ -145,9 +207,10 @@ const AdministarUsuarios = () => {
                     ) : (
                         <p>No hay datos.</p>
                     )}
-                </div>
+                </div> */}
             </div>
-            <div>
+
+
             {showAddUserPopup && (
                 <div className="popup">
                 <div className="popup-content">

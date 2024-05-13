@@ -25,6 +25,7 @@ const AdministarEmpleados = () => {
     const [email, setEmail] = useState('');
 
     const [showPopup, setShowPopup] = useState(false);
+    const [showPopup2, setShowPopup2] = useState(false);
     const [showBossPopup, setShowBossPopu] = useState(false);
     const [message, setMessage] = useState('');
     const [success, setSucces] = useState(false);
@@ -34,60 +35,6 @@ const AdministarEmpleados = () => {
         setShowBossPopu(false);
         setSelectedBoss('');
     }
-
-    // const columns =[
-    //     {
-    //         name:"ID Empleado",
-    //         selector:(row)=> row.id_empleado,
-    //         sortable:true,
-    //     },
-    //     {
-    //         name:"Nombre",
-    //         selector:(row)=> row.primer_nombre,
-    //         sortable:true,
-    //     },
-    //     {
-    //         name:"Apellido",
-    //         selector:(row)=> row.primer_apellido,
-    //         sortable:true,
-    //     },
-    //     {
-    //         name:"Jefe",
-    //         selector:(row)=> row.boss,
-    //         sortable:true,
-    //     }
-        
-    // ];
-
-//     const handleAgregarFila = () => {
-//     if (pregunta && lenguaje) {
-//       const preguntasTemp = preguntas;
-//       preguntasTemp.push(pregunta);
-//       setPreguntas(preguntasTemp);
-
-//       setData([
-//         ...data,
-//         {
-//           index: counter,
-//           Pregunta: pregunta,
-//           Lenguaje: lenguaje,
-//         },
-//       ]);
-
-//       SetBusqueda([
-//         ...Busqueda,
-//         {
-//           Pregunta: pregunta,
-//           Lenguaje: lenguaje,
-//         },
-//       ]);
-
-//       setCounter(counter + 1);
-//       setPregunta("");
-//     } else {
-//       alert("Por favor, complete todos los campos");
-//     }
-//   };
 
     const handleBuscar = ()=>{
         const data ={
@@ -195,6 +142,7 @@ const AdministarEmpleados = () => {
         <div className="administrar-empleados">
             <Navbar/>
             <h2 ><b>Administrar Empleados</b></h2>
+            <br></br>
             <div className="search-options">
                 <div>
                 <label>Filtro</label>
@@ -213,31 +161,28 @@ const AdministarEmpleados = () => {
                     </select> */}
                     <input placeholder = "Buscar..." />
                     <button className="search-button" onClick={handleBuscar}>
-                        {/* <img src={search}/> */}
                         Buscar
                         </button>
                    
-                    <button className="search-button"onClick={() => setShowPopup(true)}>
-                    {/* <img src={add}/> */}
-                    Add
+                    <button className="add-button"onClick={() => setShowPopup(true)}>
+                    Crear
                     </button>
                     
-                    {/* <button className="search-button">Información</button> */}
                 </div>
                 
                 
             </div>
             
             <div className="bodys-container">
-            <div className="list-container">
+            {/* <div className="list-container"> */}
                 <div className="container3">
                 <table>
                     <thead>
                         <tr>
-                            <th>Acciones</th> {/* Agregamos esta columna para las acciones */}
+                            <th> </th> {/* Agregamos esta columna para las acciones */}
                             <th>ID Empleado</th>
                             <th>Nombre Empleado</th>
-                            <th>Jefe de Empleado</th>
+                            <th>ID Jefe</th>
                             <th>Departamento</th>
                             <th>Puesto</th>
                             <th>Pais</th>
@@ -252,7 +197,7 @@ const AdministarEmpleados = () => {
                                             type="checkbox"
                                             name="eliminar"
                                             // checked={filasMarcadas.includes(index)}
-                                            onClick={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}
+                                            onClick={() => setShowPopup2(true)}
                                             />
                                         </td>
                                         {/* <td>
@@ -261,11 +206,11 @@ const AdministarEmpleados = () => {
                                             </button>
                                         </td> */}
                                         <td>{empleado.id_empleado}</td>
-                                        <td>{empleado.primer_nombre}{' '}{empleado.primer_apellido}</td>
+                                        <td>{empleado.primer_nombre}{' '}{empleado.segundo_nombre}{' '}{empleado.primer_apellido}{' '}{empleado.segundo_apellido}</td>
                                         <td>{empleado.id_jefe}</td>
-                                        <td>{empleado.id_departamento}</td>
-                                        <td>{empleado.id_puesto}</td>
-                                        <td>{empleado.pais}</td>
+                                        <td>{empleado.nombre_departamento}</td>
+                                        <td>{empleado.nombre_perfil}</td>
+                                        <td>{empleado.nombre}</td>
                                         
                                     </tr>
                                 ))
@@ -276,30 +221,8 @@ const AdministarEmpleados = () => {
                             )}
                         </tbody>
                     </table>
-    </div>
+    {/* </div> */}
 </div>
-
-
-            {/* <div className="list-container">
-                {empleados.length > 0 ? (
-                    empleados.map((empleado) => (
-                        <div key={empleado.id_empleado}>
-                            <DataContainer
-                            
-                                primaryValue={empleado.primer_nombre}
-                                secondaryValue={empleado.primer_apellido}
-                                hasPrimary={true}
-                                primaryAction={<img src={inform}/>}
-                                onPrimaryAction={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}
-                                // hasTertitary={true}
-                            />
-                            
-                        </div>
-                    ))
-                ) : (
-                    <p>No hay datos.</p>
-                )}
-            </div> */}
             </div>
 
             
@@ -358,7 +281,7 @@ const AdministarEmpleados = () => {
             {showPopup && (
                 <div className="popups">
                      <button onClick={handleClosePopup}>X</button>
-                    <div className="add-employee-popup-content">
+                    <div >
                         <CrearEmpleado
                         open={addEmployee}
                         cancel={() => setAddEmployee(false)}
@@ -367,6 +290,26 @@ const AdministarEmpleados = () => {
                     </div>
                 </div>
             )}
+ 
+            {showPopup2 &&(
+                <div className="popups">
+                    {/* <button onClick={handleClosePopup}>X</button> */}
+
+                    <div className="popups2-content">
+                    <h3>Acciones con Empleado</h3>
+                        <button > 
+                            <Link to ='/modificar-empleado'>
+                            Modificar
+                            </Link>
+                        </button>
+                        <button>Eliminar</button>
+                        <button onClick={handleClosePopup}>Cerrar</button>
+                    
+                    </div>
+                </div>
+            )} 
+
+
             <div>
                 <Modal
                     className="message-modal"
