@@ -49,7 +49,7 @@ const BibliotecaCompetencias = () => {
     if (succes) console.log("Obtuvo competencia");
 
     const resHabilidades =
-      await competenciaHabilidadesApi.getCompetenciaHabilidadesByCompetencia(
+      await competenciaHabilidadesApi.getCompetenciaHabilidadesByCompetenciaRequest(
         idCompetencia
       );
 
