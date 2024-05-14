@@ -1,8 +1,9 @@
 .administrar-usuarios {
   width: 100%; 
   display: flex; 
+  height:100vh;
  flex-direction: column; 
-  justify-content: center; 
+  /* justify-content: center;  */
   align-items: center; 
   background-color: #d8d8db; 
  animation: fadeInAnimation 1s forwards; 
@@ -11,6 +12,14 @@
 .administrar-usuarios h2{
   font-size: 24px;
 }
+
+.administrar-usuarios img{
+  width:40px;
+  height:20px;
+  text-align: center;
+}
+
+
 .search-options {
     margin: 10px;
     background-color: rgb(232, 232, 232);
@@ -101,3 +110,68 @@
     background-color: #64637a;
     color: white;
   }
+
+  /*tabla*/
+  .container4{
+    /* margin-top:25px;  */
+    width: auto; 
+    max-height: 535px; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* margin:25px; */
+    overflow-y: auto;
+}
+
+.container4 thead {
+    width: 100%;
+    position: sticky;
+    top: 0; 
+}
+
+.container4 th{
+    width:auto;
+    /* max-height: 70px; */
+    background-color: #63647a;
+    color: #ffffff;
+    /* border-radius: 5px; */
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+
+.container4 table{
+    /* width:auto;
+    margin:30px;
+    border: 1.5px solid black;
+    border-collapse: collapse;
+    margin-top:25 px; 
+   /* border: 40px; */ 
+   width: 1000px;
+   border-collapse: collapse;
+   /* height: 100px; */
+   border-radius: 5px;
+   border: 1px solid #000000;
+   border-radius: 5px;
+}
+
+.container4 tr{
+    border: 1.5px solid black;
+    width: 100%;
+}
+
+
+.container4 td{
+    /* width:100%;  */
+    /* border: 1.5px solid black; */
+    background-color: #ffffff;
+    color:#000000;
+    padding: 8px;
+    text-align: left;
+    /* border: 1.5px solid #0b0b0b;
+    border-radius: 5px; */
+   
+} 
+
+.container4 td:hover{
+    background-color: #63647a;
+}

@@ -3,6 +3,7 @@
     width: 100%;
     margin: 0 auto;
     max-width: 100%;
+    font-size:larger;
 }
 
 .logo {
@@ -25,11 +26,11 @@
 
 
 .nav-item {
-    width: 150px;
+    width: 200px;
     margin-left: 5px;
     padding: 5px;
     color: white;
-    font-size: large;
+    font-size:larger;
     height: 100%;
     cursor: pointer;
     text-decoration: none;
@@ -51,14 +52,14 @@
     list-style-type: none;
     padding-left: 0;
     margin-left: 0;
-    margin-top: 19px;
+    margin-top: 15px;
     position: absolute;
     z-index: 1000;
 }
 
 .nav-link {
     color: white;
-    background-color: #6b6b7b;
+    background-color: #64637A;
     border: 1px solid black;
     text-decoration: none;
     display: flex;
@@ -66,9 +67,9 @@
     justify-content: center;
     text-align: center;
     height: 30px;
-    width: 130px; 
+    width: 180px; 
     font-weight: 300;
-    font-size: small;
+    font-size: medium;
     cursor: pointer;
 }
 
@@ -82,11 +83,15 @@
     width: 100px;
     margin-top: 10px;
     margin-left: 100px;
-    padding: 2px;
-    background-color: #4a4a4d;
+    /* padding: 2px; */
+    background-color: #cd2c1c;
     color: white;
     border-radius: 20px;
     height: 25px;
+}
+
+.cerrar-sesion:hover{
+    background-color: #cb1b0b6f;
 }
 
 .nav-item-logout {

@@ -210,7 +210,7 @@ const Encuesta = () => {
 
         <br />
         <div>
-          <button className="Eliminar" onClick={handleEliminarFilasMarcadas}>
+          <button className="Eliminars" onClick={handleEliminarFilasMarcadas}>
             Eliminar Preguntas
           </button>
         </div>

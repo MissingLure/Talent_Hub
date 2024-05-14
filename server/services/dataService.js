@@ -97,8 +97,19 @@ async function obtenerPreguntas() {
 }
 
 async function obtenerEmpleados() {
-    const empleados = await knex.select('*').from('empleados');
+    const empleados = await knex
+    .select('*')
+    .from('empleados')
+    .innerJoin('departamentos', 'empleados.id_departamento', 'departamentos.id_departamento');
+    // .innerJoin('paises', 'empleados.id_pais', 'paises.id_pais')
+    // .innerJoin('perfiles_puesto', 'empleados.id_perfil_puesto','perfiles_puesto');
+
     return empleados;
+}
+
+async function obtenerUsuario(){
+    const usuario = await knex.select('*').from('usuarios');
+    return usuario;
 }
 
 async function obtenerCompetenciaPorId(idCompetencia) {
@@ -164,5 +175,6 @@ module.exports = {
     getEmployeesByBoss,
     obtenerEncuestas,
     obtenerHabilidadesPorPuesto,
-    obtenerEvaluacion
+    obtenerEvaluacion,
+    obtenerUsuario
 };

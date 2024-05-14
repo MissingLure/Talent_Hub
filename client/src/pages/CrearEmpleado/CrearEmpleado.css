@@ -1,4 +1,4 @@
-/* .message-modal {
+ .message-modal {
     width: 500px; 
     max-width: 80%; 
     background-color: #fff;
@@ -6,12 +6,42 @@
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    text-align: right;
+    text-align: center;
     animation: fadeInAnimation 1s forwards; 
 }
 .main-containers{
+    width: 350px;
+    height:auto;
     margin: auto;
-    align-items: right;
+    background-color: #333356;
+    color:white;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1.5px solid white;
+    text-align: right;
+    font-size: 15px;
+    line-height: 34px;
+}
+
+.main-containers input{
+    color:black;
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+
+.main-containers select{
+    color:black;
+}
+
+.main-containers h4{
+    font-size: large;
+    text-align: center;
+}
+
+.main-containers button{
+    background-color: #cd1c2c;
+    border-radius: 20px;
+    width:70px;
 }
 
 .overlay {
@@ -26,4 +56,3 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 1000; 
 } 
-*/

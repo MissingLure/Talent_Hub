@@ -93,6 +93,7 @@ const CrearEmpleado = ({open, accept, cancel}) => {
                     setResponseMessage(response.data.details);
                     setErrorMessages([]);
                     setSuccess(false);
+                    alert('Hubo un error al ingresar su empleado.');
                 }
             })
             .catch((error) => {
@@ -126,7 +127,7 @@ const CrearEmpleado = ({open, accept, cancel}) => {
     }, []);
 
     return (
-        <div className="main-container">
+        <div className="main-containers">
             <form>
                     <h4><b>Registro de Empleado</b></h4>
                     <div>
@@ -166,6 +167,7 @@ const CrearEmpleado = ({open, accept, cancel}) => {
                         <input type="date" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)}/>
                     </div>
                     <div>
+                        <label>Puesto: </label>
                         <select onChange={(e) => setPerfilPuesto(e.target.value)}>
                             <option selected disabled hidden>Seleccionar Puesto</option>
                             {puestos.map((puesto) => (
@@ -176,6 +178,7 @@ const CrearEmpleado = ({open, accept, cancel}) => {
                         </select>
                     </div>
                     <div>
+                        <label>Departamento: </label>
                         <select onChange={(e) => setDepartamento(e.target.value)}>
                             <option selected disabled hidden>Seleccionar departamento</option>
                             {departamentos.map((departamento) => (
