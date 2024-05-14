@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './AdministrarEncuestas.css'
 import Navbar from "../../components/Navbar/Navbar";
+import Tablita from "../../components/CrearPreguntas/CompetenciaHabilidadTable";
 
 const AdministrarEncuestas = () => {
   const opcionesCompetencia = ['Competencia 1', 'Competencia 2', 'Competencia 3'];
@@ -167,6 +168,9 @@ const AdministrarEncuestas = () => {
           <p></p>
         )}
       </div>
+      <br></br>
+     
+     
     </div>
     
   );
