@@ -130,45 +130,13 @@ const AdministrarEncuestas = () => {
       
       <br></br>
       <div className="tabla-container">
-      <table>
-        <thead>
-          <tr>
-            <th >Select</th>
-            <th>Competencia</th>
-            <th>Habilidad</th>
-            <th>Comportamiento</th>
-            <th>Pregunta</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filasTabla.map((fila, index) => (
-              <tr key={index}>
-                <td className="Eliminar">
-                <input
-                  type="checkbox"
-                  name="eliminar"
-                  checked={filasMarcadas.includes(index)}
-                  onChange={() => handleMarcarFila(index)}
-                />
-                </td>
-                <td>{fila.competencia}</td>
-                <td>{fila.habilidad}</td>
-                <td>{fila.comportamiento}</td>
-                <td>{fila.pregunta}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            
+            <Tablita/>
+
       </div>
-      <br></br>
-      <div>
-        {filasTabla.length > 0 ? (
-          <button> Finalizar Encuesta</button>
-        ) : (
-          <p></p>
-        )}
-      </div>
-      <br></br>
+      
+      
+      
      
      
     </div>
