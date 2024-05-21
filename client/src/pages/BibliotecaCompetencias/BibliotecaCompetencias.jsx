@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import competenciasApi from "../../api/competencias.api";
 import competenciaHabilidadesApi from "../../api/competencias.habilidades.api";
+import habilidadesPreguntasApi from "../../api/habilidades.preguntas.api";
 
 const BibliotecaCompetencias = () => {
   const [competencias, setCompetencias] = useState([]);
@@ -111,8 +112,8 @@ const BibliotecaCompetencias = () => {
                     {" "}
                     {}
                     <div className="information">
-                      <h4>{detalle.comportamiento_habilidad}</h4>
-                      <p>{detalle.pregunta_habilidad}</p>
+                      <h4>{detalle.nombre_habilidad}</h4>
+                      <p>{detalle.comportamiento_habilidad}</p>
                     </div>
                   </div>
                 ))
