@@ -1,12 +1,26 @@
 .questions-admin-container {
     width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     background-color: #d8d8db;
     animation: fadeInAnimation 1s forwards;
      
+}
+
+.questions-admin-container button{
+    background-color: #63647a;
+    color: white;
+    box-shadow: inset;
+    width:100%;
+    margin:5px;
+    border-radius: 20px;
+}
+
+.questions-admin-container button:hover{
+    background-color: #444462;
 }
 
 .questions-admin-container select{

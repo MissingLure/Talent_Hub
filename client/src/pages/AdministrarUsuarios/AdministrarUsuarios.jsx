@@ -26,7 +26,6 @@ const AdministarUsuarios = () => {
     const [numeroIdentidad, setNumeroIdentidad] = useState('');
     const [idEmpleado, setIdEmpleado] = useState('')
     const [correo, setCorreo] = useState('');
-    const [puesto, seerPuesto] = useState('');
     const [contraseña, setContrasena] = useState('');
     const [rol, setRol] = useState('');
 
@@ -122,7 +121,7 @@ const AdministarUsuarios = () => {
     };
   
     useEffect(() => {
-        handleGetEmployees();
+        // handleGetEmployees();
         handleGetUsuarios();
     }, []);
 
@@ -157,16 +156,10 @@ const AdministarUsuarios = () => {
                             {usuarios.length > 0 ? (
                                 usuarios.map((users) => (
                                     <tr key={users.id_usuario}>
-
-                                        {/* <td>
-                                            <button onClick={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}>
-                                                Información
-                                            </button>
-                                        </td> */}
                                         <td>{users.id_usuario}</td>
                                         <td>{users.id_empleado}</td>
                                         <td>{users.correo}</td>
-                                        <td>{getRoleName(users.rol)}</td>
+                                        <td>{users.rol}</td>
                                         <td>
                                            <button onClick={() => {handleGetUser(users)}}>{<img src={inform}/>}</button>
                                         </td>
@@ -181,33 +174,6 @@ const AdministarUsuarios = () => {
                             )}
                         </tbody>
                     </table>
-    {/* </div> */}
-
-
-
-
-
-
-{/* 
-                
-                <div className="list-container">
-                    {empleados.length > 0 ? (
-                        empleados.map((empleado) => (
-                            <div key={empleado.id_empleado}>
-                                <DataContainer
-                                 primaryValue={empleado.primer_nombre}
-                                 secondaryValue={empleado.primer_apellido}
-                                 hasPrimary={true}
-                                 primaryAction={<img src={inform}/>}
-
-                                 onPrimaryAction={() => {handleGetUser(empleado)}}
-                                />
-                            </div>
-                        ))
-                    ) : (
-                        <p>No hay datos.</p>
-                    )}
-                </div> */}
             </div>
 
 

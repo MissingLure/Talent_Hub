@@ -70,10 +70,6 @@ const Navbar = ({roleValue}) => {
                     9 Box Grid
                   </Link>
                   
-                  <Link className="nav-link" to="/mostrar-info">
-                    Mostrar Info
-                  </Link>
-                  
 
                 </li>
               )}
@@ -151,8 +147,8 @@ const Navbar = ({roleValue}) => {
                 </Link>
               </li>
               <li onClick={handleClickSubOption}>
-                <Link className="nav-link" to="/habilidades">
-                  Habilidades
+                <Link className="nav-link" to="/asignar-evaluacion">
+                  Perfiles de Puestos
                 </Link>
               </li>
 

@@ -5,8 +5,6 @@ import axios from "axios";
 import inform from '../../images/info.png';
 import search from '../../images/search.png';
 import add from '../../images/add.png';
-import DataTable from "react-data-table-component";
-import DataContainer from "../../components/DataContainer/DataContainer";
 import CrearEmpleado from "../CrearEmpleado/CrearEmpleado";
 import Navbar from "../../components/Navbar/Navbar";
 import Modal from "react-modal";
@@ -31,6 +29,7 @@ const AdministarEmpleados = () => {
     const [success, setSucces] = useState(false);
 
     const handleClosePopup = () => {
+        setShowPopup2(false);
         setShowPopup(false);
         setShowBossPopu(false);
         setSelectedBoss('');
@@ -192,7 +191,7 @@ const AdministarEmpleados = () => {
                             {empleados.length > 0 ? (
                                 empleados.map((empleado) => (
                                     <tr key={empleado.id_empleado}>
-                                    <td>
+                                        <td>
                                             <input
                                             type="checkbox"
                                             name="eliminar"
@@ -200,17 +199,12 @@ const AdministarEmpleados = () => {
                                             onClick={() => setShowPopup2(true)}
                                             />
                                         </td>
-                                        {/* <td>
-                                            <button onClick={() => handleInformationClick(empleado.id_empleado, empleado.id_jefe)}>
-                                                Información
-                                            </button>
-                                        </td> */}
                                         <td>{empleado.id_empleado}</td>
                                         <td>{empleado.primer_nombre}{' '}{empleado.segundo_nombre}{' '}{empleado.primer_apellido}{' '}{empleado.segundo_apellido}</td>
                                         <td>{empleado.id_jefe}</td>
                                         <td>{empleado.nombre_departamento}</td>
                                         <td>{empleado.nombre_perfil}</td>
-                                        <td>{empleado.nombre}</td>
+                                        <td>{empleado.id_pais}</td>
                                         
                                     </tr>
                                 ))
@@ -293,8 +287,6 @@ const AdministarEmpleados = () => {
  
             {showPopup2 &&(
                 <div className="popups">
-                    {/* <button onClick={handleClosePopup}>X</button> */}
-
                     <div className="popups2-content">
                     <h3>Acciones con Empleado</h3>
                         <button > 

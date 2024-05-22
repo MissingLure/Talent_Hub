@@ -1,7 +1,9 @@
 .biblioteca-competencias {
   display: flex;
+  width:100%;
+  height:100vh;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   background-color: #d8d8db;
   animation: fadeInAnimation 1s forwards; 
@@ -11,7 +13,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* margin-left: 530px; */
 }
 
 .competencia-card {
@@ -43,14 +44,10 @@
   justify-content: center;
 }
 
-.h2{
-  font-size: 60px;
-}
-
 .biblioteca-competencias h1{
   font-size: 24px;
 }
-
+/* 
 .biblioteca-competencias button{
   background-color: #333356;
   border-radius: 20px;
@@ -60,11 +57,22 @@
   margin-left: 1000px;
   margin-bottom: 20px;
   margin-top: -20px;
-}
-.biblioteca-competencias button:hover{
+} */
+
+.boton:hover{
   background-color: #3d7d40;
 }
 
+.boton{
+  background-color: #333356;
+  border-radius: 20px;
+  width: 150px;
+  height:auto;
+  color:white;
+  margin-left: 1000px;
+  margin-bottom: 20px;
+  margin-top: -20px;
+}
 .information-modal {
   border: none;
   border-radius: 10px;

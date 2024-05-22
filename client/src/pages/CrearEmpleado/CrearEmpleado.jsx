@@ -24,11 +24,20 @@ const CrearEmpleado = ({open, accept, cancel}) => {
     const [telefono, setTelefono] = useState('');
     const [identidad, setIdentidad] = useState('');
     const [direccion, setDireccion] = useState('');
+    const [pais, setPais] = useState('');
     const [correo, setCorreo] = useState('');
     const [fechaNacimiento, setFechaNacimiento] = useState(fechaNacimientoFormateada);
     const [fechaIngreso, setFechaIngreso] = useState(fechaActualFormateada);
     const [perfilPuesto, setPerfilPuesto] = useState('');
     const [departamento, setDepartamento] = useState('');
+
+
+    //Informacion usuario
+    const [numeroIdentidad, setNumeroIdentidad] = useState('');
+    const [idEmpleado, setIdEmpleado] = useState('')
+    const [correos, setCorreos] = useState('');
+    const [contraseña, setContrasena] = useState('');
+    const [rol, setRol] = useState('');
 
     const handleGetPuestos = () => {
         axios.get('http://localhost:4000/data/obtener-puestos')
@@ -59,11 +68,36 @@ const CrearEmpleado = ({open, accept, cancel}) => {
             telefono: telefono,
             numeroIdentidad: identidad,
             direccion: direccion,
+            pais:pais,
             correo: correo,
             fechaNacimiento: fechaNacimiento,
             idPerfilPuesto: perfilPuesto,
             idDepartamento: departamento, 
+    };
+
+    const handleCrearUsuario = () => {
+        const userData = {
+            idEmpleado: empleado.id_empleado,
+            rol: rol,
+            correos: empleado.correo,
+            contrasena: contraseña,
         };
+        axios.post('http://localhost:4000/create/crear-usuario', userData)
+        .then((response) => {
+            console.log(response.data.data)
+            if (response.data.success) {
+                setResponseMessage(response.data.details);
+                setErrorMessages([]);
+                alert("Usuario creado con exito");
+            } else {
+                setErrorMessages(response.data.details);
+            }
+        })
+        .catch((error) => {
+            setErrorMessages(error.response.data.details);
+        })
+
+    };
 
     const closeMessage = () => {
         setPrimerNombre('');
@@ -73,6 +107,7 @@ const CrearEmpleado = ({open, accept, cancel}) => {
         setTelefono('');
         setIdentidad('');
         setDireccion('');
+        setPais('');
         setCorreo('');
         setFechaNacimiento(fechaNacimientoFormateada);
         setFechaIngreso(fechaActualFormateada);
@@ -109,6 +144,7 @@ const CrearEmpleado = ({open, accept, cancel}) => {
         setTelefono('');
         setIdentidad('');
         setDireccion('');
+        setPais('');
         setCorreo('');
         setFechaNacimiento(fechaNacimientoFormateada);
         setFechaIngreso(fechaActualFormateada);
@@ -157,6 +193,10 @@ const CrearEmpleado = ({open, accept, cancel}) => {
                     <div>
                         <label>Dirección: </label> 
                         <input placeholder="Dirección" onChange={(e) => setDireccion(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Pais: </label> 
+                        <input placeholder="Pais" onChange={(e) => setPais(e.target.value)}/>
                     </div>
                     <div>
                         <label>Correo Electronico: </label> 

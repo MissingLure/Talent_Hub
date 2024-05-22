@@ -6,7 +6,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    text-align: center;
+    /* text-align: center; */
     animation: fadeInAnimation 1s forwards; 
 }
 .main-containers{
@@ -19,7 +19,7 @@
     border-radius: 8px;
     border: 1.5px solid white;
     text-align: right;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 34px;
 }
 
@@ -27,6 +27,15 @@
     color:black;
     margin-top:5px;
     margin-bottom: 5px;
+    text-align: right;
+    align-items: right;
+
+}
+
+.main-containers label{
+    text-align: left;
+    align-items: left;
+    margin-right: 25px;
 }
 
 .main-containers select{

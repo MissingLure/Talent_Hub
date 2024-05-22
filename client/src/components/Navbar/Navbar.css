@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    height: 45px;
+    height: 100%;
     list-style-type: none;
     display: flex;
     margin: 0;
@@ -66,9 +66,9 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 30px;
+    height: auto;
     width: 180px; 
-    font-weight: 300;
+    font-weight: 290;
     font-size: medium;
     cursor: pointer;
 }

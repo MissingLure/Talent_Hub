@@ -32,7 +32,7 @@ const UserDashboard = () => {
             <img src={avatar} alt="avatar" className="avatar-image" />
 
             <div className="unknown-box">
-            <td>{employeeData.primer_nombre} {employeeData.primer_apellido}</td>
+            {employeeData.primer_nombre} {employeeData.primer_apellido}
             </div>
 
             <div className="ranking">
@@ -44,23 +44,23 @@ const UserDashboard = () => {
 
             <div className="Potential-Assessment-box">
             Evaluación de Potencial
-            <td style={{ backgroundColor: 'white', color:'black' }}>Este empleado no sirve</td>
+            <td className="info-box">No se ha evaluado el Potencial</td>
             </div>
             
 
             <div className="Performance_Assessment-box">
             Evaluación de Desempeño 
-            <td style={{ backgroundColor: 'white', color:'black' }}>Este empleado no sirve</td>
+            <td className="info-box">No se ha evaluado el Desempeño</td>
             </div>
 
             <div className="Competencies_Assessment-box">
             Evaluación de Competencias
-            <td style={{ backgroundColor: 'white', color:'black' }}>Este empleado no sirve</td>
+            <td className="info-box">No se han evaluado las Competencias</td>
             </div>
-
+{/* 
             <div className="CultureWorkClimateSurvey-box">
             Culture & Work Climate Survey
-            </div>
+            </div> */}
 
             <div className="info-table">
                 <table>
@@ -69,47 +69,25 @@ const UserDashboard = () => {
                         <th colSpan="3" className="title">Información</th>
                         </tr>
                         <tr>
-                            <td>Name</td>
-                            <td>{employeeData.primer_nombre} {employeeData.primer_apellido}</td>
+                            <td>Nombre</td>
+                            <td>{employeeData.primer_nombre} {employeeData.segundo_nombre} {employeeData.primer_apellido} {employeeData.segundo_apellido}</td>
                         </tr>
                         <tr>
-                            <td>Position</td>
-                            <td>{employeeData.primer_apellido}</td>
+                            <td>Puesto</td>
+                            <td>{employeeData.id_perfil_puesto}</td>
                         </tr>
                         <tr>
-                            <td>Facility / Area</td>
-                            <td>Acme Facility – Organizational Development</td>
+                            <td>Departamento</td>
+                            <td>{employeeData.id_departamento}</td>
+                        </tr>
+                        <tr>
+                            <td>Numero de Telefono</td>
+                            <td>{employeeData.telefono}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-            <div className="career-table">
-                <table>
-                    <tbody>
-                        <tr>
-                            <th colSpan="2" className="title">Carrera</th>
-                        </tr>
-                        <tr>
-                            <td className="column1">2016</td>
-                            <td>OD Coordinator</td>
-                        </tr>
-                        <tr>
-                            <td className="column1">2019</td>
-                            <td>OD Superintendent</td>
-                        </tr>
-                        <tr>
-                            <td className="column1">2021</td>
-                            <td>OD Manager</td>
-                        </tr>
-                        <tr>
-                            <td className="column1">2023</td>
-                            <td>OD Country Manager</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
+            
             <div className="performance-grid">
                 {items.map((item, index) => (
                     <div key={index} className="grid-item">
@@ -145,7 +123,7 @@ const UserDashboard = () => {
         </tbody>
     </table>
 </div>        
-<div></div>
+<br></br>
             </div>
             
 

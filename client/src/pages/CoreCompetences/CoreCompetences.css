@@ -1,0 +1,350 @@
+.core-containers {
+    display: flex;
+    flex-direction: column;
+    /* text-align: left; */
+    align-items: left;
+    width: 100%;
+    /* height: 100%; */
+    /* overflow-y: auto; */
+    background-color: #d8d8db;
+    animation: fadeInAnimation 1s forwards; 
+}
+
+.top-contain{
+    display: flex;
+    margin:15px;
+    height: 35px;
+}
+
+.bods-container {
+    display: flex;
+    border-radius: 40px;
+    justify-content: center;
+    background-color: #a9a9a9;
+    width:1100px;
+    height: auto;
+    margin-bottom: 70px;
+    margin-top: 30px;
+}
+
+/*tabla*/
+.container5{
+    /* margin-top:25px;  */
+    width: 65%; 
+    max-height: 535px; 
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    /* margin:25px; */
+    overflow-y: auto;
+}
+
+
+
+.container5 table{
+    /* width:auto;
+    margin:30px;
+    border: 1.5px solid black;
+    border-collapse: collapse;
+    margin-top:25 px; 
+   /* border: 40px; */ 
+   width: 100%;
+   border-collapse: collapse;
+   /* height: 100px; */
+   
+   border-radius: 5px;
+   border: 1px solid #000000;
+   border-radius: 5px;
+
+}
+
+
+.container5 td{
+    padding: 15px;
+    /* text-align: center; */
+    border: 1.5px solid black;
+    /* width:80%; */
+    height: auto;
+   
+} 
+
+.container5 td:hover{
+    background-color: #000000;
+}
+
+
+
+.botns:hover{
+    background-color: #cd1c2c;
+  }
+  
+.botns{
+background-color: #333356;
+border-radius: 20px;
+width: 150px;
+height:auto;
+color:white;
+/* margin-left: 10px; */
+margin-bottom:20px;
+margin-top: 5px;
+}
+
+/*detalles de esa pantalla*/
+
+.tops-container {
+    display: flex;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    height: 30px;
+    align-items: center;
+    /* text-align: right; */
+    margin-top: 30px;
+    background-color: #7e0a12;
+    border: 1.5px solid black;
+    width: 65%;
+    color:white;
+    height: auto;
+}
+
+.core-containers h2{
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.core-containers h1{
+    font-size: 36px;
+    line-height: 2; 
+    margin: auto;
+    font-weight: bold;
+}
+
+.data-title-all {
+    width: 15%;
+    margin:5px;    
+    background-color: #742772;
+    color: white;
+}
+
+.data-title-1-2{
+    width: 15%;
+    margin:5px; 
+    background-color: #bf8f00;
+    color: white;
+}
+
+.data-title-3 {
+    width: 15%;
+    margin:5px; 
+    background-color: #002060;
+    color: white;
+}
+.data-title-4 {
+    width: 15%;
+    margin:5px; 
+    background-color: #00b050;
+    color: white;
+}
+
+.data-title-5 {
+    width: 15%;
+    margin:5px; 
+    background-color: black;
+    color: white;
+}
+
+.data-title-6 {
+    width: 15%;
+    margin:5px; 
+    background-color: #7030a0;
+    color: white;
+}
+
+.data-title-7{
+    width: 15%;
+    margin:5px; 
+    background-color: #5b9bd5;
+    color: white;
+}
+
+
+.bottoms-container {
+    display: flex;
+    height: 35px;
+    margin-left: 15px;
+    margin-top: -5px;
+}
+
+.question-list{
+    height: auto;
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    overflow-y: auto;
+}
+
+.question-holders {
+    width: 100%;
+}
+
+.surveys-actions {
+    margin: 5px;
+}
+
+.survey-types {
+    display: flex;
+}
+
+
+.behavior-title {
+    color: white;
+    background-color: #2a2942;
+    height: 70px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -15px;
+    margin-left:20px;
+}
+
+.inform-all{
+    color: white;
+    background-color: #742772;
+    /* height: auto; */
+    width: 77%;
+    /* border: 1.5px solid black; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* margin-top: -25px; */
+    padding: 10px;
+    /* margin-left:20px; */
+}
+
+.inform12{
+    color: white;
+    background-color: #bf8f00;
+    /* height: auto; */
+    width: 77%;
+    /* border: 1.5px solid black; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* margin-top: -25px; */
+    padding: 10px;
+    /* margin-left:20px; */
+}
+
+
+.inform3{
+    color: white;
+    background-color: #002060;
+    /* height: auto; */
+    width: 77%;
+    /* border: 1.5px solid black; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* margin-top: -25px; */
+    padding: 10px;
+    /* margin-left:20px; */
+}
+
+
+.inform4{
+    color: white;
+    background-color: #00b050;
+    /* height: auto; */
+    width: 77%;
+    /* border: 1.5px solid black; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* margin-top: -25px; */
+    padding: 10px;
+    /* margin-left:20px; */
+}
+
+
+.inform5{
+    color: white;
+    background-color: black;
+    /* height: auto; */
+    width: 77%;
+    /* border: 1.5px solid black; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* margin-top: -25px; */
+    padding: 10px;
+    /* margin-left:20px; */
+}
+
+
+.inform6{
+    color: white;
+    background-color: #7030a0;
+    /* height: auto; */
+    width: 77%;
+    /* border: 1.5px solid black; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* margin-top: -25px; */
+    /* padding: 10px; */
+    /* margin-left:20px; */
+}
+
+.inform7{
+    color: white;
+    background-color: #5b9bd5;
+    /* height: auto; */
+    width: 77%;
+    /* border: 1.5px solid black; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* margin-top: -25px; */
+    padding: 10px;
+    /* margin-left:20px; */
+}
+
+
+.survey-containers p{
+    margin:20px;
+}
+
+.categories {
+    color: black;
+    background-color: #b8b8b8;
+    height: 70px;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -15px;
+    border: 1.5px solid black;
+}
+
+.categores2 {
+    color: black;
+    background-color: #f2f2f2;
+    width: 30%; /* Ajusta este valor según sea necesario */
+    padding: 10px;
+}
+
+.total-titles {
+    background-color: #aeaaaa;
+    color: white;
+    width: 10%;
+    
+    height: 100px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.total-titles h2 {
+    transform: rotate(-90deg);
+    font-size: small;
+}
