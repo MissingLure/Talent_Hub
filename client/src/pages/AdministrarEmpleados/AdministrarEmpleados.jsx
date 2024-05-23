@@ -10,6 +10,8 @@ import DataContainer from "../../components/DataContainer/DataContainer";
 import CrearEmpleado from "../CrearEmpleado/CrearEmpleado";
 import Navbar from "../../components/Navbar/Navbar";
 import Modal from "react-modal";
+import ModificarEmpleadoPopUp from "../ModificarEmpleados/ModificarEmpleadoPopUp";
+
 
 const AdministarEmpleados = () => {
     const [errorMessages, setErrorMessages] = useState([]);
@@ -26,12 +28,14 @@ const AdministarEmpleados = () => {
 
     const [showPopup, setShowPopup] = useState(false);
     const [showPopup2, setShowPopup2] = useState(false);
+    const [showPopupModificar, setShowPopupModificar] = useState(false);
     const [showBossPopup, setShowBossPopu] = useState(false);
     const [message, setMessage] = useState('');
     const [success, setSucces] = useState(false);
 
     const handleClosePopup = () => {
         setShowPopup(false);
+        setShowPopupModificar(false);
         setShowBossPopu(false);
         setSelectedBoss('');
     }
@@ -125,12 +129,13 @@ const AdministarEmpleados = () => {
     };
 
     const closeMessage = () => {
-        setSucces(false);
+        setSucces(false); // Corregido el nombre de la función a setSucces
         setShowBossPopu(false);
     };
+    
 
     const acceptMessage = () =>{
-        setSuccess(true);
+        setSucces(true);
     }
 
     useEffect(() => {
@@ -297,17 +302,25 @@ const AdministarEmpleados = () => {
 
                     <div className="popups2-content">
                     <h3>Acciones con Empleado</h3>
-                        <button > 
-                            <Link to ='/modificar-empleado'>
-                            Modificar
-                            </Link>
-                        </button>
+                    
+                    <button className = "buttonModificarEmpleado" onClick={() => setShowPopupModificar(true)} >Modificar </button>
+                    
+                        
                         <button>Eliminar</button>
                         <button onClick={handleClosePopup}>Cerrar</button>
                     
                     </div>
                 </div>
             )} 
+
+            {showPopupModificar && (
+                <div className="popups">
+                     
+                    <div >
+                        <ModificarEmpleadoPopUp/>                        
+                    </div>
+                </div>
+            )}  
 
 
             <div>

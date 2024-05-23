@@ -19,9 +19,10 @@ import AsignarEvaluacion from './pages/AsignarEvaluacion/AsignarEvaluacion';
 import AdministrarEncuestas from './pages/AdministrarEncuestas/AministrarEncuestas'
 import CrearEncuestas from './pages/Encuesta/Encuesta';
 import EncuestasEmpleado from './pages/Encuestas/Encuestas';
-import ModificarUsuario from './pages/ModificarUsuarios/ModificarUsuario';
-import ModificarEmpleado from './pages/ModificarEmpleados/ModificarEmpleado';
+import ModificarEmpleadoPopUp from './pages/ModificarEmpleados/ModificarEmpleadoPopUp';
+import ModificarUsuarioPopUp from './pages/ModificarUsuarios/ModificarUsuarioPopUp';
 import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
+import PerfilPuesto from './pages/PerfilPuestos/PerfilPuesto';
 
 
 function App() {
@@ -50,9 +51,10 @@ function App() {
           <Route path='/habilidades'element={<BibliotecaHabilidades/>}/>
           <Route path='/crear-encuestas'element={<CrearEncuestas/>}/>
           <Route path='/encuestas-empleado'element={<EncuestasEmpleado/>}/>
-          <Route path='/modificar-usuario'element={<ModificarUsuario/>}/>
-          <Route path='/modificar-empleado'element={<ModificarEmpleado/>}/>
+          <Route path='/modificar-empleadopopup'element={<ModificarEmpleadoPopUp/>}/>
+          <Route path='/modificar-usuariopopup'element={<ModificarUsuarioPopUp/>}/>
           <Route path='/asignar-evaluacion' element={<AsignarEvaluacion/>}/>
+          <Route path='/perfil-puesto' element={<PerfilPuesto/>}/>
         </Routes>
       </Router>
     </div>
