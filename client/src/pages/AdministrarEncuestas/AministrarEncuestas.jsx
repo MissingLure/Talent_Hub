@@ -148,7 +148,7 @@ const AdministrarEncuestas = () => {
                   name="eliminar"
                   checked={filasMarcadas.includes(index)}
                   onChange={() => handleMarcarFila(index)}
-                />
+          />
                 </td>
                 <td>{fila.competencia}</td>
                 <td>{fila.habilidad}</td>

@@ -15,6 +15,8 @@ import BibliotecaCompetencias from './pages/BibliotecaCompetencias/BibliotecaCom
 import BibliotecaHabilidades from './pages/BibliotecaHabilidades/BibliotecaHabilidades';
 import Inicio from './pages/Inicio/Inicio';
 import BoxGrid from './pages/BoxGrid/BoxGrid';
+import CoreCompetences from './pages/CoreCompetences/CoreCompetences';
+import PotencialCompetiences from './pages/PotentialCompetiences/PotencialCompetiences';
 import AsignarEvaluacion from './pages/AsignarEvaluacion/AsignarEvaluacion';
 import AdministrarEncuestas from './pages/AdministrarEncuestas/AministrarEncuestas'
 import CrearEncuestas from './pages/Encuesta/Encuesta';
@@ -46,7 +48,9 @@ function App() {
           <Route path='/competencia-habilidad' element={<CompetenciaHabilidad/>}/>
           <Route path='/competencias' element={<BibliotecaCompetencias/>}/>
           <Route path='/inicio' element={<Inicio/>}/>
+          <Route path='/core-competences-general' element={<CoreCompetences/>}/>
           <Route path='/box-grid' element={<BoxGrid/>}/>
+          <Route path='potential-competiences-general' element={<PotencialCompetiences/>}/>
           <Route path='/administrar-encuestas'element={<AdministrarEncuestas/>}/>
           <Route path='/habilidades'element={<BibliotecaHabilidades/>}/>
           <Route path='/crear-encuestas'element={<CrearEncuestas/>}/>

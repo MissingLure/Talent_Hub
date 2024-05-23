@@ -4,6 +4,7 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import Navbar from "../../components/Navbar/Navbar";
 import { Link } from "react-router-dom";
+import CrearCompetencias from '../CrearCompetencias/CrearCompetencias'
 
 
 const BibliotecaCompetencias = () =>  {
@@ -13,6 +14,7 @@ const BibliotecaCompetencias = () =>  {
   const [showInformation, setShowInformation] = useState(false);
 
   const [showPopup, setSHowPopup] = useState(false);
+  const [showPopup2, setShowPopup2] = useState(false);
   const [showAssignPositions, setShowAssignPositions] = useState(false);
 
   const [puestos, setPuestos] = useState();
@@ -72,13 +74,13 @@ const BibliotecaCompetencias = () =>  {
     <div className="biblioteca-competencias">
       <Navbar/>
       <h1><b>Biblioteca De Competencias</b></h1>
-      <div>
-        <Link className="biblioteca-competencias" to="/crear-competencias">
-          <button type="submit">
-            Crear Competencias
+      <div className='boton'>
+      <button type="submit">
+          <Link to="/crear-competencias">
+              Crear Competencias
+          </Link>
           </button>
-        </Link>
-        </div>
+      </div>
       <div className="competencias-container">
         {competencias.map((competencia, index) => (
           <a className="competencia-card" key={index} value={competencia.id_competencia} onClick={() => handleGetCompetencia(competencia.id_competencia)}>
@@ -111,6 +113,19 @@ const BibliotecaCompetencias = () =>  {
           </div>
         </div>
       )}
+
+      {showPopup2 && (
+                <div className="popups">
+                     <button onClick={handleClosePopup}>X</button>
+                    <div >
+                        <CrearCompetencia
+                        open={addEmployee}
+                        cancel={() => setAddEmployee(false)}
+                    /> 
+                       
+                    </div>
+                </div>
+            )}
       
     </div>
     

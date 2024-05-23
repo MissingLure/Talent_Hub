@@ -50,6 +50,7 @@
     display: flex;
 }
 
+
 .evaluation-title {
     color: white;
     background-color: #38333f;
@@ -64,6 +65,7 @@
     background-color: #aeaaaa;
     color: white;
     width: 10%;
+    
     height: 100px;
     margin-top: 30px;
     display: flex;
@@ -72,4 +74,5 @@
 
 .total-title h2 {
     transform: rotate(-90deg);
+    font-size: X-large;
 }

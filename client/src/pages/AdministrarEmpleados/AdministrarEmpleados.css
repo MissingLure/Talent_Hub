@@ -322,6 +322,7 @@
    border-radius: 5px;
    border: 1px solid #000000;
    border-radius: 5px;
+
 }
 
 .container3 tr{
@@ -336,7 +337,8 @@
     background-color: #ffffff;
     color:#000000;
     padding: 8px;
-    text-align: left;
+    text-align: center;
+
     /* border: 1.5px solid #0b0b0b;
     border-radius: 5px; */
    

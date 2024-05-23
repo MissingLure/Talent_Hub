@@ -139,9 +139,21 @@ const AdminPreguntas = () => {
             <Navbar/>
             <h2><b>Administrar Evaluaciones</b></h2>
             <div className="evaluations-actions">
-                <Link className="nav-link" to ="/asignar-evaluacion">
-                    Asignar Evaluación
+                <button>
+                <Link to ="/core-competences-general">
+                    Evaluacion Competencia
                 </Link>
+                </button>
+                <button>
+                <Link to ="/potential-competiences-general">
+                    Evaluacion Potencial
+                </Link>
+                </button>
+                <button>
+                <Link to ="/asignar-evaluacion">
+                    Evaluacion Desempeño
+                </Link>
+                </button>
                 
             </div>
 
