@@ -3,12 +3,14 @@ import "./CrearCompetencias.css";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import competenciasApi from "../../api/competencias.api";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const [competencia, setCompetencia] = useState({
     nombre_competencia: "",
     descripcion: "",
   });
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +26,11 @@ function App() {
     const data = await competenciasApi.postCompetenciaRequest(competencia);
 
     if (data !== null) {
-      if (data.succes) console.log(data.message);
+      if (data.status === 200) {
+        console.log(data.data.message);
+
+        navigate("/competencias");
+      }
     }
   };
 

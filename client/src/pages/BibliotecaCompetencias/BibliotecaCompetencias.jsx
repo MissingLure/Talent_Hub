@@ -20,11 +20,15 @@ const BibliotecaCompetencias = () => {
   const [puestos, setPuestos] = useState();
 
   const handleCompetencias = async () => {
-    const { succes, data } = await competenciasApi.getCompetenciasRequest();
+    const result = await competenciasApi.getCompetenciasRequest();
 
-    if (succes) console.log("Se obtuvieron los datos");
+    if (result.status === 200) {
+      console.log("Obtuvo competencias");
 
-    setCompetencias(data);
+      return setCompetencias(result.data.data);
+    }
+
+    return setCompetencias([]);
   };
 
   const handleGetPuestos = () => {
@@ -43,26 +47,29 @@ const BibliotecaCompetencias = () => {
   };
 
   const handleGetCompetencia = async (idCompetencia) => {
-    const { succes, data } = await competenciasApi.getCompetenciaRequest(
-      idCompetencia
-    );
+    const result = await competenciasApi.getCompetenciaRequest(idCompetencia);
 
-    if (succes) console.log("Obtuvo competencia");
+    if (result.status === 200) {
+      const resHabilidades =
+        await competenciaHabilidadesApi.getCompetenciaHabilidadesByCompetenciaRequest(
+          idCompetencia
+        );
 
-    const resHabilidades =
-      await competenciaHabilidadesApi.getCompetenciaHabilidadesByCompetenciaRequest(
-        idCompetencia
-      );
+      if (resHabilidades.status !== 200) {
+        console.log("Error al obtener habilidades");
+        return;
+      }
 
-    let dataHabilidades = [];
+      let dataHabilidades = [];
 
-    if (resHabilidades) dataHabilidades = resHabilidades.data;
+      if (resHabilidades) dataHabilidades = resHabilidades.data.data;
 
-    setCompetencia(data.nombre_competencia);
-    setDetalles(dataHabilidades);
-    setShowInformation(true);
-    setSHowPopup(true);
-  };
+      setCompetencia(result.data.data.nombre_competencia);
+      setDetalles(dataHabilidades);
+      setShowInformation(true);
+      setSHowPopup(true);
+    }
+ };
 
   const handleAssignPositionsOpen = () => {
     setShowAssignPositions(true);

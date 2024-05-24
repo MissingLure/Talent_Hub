@@ -6,7 +6,7 @@ const getEvaluacionCompetenciasRequest = async (idEvaluacion) => {
   try {
     const res = await axios.get(rutaBase + idEvaluacion);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 
@@ -18,7 +18,7 @@ const getEvaluacionesCompetenciasRequest = async () => {
   try {
     const res = await axios.get(rutaBase);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 
@@ -33,7 +33,7 @@ const postEvaluacionCompetenciaRequest = async (newEvaluacion) => {
   try {
     const res = await axios.post(rutaBase, newEvaluacion);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 
@@ -45,7 +45,7 @@ const putEvaluacionCompetenciaRequest = async (idEvaluacion, values) => {
   try {
     const res = await axios.put(rutaBase + idEvaluacion, values);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 
@@ -57,7 +57,7 @@ const deleteEvaluacionCompetenciaRequest = async (idEvaluacion) => {
   try {
     const res = await axios.delete(rutaBase + idEvaluacion);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 
@@ -69,7 +69,7 @@ const getEvaluacionesCompetenciasByEmpleado = async (idEmpleado) => {
   try {
     const res = await axios.get(rutaBase + "by-empleado/" + idEmpleado);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 

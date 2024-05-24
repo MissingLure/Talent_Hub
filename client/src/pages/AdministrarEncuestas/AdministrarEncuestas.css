@@ -8,6 +8,23 @@
     animation: fadeInAnimation 1s forwards; 
 }
 
+.admin-encuesta-container select{
+    width: 240px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;
+    background-color: white;
+}
+
+.admin-encuesta-container input{
+    width: 240px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;
+}
+
 .admin-encuesta-container h2{
     font-size: 24px;
 }
@@ -21,7 +38,7 @@
     color: white;
     width:240px;
     border-radius: 15px;
-    margin: 5px;
+    margin: 20px;
 }
 
 .admin-encuesta-container button:hover{
@@ -38,8 +55,8 @@
     justify-content: center;
     background-color: #a9a9a9;
     width:auto;
-    margin-bottom: auto;
-    margin-top: 10px;
+    margin-bottom: 50px;
+    margin-top: 40px;
 }
 
 .admin-encuesta-container table{
@@ -54,6 +71,7 @@
     width:900px;
 }
 
-.Eliminar{
-    width:10px;
+.Eliminar input{
+    width: 25px;
+    border-radius: 0px;
 }

@@ -11,7 +11,7 @@ const getHabilidadPreguntasRequest = async (idHabilidad) => {
     const res = await axios.get(rutaBase + idHabilidad);
 
     console.log(res);
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 
@@ -23,7 +23,7 @@ const getHabilidadPreguntaRequest = async (idPregunta) => {
   try {
     const res = await axios.get(rutaBase + "pregunta/" + idPregunta);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 
@@ -48,7 +48,7 @@ const postHabilidadPreguntaRequest = async (idHabilidad, newPregunta) => {
   try {
     const res = await axios.post(rutaBase + idHabilidad, newPregunta);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 
@@ -60,7 +60,7 @@ const putHabilidadPreguntaRequest = async (idPregunta, values) => {
   try {
     const res = await axios.put(rutaBase + "pregunta/" + idPregunta, values);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
     return null;
@@ -71,7 +71,7 @@ const deleteHabilidadPreguntaRequest = async (idPregunta) => {
   try {
     const res = await axios.delete(rutaBase + "pregunta/" + idPregunta);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 

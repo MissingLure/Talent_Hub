@@ -5,7 +5,7 @@ const rutaBase = "http://localhost:4000/competencias-habilidades/";
 const getCompetenciaHabilidadesRequest = async () => {
   try {
     const res = await axios.get(rutaBase);
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
     return null;
@@ -18,7 +18,7 @@ const getCompetenciaHabilidadesByCompetenciaRequest = async (
   try {
     const res = await axios.get(rutaBase + "by-competencia/" + id_compentencia);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
     return null;
@@ -29,7 +29,7 @@ const getCompetenciaHabilidadRequest = async (idCompetenciaHabilidad) => {
   try {
     const res = await axios.get(rutaBase + idCompetenciaHabilidad);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 
@@ -56,7 +56,7 @@ const postCompetenciaHabilidadRequest = async (newCompetenciaHabilidad) => {
   try {
     const result = await axios.post(rutaBase, newCompetenciaHabilidad);
 
-    return result.data;
+    return result;
   } catch (error) {
     console.log(error);
 
@@ -85,7 +85,7 @@ const putCompetenciaHabilidadRequest = async (
   try {
     const res = await axios.put(rutaBase + idCompetenciaHabilidad, values);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 
@@ -97,7 +97,7 @@ const deleteCompetenciaHabilidadRequest = async (idCompetenciaHabilidad) => {
   try {
     const res = await axios.delete(rutaBase + idCompetenciaHabilidad);
 
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
 

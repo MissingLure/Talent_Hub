@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Modal from "react-modal";
 import axios from "axios";
 import competenciasHabilidadesApi from "../../api/competencias.habilidades.api";
+import habilidadesPreguntasApi from "../../api/habilidades.preguntas.api";
 import { Link } from "react-router-dom";
 
 // const habilidades = [
@@ -34,7 +35,7 @@ import { Link } from "react-router-dom";
 const BibliotecaHabilidades = () => {
   const [habilidades, setHabilidades] = useState([]);
   const [habilidad, setHabilidad] = useState();
-  const [detalles, setDetalles] = useState([]);
+  const [preguntas, setPreguntas] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
 
   const handleHabilidades = async () => {
@@ -42,11 +43,9 @@ const BibliotecaHabilidades = () => {
       await competenciasHabilidadesApi.getCompetenciaHabilidadesRequest();
 
     if (res) {
-      const { succes, data } = res;
-
-      if (succes) setHabilidades(data);
-    } else {
-      setHabilidades([]);
+      if (res.status === 200) {
+        setHabilidades(res.data.data);
+      } else setHabilidades([]);
     }
   };
 
@@ -71,18 +70,28 @@ const BibliotecaHabilidades = () => {
     );
 
     if (res) {
-      const { succes, data } = res;
+      if (res.status === 200) {
+        setHabilidad(res.data.data);
 
-      if (succes) {
-        setHabilidad(data);
-        const { comportamiento_habilidad, pregunta_habilidad } = data;
+        const resPreguntas =
+          await habilidadesPreguntasApi.getHabilidadPreguntasRequest(
+            idHabilidad
+          );
 
-        setDetalles([{ comportamiento_habilidad, pregunta_habilidad }]);
+        if (resPreguntas) {
+          if (resPreguntas.status === 200) {
+            setPreguntas(resPreguntas.data.data);
+          }
 
-        setShowPopup(true);
+          setShowPopup(true);
+        } else {
+          alert("Ocurrio un problema al obtener las preguntas.");
+        }
       }
+    } else {
+      alert("Ocurrio un problema al obtener la habilidad.");
     }
- };
+  };
 
   useEffect(() => {
     handleHabilidades();
@@ -91,52 +100,61 @@ const BibliotecaHabilidades = () => {
   return (
     <div className="BibliotecaHabilidades">
       <Navbar />
-      <h1 className="tituloBib">
-        <b>Biblioteca De Habilidades</b>
-      </h1>
-      <div>
-        <Link className="BibliotecaHabilidades" to="/crear-habilidades">
-          <button type="submit">Crear Habilidades</button>
-        </Link>
-      </div>
-      <div className="habilidades-container">
-        {habilidades.map((habilidad, index) => (
-          <a
-            className="habilidades-card"
-            key={index}
-            value={habilidad.id_habilidad}
-            onClick={() => handleGetHabilidad(habilidad.id_competencia_habilidad)}
-          >
-            {habilidad.nombre_habilidad}
-          </a>
-        ))}
-      </div>
 
-      {showPopup && (
-        <div className="popup">
-          <div className="popup-content">
-            <div className="information-container">
-              <h2>{habilidad.nombre_habilidad}</h2>
-
-              {detalles.length > 0 ? (
-                detalles.map((detalle, index) => (
-                  <div key={index}>
-                    {" "}
-                    {}
-                    <div className="information">
-                      <h4>{detalle.comportamiento_habilidad}</h4>
-                      <p>{detalle.pregunta_habilidad}</p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p>No hay datos.</p>
-              )}
-            </div>
-            <button onClick={handleClosePopup}>Cerrar</button>
-          </div>
+      <div className="container">
+        <h1 className="tituloBib">
+          <b>Biblioteca De Habilidades</b>
+        </h1>
+        <div>
+          <Link className="BibliotecaHabilidades" to="/crear-habilidades">
+            <button type="submit">Crear Habilidades</button>
+          </Link>
         </div>
-      )}
+        <div className="habilidades-container">
+          {habilidades.map((habilidad, index) => (
+            <a
+              className="habilidades-card"
+              key={index}
+              value={habilidad.id_habilidad}
+              onClick={() =>
+                handleGetHabilidad(habilidad.id_competencia_habilidad)
+              }
+            >
+              {habilidad.nombre_habilidad}
+            </a>
+          ))}
+        </div>
+
+        {showPopup && (
+          <div className="popup">
+            <div className="popup-content">
+              <div className="information-container">
+                <h1>{habilidad.nombre_habilidad}</h1>
+
+                <h3>{habilidad.comportamiento_habilidad}</h3>
+
+                <h2>Preguntas</h2>
+
+                {preguntas.length > 0 ? (
+                  preguntas.map((pregunta, index) => (
+                    <div key={index}>
+                      {" "}
+                      {}
+                      <div className="information">
+                        <h4>{pregunta.resumen}</h4>
+                        <p>{pregunta.pregunta_habilidad}</p>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p>No hay preguntas.</p>
+                )}
+              </div>
+              <button onClick={handleClosePopup}>Cerrar</button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
