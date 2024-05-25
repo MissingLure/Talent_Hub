@@ -22,6 +22,8 @@ import EncuestasEmpleado from './pages/Encuestas/Encuestas';
 import ModificarUsuario from './pages/ModificarUsuarios/ModificarUsuario';
 import ModificarEmpleado from './pages/ModificarEmpleados/ModificarEmpleado';
 import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
+import VerPreguntas from './pages/VerPreguntas/Preguntas';
+
 
 
 function App() {
@@ -33,7 +35,7 @@ function App() {
           <Route path='/user-dashboard' element={<UserDashboard/>}/>
           
           <Route path='/mostrar-info' element={<MostrarInfo/>}/>
-          
+          <Route path='/ver-preguntas' element={<VerPreguntas/>}/>
           <Route path='/administrar-empleados' element={<AdministarEmpleados/>}/>
           <Route path='/administrar-usuarios' element={<AdministarUsuarios/>}/>
           <Route path='/crear-empleado' element={<CrearEmpleado/>}/>
