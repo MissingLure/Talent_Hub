@@ -45,21 +45,8 @@ const PreguntasTable = () => {
         </div>
     );
 
-    /*
-    const header = (
-        <div style={{ textAlign: 'right'}}>
-            
-            <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Buscar preguntas" 
-            className="search-input"/>
-            
-        </div>
-    );
-    */
-
-    const globalFilterFunction = (value, filter) => {
-        return value.toLowerCase().includes(filter.toLowerCase());
-    };
-
+   
+    
     const preguntas = [
         { id: 1, pregunta: '¿Como te llmas?' },
         { id: 2, pregunta: '¿Cuantas habilidades comiste?' },
