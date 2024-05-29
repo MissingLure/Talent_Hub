@@ -151,6 +151,11 @@ const Navbar = ({roleValue}) => {
                   Perfiles de Puestos
                 </Link>
               </li>
+              <li onClick={handleClickSubOption}>
+                <Link className="nav-link" to="/ver-preguntas">
+                  Ver Preguntas
+                </Link>
+              </li>
 
               
               
