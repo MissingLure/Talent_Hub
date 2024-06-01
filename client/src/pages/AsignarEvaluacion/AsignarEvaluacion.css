@@ -1,31 +1,51 @@
 .asign-container{
     width:100%;
-    height:100%;
+    height:100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     background-color: #d8d8db;
     animation: fadeInAnimation 1s forwards; 
 }
 
 .body-container{
-    margin:100px;
+    /* margin:100px; */
+    width: 80%;
+    margin-top: 25px;
     display: flex;
     flex-direction: column;
+    color:white;
     align-items: center;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #64637A ;
+    background-color: #453356;
+}
+
+.body-container input{
+    color:black;
 }
 
 .asign-container h2{
     font-size: 24px;
+    font-weight: bold;
+    margin:10px;
 }
+
+.asign-container h4{
+    font-size: 13px;
+    font-family:monospace;
+  }
+  
 
 .asign-container label{
     font-weight: bold;
+    margin: 10px;
+}
+
+.asign-container select{
+    margin: 4px;
 }
 
 .agregar-habilidad {
@@ -33,14 +53,14 @@
     width: 200px;
     height: 30px;
     margin-left: auto;
-    background-color:#2e2d40;
+    background-color:#991942;
     color: aliceblue;
     cursor: pointer;
 }
 
 .habilidads-container {
     margin-top: 20px;
-    width: 100%;
+    width: 80%;
     height: auto;
     background-color: #cccbcb;
     display: flex;
@@ -58,6 +78,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+.body-container select{
+    color:black;
 }
 
 .eliminar-habilidad {
@@ -81,11 +106,11 @@
     border: none;
     width: 150px;
     height: 30px;
-    border-radius: 20px;;
+    border-radius: 20px;
 }
 
 .asign-container button:hover{
-    background-color: #4b8473;;
+    background-color: #4b8473;
 }
 
 .delete-button {

@@ -8,21 +8,18 @@ import UserDashboard from './pages/UserDashboard/UserDashboard';
 import EvaluacionesEmpleado from './pages/EvaluacionesEmpleado/EvaluacionesEmpleado';
 import EvaluacionEmpleado from './pages/EvaluacionEmpleado/EvaluacionEmpleado';
 import CrearCompetencias from './pages/CrearCompetencias/CrearCompetencias';
-import CrearHabilidad from './pages/CrearHabilidad/CrearHabilidad';
-import CompetenciaHabilidad from './pages/CompetenciaHabilidad/CompetenciaHabilidad';
 import AdministrarPreguntas from './pages/AdministrarPreguntas/AdminPreguntas';
 import BibliotecaCompetencias from './pages/BibliotecaCompetencias/BibliotecaCompetencias';
-import BibliotecaHabilidades from './pages/BibliotecaHabilidades/BibliotecaHabilidades';
 import Inicio from './pages/Inicio/Inicio';
 import BoxGrid from './pages/BoxGrid/BoxGrid';
 import AsignarEvaluacion from './pages/AsignarEvaluacion/AsignarEvaluacion';
 import AdministrarEncuestas from './pages/AdministrarEncuestas/AministrarEncuestas'
 import CrearEncuestas from './pages/Encuesta/Encuesta';
 import EncuestasEmpleado from './pages/Encuestas/Encuestas';
-import ModificarUsuario from './pages/ModificarUsuarios/ModificarUsuario';
-import ModificarEmpleado from './pages/ModificarEmpleados/ModificarEmpleado';
-import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
-import VerPreguntas from './pages/VerPreguntas/Preguntas';
+import CoreCompetences from './pages/CoreCompetences/CoreCompetences';
+import PotencialCompetences from './pages/PotentialCompetiences/PotencialCompetiences';
+// import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
+// import VerPreguntas from './pages/VerPreguntas/Preguntas';
 
 
 
@@ -34,26 +31,23 @@ function App() {
           <Route path='/' element={<Login/>}/>
           <Route path='/user-dashboard' element={<UserDashboard/>}/>
           
-          <Route path='/mostrar-info' element={<MostrarInfo/>}/>
-          <Route path='/ver-preguntas' element={<VerPreguntas/>}/>
+          {/* <Route path='/mostrar-info' element={<MostrarInfo/>}/> */}
+          {/* <Route path='/ver-preguntas' element={<VerPreguntas/>}/> */}
           <Route path='/administrar-empleados' element={<AdministarEmpleados/>}/>
           <Route path='/administrar-usuarios' element={<AdministarUsuarios/>}/>
           <Route path='/crear-empleado' element={<CrearEmpleado/>}/>
           <Route path='/evaluaciones-empleado' element={<EvaluacionesEmpleado/>}/>
           <Route path='/evaluacion-empleado' element={<EvaluacionEmpleado/>}/>
-          <Route path='/crear-competencias' element={<CrearCompetencias/>}/>\
-          <Route path='/crear-habilidades' element={<CrearHabilidad/>}/>
+          <Route path='/crear-competencias' element={<CrearCompetencias/>}/>
           <Route path='/administrar-preguntas' element={<AdministrarPreguntas/>}/>
-          <Route path='/competencia-habilidad' element={<CompetenciaHabilidad/>}/>
           <Route path='/competencias' element={<BibliotecaCompetencias/>}/>
+          <Route path='/administrar-encuestas/core-competences-general' element={<CoreCompetences/>}/>
+          <Route path='/administrar-encuestas/potential-competiences-general' element={<PotencialCompetences/>}/>
           <Route path='/inicio' element={<Inicio/>}/>
           <Route path='/box-grid' element={<BoxGrid/>}/>
           <Route path='/administrar-encuestas'element={<AdministrarEncuestas/>}/>
-          <Route path='/habilidades'element={<BibliotecaHabilidades/>}/>
           <Route path='/crear-encuestas'element={<CrearEncuestas/>}/>
           <Route path='/encuestas-empleado'element={<EncuestasEmpleado/>}/>
-          <Route path='/modificar-usuario'element={<ModificarUsuario/>}/>
-          <Route path='/modificar-empleado'element={<ModificarEmpleado/>}/>
           <Route path='/asignar-evaluacion' element={<AsignarEvaluacion/>}/>
         </Routes>
       </Router>

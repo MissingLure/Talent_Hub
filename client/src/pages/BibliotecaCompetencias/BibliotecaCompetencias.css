@@ -14,6 +14,11 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.biblioteca-competencias h4{
+  font-size: 13px;
+  font-family:monospace;
+}
+
 
 .competencia-card {
   background-color: #322bc6;
@@ -120,3 +125,40 @@
   height: 30px;
   background-color: #4d4c5f;
 }
+
+.popups2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popups2-content{
+  background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+text-align: center;
+}
+
+.popups2-content h3{
+  font-size: 20px;
+  font-weight: bold;
+  margin:5px;
+}
+
+.popups2-content button{
+  margin-top:-630px;
+  /* padding: 10px 20px; */
+  /* border: none; */
+  /* border-radius: 5px; */
+  background-color: #2a2942;
+  color: #fff;
+  cursor: pointer;
+}
+

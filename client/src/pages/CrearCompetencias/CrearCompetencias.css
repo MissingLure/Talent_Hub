@@ -1,9 +1,3 @@
-/* .App {
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
 .tituloComp{
   font-size: 24px;
   margin-bottom: 8px 
@@ -14,7 +8,6 @@
   flex-direction: column;
   align-items: center;
   animation: fadeInAnimation 1s forwards; 
-  
 }
 
 .competences-form {
@@ -25,15 +18,16 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #64637a;
+  background-color: #2a2942;
   align-items: center;
-  background-color: #d8d8db;
-  height: 100vh;
+  color:white;
+  height: 100%;
 }
 
 .competences-form input{
-  width: 50%;
+  width: 100%;
   padding: 20px;
+  color: black;
   margin-bottom: 16px;
   box-sizing: border-box;
   border: 1px solid #ccc;
@@ -42,7 +36,8 @@
 
 .competences-form
 textarea {
-  width: 50%;
+  width: 100%;
+  color: black;
   padding: 20px;
   margin-bottom: 16px;
   box-sizing: border-box;
@@ -59,7 +54,7 @@ textarea {
 
 
 .competences-form button {
-  background-color: #2e2d40;
+  background-color: #cd1c2c;
   margin-top: 18px;
   color: white;
   padding: 10px 15px;
