@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { Button } from 'primereact/button';
-import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
+//import { DataTable } from 'primereact/datatable';
+//import { Column } from 'primereact/column';
+//import { Button } from 'primereact/button';
+//import 'primereact/resources/themes/saga-blue/theme.css';
+//import 'primereact/resources/primereact.min.css';
+//import 'primeicons/primeicons.css';
 
 
 const CompetenciaHabilidadTable = () => {

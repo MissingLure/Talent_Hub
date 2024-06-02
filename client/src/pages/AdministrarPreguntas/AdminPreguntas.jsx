@@ -150,7 +150,7 @@ const AdminPreguntas = () => {
                 </Link>
                 </button>
                 <button>
-                <Link to ="/asignar-evaluacion">
+                <Link to ="/evaluacion-empleado">
                     Evaluacion Desempeño
                 </Link>
                 </button>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { InputText } from 'primereact/inputtext';
-import { FilterMatchMode } from 'primereact/api';
+//import { DataTable } from 'primereact/datatable';
+//import { Column } from 'primereact/column';
+//import { InputText } from 'primereact/inputtext';
+//import { FilterMatchMode } from 'primereact/api';
 import './Vista.css';
 
 

@@ -19,8 +19,8 @@ import AsignarEvaluacion from './pages/AsignarEvaluacion/AsignarEvaluacion';
 import AdministrarEncuestas from './pages/AdministrarEncuestas/AministrarEncuestas'
 import CrearEncuestas from './pages/Encuesta/Encuesta';
 import EncuestasEmpleado from './pages/Encuestas/Encuestas';
-import ModificarUsuario from './pages/ModificarUsuarios/ModificarUsuario';
-import ModificarEmpleado from './pages/ModificarEmpleados/ModificarEmpleado';
+import ModificarUsuario from './pages/ModificarUsuarios/ModificarUsuarioPopUp';
+import ModificarEmpleado from './pages/ModificarEmpleados/ModificarEmpleadoPopUp';
 import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
 import VerPreguntas from './pages/VerPreguntas/Preguntas';
 
