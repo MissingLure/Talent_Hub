@@ -1,0 +1,78 @@
+.survey-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    animation: fadeInAnimation 1s forwards; 
+}
+
+.top-container {
+    display: flex;
+    margin-bottom: 15px;
+    height: 30px;
+    margin-top: 15px;
+}
+
+.data-title {
+    width: 25%;
+    background-color: #38333f;
+    color: white;
+}
+
+.data-value {
+    width: 50%;
+    margin-right: 20px;
+    background-color: #f3f3f3;
+}
+
+
+.bottom-container {
+    display: flex;
+    height: 30px;
+}
+
+.questions-list {
+    height: 650px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.question-holder {
+    width: 100%;
+}
+
+.survey-actions {
+    margin: 5px;
+}
+
+.survey-type {
+    display: flex;
+}
+
+
+.evaluation-title {
+    color: white;
+    background-color: #38333f;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.total-title {
+    background-color: #aeaaaa;
+    color: white;
+    width: 10%;
+    
+    height: 100px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.total-title h2 {
+    transform: rotate(-90deg);
+    font-size: X-large;
+}

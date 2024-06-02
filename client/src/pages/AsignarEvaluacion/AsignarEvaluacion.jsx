@@ -19,6 +19,7 @@ const AsignarEvaluacion = () => {
   const [idHabilidad, setIdHabilidad] = useState("");
   const [nombreHabilidad, setNombreHabilidad] = useState("");
 
+  const [competencias, setCompetencias] = useState([]);
   const [showAdminPositions, setShowAdminPositions] = useState(false);
   const [showCrearPreguntas, setShowCrearPreguntas] = useState(false);
 
@@ -33,16 +34,15 @@ const AsignarEvaluacion = () => {
       });
   };
 
-  const handleGetHabilidades = async () => {
-    const result = await habilidadesApi.getCompetenciaHabilidadesRequest();
-
-    if (result.status === 200) {
-      setHabilidades(result.data.data);
-
-      console.log(result);
-    }
+  const handleObtenerCompetencias = () => {
+    axios.get('http://localhost:5000/obtener-competencia_habilidad')
+    .then((response) => {
+        setCompetencias(response.data.data);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
   };
-
   const handleGetQuestions = () => {
     axios
       .get("http://localhost:4000/data/obtener-preguntas-competencias")
@@ -58,7 +58,7 @@ const AsignarEvaluacion = () => {
   const handleAsignarHabilidades = () => {
     const errors = [];
     if (habilidadesPuesto.length == 0) {
-      let error = "Debe seleccionar al menos una habilidad.";
+      let error = "Debe seleccionar al menos una competencia.";
       errors.push(error);
     }
 
@@ -88,13 +88,13 @@ const AsignarEvaluacion = () => {
       setErrorMessages([...errorMessages, error]);
     }
     if (idHabilidad == "") {
-      errors.push("Debe seleccionar una habilidad.");
-      let error = "Debe seleccionar una habilidad.";
+      errors.push("Debe seleccionar una competencia.");
+      let error = "Debe seleccionar una competencia.";
       setErrorMessages([...errorMessages, error]);
     }
     if (habilidades.length == 0) {
-      errors.push("Debe seleccionar una habilidad.");
-      let error = "Debe seleccionar una habilidad.";
+      errors.push("Debe seleccionar una competencia.");
+      let error = "Debe seleccionar una competencia.";
       setErrorMessages([...errorMessages, error]);
     } else {
       let habilidad = {
@@ -128,19 +128,17 @@ const AsignarEvaluacion = () => {
 
   useEffect(() => {
     handleGetPuestos();
-    handleGetHabilidades();
+    handleObtenerCompetencias();
   }, []);
 
   return (
     <div className="asign-container">
       <Navbar />
-      <h2>
-        <b>Administrar Perfil de Puesto</b>
-      </h2>
+      <h2>Asignar Competencias</h2>
+      <h4>Aplica las competencias necesarias que un puesto especifico debe cumplir.</h4>
       <div className="body-container">
         <div>
-          <label>Perfil de Puesto</label>
-        </div>
+          <label>Perfil de Puesto:</label>
         <select onChange={(e) => setIdPuesto(e.target.value)}>
           <option selected disabled hidden>
             Seleccionar perfil de puesto...
@@ -158,11 +156,7 @@ const AsignarEvaluacion = () => {
             <option>No hay datos.</option>
           )}
         </select>
-        <div>
-          <br />
-          <div>
-            <label>Habilidades</label>
-          </div>
+            <label>Competencias:</label>
           <select
             onChange={(e) => {
               let selectedIndex = e.target.value;
@@ -171,7 +165,7 @@ const AsignarEvaluacion = () => {
             }}
           >
             <option selected disabled hidden>
-              Seleccionar habilidad...
+              Seleccionar competencia...
             </option>
             {habilidades.length > 0 ? (
               habilidades.map((habilidad, index) => (
@@ -183,6 +177,7 @@ const AsignarEvaluacion = () => {
               <option>No hay datos.</option>
             )}
           </select>
+          </div>
           <div>
             <button
               className="agregar-habilidad"
@@ -215,7 +210,7 @@ const AsignarEvaluacion = () => {
               </div>
             ))
           ) : (
-            <p>No hay habilidades seleccionadas.</p>
+            <p>No hay competencias seleccionadas.</p>
           )}
         </div>
         <br />
@@ -231,15 +226,9 @@ const AsignarEvaluacion = () => {
           </button>
         </div>
         <br />
-        <div>
-          <Link className="asign-container" to="/administrar-preguntas">
-            <button type="submit">Regresar</button>
-          </Link>
-        </div>
         <br />
         <br />
       </div>
-    </div>
   );
 };
 

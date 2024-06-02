@@ -15,6 +15,7 @@ async function agregar_empleado(request, response) {
     numeroIdentidad,
     direccion,
     fechaNacimiento,
+    // idpais,
     idPerfilPuesto,
     idDepartamento,
   } = request.body;
@@ -27,6 +28,7 @@ async function agregar_empleado(request, response) {
     telefono: telefono,
     numero_identidad: numeroIdentidad,
     direccion: direccion,
+    // id_pais:idpais,
     fecha_nacimiento: fechaNacimiento,
     id_perfil_puesto: idPerfilPuesto,
     id_departamento: idDepartamento,
