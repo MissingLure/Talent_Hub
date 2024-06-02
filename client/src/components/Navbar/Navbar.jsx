@@ -41,7 +41,11 @@ const Navbar = ({roleValue}) => {
     };
   }, []);
 
-  
+  /*
+   <Link className="nav-link" to="/evaluaciones-empleado">
+                    Evaluar Empleados
+                  </Link>
+  */
 
   return (
     <nav className="navbar">
@@ -57,16 +61,25 @@ const Navbar = ({roleValue}) => {
               {rol == 0 && (
                 <li onClick={handleClickSubOption}>
                   <Link className="nav-link" to="/administrar-preguntas">
+                    <p>
                     Administrar Evaluaciones
+                    </p>
                   </Link>
+                  
+                  <Link className="nav-link" to="/evaluaciones-empleado">
+                    Evaluar Empleados
+                  </Link>
+
                 </li>
               )}
-              {rol == 1 && (
+              
+             {rol == 1 && (
                 <li onClick={handleClickSubOption}>
                   <Link className="nav-link" to="/evaluaciones-empleado">
                     Evaluar Empleados
                   </Link>
                 </li>
+                
               )}
             </ul>
           )}

@@ -44,9 +44,10 @@
     list-style-type: none;
     padding-left: 0;
     margin-left: 0;
-    margin-top: 19px;
+    margin-top: 13px;
     position: absolute;
     z-index: 1000;
+    
 }
 
 .nav-link {
@@ -60,7 +61,7 @@
     height: 30px;
     width: 130px; 
     font-weight: 300;
-    font-size: small;
+    font-size: 12px;
     cursor: pointer;
 }
 
@@ -77,7 +78,8 @@
     background-color: #444462;
     color: white;
     border-radius: 20px;
-    height: 25px;
+    height: 35px;
+    padding: 4px 10px;
 }
 
 .nav-item-logout {
