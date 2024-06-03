@@ -24,7 +24,6 @@
     height: auto;
 }
 
-
 .survey-containers h2{
     font-size: x-large;
     font-weight: bold;
@@ -110,6 +109,7 @@ margin-top: 20px;
     width: 50%;
     border: 1.5px solid black;
     display: flex;
+    /* justify-content: center; */
     align-items: center;
     margin-top: -25px;
     padding: 10px;
@@ -149,16 +149,15 @@ margin-top: 20px;
 .total-titles {
     background-color: #aeaaaa;
     color: white;
-    width: 5%;
-    height: 90px;
-    margin-top: -150px;
-    /* margin-bottom: 30px; */
-    margin-left: 960px;
+    width: 10%;
+    
+    height: 100px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
 }
 
 .total-titles h2 {
     transform: rotate(-90deg);
-    font-size: medium;
+    font-size: small;
 }

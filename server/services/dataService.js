@@ -102,6 +102,7 @@ async function obtenerEmpleados() {
     .from('empleados')
     .innerJoin('departamentos', 'empleados.id_departamento', 'departamentos.id_departamento')
     .innerJoin('perfiles_puestos', 'empleados.id_perfil_puesto','perfiles_puestos.id_perfil_puesto');
+    // .innerJoin('paises', 'empleado.id_pais', 'paises.id_pais');
 
     return empleados;
 }

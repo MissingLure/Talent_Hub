@@ -137,17 +137,15 @@ const AdminPreguntas = () => {
     return(
         <div className="questions-admin-container">
             <Navbar/>
-            <h2>Administrar Evaluaciones</h2>
-            <h4>Visualiza todas las evaluaciones hecha por los empleados. </h4>
-            <h4>Dividida en Perfil De Puesto, Competencia, Desempeño y Potencial.</h4>
+            <h2><b>Administrar Evaluaciones</b></h2>
             <div className="evaluations-actions">
                 <button>
-                <Link to ="/administrar-encuestas/core-competences-general">
+                <Link to ="/core-competences-general">
                     Evaluacion Competencia
                 </Link>
                 </button>
                 <button>
-                <Link to ="/administrar-encuestas/potential-competiences-general">
+                <Link to ="/potential-competiences-general">
                     Evaluacion Potencial
                 </Link>
                 </button>

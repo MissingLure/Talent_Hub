@@ -1,41 +1,52 @@
-.biblioteca-competencias {
+.BibliotecaHabilidades {
   display: flex;
-  width:100%;
-  height:100vh;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
-  background-color: #d8d8db;
-  animation: fadeInAnimation 1s forwards; 
+  animation: fadeInAnimation 1s forwards;
 }
 
-.competencias-container {
+.container {
+  margin-top: 20px;
+  height: 100vh;
+}
+
+.tituloBib {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.habilidades-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.competencia-card {
-  background-color: #322bc6;
+.habilidades-card {
+  background-color: #f8f7f7;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   margin: 10px;
   padding: 20px;
   width: 200px;
+  height: max-content;
   text-align: center;
   transition: transform 0.3s ease-in-out;
   color: #fff;
 }
 
-.competencia-card:hover {
+.habilidades-card:hover {
   transform: scale(1.05);
 }
 
-.competencia-card:nth-child(odd) {
+.habilidades-card:nth-child(odd) {
   background-color: #760025;
 }
 
-.competencia-card:nth-child(even) {
+.habilidades-card:nth-child(even) {
   background-color: #991942;
 }
 
@@ -44,35 +55,20 @@
   justify-content: center;
 }
 
-.biblioteca-competencias h1{
-  font-size: 24px;
-}
-/* 
-.biblioteca-competencias button{
+.BibliotecaHabilidades button {
   background-color: #333356;
   border-radius: 20px;
   width: 150px;
-  height:auto;
-  color:white;
+  height: auto;
+  color: white;
   margin-left: 1000px;
   margin-bottom: 20px;
   margin-top: -20px;
-} */
-
-.boton:hover{
+}
+.BibliotecaHabilidades button:hover {
   background-color: #3d7d40;
 }
 
-.boton{
-  background-color: #333356;
-  border-radius: 20px;
-  width: 150px;
-  height:auto;
-  color:white;
-  margin-left: 1000px;
-  margin-bottom: 20px;
-  margin-top: -20px;
-}
 .information-modal {
   border: none;
   border-radius: 10px;
@@ -88,7 +84,7 @@
 }
 
 .content-container {
-  background-color: #406eaf;
+  background-color: #6681a7;
 }
 
 .actions-container {
@@ -96,7 +92,7 @@
   justify-content: center;
 }
 
-.actions-container button{
+.actions-container button {
   border: none;
   width: 100px;
   height: 30px;
@@ -104,8 +100,27 @@
   color: white;
 }
 
+.information-container h1 {
+  font-size: xx-large;
+  padding: 10px;
+}
+
+.information-container h3 {
+  font-size: large;
+  padding: 10px;
+
+}
+
+.information-container h2 {
+  font-size: large;
+  padding: 10px;
+  background-color: #991942;
+  border-radius: 10px; 
+  margin-bottom: 10px;
+}
+
 .information {
-  background-color: #90AFDB;
+  background-color: #90afdb;
   margin-bottom: 10px;
   border-radius: 10px;
   padding-left: 10px;
@@ -114,7 +129,12 @@
   padding-bottom: 1px;
 }
 
-.actions-container button:hover{
+.information p {
+  font-weight: bold;
+  padding: 5px;
+}
+
+.actions-container button:hover {
   border: none;
   width: 100px;
   height: 30px;

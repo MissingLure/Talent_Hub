@@ -73,9 +73,31 @@ const CrearEmpleado = ({open, accept, cancel}) => {
             fechaNacimiento: fechaNacimiento,
             idPerfilPuesto: perfilPuesto,
             idDepartamento: departamento, 
-        }
+    };
 
-    
+    const handleCrearUsuario = () => {
+        const userData = {
+            idEmpleado: empleado.id_empleado,
+            rol: rol,
+            correos: empleado.correo,
+            contrasena: contraseña,
+        };
+        axios.post('http://localhost:4000/create/crear-usuario', userData)
+        .then((response) => {
+            console.log(response.data.data)
+            if (response.data.success) {
+                setResponseMessage(response.data.details);
+                setErrorMessages([]);
+                alert("Usuario creado con exito");
+            } else {
+                setErrorMessages(response.data.details);
+            }
+        })
+        .catch((error) => {
+            setErrorMessages(error.response.data.details);
+        })
+
+    };
 
     const closeMessage = () => {
         setPrimerNombre('');
@@ -131,7 +153,7 @@ const CrearEmpleado = ({open, accept, cancel}) => {
         setSuccess(false);
     
         if (success) {
-            // window.location.reload();
+            window.location.reload();
         }
     }
 
@@ -176,10 +198,10 @@ const CrearEmpleado = ({open, accept, cancel}) => {
                         <label>Pais: </label> 
                         <input placeholder="Pais" onChange={(e) => setPais(e.target.value)}/>
                     </div>
-                    {/* <div>
+                    <div>
                         <label>Correo Electronico: </label> 
                         <input placeholder="Correo" onChange={(e) => setCorreo(e.target.value)}/>
-                    </div> */}
+                    </div>
                     <div>
                         <label>Fecha de nacimiento: </label>
                         <input type="date" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)}/>

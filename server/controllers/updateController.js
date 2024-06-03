@@ -38,14 +38,13 @@ async function actualizar_Empleado(req, res){
     try{
         const {employeeID} = req.params; 
         
-        const {telefono, IDPerfil, IDDepartamento, IDJefe} = req.body
+        const {telefono, IDDepartamento, IDJefe, IDPerfil} = req.body
 
         const data ={
             telefono : telefono,
-            IDPerfil: IDPerfil,
             IDDepartamento : IDDepartamento,
             IDJefe: IDJefe,
-            
+            IDPerfil: IDPerfil
         };
   
 

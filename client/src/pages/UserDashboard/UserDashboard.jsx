@@ -4,7 +4,6 @@ import nav from "../UserDashboard/ENCABEZADO.jpg";
 import avatar from "../UserDashboard/avatar.png";
 import Navbar from "../../components/Navbar/Navbar";
 import { jwtDecode } from "jwt-decode";
-// import { useLocation } from 'react-router-dom';
 
 const UserDashboard = () => {
     const items = [
@@ -24,10 +23,6 @@ const UserDashboard = () => {
     const employeeData = JSON.parse(localStorage.getItem('employeeData'));
     const datos = JSON.parse(localStorage.getItem(''));
 
-    const searchParams = new URLSearchParams(location.search);
-    const idEmpleadoParam = searchParams.get('id_empleado');
-
-  const data = { idEmpleado: idEmpleadoParam };
     return (
         <div className="dashboard-container">
             <Navbar/>

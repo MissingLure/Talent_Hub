@@ -12,10 +12,9 @@
 }
 
 .contenido-empleado {
-    background-color: #2a2942;
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
-    color: white;
     width: 400px;
     max-width: 90%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -49,13 +48,8 @@
 .input-wrapper-empleado input {
     padding: 8px;
     font-size: 14px;
-    color: black;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
-
-.modificar-empleado-popup select{
-    color: black;
 }
 
 .button-wrapper-empleado {

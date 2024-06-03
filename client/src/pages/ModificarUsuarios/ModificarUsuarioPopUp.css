@@ -12,8 +12,7 @@
 }
 
 .contenido-usuario {
-    background-color: #2a2942;
-    color: white;
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
     width: 400px;
@@ -49,7 +48,6 @@
 .input-wrapper-usuario input {
     padding: 8px;
     font-size: 14px;
-    color:black;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
