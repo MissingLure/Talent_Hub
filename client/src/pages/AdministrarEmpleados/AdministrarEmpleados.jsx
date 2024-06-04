@@ -305,7 +305,7 @@ const AdministarEmpleados = () => {
                                         
                                         <td>{empleado.id_empleado}</td>
                                         <td>{empleado.primer_nombre}{' '}{empleado.segundo_nombre}{' '}{empleado.primer_apellido}{' '}{empleado.segundo_apellido}</td>
-                                        <td>{handleGetBoss(empleado.id_empleado)}</td>
+                                        <td>{handleGetBoss(empleado.id_jefe)}</td>
                                         <td>{empleado.nombre_departamento}</td>
                                         <td>{empleado.nombre_perfil}</td>
                                         <td>{empleado.id_pais}</td>

@@ -51,7 +51,7 @@ async function actualizar_Empleado(req, res){
 
         const result = await actualizarEmpleado(employeeID, telefono, IDPerfil, IDDepartamento, IDJefe);
         
-
+        console.log(data);
         if(!result){
             return res.status(404).json({
                 message: "User not found."
