@@ -11,13 +11,11 @@ async function asignar_jefe(request, response) {
             employeeId: employeeId,
             bossId: bossId,
         };
-
-        if (emptyFields(data).length > 0) {
-            response.send({ success: false, details: 'No pueden haber campos vacíos.' });
-        } else {
+        console.log(data)
             const result = await asignarJefe(employeeId, bossId);
-            response.send({success: true, details: 'Jefe asignado exitosamente.'})
-        }
+            console.log(result)
+          response.send(result)
+        
     } catch(error) {
         response.status(500).send({ success: false, details: 'Error al tratar de actualizar datos.' });
         console.log('ERROR DE SERVIDOR.');

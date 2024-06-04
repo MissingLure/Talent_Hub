@@ -98,10 +98,12 @@ async function obtenerPreguntas() {
 
 async function obtenerEmpleados() {
     const empleados = await knex
-    .select('*')
+    .select('empleados.*', 'departamentos.nombre_departamento', 'perfiles_puestos.nombre_perfil')
     .from('empleados')
     .innerJoin('departamentos', 'empleados.id_departamento', 'departamentos.id_departamento')
-    .innerJoin('perfiles_puestos', 'empleados.id_perfil_puesto','perfiles_puestos.id_perfil_puesto');
+    .innerJoin('perfiles_puestos', 'empleados.id_perfil_puesto', 'perfiles_puestos.id_perfil_puesto')
+    .orderBy('empleados.id_empleado');
+
 
     return empleados;
 }

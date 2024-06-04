@@ -15,12 +15,15 @@ const knex = require("knex")({
 
 async function asignarJefe(employeeId, bossId) {
     try {
-        console.log(employeeId, bossId);
+        console.log(employeeId, bossId, "Entro")
+
         const result = await knex('empleados')
         .where('id_empleado', employeeId)
         .update({ id_jefe: bossId });
-        console.log(result);
-        return result;
+
+        const a = await knex.select('*').from('empleados').where('id_empleado', employeeId);
+        console.log(a)
+        return a;
     } catch(error) {
         console.log(error);
         return false;

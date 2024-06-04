@@ -18,7 +18,6 @@ router.post('/obtener-competencia-por-id', dataController.obtener_competencia_po
 router.get('/obtener-jefes', dataController.obtener_jefes);
 router.get('/obtener-usuario', dataController.obtener_usuario);
 router.post('/obtener-jefe-por-empleado', dataController.get_boss_by_employee);
-router.post('/obtener-jefe-por-empleado', dataController.get_boss_by_employee);
 router.post('/obtener-empleados-por-jefe', dataController.get_employees_by_boss);
 router.get('/obtener-encuestas', dataController.obtener_encuestas);
 router.post('/obtener-habilidades-por-puesto', dataController.obtener_habilidades_por_puesto);

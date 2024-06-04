@@ -134,11 +134,15 @@ const AdministarEmpleados = () => {
     }
 
     const handleSetBoss = (employeeId, bossId) => {
+
+        console.log(employeeId, bossId);
+
         axios.post('http://localhost:4000/update/asignar-jefe', {employeeId: employeeId, bossId: bossId})
         .then((response) => {
-            console.log(response.data.details);
-            setMessage(response.data.details);
-            setSucces(response.data.success);
+           
+            setMessage("Se ha asignado el jefe con exito!");
+            setSucces(true);
+            handleGetEmployees();
         })
         .catch((error) => {
             setErrorMessages(error.response.data.details);
@@ -305,7 +309,7 @@ const AdministarEmpleados = () => {
                                         
                                         <td>{empleado.id_empleado}</td>
                                         <td>{empleado.primer_nombre}{' '}{empleado.segundo_nombre}{' '}{empleado.primer_apellido}{' '}{empleado.segundo_apellido}</td>
-                                        <td>{handleGetBoss(empleado.id_jefe)}</td>
+                                        <td>{empleado.id_jefe}</td>
                                         <td>{empleado.nombre_departamento}</td>
                                         <td>{empleado.nombre_perfil}</td>
                                         <td>{empleado.id_pais}</td>
