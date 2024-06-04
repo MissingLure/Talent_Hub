@@ -103,7 +103,7 @@ async function crearRequisitoService(newRequisito) {
     return false;
   }
 }
-
+/*
 async function crearHabilidadCompetenciaService(newHabilidadCompetencia) {
   try {
     const result = await knex("competencia_habilidad").insert(
@@ -116,6 +116,78 @@ async function crearHabilidadCompetenciaService(newHabilidadCompetencia) {
     return false;
   }
 }
+*/
+async function crearHabilidadCompetenciaService(newHabilidadCompetencia) {
+  try {
+    const result = await knex("competencia_habilidad").insert({
+      id_competencia_habilidad:
+        newHabilidadCompetencia.id_competencia_habilidad,
+      id_competencia: newHabilidadCompetencia.id_competencia,
+      nombre_habilidad: newHabilidadCompetencia.nombre_habilidad,
+      comportamiento_habilidad:
+        newHabilidadCompetencia.comportamiento_habilidad,
+      pregunta_habilidad: newHabilidadCompetencia.pregunta_habilidad,
+    });
+
+    return result;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}
+
+async function insertarCompetenciaHabilidad(req, res) {
+  const errorMessages = [];
+
+  const {
+    id_comp_hab,
+    idCompetencia,
+    nombreHabilidad,
+    comportamientoHabilidad,
+    preguntaHabilidad,
+  } = req.body;
+
+  // Validate input data
+  if (
+    !id_comp_hab ||
+    !idCompetencia ||
+    !nombreHabilidad ||
+    !comportamientoHabilidad ||
+    !preguntaHabilidad
+  ) {
+    errorMessages.push("All fields are required");
+  }
+
+  if (errorMessages.length) {
+    return response.status(400).send({ details: errorMessages });
+  }
+
+  try {
+    // Insert data into the table
+    await knex("competencia_habilidad").insert({
+      id_competencia_habilidad: id_comp_hab,
+      id_competencia: idCompetencia,
+      nombre_habilidad: nombreHabilidad,
+      comportamiento_habilidad: comportamientoHabilidad,
+      pregunta_habilidad: preguntaHabilidad,
+    });
+
+    console.log("Data inserted successfully");
+
+    return response.send({
+      success: true,
+      details: "Competencia Habilidad created",
+    });
+  } catch (error) {
+    console.error("Error inserting data:", error);
+    return response
+      .status(500)
+      .send({
+        success: false,
+        details: "Failed to create Competencia Habilidad",
+      });
+  }
+}
 
 module.exports = {
   agregarEmpleado,
@@ -124,5 +196,6 @@ module.exports = {
   crearDepartamentoService,
   crearPerfilPuestoService,
   crearRequisitoService,
-  crearHabilidadCompetenciaService
+  crearHabilidadCompetenciaService,
+  insertarCompetenciaHabilidad,
 };

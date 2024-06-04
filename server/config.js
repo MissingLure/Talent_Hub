@@ -6,6 +6,7 @@ const DB_Config = {
     TALENT_HUB_PORT: "3306"
 }
 
-module.exports = {
+
+module.exports =  {
     DB_Config
 }
