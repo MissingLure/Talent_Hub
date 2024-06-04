@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./AdministrarEncuestas.css"
+import "./AdministrarEncuestas.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Tablita from "../../components/CrearPreguntas/CompetenciaHabilidadTable";
 import habilidadesApi from "../../api/competencias.habilidades.api";
@@ -9,9 +9,17 @@ import competenciasApi from "../../api/competencias.api";
 import habilidadesPreguntasApi from "../../api/habilidades.preguntas.api";
 
 const AdministrarEncuestas = () => {
-  const opcionesCompetencia = ['Competencia 1', 'Competencia 2', 'Competencia 3'];
-  const opcionesHabilidad = ['Habilidad 1', 'Habilidad 2', 'Habilidad 3'];
-  const opcionesComportamiento = ['Comportamiento 1', 'Comportamiento 2', 'Comportamiento 3'];
+  const opcionesCompetencia = [
+    "Competencia 1",
+    "Competencia 2",
+    "Competencia 3",
+  ];
+  const opcionesHabilidad = ["Habilidad 1", "Habilidad 2", "Habilidad 3"];
+  const opcionesComportamiento = [
+    "Comportamiento 1",
+    "Comportamiento 2",
+    "Comportamiento 3",
+  ];
 
   const [competencia, setCompetencia] = useState(null);
   const [habilidad, setHabilidad] = useState(null);
@@ -24,7 +32,6 @@ const AdministrarEncuestas = () => {
 
   const [competencias, setCompetencias] = useState([]);
   const [habilidades, setHabilidades] = useState([]);
-
 
   const handleObtenerCompetencias = async () => {
     const result = await competenciasApi.getCompetenciasRequest();
@@ -63,11 +70,10 @@ const AdministrarEncuestas = () => {
     }
   };
 
-
   useEffect(() => {
     handleObtenerCompetencias();
   }, []);
-  
+
   const handleAgregarFila = () => {
     if (competencia && habilidad && resumen && pregunta_habilidad) {
       const nuevaFila = { competencia, habilidad, resumen, pregunta_habilidad };
@@ -137,18 +143,20 @@ const AdministrarEncuestas = () => {
       alert("Preguntas creadas correctamente");
     }
   };
-    return(
-        <div className="admin-encuesta-container">
-          <Navbar/>
-          {/* <div className="volver">
+  return (
+    <div className="admin-encuesta-container">
+      <Navbar />
+      {/* <div className="volver">
             <Link to="/administrar-preguntas">
               <button className="botonVolverMenuEncuesta">Volver al Menu de Encuestas</button>
             </Link>
           </div> */}
-      <h2><b>Crear Preguntas Para Competencias</b></h2>
+      <h2>
+        <b>Crear Preguntas Para Competencias</b>
+      </h2>
       <br></br>
       <h4>Crea tus preguntas para competencias especificas.</h4>
-      
+
       <div>
         <br></br>
         <label>Competencia: </label>
@@ -180,7 +188,7 @@ const AdministrarEncuestas = () => {
         )}
 
         <label>Habilidad: </label>
-          {habilidades.length > 0 ? (
+        {habilidades.length > 0 ? (
           <select
             onChange={(e) => {
               const habilidadF = findHabilidadById(e.target.value);
@@ -215,36 +223,64 @@ const AdministrarEncuestas = () => {
 
         <label>Pregunta: </label>
         <input
-            type="text"
-            value={pregunta_habilidad}
-            onChange={(e) => setPregunta(e.target.value)}
-            placeholder="Ingrese la pregunta"
-          />
+          type="text"
+          value={pregunta_habilidad}
+          onChange={(e) => setPregunta(e.target.value)}
+          placeholder="Ingrese la pregunta"
+        />
         <div>
-        <button
+          <button
             className="botonEliminarFilas"
             onClick={handleEliminarFilasMarcadas}
           >
             Eliminar Filas Marcadas
           </button>
           <button onClick={handleAgregarFila}>Agregar a la tabla</button>
-
         </div>
       </div>
-      
-      <br></br>
-      <div className="tabla-container">
-            
-            <Tablita/>
 
+      <br></br>
+
+      <div className="tabla-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Competencia</th>
+              <th>Habilidad</th>
+              <th>Resumen</th>
+              <th>Pregunta</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filasTabla.map((fila, index) => (
+              <tr key={index}>
+                <td className="Eliminar">
+                  <input
+                    type="checkbox"
+                    name="eliminar"
+                    checked={filasMarcadas.includes(index)}
+                    onChange={() => handleMarcarFila(index)}
+                  />
+                </td>
+                <td>{fila.competencia.nombre_competencia}</td>
+                <td>{fila.habilidad.nombre_habilidad}</td>
+                <td>{fila.resumen}</td>
+                <td>{fila.pregunta_habilidad}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-      
-      
-      
-     
-     
+      <br></br>
+      <div>
+        {filasTabla.length > 0 ? (
+          <button onClick={handleFinalizarEncuesta}> Finalizar Encuesta</button>
+        ) : (
+          <p></p>
+        )}
+      </div>
     </div>
-    
   );
 };
 export default AdministrarEncuestas;
