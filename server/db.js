@@ -8,7 +8,6 @@ const db = knex({
   connection: {
     host: DB_Config.TALENT_HUB_SERVER,
     user: DB_Config.TALENT_HUB_USER,
-    port: DB_Config.TALENT_HUB_PORT,
     password: DB_Config.TALENT_HUB_PASSWORD,
     database: DB_Config.TALENT_HUB_DB,
   },

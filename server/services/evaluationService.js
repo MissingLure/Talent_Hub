@@ -1,3 +1,5 @@
+const DB_Config = require('../config');
+
 const knex = require('knex')({
     client: 'mysql2',
     connection: {
@@ -73,9 +75,3 @@ exports.CalcularResultado = async(idEmpleado) =>{
 
 
 
-module.exports ={
-    GetEvaluacionesDesmpenoById,
-    createEvalucionDesempeno,
-    CalcularResultado,
-    updateResultadoEvaluacion
-}

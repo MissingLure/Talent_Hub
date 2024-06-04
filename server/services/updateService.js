@@ -33,7 +33,13 @@ async function asignarJefe(employeeId, bossId) {
   }
 }
 
-async function actualizarEmpleado(employeeID, Telefono, IDPerfil,IDDepartamento,IDJefe) {
+async function actualizarEmpleado(
+  employeeID,
+  Telefono,
+  IDPerfil,
+  IDDepartamento,
+  IDJefe
+) {
   try {
     console.log(employeeID, Telefono, IDPerfil, IDDepartamento, IDJefe);
     const result = await knex("empleados")

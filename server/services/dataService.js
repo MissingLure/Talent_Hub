@@ -1,6 +1,9 @@
 const crypto = require("crypto");
 const { async } = require("q");
 
+
+
+
 const { DB_Config } = require("../config.js");
 const knex = require("knex")({
   client: "mysql2",
@@ -80,15 +83,14 @@ async function obtenerEvaluaciones() {
 }
 
 async function obtenerCompetenciaHabilidad() {
-  try {
-    const competenciaHabilidad = await knex
-      .select("*")
-      .from("competencia_habilidad");
-    return competenciaHabilidad;
-  } catch (error) {
-    console.error("Error:", error);
-    throw error;
-  }
+    try {
+       
+        const competenciaHabilidad = await knex.select('*').from('competencia_habilidad');
+        return competenciaHabilidad;
+      } catch (error) {
+        console.error('Error:', error);
+        throw error; 
+      }
 }
 
 async function obtenerPreguntas() {
@@ -244,5 +246,5 @@ module.exports = {
   obtenerHabilidadesPorPuesto,
   obtenerEvaluacion,
   obtenerUsuario,
-  obtenerCompetenciaHabilidad,
+  obtenerCompetenciaHabilidad
 };

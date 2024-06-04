@@ -1,3 +1,5 @@
+
+const { DB_Config } = require("../config.js");
 const knex = require('knex')({
     client: 'mysql2',
     connection: {
@@ -71,9 +73,3 @@ exports.getPreguntasEntrevistaPotencial = async (idEntrevista) => {
     }
 };
 
-module.exports = {
-    createEntrevistaPotencial,
-    createEntrevistaHabilidad,
-    getPreguntasEntrevistaPotencial,
-    getPreguntasEntrevistaHabilidad
-};

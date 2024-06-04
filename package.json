@@ -43,7 +43,7 @@
     "nodemon": "^3.1.0"
   },
   "scripts": {
-    "start": "concurrently \"nodemon ./index.js\" \"cd ./client && npm run dev\"",
+    "start": "concurrently \"nodemon ./server/index.js\" \"cd ./client && npm run dev\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
