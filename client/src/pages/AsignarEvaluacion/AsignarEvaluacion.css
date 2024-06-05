@@ -54,7 +54,7 @@
     height: 30px;
     margin-left: auto;
     background-color:#991942;
-    color: aliceblue;
+    color: white;
     cursor: pointer;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .habilidad-container {
-    background-color: #991922;
+    background-color: #453356;
     color:white;
     height: 40px;
     width: 90%;

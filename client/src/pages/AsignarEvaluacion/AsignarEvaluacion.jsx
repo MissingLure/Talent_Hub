@@ -12,16 +12,13 @@ const AsignarEvaluacion = () => {
   const [questions, setQuestions] = useState([]);
   const [puestos, setPuestos] = useState([]);
   const [idPuesto, setIdPuesto] = useState("");
-  const [habilidades, setHabilidades] = useState([]);
-  const [habilidadesPuesto, setHabilidadesPuesto] = useState([]);
+  const [competencias, setCompetencias] = useState([]);
+  const [competenciasPuesto, setCompetenciaPuesto] = useState([]);
 
   const [evaluacion, setEvaluacion] = useState([]);
-  const [idHabilidad, setIdHabilidad] = useState("");
-  const [nombreHabilidad, setNombreHabilidad] = useState("");
+  const [idCompetencia, setIdCompetencia] = useState("");
+  const [nombreCompetencia, setNombreCompetencia] = useState("");
 
-  const [competencias, setCompetencias] = useState([]);
-  const [showAdminPositions, setShowAdminPositions] = useState(false);
-  const [showCrearPreguntas, setShowCrearPreguntas] = useState(false);
 
   const handleGetPuestos = () => {
     axios
@@ -35,7 +32,7 @@ const AsignarEvaluacion = () => {
   };
 
   const handleObtenerCompetencias = () => {
-    axios.get('http://localhost:5000/obtener-competencia_habilidad')
+    axios.get('http://localhost:4000/data/obtener-competencias')
     .then((response) => {
         setCompetencias(response.data.data);
     })
@@ -43,21 +40,10 @@ const AsignarEvaluacion = () => {
         console.log(error);
     })
   };
-  const handleGetQuestions = () => {
-    axios
-      .get("http://localhost:4000/data/obtener-preguntas-competencias")
-      .then((response) => {
-        console.log(response.data.data);
-        setQuestions(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   const handleAsignarHabilidades = () => {
     const errors = [];
-    if (habilidadesPuesto.length == 0) {
+    if (competenciasPuesto.length == 0) {
       let error = "Debe seleccionar al menos una competencia.";
       errors.push(error);
     }
@@ -68,7 +54,7 @@ const AsignarEvaluacion = () => {
       axios
         .post("http://localhost:4000/create/asignar-habilidades", {
           idPuesto: idPuesto,
-          habilidades: habilidadesPuesto,
+          competencias: competenciasPuesto,
         })
         .then((response) => {
           console.log(response.data.data);
@@ -79,6 +65,11 @@ const AsignarEvaluacion = () => {
     }
   };
 
+  const handleEliminarHabilidad = (index) => {
+    const updatedCompetenciasPuesto = competenciasPuesto.filter((_, i) => i !== index);
+    setCompetenciaPuesto(updatedCompetenciasPuesto);
+  };
+
   const handleAgregarHabilidad = () => {
     setErrorMessages([]);
     let errors = [];
@@ -87,43 +78,28 @@ const AsignarEvaluacion = () => {
       let error = "Debe seleccionar un perfil de puesto.";
       setErrorMessages([...errorMessages, error]);
     }
-    if (idHabilidad == "") {
+    if (idCompetencia == "") {
       errors.push("Debe seleccionar una competencia.");
       let error = "Debe seleccionar una competencia.";
       setErrorMessages([...errorMessages, error]);
     }
-    if (habilidades.length == 0) {
+    if (competencias.length == 0) {
       errors.push("Debe seleccionar una competencia.");
       let error = "Debe seleccionar una competencia.";
       setErrorMessages([...errorMessages, error]);
     } else {
       let habilidad = {
-        idHabilidad: idHabilidad,
-        nombreHabilidad: nombreHabilidad,
+        idCompetecnia: idCompetencia,
+        nombreCompetencia: nombreCompetencia,
       };
-      setHabilidadesPuesto([...habilidadesPuesto, habilidad]);
+      setCompetenciaPuesto([...competenciasPuesto, habilidad]);
     }
   };
 
-  const handleAssignPositionsOpen = () => {
-    setShowAdminPositions(true);
-  };
-
   const handleAssignPositionsClose = () => {
-    setShowAdminPositions(false);
-    setHabilidadesPuesto([]);
     setErrorMessages([]);
     setIdPuesto("");
-    setIdHabilidad("");
-    setNombreHabilidad("");
-  };
-
-  const handleCrearPreguntaOpen = () => {
-    setShowCrearPreguntas(true);
-  };
-
-  const handleCrearPreguntaClose = () => {
-    setShowCrearPreguntas(false);
+    setCompetenciaPuesto("");
   };
 
   useEffect(() => {
@@ -160,17 +136,17 @@ const AsignarEvaluacion = () => {
           <select
             onChange={(e) => {
               let selectedIndex = e.target.value;
-              setIdHabilidad(habilidades[selectedIndex].id_habilidad);
-              setNombreHabilidad(habilidades[selectedIndex].nombre_habilidad);
+              setIdCompetencia(competencias[selectedIndex].id_habilidad);
+              setNombreCompetencia(competencias[selectedIndex].nombre_habilidad);
             }}
           >
             <option selected disabled hidden>
               Seleccionar competencia...
             </option>
-            {habilidades.length > 0 ? (
-              habilidades.map((habilidad, index) => (
+            {competencias.length > 0 ? (
+              competencias.map((habilidad, index) => (
                 <option key={index} value={index}>
-                  {habilidad.nombre_habilidad}
+                  {habilidad.nombre_competencia}
                 </option>
               ))
             ) : (
@@ -198,14 +174,17 @@ const AsignarEvaluacion = () => {
         </div>
 
         <div className="habilidads-container">
-          {habilidadesPuesto.length > 0 ? (
-            habilidadesPuesto.map((habilidad, index) => (
+          {competenciasPuesto.length > 0 ? (
+            competenciasPuesto.map((habi, index) => (
               <div className="habilidad-container" key={index}>
                 <div>
-                  <p>{habilidad.nombreHabilidad}</p>
+                  <p>{habi.nombreCompetencia}</p>
                 </div>
                 <div>
-                  <button className="delete-button">Eliminar</button>
+                  <button 
+                  className="delete-button"
+                  onClick={() => handleEliminarHabilidad(index)}
+                  >Eliminar</button>
                 </div>
               </div>
             ))
