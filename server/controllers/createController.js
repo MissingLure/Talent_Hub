@@ -229,5 +229,5 @@ module.exports = {
   crear_departamento,
   crear_perfilPuesto,
   crear_requisito,
-  crear_habilidad_competencia
+  crear_habilidad_competencia,
 };

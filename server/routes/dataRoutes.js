@@ -12,6 +12,7 @@ router.get('/obtener-competencias', dataController.obtener_competencias);
 router.get('/obtener-comportamientos', dataController.obtener_comportamientos_por_competencia);
 router.get('/obtener-evaluaciones', dataController.obtener_evaluaciones);
 router.get('/obtener-preguntas', dataController.obtener_preguntas);
+router.get('/obtener-competencia_habilidad', dataController.obtenerCompetencia_Habilidad);
 router.get('/obtener-empleados', dataController.obtener_empleados);
 router.get('/obtener-habilidades', dataController.obtener_habilidades);
 router.post('/obtener-competencia-por-id', dataController.obtener_competencia_por_id);
