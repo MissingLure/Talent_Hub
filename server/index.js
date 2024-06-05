@@ -1,5 +1,3 @@
-
-
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -16,7 +14,6 @@ app.use(morgan("dev"));
 
 const userRoutes = require("./routes/userRoutes");
 const dataRoutes = require("./routes/dataRoutes");
-
 const createRoutes = require("./routes/createRoutes");
 const updateRoutes = require("./routes/updateRoutes");
 const deleteRoutes = require("./routes/deleteRoutes");
@@ -31,7 +28,6 @@ const gridBoxRoutes = require("./routes/gridBoxRoute");
 const departamentosRoutes = require("./routes/departamentosRoutes");
 const puestosRoutes = require("./routes/puestosRoutes");
 const metaEmpleadoResultadoRoutes = require("./routes/metaEmpleadoResultadoRoutes");
-
 
 
 app.use("/user", userRoutes);
@@ -51,6 +47,8 @@ app.use("/puestos", puestosRoutes);
 app.use("/meta-empleado-resultado", metaEmpleadoResultadoRoutes);
 app.use("/dashboard", dashboardRoutes);
 console.log(process.env.TALENT_HUB_DB);
+
+
 
 app.listen(4000);
 console.log("Escuchando en el puerto 4000");
