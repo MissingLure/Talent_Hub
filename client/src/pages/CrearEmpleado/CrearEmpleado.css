@@ -1,6 +1,6 @@
  .message-modal {
-    width: 500px; 
-    max-width: 80%; 
+    width: 600px; 
+    max-width: 60%; 
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -10,7 +10,7 @@
     animation: fadeInAnimation 1s forwards; 
 }
 .main-containers{
-    width: 350px;
+    width: 100%;
     height:auto;
     margin: auto;
     background-color: #333356;

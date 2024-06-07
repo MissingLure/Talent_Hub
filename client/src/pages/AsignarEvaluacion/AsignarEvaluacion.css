@@ -1,21 +1,21 @@
-.asign-container{
-    width:100%;
-    height:100vh;
+.asign-container {
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
     background-color: #d8d8db;
-    animation: fadeInAnimation 1s forwards; 
+    animation: fadeInAnimation 1s forwards;
 }
 
-.body-container{
+.body-container {
     /* margin:100px; */
     width: 80%;
     margin-top: 25px;
     display: flex;
     flex-direction: column;
-    color:white;
+    color: white;
     align-items: center;
     padding: 20px;
     border-radius: 8px;
@@ -23,28 +23,28 @@
     background-color: #453356;
 }
 
-.body-container input{
-    color:black;
+.body-container input {
+    color: black;
 }
 
-.asign-container h2{
+.asign-container h2 {
     font-size: 24px;
-    font-weight: bold;
-    margin:10px;
-}
-
-.asign-container h4{
-    font-size: 13px;
-    font-family:monospace;
-  }
-  
-
-.asign-container label{
     font-weight: bold;
     margin: 10px;
 }
 
-.asign-container select{
+.asign-container h4 {
+    font-size: 13px;
+    font-family: monospace;
+}
+
+
+.asign-container label {
+    font-weight: bold;
+    margin: 10px;
+}
+
+.asign-container select {
     margin: 4px;
 }
 
@@ -53,7 +53,7 @@
     width: 200px;
     height: 30px;
     margin-left: auto;
-    background-color:#991942;
+    background-color: #991942;
     color: white;
     cursor: pointer;
 }
@@ -70,7 +70,7 @@
 
 .habilidad-container {
     background-color: #453356;
-    color:white;
+    color: white;
     height: 40px;
     width: 90%;
     margin: 10px;
@@ -81,35 +81,35 @@
 }
 
 
-.body-container select{
-    color:black;
+.body-container select {
+    color: black;
 }
 
 .eliminar-habilidad {
     width: 20px;
     height: 60px;
-    background-color:#2e2d40;
+    background-color: #2e2d40;
     color: aliceblue;
     cursor: pointer;
 }
 
 .finalizar {
-    margin:5px;
+    margin: 5px;
     width: 200px;
     height: 60px;
-    background-color:#2e2d40;
+    background-color: #2e2d40;
     color: aliceblue;
     cursor: pointer;
 }
 
-.asign-container button{
+.asign-container button {
     border: none;
     width: 150px;
     height: 30px;
     border-radius: 20px;
 }
 
-.asign-container button:hover{
+.asign-container button:hover {
     background-color: #4b8473;
 }
 

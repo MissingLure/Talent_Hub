@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import "./AdministrarEmpleados.css"
 import axios from "axios";
 import inform from '../../images/info.png';
-import search from '../../images/search.png';
-import add from '../../images/add.png';
 import CrearEmpleado from "../CrearEmpleado/CrearEmpleado";
 import Navbar from "../../components/Navbar/Navbar";
 import Modal from "react-modal";
@@ -17,31 +15,16 @@ const AdministarEmpleados = () => {
     const [responseMessage, setResponseMessage] = useState('');
     const [empleados, setEmpleados] = useState([]);
     const [addEmployee, setAddEmployee] = useState(false);
-    const [user, setUser] = useState([]);
     const [modifyOpen, setModifyopen] = useState(false);
     const [employee, setEmployee] = useState('');
     const [bosses, setBosses] = useState([]);
     const [boss, setBoss] = useState('');
     const [hasBoss, setHasBoss] = useState(false);
-    const [userExists, setUserExists] = useState(false);
     const [selectedBoss, setSelectedBoss] = useState('');
     const [email, setEmail] = useState('');
     const [selectedEmployee, setSelectedEmployee] = useState('');
 
-     //User data
-     const [users, setUsers] = useState(''); 
-     const [employees, setEmployees] = useState('');
- 
-     //Informacion usuario
-     const [numeroIdentidad, setNumeroIdentidad] = useState('');
-     const [idEmpleado, setIdEmpleado] = useState('')
-     const [correo, setCorreo] = useState('');
-     const [contrasena, setContrasena] = useState('');
-     const [rol, setRol] = useState('');
-     const [usuarios, setUsuarios] = useState([]);
-
     //popups
-    const [showAddUserPopup, setShowAddUserPopup] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [showPopup2, setShowPopup2] = useState(false);
     const [showPopupModificar, setShowPopupModificar] = useState(false);
@@ -74,11 +57,6 @@ const AdministarEmpleados = () => {
                 setErrorMessages(error.response.data.details);
             })
     }
-
-    const handleCloseUser1 = () => {
-        setShowAddUserPopup(false);
-    }
-
 
     const handleGetEmployees = () => {
         axios.get('http://localhost:4000/data/obtener-empleados')
@@ -153,91 +131,17 @@ const AdministarEmpleados = () => {
         setModifyopen(false);
     };
 
-    const handleInfo=()=>{
-        setShowBossPopu(true);
-        setShowPopup2(false);
-    }
+    // const handleInfo=()=>{
+    //     setShowBossPopu(true);
+    //     setShowPopup2(false);
+    // }
 
-    const handleGetUsuarios = () => {
-        axios.get('http://localhost:4000/data/obtener-usuario')
-        .then((response) => {
-            setUsuarios(response.data.data);
-            // setUserExists(true);
-        })
-        .catch((error) => {
-            setErrorMessages(error.response.data.data);
-            // setUserExists(false);
-        })
-    };
 
-     const handleGetUser = (empleado) => {
-        setEmployee(empleado);
-        axios.post('http://localhost:4000/user/get-employee-user', {employeeId: empleado.id_empleado})
-        .then((response) => {
-            if(response.data.success) {
-                setUser(response.data.data);
-                setErrorMessages([]);
-            } else {
-                setErrorMessages(response.data.details);
-            }
-            setUserExists(response.data.success);
-        })
-        .catch((error) => {
-            setErrorMessages(error.response.data.details);
-        })
-        
-        setShowAddUserPopup(true);
-    };
-
-    const getRoleName = (roleNumber) => {
-        switch(roleNumber) {
-            case 0:
-                return 'Admin';
-            case 1:
-                return 'Jefe';
-            case 2:
-                return 'Empleado';
-            // Agrega más casos según sea necesario
-            default:
-                return 'Unknown';
-        }
-    }
-    
-
-    const handleCrearUsuario = () => {
-        const userData = {
-            idEmpleado: employee.id_empleado,
-            rol: rol,
-            correo: correo,
-            contrasena: contrasena,
-        };
-
-        const userAlreadyExists = usuarios.some(user => user.correo === selectedEmployee.correo);
-        if (userAlreadyExists) {
-            setErrorMessages(prev => [...prev, 'El usuario ya existe.']);
-            setUserExists(true);
-            alert('Usuario ya existe. Revisa la seccion de Usuario!')
-            return;
-        }
-        axios.post('http://localhost:4000/create/crear-usuario', userData)
-        .then((response) => {
-            console.log(response.data.data)
-            if (response.data.success) {
-                setResponseMessage(response.data.details);
-                setErrorMessages([]);
-                alert("Usuario creado con exito");
-            } else {
-                setErrorMessages(response.data.details);
-            }
-        })
-        .catch((error) => {
-            setErrorMessages(error.response.data.details);
-        })
-
-    };
     const handleInformationClick = (employeeId, bossId) => {
         handleGetEmployee(employeeId);
         handleGetBoss(bossId);
+        setShowBossPopu(true);
+        setShowPopup2(false);
     };
 
     const closeMessage = () => {
@@ -259,7 +163,6 @@ const AdministarEmpleados = () => {
     useEffect(() => {
         handleGetEmployees();
         handleGetBosses();
-        handleGetUsuarios();
     }, []);
     
     return(
@@ -393,10 +296,10 @@ const AdministarEmpleados = () => {
             {showPopup2 &&(
                 <div className="popups">
                     <div className="popups2-content">
-                    <h3>Acciones con Empleado</h3>
+                    <h3>Acciones con {selectedEmployee.primer_nombre} {selectedEmployee.primer_apellido}</h3>
                     <br></br>
                     <button onClick={() => handleModifyEmployeeClick(selectedEmployee)}>Modificar Empleado</button>
-                    <button onClick={()=> handleInfo(true)}>Información Jefe</button>
+                    <button onClick={()=> handleInformationClick(selectedEmployee.id_empleado, selectedEmployee.id_jefe)}>Información Jefe</button>
                     <button >Eliminar Empleado</button>
                     <button onClick={handleClosePopup}>Cerrar</button>
                     
@@ -416,69 +319,7 @@ const AdministarEmpleados = () => {
                 </div>
             )}
 
-        {showAddUserPopup && (
-                <div className="popup">
-                <div className="popup-content">
-                    <h3><b><i>{employee.primer_nombre} {employee.primer_apellido}</i></b></h3>
-                    <div className="modal-body">
-                        {errorMessages.length > 0 ? (
-                            <div className="create-user-form">
-                                <div className="user-create-form">
-                                    <h4><b>Crear Usuario</b></h4>
-                                    <div>
-                                        <select onChange={(e) => setRol(e.target.value)}>
-                                            <option>Seleccionar rol</option>
-                                            <option value={0}>Administrador</option>
-                                            <option value={1}>Jefe</option>
-                                            <option value={2}>Empleado</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <input placeholder="Número de identidad" value={employee.numero_identidad}/>
-                                    </div>
-                                    <div>
-                                        <input placeholder="Correo electronico" value={employee.correo}/>
-                                    </div>
-                                    <div>
-                                    <input type="password" placeholder="Contraseña" onChange={(e) => setContrasena(e.target.value)}/>
-                                    </div>
-                                    <div>
-                                    <button type="button" onClick={handleCrearUsuario}>Aceptar</button>  
-
-                                    </div>
-                                    
-                                </div>
-                                <div>
-                                    {errorMessages.length > 0 ? (
-                                        errorMessages.map((message) => (
-                                            <p className="error-message">{message}</p>
-                                        ))
-                                    ) : (
-                                        <p>{responseMessage}</p>
-                                    )}
-                                    
-                                </div>
-                            </div>
-                        ) : (
-                            <div>
-                                {userExists && (
-                            <div>
-                                <h4>Información del usuario</h4>
-                                <div className="information-container">
-                                    <p>ID: {user.id_usuario}</p>
-                                    <p>Correo: {user.correo}</p>
-                                    <p>Rol: {user.rol}</p>
-                                </div>
-                                
-                            </div>
-                        )}
-                            </div>
-                        )}
-                    </div>
-                    <button onClick={handleCloseUser1}>Cerrar</button>
-                </div>
-                </div>
-            )}
+        
 
             <div>
                 <Modal
