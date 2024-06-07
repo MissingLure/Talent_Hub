@@ -170,6 +170,10 @@ const AdministarEmpleados = () => {
         })
     };
 
+    const handleDeleteEmployee = () => {
+        
+    }
+
      const handleGetUser = (empleado) => {
         setEmployee(empleado);
         axios.post('http://localhost:4000/user/get-employee-user', {employeeId: empleado.id_empleado})
