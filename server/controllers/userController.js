@@ -3,6 +3,7 @@ const {
   getUserByEmail,
   getEmployeeById,
   getUserById,
+  deleteEmpleadoById,
 } = require("../services/userService");
 const { encryptPassword } = require("../crypto/encryption");
 const { emptyFields } = require("../utils/validator");
@@ -114,7 +115,23 @@ async function get_user(request, response) {
   }
 }
 
+
+async function deleteEmpleado (req, res) {
+  try {
+      const { id } = req.params;
+      const result = await deleteEmpleadoById(id);
+      if (result) {
+          res.status(200).send({ message: 'Employee deleted successfully' });
+      } else {
+          res.status(404).send({ message: 'Employee not found' });
+      }
+  } catch (error) {
+      res.status(500).send({ message: 'Error deleting employee', error });
+  }
+};
+
 module.exports = {
   login,
   get_user,
+  deleteEmpleado,
 };
