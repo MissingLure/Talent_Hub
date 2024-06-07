@@ -54,10 +54,10 @@ const Navbar = ({roleValue}) => {
         
         </li>
         
-          <li className="nav-item">
+          {/* <li className="nav-item">
           <Link className='nav-item' to="/evaluaciones-empleado">Inicio</Link>
         </li> 
-        
+         */}
         {(rol == 0 || rol == 1) && (
         <li className="nav-item" onMouseEnter={() => handleDropdown('rendimiento')}>
           Rendimiento
