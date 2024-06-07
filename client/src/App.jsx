@@ -18,6 +18,7 @@ import CrearEncuestas from './pages/Encuesta/Encuesta';
 import EncuestasEmpleado from './pages/Encuestas/Encuestas';
 import CoreCompetences from './pages/CoreCompetences/CoreCompetences';
 import PotencialCompetences from './pages/PotentialCompetiences/PotencialCompetiences';
+import EvaluarCompetencia from './pages/EvaluarCompetencia/EvaluarCompetencia';
 // import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
 // import VerPreguntas from './pages/VerPreguntas/Preguntas';
 
@@ -43,12 +44,14 @@ function App() {
           <Route path='/competencias' element={<BibliotecaCompetencias/>}/>
           <Route path='/administrar-encuestas/core-competences-general' element={<CoreCompetences/>}/>
           <Route path='/administrar-encuestas/potential-competiences-general' element={<PotencialCompetences/>}/>
+          <Route path='/evaluar-competencia/:idEmpleado' element={<EvaluarCompetencia/>}/>
           <Route path='/inicio' element={<Inicio/>}/>
           <Route path='/box-grid' element={<BoxGrid/>}/>
           <Route path='/administrar-encuestas'element={<AdministrarEncuestas/>}/>
           <Route path='/crear-encuestas'element={<CrearEncuestas/>}/>
           <Route path='/encuestas-empleado'element={<EncuestasEmpleado/>}/>
           <Route path='/asignar-evaluacion' element={<AsignarEvaluacion/>}/>
+          <Route path='*' element={<h1>Pagina No Encontrada</h1>} />
         </Routes>
       </Router>
     </div>
