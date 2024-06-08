@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     animation: fadeInAnimation 1s forwards; 
 }
 
@@ -52,7 +53,7 @@
     border-radius: 5px;
     line-height: 30px; 
     margin-top: 100px;
-    margin-left:50px;
+    margin-left:-850px;
 }
 
 .info-box {
@@ -81,7 +82,7 @@
     text-align: center;
     line-height: 30px; 
     margin-top: 100px;
-    margin-left:50px;
+    margin-left:-850px;
 }
 
 .Competencies_Assessment-box{
@@ -95,7 +96,7 @@
     text-align: center;
     line-height: 30px; 
     margin-top: 100px;
-    margin-left:50px;
+    margin-left:-850px;
 }
 .ranking{
     width: 200px; 
@@ -129,9 +130,10 @@
 
 /* -------------------------- */
 .info-table {
-    margin-top: -750px;
+    margin-top: 150px;
     width: 50%;
-    margin-left:600px;
+    /* margin-left:600px; */
+    align-items: center;
     background-color:#ffffff;
 }
 
@@ -154,6 +156,59 @@
 }
 
 
+.info-container {
+    /* background-color: #3b1689; */
+    color: white;
+    padding: 15px;
+    width:80%;
+  }
+  
+  .headers {
+    text-align: center;
+    font-size: 34px;
+    font-weight: bolder;
+  }
+  
+  .profile {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: #333356;
+    color:white;
+    
+    border-radius: 20px;
+  }
+  
+  .left-column, .right-column {
+    width: 64%;
+    margin-left: auto;
+  }
+  
+  .persona-info {
+    margin-bottom: 20px;
+    font-size: large;
+    /* margin-left:450px; */
+    text-align: center;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .section ul li {
+    margin-bottom: 5px;
+  }
+  
 /* -------------------------- */
 .career-table {
     margin-top: 100px;
@@ -194,14 +249,15 @@
     grid-template-columns: repeat(3, 1fr); 
     grid-gap: 10px;
     width: 50%;
-    margin: 100px;
-    margin-left:600px; 
+    /* margin: 100px; */
+    margin-top: -360px;;
+    margin-left:35%; 
     position: relative;
 }
 
 .grid-item {
     background-color:#B31827;
-    padding: 70px;
+    padding: 45px;
     font-weight: bold;
     color:white;
     text-align:start;
@@ -213,8 +269,8 @@
 .grid-item:nth-child(9)::before {
     content: '';
     position: absolute;
-    top: -430px; 
-    left: -620px; 
+    top: -340px; 
+    left: -570px; 
     border-left: 40px solid transparent;
     border-right: 40px solid transparent;
     border-bottom: 45px solid #333356;
@@ -223,10 +279,10 @@
 .grid-item:nth-child(9)::after {
     content: 'POTENCIAL'; 
     position: absolute;
-    top: -390px; 
-    left: -600px;
+    top: -220%; 
+    left: -550px;
     width: 40px; 
-    height: 580px; 
+    height: 320%; 
     background-color: #333356;
     text-align: center;
     color: aliceblue;
@@ -241,8 +297,8 @@
 .grid-item:nth-child(8)::before {
     content: '';
     position: absolute;
-    top: 205px; 
-    left: 420px;
+    top: 118%; 
+    left: 175%;
     border-left: 40px solid transparent;
     border-right: 40px solid transparent;
     border-top: 56px solid #333356; 
@@ -252,10 +308,10 @@
 .grid-item:nth-child(8)::after {
     content: 'DESEMPEÑO & COMPETENCIA'; 
     position: absolute;
-    top: 210px; 
-    left: -280px;
-    width: 730px; 
-    height: 43px;
+    top: 120%; 
+    left: -105%;
+    width: 290%; 
+    height: 35%;
     background-color: #333356;
     text-align:center;
     color: aliceblue;
@@ -316,11 +372,3 @@
     width: 50px;
     font-weight: bold;
 }
-
-
-
-
-
-
-
-
