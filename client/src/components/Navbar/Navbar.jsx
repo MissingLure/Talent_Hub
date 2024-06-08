@@ -53,9 +53,12 @@ const Navbar = ({roleValue}) => {
           </Link>
         
         </li>
-        <li className="nav-item">
-            <Link className='nav-item' to="/evaluaciones-empleado">Inicio</Link>
-        </li>
+        
+        {(rol==1) &&(
+          <li className="nav-item">
+          <Link className='nav-item' to="/evaluaciones-empleado">Inicio</Link>
+        </li> 
+        )}
         {(rol == 0 || rol == 1) && (
         <li className="nav-item" onMouseEnter={() => handleDropdown('rendimiento')}>
           Rendimiento
@@ -63,17 +66,20 @@ const Navbar = ({roleValue}) => {
             <ul className="dropdown">
               {rol == 0 && (
                 <li onClick={handleClickSubOption}>
+                  <Link className="nav-link" to="/crear-encuestas">
+                    Crear Encuesta
+                  </Link>
                   <Link className="nav-link" to="/administrar-preguntas">
                     Administrar Evaluaciones
                   </Link>
                   <Link className="nav-link" to="/box-grid">
                     9 Box Grid
                   </Link>
-                  
 
                 </li>
               )}
               {rol == 1 && (
+                
                 <li onClick={handleClickSubOption}>
                   <Link className="nav-link" to="/evaluaciones-empleado">
                     Evaluar Empleados
@@ -94,16 +100,19 @@ const Navbar = ({roleValue}) => {
           <li
           className="nav-item"
           onMouseEnter={() => handleDropdown("encuestas")}>
-          Encuestas
+          Competencias
           {dropdownOpen === "encuestas" && (
             <ul className="dropdown">
               {rol == 0 && (
                 <li onClick={handleClickSubOption}>
-                  <Link className="nav-link" to="/crear-encuestas">
-                    Crear Encuesta
+                   <Link className="nav-link" to="/asignar-evaluacion">
+                    Asignar Competencias
                   </Link>
                   <Link className="nav-link" to="/administrar-encuestas">
                     Crear Preguntas
+                  </Link>
+                  <Link className="nav-link" to="/competencias">
+                    Biblioteca de Competencias
                   </Link>
                 </li>
               )}
@@ -133,24 +142,19 @@ const Navbar = ({roleValue}) => {
             <ul className="dropdown">
               <li onClick={handleClickSubOption}>
                 <Link className="nav-link" to="/administrar-empleados">
-                  Empleados
+                  Administar Empleados
                 </Link>
               </li>
               <li onClick={handleClickSubOption}>
                 <Link className="nav-link" to="/administrar-usuarios">
-                  Usuarios
+                  Administrar Usuarios
                 </Link>
               </li>
-              <li onClick={handleClickSubOption}>
-                <Link className="nav-link" to="/competencias">
-                  Competencias
+              {/* <li onClick={handleClickSubOption}>
+                <Link className="nav-link" to="/ver-preguntas">
+                  Ver Preguntas
                 </Link>
-              </li>
-              <li onClick={handleClickSubOption}>
-                <Link className="nav-link" to="/asignar-evaluacion">
-                  Perfiles de Puestos
-                </Link>
-              </li>
+              </li> */}
 
               
               

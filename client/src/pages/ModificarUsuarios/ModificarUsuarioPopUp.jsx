@@ -8,7 +8,8 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import './ModificarUsuarioPopUp.css';
 
-const ModificarUsuarioPopUp = ({ onClose }) => {
+const ModificarUsuarioPopUp = ({ user, onClose }) => {
+    
     const handleBack = () => {
         onClose(); // Esta función cierra la ventana emergente al hacer clic en "Regresar"
     };
@@ -16,6 +17,17 @@ const ModificarUsuarioPopUp = ({ onClose }) => {
     const [correo, setCorreo] = useState('');
     const [id, setId] = useState('');
     const [rol, setRol] = useState('');
+
+
+
+    useEffect(() => {
+        if (user) {
+            setCorreo(user.correo);
+            setId(user.id_usuario);
+            setRol(user.rol);
+        }
+    }, [user]);
+
 
     const handleCorreoChange = (event) => {
         setCorreo(event.target.value);

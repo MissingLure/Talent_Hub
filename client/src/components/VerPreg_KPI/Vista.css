@@ -1,0 +1,50 @@
+
+.tablita-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 900px;
+    background-color: rgb(201, 201, 201); 
+    height: 700px;
+    margin-left: 500px; 
+    border-radius: 14px;
+
+}
+
+.tablita-container .p-datatable .p-datatable-thead > tr > th {
+    background-color: #142964; 
+    color: white; 
+    width: 700px;
+  
+}
+
+
+.tablita-container .p-datatable .p-datatable-tbody > tr > td {
+    text-align: center; 
+    
+}
+
+
+.tablita-container .p-datatable .p-column-header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.search-input {
+    border: 2px solid #142964; 
+    border-radius: 5px; 
+    padding: 5px; 
+    outline: none; 
+}
+
+
+.search-input:focus {
+    border-color: #0d47a1; 
+    box-shadow: 0 0 5px rgba(0, 72, 255, 0.5); 
+}
+
+
+

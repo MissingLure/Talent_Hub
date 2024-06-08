@@ -1,14 +1,16 @@
-const { createPool } = require("mysql2/promise");
+const knex =  require("knex");
+const config = require("./config")
 
-const pool = createPool({
-    host: '44.202.106.102',
-    port: '3306',
-    user: 'user',
-    password: 'Wu$hhUvrU!JYtvAnJ2f6Y%bqhMYAh&',
-    database: "talent_hub_dev"
+const DB_Config = config.DB_Config;
+
+const db = knex({
+  client: "mysql2",
+  connection: {
+    host: DB_Config.TALENT_HUB_SERVER,
+    user: DB_Config.TALENT_HUB_USER,
+    password: DB_Config.TALENT_HUB_PASSWORD,
+    database: DB_Config.TALENT_HUB_DB,
+  },
 });
 
-module.exports = {
-    pool
-}
-
+module.exports = db;

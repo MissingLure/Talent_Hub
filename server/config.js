@@ -1,11 +1,12 @@
 const DB_Config = {
-    TALENT_HUB_SERVER: '44.202.106.102',
+    TALENT_HUB_SERVER: '184.73.20.14',
     TALENT_HUB_USER: 'user',
     TALENT_HUB_PASSWORD: 'Wu$hhUvrU!JYtvAnJ2f6Y%bqhMYAh&',
     TALENT_HUB_DB: "talent_hub_dev",
     TALENT_HUB_PORT: "3306"
 }
 
-module.exports = {
+
+module.exports =  {
     DB_Config
 }

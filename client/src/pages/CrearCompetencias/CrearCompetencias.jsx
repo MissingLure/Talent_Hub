@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import './CrearCompetencias.css';
-import { Link } from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
+import React, { useState } from "react";
+import "./CrearCompetencias.css";
+import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
+import competenciasApi from "../../api/competencias.api";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const [competencia, setCompetencia] = useState({
-    id_competencia: 'ID_GENERADO_AUTOMATICAMENTE',
-    nombre: '',
-    descripcion: '',
-    peso: '',
+    nombre_competencia: "",
+    descripcion: "",
   });
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,26 +20,38 @@ function App() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const data = await competenciasApi.postCompetenciaRequest(competencia);
+
+    if (data !== null) {
+      if (data.status === 200) {
+        console.log(data.data.message);
+
+        navigate("/competencias");
+      }
+    }
   };
 
   return (
     <div className="competences-container">
-      <Navbar/>
-      <h1 className="tituloComp"><b>Crear Competencia</b></h1>
-      <form className='competences-form' onSubmit={handleSubmit}>
-        <label htmlFor="nombre"><b>Nombre de Competencia:</b></label>
+      <form className="competences-form" onSubmit={handleSubmit}>
+        <label htmlFor="nombre_competencia">
+          <b>Nombre de Competencia:</b>
+        </label>
         <input
           type="text"
-          id="nombre"
-          name="nombre"
-          value={competencia.nombre}
+          id="nombre_competencia"
+          name="nombre_competencia"
+          value={competencia.nombre_competencia}
           onChange={handleInputChange}
           required
         />
 
-        <label htmlFor="descripcion"><b>Descripción:</b></label>
+        <label htmlFor="descripcion">
+          <b>Descripción:</b>
+        </label>
         <textarea
           id="descripcion"
           name="descripcion"
@@ -49,12 +62,8 @@ function App() {
         ></textarea>
 
         <div> </div>
-      
 
         <button type="submit">Crear Competencia</button>
-        <Link className="competences-container" to="/competencias">
-          <button type="submit"> Regresar </button>
-        </Link>
       </form>
     </div>
   );

@@ -99,7 +99,7 @@ const EvaluacionEmpleado = () => {
       <div className="questions-container">
         <div className="survey-type">
           <div className="evaluation-title">
-            <h1>Tipo de Evaluacion</h1>
+            <h1></h1>
           </div>
           <div className="total-title">
             <h2>TOTAL: {total}</h2>

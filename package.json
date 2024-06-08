@@ -24,6 +24,9 @@
     "mysql2": "^3.9.7",
     "npm": "^10.2.5",
     "pg": "^8.11.3",
+    "primeflex": "^3.3.1",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.6.6",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-data-table-component": "^7.5.4",
@@ -40,7 +43,7 @@
     "nodemon": "^3.1.0"
   },
   "scripts": {
-    "start": "concurrently \"nodemon ./index.js\" \"cd ./client && npm run dev\"",
+    "start": "concurrently \"nodemon ./server/index.js\" \"cd ./client && npm run dev\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
