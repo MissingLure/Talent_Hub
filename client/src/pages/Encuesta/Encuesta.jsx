@@ -190,7 +190,7 @@ const Encuesta = () => {
           </button>
         </div>  
 
-        <div style={{ height: 40, width: '100%' }}>
+        <div style={{ height: 100, width: '100%' }}>
           <DataTable
             id="Data"
             columns={columns}
@@ -210,16 +210,18 @@ const Encuesta = () => {
 
         <br />
         <div>
-          <button className="Eliminars" onClick={handleEliminarFilasMarcadas}>
+          <button className="Eliminar" onClick={handleEliminarFilasMarcadas}>
             Eliminar Preguntas
+          </button>
+          
+          <button className="Fin" onClick={handleAgregarPregunta}>
+            Finalizar Encuesta
           </button>
         </div>
         <br />
         {/* <br /> */}
         <div>
-          <button className="Fin" onClick={handleAgregarPregunta}>
-            Finalizar Encuesta
-          </button>
+          
         </div>
         <div>
           {errorMessages.length > 0 ? (
