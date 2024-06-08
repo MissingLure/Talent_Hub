@@ -42,6 +42,22 @@ function EvaluarCompetencia() {
     return true;
   };
 
+  const calcularResultado = () => {
+    let res = 0;
+    let cont_1 = 0;
+    let cont_2 = 0;
+
+    preguntas.forEach((pregunta) => {
+      if (pregunta.resultado === 1) ++cont_1;
+
+      if (pregunta.resultado === 2) ++cont_2;
+    });
+
+    res = cont_1 + cont_2 * 2;
+
+    return res;
+  };
+
   const handleChangePregunta = (id, value) => {
     const newPreguntas = preguntas.map((pregunta) => {
       if (pregunta.id_evaluacion_competencias === id) {
@@ -211,7 +227,9 @@ function EvaluarCompetencia() {
         ) : (
           <div className="bg-green-400 font-bold p-4 text-white rounded-md ">
             <p>Ya esta evaluado</p>
-            <p className="text-green-700 font-bold hover:text-green-900 transition-colors cursor-pointer mt-1"></p>
+            <p className="text-green-700 font-bold hover:text-green-900 transition-colors cursor-pointer mt-4">
+              Su resultado es: {calcularResultado()}
+            </p>
           </div>
         )}
       </div>
