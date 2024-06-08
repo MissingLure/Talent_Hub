@@ -21,7 +21,7 @@ const EvaluacionesPendientes = () => {
   /*Aqui se encarga de cargar los datos al cosito de evaluaciones y chequiaria si son del user que le tocan */
   const handleGetEvaluacion = (id) => {
     axios
-      .get("http://localhost:4000/data//evaluaciones-pendientes")
+      .get("http://localhost:4000/evaluaciones-competencias/evaluaciones-pendientes")
       .then((response) => {
         setEvaluaciones(response.data.data);
       })
@@ -37,9 +37,7 @@ const EvaluacionesPendientes = () => {
   return (
     <div className="evaluaciones-pendientes">
       <Navbar />
-      <h2>
-        <b>Evaluaciones Pendientes</b>
-      </h2>
+      <h2><b>Evaluaciones Pendientes</b></h2>
       <br />
       <div className="body-container-evaluaciones">
         <div className="container3 evaluaciones">
@@ -52,21 +50,14 @@ const EvaluacionesPendientes = () => {
               </tr>
             </thead>
             <tbody>
-              {/*Aqui toma todos los datos de las incoming evaluaciones*/}
               {evaluaciones.length > 0 ? (
                 evaluaciones.map((evaluacion) => (
                   <tr key={evaluacion.id}>
                     <td>
-                      <input
-                        type="checkbox"
-                        name="realizar"
-                        /*Aqui es donde los va a ver a donde los va mandar a hacer las evaluaciones*/
-                      />
+                      <input type="checkbox" name="realizar" />
                     </td>
                     <td>{evaluacion.nombre}</td>
-                    <td>
-                      {new Date(evaluacion.fechaCaducidad).toLocaleDateString()}
-                    </td>
+                    <td>{new Date(evaluacion.fechaCaducidad).toLocaleDateString()}</td>
                   </tr>
                 ))
               ) : (
@@ -76,13 +67,14 @@ const EvaluacionesPendientes = () => {
               )}
             </tbody>
           </table>
-          <button className="button-realizar-evaluacion">
-            <Link to="/user-dashboard">Realizar</Link>
-            {/*Aqui es donde los va a mandar a hacer las evaluaciones*/}
-          </button>{" "}
-          <button className="button-realizar-evaluacion" onClick={handleClick}>
-            <Link to="/user-dashboard">Regresar</Link>
-          </button>
+          <div>
+            <button className="button-realizar-evaluacion">
+              <Link to="/user-dashboard" style={{ color: 'white', textDecoration: 'none' }}>Realizar</Link>
+            </button>
+            <button className="button-realizar-evaluacion" onClick={handleClick}>
+              Regresar
+            </button>
+          </div>
         </div>
       </div>
     </div>
