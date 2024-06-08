@@ -1,29 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "./EvaluacionesPendientes.css";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./EvaluacionesPendientes.css";
 import inform from "../../images/info.png";
 import search from "../../images/search.png";
 import add from "../../images/add.png";
 import Navbar from "../../components/Navbar/Navbar";
+
 import Modal from "react-modal";
 
 const EvaluacionesPendientes = () => {
   const [evaluaciones, setEvaluaciones] = useState([]);
+  JSON.parse(localStorage.getItem("employeeData"));
+  const [id_persona, setId_persona] = useState(employeeData.id_user);
 
   useEffect(() => {
-    handleGetEvaluacion();
+    handleGetEvaluacion(id_persona);
   }, []);
 
-  const handleGetEvaluacion = () => {
+  const handleGetEvaluacion = (id) => {
     axios
-      .get("http://localhost:4000/data/obtener")
+      .get("http://localhost:4000/data//evaluaciones-pendientes")
       .then((response) => {
         setEvaluaciones(response.data.data);
       })
       .catch((error) => {
         console.log(error.response.data.data);
       });
+  };
+
+  const handleClick = () => {
+    navigate("/user-dashboard");
   };
 
   return (
@@ -67,10 +74,12 @@ const EvaluacionesPendientes = () => {
               )}
             </tbody>
           </table>
-          <button className="button-realizar-evaluacion">Realizar</button>{" "}
-          {/*onClick={mandar a la evaluación}*/}
-          <button className="button-realizar-evaluacion">Regresar</button>{" "}
-          {/*onClick={mandar a la pantalla de evaluaciones?}*/}
+          <button className="button-realizar-evaluacion">
+            <Link to="/user-dashboard">Realizar</Link>
+          </button>{" "}
+          <button className="button-realizar-evaluacion" onClick={handleClick}>
+            <Link to="/user-dashboard">Regresar</Link>
+          </button>
         </div>
       </div>
     </div>
