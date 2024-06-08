@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import evalaucionesApi from "../../api/evaluaciones.competencias.api";
 import empleadoApi from "../../api/empleado.api";
 import ItemCompetencia from "../../components/EvaluacionCompetencia/ItemCompetencia";
+import gridBoxApi from "../../api/gridBox.api";
 
 function EvaluarCompetencia() {
   /*
@@ -42,7 +43,7 @@ function EvaluarCompetencia() {
     return true;
   };
 
-  const calcularResultado = () => {
+  const calcularResultado = (preguntas) => {
     let res = 0;
     let cont_1 = 0;
     let cont_2 = 0;
@@ -86,7 +87,21 @@ function EvaluarCompetencia() {
         return;
       }
 
+      /*
+      const cal = calcularResultado(preguntas);
+      const resGridBox = await gridBoxApi.updateGridBoxRequest(
+        params.idEmpleado,
+        { resultado_evaluacion_competencias: cal }
+      );
+
+      if (!resGridBox || resGridBox.status < 200 || resGridBox.status >= 300) {
+        alert("Error al guardar la evaluacion");
+        return;
+      }
+        */
+
       setIsEvaluado(true);
+
       alert("Evaluacion guardada con exito");
     });
   };
@@ -228,7 +243,7 @@ function EvaluarCompetencia() {
           <div className="bg-green-400 font-bold p-4 text-white rounded-md ">
             <p>Ya esta evaluado</p>
             <p className="text-green-700 font-bold hover:text-green-900 transition-colors cursor-pointer mt-4">
-              Su resultado es: {calcularResultado()}
+              Su resultado es: {calcularResultado(preguntas)}
             </p>
           </div>
         )}
