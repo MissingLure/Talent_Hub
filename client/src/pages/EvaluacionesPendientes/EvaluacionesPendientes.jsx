@@ -11,7 +11,7 @@ import Modal from "react-modal";
 
 const EvaluacionesPendientes = () => {
   const [evaluaciones, setEvaluaciones] = useState([]);
-  JSON.parse(localStorage.getItem("employeeData"));
+  const employeeData = JSON.parse(localStorage.getItem("employeeData"));
   const [id_persona, setId_persona] = useState(employeeData.id_user);
 
   useEffect(() => {
