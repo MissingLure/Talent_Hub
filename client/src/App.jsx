@@ -21,8 +21,6 @@ import PotencialCompetences from './pages/PotentialCompetiences/PotencialCompeti
 // import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
 // import VerPreguntas from './pages/VerPreguntas/Preguntas';
 
-
-
 function App() {
   return (
     <div className="App">
