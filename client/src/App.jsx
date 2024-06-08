@@ -48,6 +48,7 @@ function App() {
             element={<EvaluacionesEmpleado />}
           />
           <Route path="/evaluacion-empleado" element={<EvaluacionEmpleado />} />
+          {/*La ruta de evaluaciones pendientes*/}
           <Route
             path="/evaluaciones-pendientes"
             element={<EvaluacionesPendientes />}

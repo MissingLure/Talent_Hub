@@ -18,6 +18,7 @@ const EvaluacionesPendientes = () => {
     handleGetEvaluacion(id_persona);
   }, []);
 
+  /*Aqui se encarga de cargar los datos al cosito de evaluaciones y chequiaria si son del user que le tocan */
   const handleGetEvaluacion = (id) => {
     axios
       .get("http://localhost:4000/data//evaluaciones-pendientes")
@@ -51,6 +52,7 @@ const EvaluacionesPendientes = () => {
               </tr>
             </thead>
             <tbody>
+              {/*Aqui toma todos los datos de las incoming evaluaciones*/}
               {evaluaciones.length > 0 ? (
                 evaluaciones.map((evaluacion) => (
                   <tr key={evaluacion.id}>
@@ -58,7 +60,7 @@ const EvaluacionesPendientes = () => {
                       <input
                         type="checkbox"
                         name="realizar"
-                        // Add logic for checkbox handling if necessary
+                        /*Aqui es donde los va a ver a donde los va mandar a hacer las evaluaciones*/
                       />
                     </td>
                     <td>{evaluacion.nombre}</td>
@@ -69,13 +71,14 @@ const EvaluacionesPendientes = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="3">No hay datos.</td>
+                  <td colSpan="3">No tiene evaluaciones pendientes.</td>
                 </tr>
               )}
             </tbody>
           </table>
           <button className="button-realizar-evaluacion">
             <Link to="/user-dashboard">Realizar</Link>
+            {/*Aqui es donde los va a mandar a hacer las evaluaciones*/}
           </button>{" "}
           <button className="button-realizar-evaluacion" onClick={handleClick}>
             <Link to="/user-dashboard">Regresar</Link>
