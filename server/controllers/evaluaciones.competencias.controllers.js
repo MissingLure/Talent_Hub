@@ -1,5 +1,23 @@
 const evaluacionesCompetenciasServ = require("../services/evaluaciones.competencias.services");
 
+const SelectEvalucionesPendientes = async (req,res) => {
+  try {
+    const result =
+      await evaluacionesCompetenciasServ.SelectEvalucionesPendientes();
+
+    return res.status(200).json({
+      message: "Consulta exitosa.",
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      message: "Error en el servidor.",
+    });
+  }
+};
+
 const getEvaluacionesCompetenciasController = async (req, res) => {
   try {
     const result =
@@ -175,4 +193,5 @@ module.exports = {
   putEvaluacionCompetenciasController,
   deleteEvaluacionCompetenciasController,
   getEvaluacionesCompetenciasByEmpleadoController,
+  SelectEvalucionesPendientes,
 };

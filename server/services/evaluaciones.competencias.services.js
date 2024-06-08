@@ -1,5 +1,18 @@
 const db = require("../db");
 
+const SelectEvalucionesPendientes = async () => {
+  try {
+    const result = await db('evaluacion_competencias as ecp')
+  .whereNull('ecp.resultado')
+  .select('ecp.id_evaluacion_competencias')
+  return result;
+  } catch (error) {
+    console.log(error);
+
+    return null;
+  }
+}
+
 const selectEvaluacionesCompetenciasService = async () => {
   try {
     const result = await db("evaluacion_competencias").select();
@@ -104,4 +117,5 @@ module.exports = {
   insertEvaluacionCompetenciasService,
   updateEvaluacionCompetenciasService,
   deleteEvaluacionCompetenciasService,
+  SelectEvalucionesPendientes,
 };

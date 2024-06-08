@@ -9,6 +9,11 @@ router.get(
 );
 
 router.get(
+  "/evaluaciones-pendientes",
+  evaluacionesCompetenciasCtr.SelectEvalucionesPendientes
+);
+
+router.get(
   "/:idEvaluacionCompetencias",
   evaluacionesCompetenciasCtr.getEvaluacionCompetenciasController
 );
