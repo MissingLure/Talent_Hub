@@ -1,78 +1,80 @@
-.survey-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    animation: fadeInAnimation 1s forwards; 
-}
-
-.top-container {
-    display: flex;
-    margin-bottom: 15px;
-    height: 30px;
-    margin-top: 15px;
-}
-
-.data-title {
-    width: 25%;
-    background-color: #38333f;
-    color: white;
-}
-
-.data-value {
-    width: 50%;
-    margin-right: 20px;
-    background-color: #f3f3f3;
-}
-
-
-.bottom-container {
-    display: flex;
-    height: 30px;
-}
-
-.questions-list {
-    height: 650px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    overflow-y: auto;
-}
-
-.question-holder {
-    width: 100%;
-}
-
-.survey-actions {
-    margin: 5px;
-}
-
-.survey-type {
-    display: flex;
-}
-
-
-.evaluation-title {
-    color: white;
-    background-color: #38333f;
-    height: 100px;
-    width: 100%;
+.evaluar-potencial-popup {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-}
-.total-title {
-    background-color: #aeaaaa;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  .contenido-empleado {
+    background-color: #2a2942;
+    padding: 20px;
+    border-radius: 10px;
     color: white;
-    width: 10%;
-    
-    height: 100px;
-    margin-top: 30px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formulario-container-empleado {
     display: flex;
-    justify-content: center;
-}
-
-.total-title h2 {
-    transform: rotate(-90deg);
-    font-size: X-large;
-}
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .titulo-empleado {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 24px;
+    width: 100%;
+  }
+  
+  .input-wrapper-empleado {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .input-wrapper-empleado label {
+    margin-bottom: 5px;
+  }
+  
+  .input-wrapper-empleado input {
+    padding: 8px;
+    font-size: 14px;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .button-wrapper-empleado {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .button-wrapper-empleado button {
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #CD1C2C;
+    color: white;
+    transition: background-color 0.3s ease;
+    flex: 1;
+    margin: 0 5px;
+  }
+  
+  .button-wrapper-empleado button:hover {
+    background-color: #CD1C2C;
+  }
+  
