@@ -167,21 +167,13 @@ const AdministarEmpleados = () => {
         `http://localhost:4000/user/delete-employee/${id_empleado}`
       );
       console.log("Empleado eliminado exitosamente:", response.data);
+      handleGetEmployees();
     } catch (error) {
       console.error("Hubo un error eliminando el empleado!", error);
     }
   };
 
-  const handleDeleteUser = async (id_usuario) => {
-    try {
-      const response = await axios.delete(
-        `http://localhost:4000/user/delete-user/${id_usuario}`
-      );
-      console.log("Usuario eliminado exitosamente:", response.data);
-    } catch (error) {
-      console.error("Hubo un error eliminando el usuario!", error);
-    }
-  };
+  
 
   const handleGetUser = (empleado) => {
     setEmployee(empleado);
@@ -448,7 +440,7 @@ const AdministarEmpleados = () => {
             >
               Información Jefe
             </button>
-            <button>Eliminar Empleado</button>
+            <button onClick={() => handleDeleteEmployee(selectedEmployee.id_empleado)}>Eliminar Empleado</button>
             <button onClick={handleClosePopup}>Cerrar</button>
           </div>
         </div>

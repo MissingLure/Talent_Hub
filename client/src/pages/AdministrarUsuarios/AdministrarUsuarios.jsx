@@ -70,6 +70,17 @@ const AdministarUsuarios = () => {
             });
     };
 
+    const handleDeleteUser = async (id_usuario) => {
+        try {
+          const response = await axios.delete(
+            `http://localhost:4000/user/delete-user/${id_usuario}`
+          );
+          console.log("Usuario eliminado exitosamente:", response.data);
+        } catch (error) {
+          console.error("Hubo un error eliminando el usuario!", error);
+        }
+      };
+
     const getRoleName = (roleNumber) => {
         const role = Number(roleNumber); 
         switch (role) {
@@ -194,7 +205,7 @@ const AdministarUsuarios = () => {
                             <h3>Acciones con Usuario</h3>
                             <br />
                             <button onClick={() => setShowPopupModificar(true)}>Modificar Usuario</button>
-                            <button>Eliminar Usuario</button>
+                            <button onClick={() => handleDeleteUser(selectedUser)}>Eliminar Usuario</button>
                             <button onClick={handleCloseUser}>Cerrar</button>
                         </div>
                     </div>
@@ -205,7 +216,7 @@ const AdministarUsuarios = () => {
                         <div>
                             <ModificarUsuarioPopUp
                                 user={selectedUser}
-                                cancel={() => setShowPopupModificar(false)}
+                                onClose={() => setShowPopupModificar(false)}
                             />
                         </div>
                     </div>
