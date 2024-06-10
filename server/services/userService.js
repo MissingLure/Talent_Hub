@@ -37,8 +37,25 @@ async function getUserById(employeeId) {
   return user;
 }
 
+async function deleteEmpleadoById (id) {
+  try {
+      console.log(id);
+      //let user = await knex.select("*").from("empleados").where("id_empleado", id);
+      //console.log(user);
+      // let deletedUser = await knex.delete().from("empleados").where("id_empleado", id);
+      let deletedEmployee = await knex.select("*").from("empleados").where("id_empleado", id).del();
+      console.log(deletedEmployee);
+     // const result = await db.query(query, [id]);
+      return deletedEmployee;
+  } catch (error) {
+      console.error('Error deleting user:', error);
+      throw error;
+  }
+};
+
 module.exports = {
   getUserByEmail,
   getEmployeeById,
   getUserById,
+  deleteEmpleadoById,
 };

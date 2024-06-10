@@ -53,9 +53,12 @@ const Navbar = ({roleValue}) => {
           </Link>
         
         </li>
-        <li className="nav-item">
-            <Link className='nav-item' to="/evaluaciones-empleado">Inicio</Link>
-        </li>
+        
+        {(rol==1) &&(
+          <li className="nav-item">
+          <Link className='nav-item' to="/evaluaciones-empleado">Inicio</Link>
+        </li> 
+        )}
         {(rol == 0 || rol == 1) && (
         <li className="nav-item" onMouseEnter={() => handleDropdown('rendimiento')}>
           Rendimiento
@@ -151,11 +154,11 @@ const Navbar = ({roleValue}) => {
                   Perfiles de Puestos
                 </Link>
               </li>
-              <li onClick={handleClickSubOption}>
+              {/* <li onClick={handleClickSubOption}>
                 <Link className="nav-link" to="/ver-preguntas">
                   Ver Preguntas
                 </Link>
-              </li>
+              </li> */}
 
               
               

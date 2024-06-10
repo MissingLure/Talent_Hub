@@ -30,18 +30,7 @@ const BibliotecaCompetencias = () => {
 
     return setCompetencias([]);
   };
-
-  const handleGetPuestos = () => {
-    axios
-      .get("http://localhost:4000/data/obtener-puestos")
-      .then((response) => {
-        setPuestos(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+  
   const handleClosePopup = () => {
     setSHowPopup(false);
   };

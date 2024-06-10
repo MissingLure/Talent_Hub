@@ -59,8 +59,4 @@ function App() {
   );
 }
 
-/*
-<Route path='/mostrar-info' element={<MostrarInfo/>}/>
-*/
-
 export default App;
