@@ -4,6 +4,7 @@ const {
   getEmployeeById,
   getUserById,
   deleteEmpleadoById,
+  deleteUsuarioById,
 } = require("../services/userService");
 const { encryptPassword } = require("../crypto/encryption");
 const { emptyFields } = require("../utils/validator");
@@ -130,8 +131,23 @@ async function deleteEmpleado (req, res) {
   }
 };
 
+async function deleteUsuario (req, res) {
+  try {
+    const { id } = req.params;
+    const result = await deleteUsuarioById(id);
+    if (result) {
+        res.status(200).send({ message: 'User deleted successfully' });
+    } else {
+        res.status(404).send({ message: 'User not found jajaxd que cosas' });
+    }
+} catch (error) {
+    res.status(500).send({ message: 'Error deleting user', error });
+}
+}
+
 module.exports = {
   login,
   get_user,
   deleteEmpleado,
+  deleteUsuario,
 };
