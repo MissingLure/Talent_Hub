@@ -124,113 +124,102 @@ const Encuesta = () => {
   return (
     <div className="create-questions">
       <Navbar />
-      <h2 className="tituloCrearEncuesta"><b>Crear Encuesta</b> </h2>
+      <div className="container">
+        <h2 className="tituloCrearEncuesta"><b>Crear Encuesta</b> </h2>
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleAgregarPregunta();
-        }}
-      >
-      </form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleAgregarPregunta();
+          }}
+        >
+        </form>
 
-      <div className="logins-form">
-        <div>
-          <label>Nombre:</label>
-        </div>
-        <div>
-          <input placeholder="Ingrese nombre de encuesta" onChange={(e) => setNombreEncuesta(e.target.value)} />
-        </div>
-        <div>
-          <label>Tipo de encuesta</label>
-        </div>
-        <div>
-          <select onChange={(e) => setTipoEncuesta(e.target.value)}>
-            <option hidden disabled selected>
-              Seleccione tipo de encuesta...
-            </option>
-            <option value="Clima Laboral">Clima Laboral</option>
-            <option value="Cultura">Cultura</option>
-          </select>
-        </div>
-        <div>
-          <label>Lenguaje:</label>
-        </div>
-        <div>
-          <select value={lenguaje} onChange={(e) => setLenguaje(e.target.value)}>
-            <option value="">Seleccione un lenguaje...</option>
-            {opcionesLenguaje.map((opcion, index) => (
-              <option key={index} value={opcion}>
-                {opcion}
+        <div className="logins-form">
+          <div>
+            <label>Nombre:</label>
+          </div>
+          <div>
+            <input placeholder="Ingrese nombre de encuesta" onChange={(e) => setNombreEncuesta(e.target.value)} />
+          </div>
+          <div>
+            <label>Tipo de encuesta</label>
+          </div>
+          <div>
+            <select onChange={(e) => setTipoEncuesta(e.target.value)}>
+              <option hidden disabled selected>
+                Seleccione tipo de encuesta...
               </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label>Pregunta:</label>
-        </div>
-        <div>
-          <input type="text" className="inputs" value={pregunta} onChange={(e) => setPregunta(e.target.value)} placeholder="Ingrese la pregunta" />
-        </div>
-        {/* <div>
-        {questions.length > 0 ? (
-            <select onChange={(e) => setQUestion(e.target.value)}>
-              <option hidden disabled selected value="">Seleccione pregunta...</option>
-              {questions.map((question, index) => (
-                <option key = {index} value= {question.id}>{question.name}</option>
+              <option value="Clima Laboral">Clima Laboral</option>
+              <option value="Cultura">Cultura</option>
+            </select>
+          </div>
+          <div>
+            <label>Lenguaje:</label>
+          </div>
+          <div>
+            <select value={lenguaje} onChange={(e) => setLenguaje(e.target.value)}>
+              <option value="">Seleccione un lenguaje...</option>
+              {opcionesLenguaje.map((opcion, index) => (
+                <option key={index} value={opcion}>
+                  {opcion}
+                </option>
               ))}
             </select>
-          ) : (
-            <p>No hay datos.</p>
-          )}
-        </div> */}
-        <div>
-          <button className="Agregar" onClick={handleAgregarFila}>
-            Agregar Pregunta
-          </button>
-        </div>  
+          </div>
+          <div>
+            <label>Pregunta:</label>
+          </div>
+          <div>
+            <input type="text" className="inputs" value={pregunta} onChange={(e) => setPregunta(e.target.value)} placeholder="Ingrese la pregunta" />
+          </div>
+          <div>
+            <button className="Agregar" onClick={handleAgregarFila}>
+              Agregar Pregunta
+            </button>
+          </div>  
 
-        <div style={{ height: 40, width: '100%' }}>
-          <DataTable
-            id="Data"
-            columns={columns}
-            data={Busqueda}
-            selectableRows
-            onSelectedRowsChange={handleSelectedRowsChange}
-            fixedHeader
-            initialState={{
-              pagination: {
-                paginationModel: { page: 0, pageSize: 5 },
-              },
-            }}
-            pageSizeOptions={[5, 10]}
-            checkboxSelection
-          />
-        </div>
+          <div style={{ height: 40, width: '100%' }}>
+            <DataTable
+              id="Data"
+              columns={columns}
+              data={Busqueda}
+              selectableRows
+              onSelectedRowsChange={handleSelectedRowsChange}
+              fixedHeader
+              initialState={{
+                pagination: {
+                  paginationModel: { page: 0, pageSize: 5 },
+                },
+              }}
+              pageSizeOptions={[5, 10]}
+              checkboxSelection
+            />
+          </div>
 
-        <br />
-        <div>
-          <button className="Eliminars" onClick={handleEliminarFilasMarcadas}>
-            Eliminar Preguntas
-          </button>
-        </div>
-        <br />
-        {/* <br /> */}
-        <div>
-          <button className="Fin" onClick={handleAgregarPregunta}>
-            Finalizar Encuesta
-          </button>
-        </div>
-        <div>
-          {errorMessages.length > 0 ? (
-            <div className="error-message">
-              {errorMessages.map((error, index) => (
-                <p key={index}>{error}</p>
-              ))}
-            </div>
-          ) : (
-            <p>{responseMessage}</p>
-          )}
+          <br />
+          <div>
+            <button className="Eliminars" onClick={handleEliminarFilasMarcadas}>
+              Eliminar Preguntas
+            </button>
+          </div>
+          <br />
+          <div>
+            <button className="Fin" onClick={handleAgregarPregunta}>
+              Finalizar Encuesta
+            </button>
+          </div>
+          <div>
+            {errorMessages.length > 0 ? (
+              <div className="error-message">
+                {errorMessages.map((error, index) => (
+                  <p key={index}>{error}</p>
+                ))}
+              </div>
+            ) : (
+              <p>{responseMessage}</p>
+            )}
+          </div>
         </div>
       </div>
     </div>

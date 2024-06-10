@@ -1,30 +1,30 @@
-// import React from "react";
-// import Navbar from "../../components/Navbar/Navbar";
-// // import Preguntitas from "../../components/VerPreg_KPI/Vista";
+import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
+import Preguntitas from "../../components/VerPreg_KPI/Vista";
 
 
 
-// const VerPreguntas = () => {
+const VerPreguntas = () => {
 
   
   
-//   return (
+  return (
     
-//     <div>
-// ``
-//         <Navbar/>
-//         <br/>
-//         <br/>
-//         <br/>
-//         <br/>
+    <div>
+
+        <Navbar/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         
-//         {/* <Preguntitas/> */}
+        <Preguntitas/>
 
 
 
-//     </div>
+    </div>
 
-//   );
-// };
+  );
+};
 
-// export default VerPreguntas;
+export default VerPreguntas;

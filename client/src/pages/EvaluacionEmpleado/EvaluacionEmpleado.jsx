@@ -9,6 +9,12 @@ const EvaluacionEmpleado = () => {
   const [preguntas, setPreguntas] = useState([]);
   const [empleado, setEmpleado] = useState(null);
   const [total, setTotal] = useState(0);
+  const [notaDesempeno, setNotaDesempeno] = useState('');
+  const [logrosDestacados, setLogrosDestacados] = useState('');
+  const [isEditingNota, setIsEditingNota] = useState(false);
+  const [isEditingLogros, setIsEditingLogros] = useState(false);
+  const [desempeno, setDesempeno] = useState(0);
+  
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const idEmpleadoParam = searchParams.get('id_empleado');
@@ -56,75 +62,124 @@ const EvaluacionEmpleado = () => {
     handleGetQuestions();
   }, []);
 
+  useEffect(() => {
+    if (empleado) {
+      const metasAsignadas = 4; // Aquí deberías usar los datos reales del empleado
+      const metasLogradas = 3; // Aquí deberías usar los datos reales del empleado
+      setDesempeno((metasLogradas / metasAsignadas) * 100);
+    }
+  }, [empleado]);
+
   const handleTotalChange = (index, newTotal) => {
     const newTotals = [...preguntas.map((_, idx) => idx === index ? newTotal : 0)];
     setTotal(newTotals.reduce((acc, curr) => acc + curr, 0));
   };
 
+  const toggleEditingNota = () => {
+    setIsEditingNota(!isEditingNota);
+  };
+
+  const toggleEditingLogros = () => {
+    setIsEditingLogros(!isEditingLogros);
+  };
+
   return (
     <div>
-        <Navbar/>
-      {empleado && (
-        <div className="employee-info">
-          <div className="top-container">
-            <div className="data-title">
-              <label>Nombre:</label>
-            </div>
-            <div className="data-value">
-              <label>{empleado.primer_nombre} {empleado.primer_apellido}</label>
-            </div>
-            <div className="data-title">
-              <label>Posición:</label>
-            </div>
-            <div className="data-value">
-              <label>{empleado.id_perfil_puesto}</label>
-            </div>
+      <Navbar />
+      <div className="evaluacion-container">
+        <div className="profile-section">
+          <img src='../../images/hanes-logo.png' className="profile-pic" />
+          <h2 className="nombre-empleado">Nombre</h2>
+          <div className="metas-estimadas">
+            <p>Metas Estimadas</p>
+            <h3>4</h3>
           </div>
-          <div className="bottom-container">
-            <div className="data-title">
-              <label>Departamento:</label>
-            </div>
-            <div className="data-value">
-              <label>{empleado.id_departamento}</label>
-            </div>
-            <div className="data-title">
-              <label>País:</label>
-            </div>
-            <div className="data-value">
-              <label>{empleado.id_pais}</label>
-            </div>
+          <div className="metas-asignadas">
+            <p>Metas Asignadas</p>
+            <h3>4</h3>
+          </div>
+          <div className="metas-logradas">
+            <p>Metas Logradas</p>
+            <h3>3</h3>
+          </div>
+          <div className="desempeno">
+            <p>Desempeño</p>
+            <h3>{desempeno}%</h3>
           </div>
         </div>
-      )}
-      <div className="questions-container">
-        <div className="survey-type">
-          <div className="evaluation-title">
-            <h1></h1>
-          </div>
-          <div className="total-title">
-            <h2>TOTAL: {total}</h2>
-          </div>
-        </div>
-        <div className="questions-list">
-          <div className="question-holder">
-            {preguntas.length > 0 ? (
-              preguntas.map((pregunta, index) => (
-                <PreguntaContainer
-                  key={index}
-                  title={pregunta.nombre_competencia}
-                  questions={pregunta.comportamientos}
-                  onTotalChange={(newTotal) => handleTotalChange(index, newTotal)}
+        <div className="metas-section">
+          <h2>Metas</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Metas</th>
+                <th>Estado</th>
+                <th>Accion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Meta1</td>
+                <td>Logrado</td>
+                <td>( )</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Meta2</td>
+                <td>Fallido</td>
+                <td>( )</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Meta3</td>
+                <td>Logrado</td>
+                <td>( )</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Meta4</td>
+                <td>Logrado</td>
+                <td>( )</td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="nota-desempeno">
+            <h3>Nota de Desempeño:</h3>
+            {isEditingNota ? (
+              <div>
+                <textarea
+                  value={notaDesempeno}
+                  onChange={(e) => setNotaDesempeno(e.target.value)}
                 />
-              ))
+                <button onClick={toggleEditingNota}>Guardar Nota</button>
+              </div>
             ) : (
-              <p>No hay preguntas disponibles</p>
+              <div>
+                <p>{notaDesempeno}</p>
+                <button onClick={toggleEditingNota}>Editar Nota</button>
+              </div>
+            )}
+          </div>
+          <div className="logros-destacados">
+            <h3>Logros Destacados:</h3>
+            {isEditingLogros ? (
+              <div>
+                <textarea
+                  value={logrosDestacados}
+                  onChange={(e) => setLogrosDestacados(e.target.value)}
+                />
+                <button onClick={toggleEditingLogros}>Guardar Logros</button>
+              </div>
+            ) : (
+              <div>
+                <p>{logrosDestacados}</p>
+                <button onClick={toggleEditingLogros}>Editar Logros</button>
+              </div>
             )}
           </div>
         </div>
-      </div>
-      <div className="survey-actions">
-        <button>Atrás</button>
-        <button>Enviar</button>
       </div>
     </div>
   );

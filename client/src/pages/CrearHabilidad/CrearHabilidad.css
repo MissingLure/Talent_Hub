@@ -1,0 +1,128 @@
+.tituloHabi{
+  font-size: 24px;
+  margin-bottom: 8px 
+}
+
+.ability-container{
+  font-family: 'Times New Roman', Times, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInAnimation 1s forwards; 
+  
+}
+
+.ability-form {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  align-items: start;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #64637a;
+  align-items: center;
+  background-color: #d8d8db;
+  height: 100vh;
+}
+
+.ability-form input{
+  width: 50%;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.ability-form select{
+  margin-bottom: 16px;
+  width: 50%;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #ffff;
+}
+
+.ability-form
+textarea {
+  width: 50%;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 40vh;
+}
+
+.competence-form label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+
+
+.ability-form button {
+  background-color: #2e2d40;
+  margin-top: 18px;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+
+.ability-form button:hover {
+  background-color: #45a049;
+}
+/*
+.CrearHabilidad {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  form {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  */
+  

@@ -36,6 +36,10 @@ function App() {
 
   return (
     <div className="competences-container">
+      <Navbar />
+      <h1 className="tituloComp">
+        <b>Crear Competencia</b>
+      </h1>
       <form className="competences-form" onSubmit={handleSubmit}>
         <label htmlFor="nombre_competencia">
           <b>Nombre de Competencia:</b>
@@ -64,6 +68,9 @@ function App() {
         <div> </div>
 
         <button type="submit">Crear Competencia</button>
+        <Link className="competences-container" to="/competencias">
+          <button type="submit"> Regresar </button>
+        </Link>
       </form>
     </div>
   );
