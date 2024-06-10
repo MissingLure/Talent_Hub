@@ -8,17 +8,17 @@
 }
 
 .titulo_available{
-    color: white;
-    font-size: 40px;
-    font-weight: bolder;
-    background-color: #333356;
-    margin-top: 40px;
-    margin-left: 100px;
+    margin-top: 3%;
+    color: black;
+    margin-left: 40px;
+    margin-right: 40px;
     height: 70px;
-    width:86%;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 .surveys-container {
+    
     margin-top: 20px;
     margin-left: 100px;
     margin-right: 100px;
@@ -28,4 +28,8 @@
     justify-content: center;
     align-content: center;
     overflow-y: auto;
+    border-radius: 5px;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: black;
 }
