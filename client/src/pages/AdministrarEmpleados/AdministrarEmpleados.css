@@ -1,349 +1,290 @@
 .administrar-empleados {
-     width: 100%; 
-     height:100vh;
-     display: flex; 
-    flex-direction: column; 
-     /* justify-content: center;  */
-     align-items: center; 
-     background-color: #d8d8db; 
-    animation: fadeInAnimation 1s forwards; 
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d8d8db;
+  animation: fadeInAnimation 1s forwards;
 }
 
-.administrar-empleados h2{
-    font-size:24px;
+.administrar-empleados h2 {
+  font-size: 24px;
+  margin: 5px;
+  font-weight: bold;
 }
 
+.administrar-empleados h4 {
+  font-size: 13px;
+  font-family: monospace;
+}
 
 .add-button a {
-    display: flex; 
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
+  display: flex;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
 }
 
-.add-button  {
-    /* margin: 5px;
-    margin-left: 850px;
-    width: 50px;
-    height: 25px;
-    border: none;
-    border-radius: 20px;
-    background-color: #525061;
-    color: #ffffff;*/
-    cursor: pointer; 
-    margin:5px;
-    /* margin-left: 700px; */
-    /* height: 30px; */
-    background-color: #525061;
-    border: 1.5px solid black;
-    color:white;
-    border-radius: 20px;
-    width: 30px;
-    height: 10px;
-    
+.add-button {
+  cursor: pointer;
+  margin: 5px;
+  background-color: #525061;
+  border: 1.5px solid black;
+  color: white;
+  border-radius: 20px;
+  width: 30px;
+  height: 10px;
+
 }
 
 .add-button:hover {
-    background-color: #1c7120;;
+  background-color: #1c7120;
+  ;
 }
 
 .search-options {
-    margin: 20px;
-    /* margin-top: 25px;; */
-    background-color: #d3d1d1;
-    width: 250px;
-    height: 60px;
-    margin-left: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+  margin: 20px;
+  background-color: #d3d1d1;
+  width: 250px;
+  height: 60px;
+  margin-left: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .search-options select {
-    width: 100px;
-    height: 28px;
-    margin-left: 5px;
-    margin-right: 5px;
-    cursor: pointer;
+  width: 100px;
+  height: 28px;
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
 }
 
 .search-options input {
-    height: 25px;
-    width: 200px;
-    border: none;
-    font-size: medium;
-    margin-right: 5px;
+  height: 25px;
+  width: 200px;
+  border: none;
+  font-size: medium;
+  margin-right: 5px;
 }
 
-.search-button  {
-    margin:5px;
-    /* margin-left: 700px; */
-    /* height: 30px; */
-    background-color: #525061;
-    border: 1.5px solid black;
-    color:white;
-    border-radius: 20px;
-    width: 30px;
-    height: 10px;
+.search-button {
+  margin: 5px;
+  background-color: #525061;
+  border: 1.5px solid black;
+  color: white;
+  border-radius: 20px;
+  width: 30px;
+  height: 10px;
 }
 
 
 /*caja de informacion*/
 .bodys-container {
-    display: flex;
-    border-radius: 40px;
-    justify-content: center;
-    background-color: #a9a9a9;
-    width:1100px;
-    height: auto;
-    margin-bottom: 70px;
-    margin-top: 30px;
+  display: flex;
+  border-radius: 40px;
+  justify-content: center;
+  background-color: #a9a9a9;
+  width: 1100px;
+  height: auto;
+  margin-bottom: 70px;
+  margin-top: 30px;
 }
 
 .list-container {
-    /* overflow-y: auto; */
-    border-radius: 6px;
-    width: 900px;
-    height: 500px;
-    
-    /* border: 1px solid black; */
+  /* overflow-y: auto; */
+  border-radius: 6px;
+  width: 900px;
+  height: 500px;
 }
-/* 
-.administrar-empleados table{
-    margin-top: 25px; 
-    width: auto; 
-    /* max-height: 300px;  */
-    /* overflow-y: auto;
-}
-.administrar-empleados tr{
-    background-color: #63647a;
-    color: #ffffff;
-} 
 
-.administrar-empleados th{
-    margin:90px
-} 
-
-
-/* .administrar-empleados td{
-    background-color: #244325;
-} */
-
-/* .body-container:hover .add-button{
-    display: flex; 
-} */
 
 .search-button:hover {
-    background-color: #1c7120;
+  background-color: #1c7120;
 }
 
 
 .popups {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 
-  /* .popups2 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-} */
-
-.popups2-content{
-    background-color: #fff;
+.popups2-content {
+  background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   text-align: center;
 }
 
-.popups2-content h3{
-    font-size: 20px;
-    font-weight: bold;
-    margin:5px;
+.popups2-content h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5px;
 }
 
-.popups2-content button{
-    margin: 5px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #2a2942;
-    color: #fff;
-    cursor: pointer;
+.popups2-content button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2a2942;
+  color: #fff;
+  cursor: pointer;
 }
 
-  .popups-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    color:black;
-    text-align: center;
-  }
-  .popups button{
-    margin-top:-630px;
-    color:white;
-  }
+.popups-content {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  color: black;
+  text-align: center;
+}
 
-  .popups button:hover{
-    background-color: rgb(14, 14, 14);
-  }
+.popups button {
+  margin-top: -630px;
+  color: white;
+}
 
-
-  .assign-boss-modal {
-    border: none;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    background-color: #303c77;
-    color: white;
-  }
+.popups button:hover {
+  background-color: rgb(14, 14, 14);
+}
 
 
-  /*Popup de crear empleado*/
-  .add-employee-popup-content {
-    width: 350px;
-    height: 550px;
-    margin: auto;
-    background-color: #63647a;
-    color:black;
-    padding: 25px;
-    border-radius: 8px;
-    border: 1.5px solid black;
-    text-align: center;
-    font-size: 15px;
-    line-height: 34px;
-  }
+.assign-boss-modal {
+  border: none;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background-color: #303c77;
+  color: white;
+}
 
-  .add-employee-popup-content label{
-    margin: 5px;
-    align-items: center;
-  }
 
-  .add-employee-popup-content button {
-    margin: 5px;
-    width: 100px;
-    height: 25px;
-    /* padding:  20px; */
-    text-align: center;
-    font-size: 15px;
-    border: none;
-    border-radius: 3px;
-    background-color: #4f4e57;
-    color: #fff;
-    cursor: pointer;
-  }
+/*Popup de crear empleado*/
+.add-employee-popup-content {
+  width: 350px;
+  height: 550px;
+  margin: auto;
+  background-color: #63647a;
+  color: black;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1.5px solid black;
+  text-align: center;
+  font-size: 15px;
+  line-height: 34px;
+}
 
-  .add-employee-popup-content button:hover{
-    background-color: #1c7120;
-  }
+.add-employee-popup-content label {
+  margin: 5px;
+  align-items: center;
+}
 
-  /*Popup de información*/
-  .information-popup-content {
-    border: none;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: auto;
-    padding: 24px;
-    background-color: #cfcfd4;
-    color: black;
-  }
+.add-employee-popup-content button {
+  margin: 5px;
+  width: 100px;
+  height: 25px;
+  text-align: center;
+  font-size: 15px;
+  border: none;
+  border-radius: 3px;
+  background-color: #4f4e57;
+  color: #fff;
+  cursor: pointer;
+}
 
-  .information-popup-content button {
-    margin: auto;
-    width: 100px;
-    height: 25px;
-    padding: 3px 20px;
-    text-align: center;
-    /* text-size: 20px; */
-    border: none;
-    border-radius: 3px;
-    background-color: #636077d9;
-    color: #ffffff;
-    cursor: pointer;
-  }
+.add-employee-popup-content button:hover {
+  background-color: #1c7120;
+}
 
-  /*tabla*/
-  .container3{
-    /* margin-top:25px;  */
-    width: auto; 
-    max-height: 535px; 
-    margin-top: 20px;
-    margin-bottom: 20px;
-    /* margin:25px; */
-    overflow-y: auto;
+/*Popup de información*/
+.information-popup-content {
+  border: none;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+  padding: 24px;
+  background-color: #cfcfd4;
+  color: black;
+}
+
+.information-popup-content button {
+  margin: auto;
+  width: 100px;
+  height: 25px;
+  padding: 3px 20px;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+  background-color: #636077d9;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/*tabla*/
+.container3 {
+  width: auto;
+  max-height: 535px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  overflow-y: auto;
 }
 
 .container3 thead {
-    width: 100%;
-    position: sticky;
-    top: 0; 
+  width: 100%;
+  position: sticky;
+  top: 0;
 }
 
-.container3 th{
-    width:auto;
-    /* max-height: 70px; */
-    background-color: #63647a;
-    color: #ffffff;
-    /* border-radius: 5px; */
-    border: 1px solid black;
-    margin-bottom: 10px;
-}
-
-
-.container3 table{
-    /* width:auto;
-    margin:30px;
-    border: 1.5px solid black;
-    border-collapse: collapse;
-    margin-top:25 px; 
-   /* border: 40px; */ 
-   width: 1000px;
-   border-collapse: collapse;
-   /* height: 100px; */
-   border-radius: 5px;
-   border: 1px solid #000000;
-   border-radius: 5px;
-
-}
-
-.container3 tr{
-    border: 1.5px solid black;
-    width: 100%;
+.container3 th {
+  width: auto;
+  background-color: #333356;
+  color: #ffffff;
+  border: 1px solid black;
+  margin-bottom: 10px;
 }
 
 
-.container3 td{
-    /* width:100%;  */
-    /* border: 1.5px solid black; */
-    background-color: #ffffff;
-    color:#000000;
-    padding: 8px;
-    text-align: center;
+.container3 table {
+  width: 1000px;
+  border-collapse: collapse;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  border-radius: 5px;
 
-    /* border: 1.5px solid #0b0b0b;
-    border-radius: 5px; */
-   
-} 
+}
 
-.container3 td:hover{
-    background-color: #63647a;
+.container3 tr {
+  border: 1.5px solid black;
+  width: 100%;
+}
+
+.butne {
+  width: 5%;
+}
+
+.container3 td {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 8px;
+  text-align: center;
+}
+
+.container3 td:hover {
+  background-color: #63647a;
+  color: white;
 }

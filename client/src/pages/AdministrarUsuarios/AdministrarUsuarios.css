@@ -1,177 +1,218 @@
 .administrar-usuarios {
-  width: 100%; 
-  display: flex; 
-  height:100vh;
- flex-direction: column; 
-  /* justify-content: center;  */
-  align-items: center; 
-  background-color: #d8d8db; 
- animation: fadeInAnimation 1s forwards; 
+  width: 100%;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d8d8db;
+  animation: fadeInAnimation 1s forwards;
 }
 
-.administrar-usuarios h2{
+.administrar-usuarios h2 {
   font-size: 24px;
+  margin: 10px;
 }
 
-.administrar-usuarios img{
-  width:40px;
-  height:20px;
+.administrar-usuarios h4 {
+  font-size: 13px;
+  font-family: monospace;
+}
+
+.administrar-usuarios img {
+  width: 40px;
+  height: 20px;
   text-align: center;
 }
 
 
 .search-options {
-    margin: 10px;
-    background-color: rgb(232, 232, 232);
-    width: 50%;
-    height: 60px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+  margin: 10px;
+  background-color: rgb(232, 232, 232);
+  width: 50%;
+  height: 60px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .search-options select {
-    width: 150px;
-    height: 28px;
-    margin-left: 5px;
-    margin-right: 5px;
+  width: 150px;
+  height: 28px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .search-options input {
-    height: 25px;
-    width: 200px;
-    border: none;
-    font-size: medium;
-    margin-right: 5px;
+  height: 25px;
+  width: 200px;
+  border: none;
+  font-size: medium;
+  margin-right: 5px;
 }
 
 .search-options button {
-    height: 30px;
-    border: none;
-    border-radius: 2px;
-    width: 80px;
+  height: 30px;
+  border: none;
+  border-radius: 2px;
+  width: 80px;
 }
 
 .list-container {
-    height: 600px;
-    width: 650px;
-    overflow-y: auto;
+  height: 600px;
+  width: 650px;
+  overflow-y: auto;
 }
 
 .user-create-form {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 200px;
-
+  width: 100%;
+    height:auto;
+    margin: auto;
+    background-color: #333356;
+    color:white;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1.5px solid white;
+    text-align: center;
+    font-size: 17px;
+    line-height: 34px;
 }
 
-.user-create-form div {
-    margin-bottom: 5px;
-    background-color: #133c66;
+.user-create-form input{
+  color:black;
+}
+
+.user-create-form select{
+  color: black;
 }
 
 .error-message {
-    color: #e90800;
+  color: #e90800;
 }
 
+.information-container {
+  background-color: #133c66;
+  color: white;
+  padding: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
 
-  .create-user-modal {
-    border: none;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    background-color: #2a2942;
-    color: white;
-  }
-  
-  .information-container {
-    background-color: #133c66;
-    color:white;
-    padding: 10px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .actions-container {
-    display: flex;
-    justify-content: center;
-  }
+.actions-container {
+  display: flex;
+  justify-content: center;
+}
 
-  .actions-container button{
-    border: none;
-    width: 100px;
-    height: 30px;
-    background-color: #64637a;
-    color: white;
-  }
+.actions-container button {
+  border: none;
+  width: 100px;
+  height: 30px;
+  background-color: #38023B;
+  color: white;
+}
 
-  /*tabla*/
-  .container4{
-    /* margin-top:25px;  */
-    width: auto; 
-    max-height: 535px; 
-    margin-top: 20px;
-    margin-bottom: 20px;
-    /* margin:25px; */
-    overflow-y: auto;
+/*tabla*/
+.container4 {
+  /* margin-top:25px;  */
+  width: auto;
+  max-height: 535px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* margin:25px; */
+  overflow-y: auto;
 }
 
 .container4 thead {
-    width: 100%;
-    position: sticky;
-    top: 0; 
+  width: 100%;
+  position: sticky;
+  top: 0;
 }
 
-.container4 th{
-    width:auto;
-    /* max-height: 70px; */
-    background-color: #63647a;
-    color: #ffffff;
-    /* border-radius: 5px; */
-    border: 1px solid black;
-    margin-bottom: 10px;
-}
-
-
-.container4 table{
-    /* width:auto;
-    margin:30px;
-    border: 1.5px solid black;
-    border-collapse: collapse;
-    margin-top:25 px; 
-   /* border: 40px; */ 
-   width: 1000px;
-   border-collapse: collapse;
-   /* height: 100px; */
-   border-radius: 5px;
-   border: 1px solid #000000;
-   border-radius: 5px;
-}
-
-.container4 tr{
-    border: 1.5px solid black;
-    width: 100%;
+.container4 th {
+  width: auto;
+  /* max-height: 70px; */
+  background-color: #38023B;
+  color: #ffffff;
+  /* border-radius: 5px; */
+  border: 1px solid black;
+  margin-bottom: 10px;
 }
 
 
-.container4 td{
-    /* width:100%;  */
-    /* border: 1.5px solid black; */
-    background-color: #ffffff;
-    color:#000000;
-    padding: 8px;
-    text-align: left;
-    /* border: 1.5px solid #0b0b0b;
-    border-radius: 5px; */
-   
-} 
-
-.container4 td:hover{
-    background-color: #63647a;
+.container4 table {
+  width: 1000px;
+  border-collapse: collapse;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  border-radius: 5px;
 }
+
+.container4 tr {
+  border: 1.5px solid black;
+  width: 100%;
+}
+
+
+.container4 td {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 8px;
+  text-align: left;
+}
+
+.container4 td:hover {
+  background-color: #63647a;
+}
+
+
+.popups {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popups2-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  /* width: 20%; */
+}
+
+.user-create-form h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.popups1-content {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  color: black;
+  text-align: center;
+}
+
+.user-create-form button {
+  color: white;
+  background-color: #e90800;
+  width:130px;
+  margin: 5px;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.popups button:hover {
+  background-color: rgb(14, 14, 14);
+}
+

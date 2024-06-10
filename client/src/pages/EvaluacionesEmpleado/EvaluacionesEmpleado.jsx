@@ -40,16 +40,16 @@ const EvaluacionesEmpleado = () => {
   const decoded = jwtDecode(accessToken);
   const employeeData = JSON.parse(localStorage.getItem('employeeData'));
   const navigate = useNavigate();
- 
+
   const [showPopup, setShowPopup] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState('');
   const [selectedEmployeeInfo, setSelectedEmployeeInfo] = useState();
 
   const coreCompetence = nombresEmpleados.slice(0, 5);
-  const performanceMeasurement = nombresEmpleados.slice(5, 10); 
-  const corePotential = nombresEmpleados.slice(10); 
+  const performanceMeasurement = nombresEmpleados.slice(5, 10);
+  const corePotential = nombresEmpleados.slice(10);
   const [empleados, setEmpleados] = useState([]);
- 
+
   const handlePopup = (nombre, empleado) => {
     setSelectedEmployee(nombre);
     setSelectedEmployeeInfo(empleado);
@@ -61,183 +61,121 @@ const EvaluacionesEmpleado = () => {
   };
 
   const handleGetEmployees = (bossId) => {
-    axios.post('http://localhost:4000/data/obtener-empleados-por-jefe', {bossId: bossId})
-    .then((response) => {
-      console.log(response.data.data);
-      setEmpleados(response.data.data);
-    })
-    .catch((error) => {
-      console.log(error.response.data.data);
-    })
+    axios.post('http://localhost:4000/data/obtener-empleados-por-jefe', { bossId: bossId })
+      .then((response) => {
+        console.log(response.data.data);
+        setEmpleados(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data.data);
+      })
   };
 
   const handleAction = (action) => {
-      setShowPopup(false);
-      if (action === 'Dashboard') {
-          navigate('/user-dashboard'); 
-      } else if (action === 'Evaluar') {
-        navigate(`/evaluacion-empleado?id_empleado=${selectedEmployeeInfo.id_empleado}`);
-      }
+    setShowPopup(false);
+    if (action === 'Dashboard') {
+      navigate('/user-dashboard');
+    } else if (action === 'Evaluar') {
+      navigate(`/evaluacion-empleado?id_empleado=${selectedEmployeeInfo.id_empleado}`);
+    }
   };
 
   useEffect(() => {
-    if(decoded.rol == 1) {
+    if (decoded.rol == 1) {
       handleGetEmployees(employeeData.id_empleado);
     }
   }, []);
-  
-  const [toggle,setToggle] = useState(1);
-  function updateToggle(id){
+
+  const [toggle, setToggle] = useState(1);
+  function updateToggle(id) {
     setToggle(id);
   }
 
   return (
     <div>
-  <Navbar></Navbar>
-  <div className="Empleados-TITULO">Evaluacion Empleado</div>
-  <div className='col-6 tab p-5'>
-    {decoded.rol==0 && 
-    <ul>
-      <li onClick={()=>updateToggle(1)}>Core Competence</li>
-      <li onClick={()=>updateToggle(2)}>Performance Measurement</li>
-      <li onClick={()=>updateToggle(3)}>Core Potential</li>
-    </ul>}
-    <div className = {decoded.rol==0 && toggle == 1 ? "show-content" : "content"}>
-      <div className="row">
-        <div className="column">
-          <h2>Core Competence</h2>
-          <div className="competencia-container">
-            {coreCompetence.map((nombre, index) => (
-              <div key={index} className="competencia-card">
-                <button onClick={() => handlePopup(nombre)}>{nombre}</button>
+      <Navbar></Navbar>
+      <div className="Empleados-TITULO">Evaluacion Empleado</div>
+      <div className='col-6 tab p-5'>
+        {decoded.rol == 0 &&
+          <ul>
+            <li onClick={() => updateToggle(1)}>Core Competence</li>
+            <li onClick={() => updateToggle(2)}>Performance Measurement</li>
+            <li onClick={() => updateToggle(3)}>Core Potential</li>
+          </ul>}
+        <div className={decoded.rol == 0 && toggle == 1 ? "show-content" : "content"}>
+          <div className="row">
+            <div className="column">
+              <h2>Core Competence</h2>
+              <div className="competencia-container">
+                {coreCompetence.map((nombre, index) => (
+                  <div key={index} className="competencia-card">
+                    <button onClick={() => handlePopup(nombre)}>{nombre}</button>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div className = {decoded.rol==0 && toggle == 2 ? "show-content" : "content"}>
-      <div className="row">
-        <div className="column">
-          <h2>Performance Measurement</h2>
-          <div className="competencia-container">
-            {performanceMeasurement.map((nombre, index) => (
-              <div key={index} className="competencia-card">
-                <button onClick={() => handlePopup(nombre)}>{nombre}</button>
+        <div className={decoded.rol == 0 && toggle == 2 ? "show-content" : "content"}>
+          <div className="row">
+            <div className="column">
+              <h2>Performance Measurement</h2>
+              <div className="competencia-container">
+                {performanceMeasurement.map((nombre, index) => (
+                  <div key={index} className="competencia-card">
+                    <button onClick={() => handlePopup(nombre)}>{nombre}</button>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div className = {decoded.rol == 0 && toggle == 3 ? "show-content" : "content"}>
-      <div className="row">
-        <div className="column">
-          <h2>Core Potential</h2>
-          <div className="competencia-container">
-            {corePotential.map((nombre, index) => (
-              <div key={index} className="competencia-card">
-                <button onClick={() => handlePopup(nombre)}>{nombre}</button>
+        <div className={decoded.rol == 0 && toggle == 3 ? "show-content" : "content"}>
+          <div className="row">
+            <div className="column">
+              <h2>Core Potential</h2>
+              <div className="competencia-container">
+                {corePotential.map((nombre, index) => (
+                  <div key={index} className="competencia-card">
+                    <button onClick={() => handlePopup(nombre)}>{nombre}</button>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
+        {decoded.rol === 1 &&
+          (
+            <div className="Prueba">
+            Prueba
+            <div className="competencia-container">
+              {empleados.length > 0 ? (
+                empleados.map((empleado, index) => (
+                  <div key={index} className="competencia-card">
+                    <button onClick={() => handlePopup(empleado.primer_nombre, empleado)}>
+                      {empleado.primer_nombre} {empleado.primer_apellido}
+                    </button>
+                  </div>
+                ))
+              ) : (
+                <p>No tiene empleados bajo su cargo</p>
+              )}
+            </div>
+          </div>
+          )}
+        {showPopup && (
+          <div className="popup">
+            <div className="popup-content">
+              <h3>Acciones para {selectedEmployee}</h3>
+              <button onClick={() => handleAction('Dashboard')}>Dashboard</button>
+              <button onClick={() => handleAction('Evaluar')}>Evaluar</button>
+              <button onClick={handlePopupClose}>Cerrar</button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
-   {decoded.rol==1 && 
-    (
-      <div className="Prueba">
-          Prueba 
-          <div className="competencia-container">
-                              {empleados.map((empleado, index) => (
-                                <div key={index} className="competencia-card">
-                                  <button onClick={() => handlePopup(empleado.primer_nombre, empleado)}>
-                                    {empleado.primer_nombre} {empleado.primer_apellido}
-                                  </button>
-                                </div>
-                              ))}
-                            </div>
-      </div>
-     )}
-     {showPopup && (
-                    <div className="popup">
-                      <div className="popup-content">
-                        <h3>Acciones para {selectedEmployee}</h3>
-                        <button onClick={() => handleAction('Dashboard')}>Dashboard</button>
-                        <button onClick={() => handleAction('Evaluar')}>Evaluar</button>
-                        <button onClick={handlePopupClose}>Cerrar</button>
-                      </div>
-                    </div>
-                  )}
-  </div>
-</div>
-);
-            }
+  );
+}
 
 export default EvaluacionesEmpleado;
-/*
-      <div className="Inicio">
-          <Navbar />
-          <div className="Empleados-TITULO">
-              <h1>Empleados</h1>
-              <div className="Empleados-container">
-                  {decoded.rol == 0 && (
-                      <div>
-                          <h2>CORE COMPETENCE</h2>
-                          <div className="competencia-container">
-                              {coreCompetence.map((nombre, index) => (
-                                  <div key={index} className="competencia-card">
-                                      <button onClick={() => handlePopup(nombre)}>{nombre}</button>
-                                  </div>
-                              ))}
-                          </div>
-                          <h2>Performance Measurement</h2>
-                          <div className="competencia-container">
-                              {performanceMeasurement.map((nombre, index) => (
-                                  <div key={index} className="competencia-card">
-                                      <button onClick={() => handlePopup(nombre)}>{nombre}</button>
-                                  </div>
-                              ))}
-                          </div>
-                          <h2>CORE POTENTIAL</h2>
-                          <div className="competencia-container">
-                              {corePotential.map((nombre, index) => (
-                                  <div key={index} className="competencia-card">
-                                      <button onClick={() => handlePopup(nombre)}>{nombre}</button>
-                                  </div>
-                              ))}
-                          </div>
-                      </div>
-                  )}
-                 
-                   {decoded.rol == 1 && (
-                          <div>
-                            <h2>PRUEBA</h2>
-                            <div className="competencia-container">
-                              {empleados.map((empleado, index) => (
-                                <div key={index} className="competencia-card">
-                                  <button onClick={() => handlePopup(empleado.primer_nombre, empleado)}>
-                                    {empleado.primer_nombre} {empleado.primer_apellido}
-                                  </button>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                   
-                  {showPopup && (
-                    <div className="popup">
-                      <div className="popup-content">
-                        <h3>Acciones para {selectedEmployee}</h3>
-                        <button onClick={() => handleAction('Dashboard')}>Dashboard</button>
-                        <button onClick={() => handleAction('Evaluar')}>Evaluar</button>
-                        <button onClick={handlePopupClose}>Cerrar</button>
-                      </div>
-                    </div>
-                  )}
-            </div>
-            </div>
-            </div>
-             
-
-*/

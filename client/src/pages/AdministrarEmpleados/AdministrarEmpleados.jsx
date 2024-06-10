@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import "./AdministrarEmpleados.css"
 import axios from "axios";
 import inform from '../../images/info.png';
-import search from '../../images/search.png';
-import add from '../../images/add.png';
 import CrearEmpleado from "../CrearEmpleado/CrearEmpleado";
 import Navbar from "../../components/Navbar/Navbar";
 import Modal from "react-modal";
@@ -15,7 +13,6 @@ const AdministarEmpleados = () => {
     const [errorMessages, setErrorMessages] = useState([]);
     const [empleados, setEmpleados] = useState([]);
     const [addEmployee, setAddEmployee] = useState(false);
-    const [user, setUser] = useState([]);
     const [modifyOpen, setModifyopen] = useState(false);
     const [employee, setEmployee] = useState('');
     const [bosses, setBosses] = useState([]);
@@ -23,7 +20,9 @@ const AdministarEmpleados = () => {
     const [hasBoss, setHasBoss] = useState(false);
     const [selectedBoss, setSelectedBoss] = useState('');
     const [email, setEmail] = useState('');
+    const [selectedEmployee, setSelectedEmployee] = useState('');
 
+    //popups
     const [showPopup, setShowPopup] = useState(false);
     const [showPopup2, setShowPopup2] = useState(false);
     const [showPopupModificar, setShowPopupModificar] = useState(false);
@@ -126,9 +125,17 @@ const AdministarEmpleados = () => {
         setModifyopen(false);
     };
 
+    // const handleInfo=()=>{
+    //     setShowBossPopu(true);
+    //     setShowPopup2(false);
+    // }
+
+
     const handleInformationClick = (employeeId, bossId) => {
         handleGetEmployee(employeeId);
         handleGetBoss(bossId);
+        setShowBossPopu(true);
+        setShowPopup2(false);
     };
 
     const closeMessage = () => {
@@ -297,13 +304,12 @@ const AdministarEmpleados = () => {
             {showPopup2 &&(
                 <div className="popups">
                     <div className="popups2-content">
-                    <h3>Acciones con Empleado</h3>
-                    
-                    <button className = "buttonModificarEmpleado" onClick={() => setShowPopupModificar(true)} >Modificar </button>
-                    
-                        
-                        <button>Eliminar</button>
-                        <button onClick={handleClosePopup}>Cerrar</button>
+                    <h3>Acciones con {selectedEmployee.primer_nombre} {selectedEmployee.primer_apellido}</h3>
+                    <br></br>
+                    <button onClick={() => handleModifyEmployeeClick(selectedEmployee)}>Modificar Empleado</button>
+                    <button onClick={()=> handleInformationClick(selectedEmployee.id_empleado, selectedEmployee.id_jefe)}>Información Jefe</button>
+                    <button >Eliminar Empleado</button>
+                    <button onClick={handleClosePopup}>Cerrar</button>
                     
                     </div>
                 </div>
@@ -318,6 +324,7 @@ const AdministarEmpleados = () => {
                 </div>
             )}  
 
+        
 
             <div>
                 <Modal
