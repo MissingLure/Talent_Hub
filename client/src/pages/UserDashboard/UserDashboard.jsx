@@ -4,6 +4,10 @@ import nav from "../UserDashboard/ENCABEZADO.jpg";
 import avatar from "../UserDashboard/avatar.png";
 import Navbar from "../../components/Navbar/Navbar";
 import { jwtDecode } from "jwt-decode";
+// import { useLocation } from 'react-router-dom';
+import dashboardApi from "../../api/dashboard.api";
+import { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 
 const UserDashboard = () => {
     const items = [
@@ -18,16 +22,78 @@ const UserDashboard = () => {
         "TECHNICAL EXPERT",
     ];
 
-    const accessToken = localStorage.getItem('accessToken');
-    const decoded = jwtDecode(accessToken);
-    const employeeData = JSON.parse(localStorage.getItem('employeeData'));
-    const datos = JSON.parse(localStorage.getItem(''));
+    //const accessToken = localStorage.getItem('accessToken');
+    //const decoded = jwtDecode(accessToken);
+    //const employeeData = JSON.parse(localStorage.getItem('employeeData'));
+    //const datos = JSON.parse(localStorage.getItem(''));
 
-    const searchParams = new URLSearchParams(location.search);
-    const idEmpleadoParam = searchParams.get('id_empleado');
+    const [user, setUser] = useState({});
+    const [gridBox, setGridBox] = useState({});
 
-    const data = { idEmpleado: idEmpleadoParam };
+    let InformacioUser;
+    const cargarUsuario = async (data) => {
+        try {
+            const response = await dashboardApi.getEmpleadoRequest(data.id_empleado);
+
+            if (!response) {
+                throw new Error("No se pudo cargar el Usuario");
+            }
+
+            if (response.status === 200) {
+                InformacioUser = response.data;
+                setUser(InformacioUser.data);
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const cargarGridBox = async (userProp) => {
+        try {
+            const response = await dashboardApi.getResultadosEvaRequest(userProp.id_empleado);
+
+            if (!response) {
+                throw new Error("No se pudo cargar los resultados de la competencia");
+            }
+
+            if (response.status === 200) {
+                InformacioUser = response.data;
+                setGridBox(InformacioUser.data);
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+        console.log()
+        console.log(gridBox.length === 0 ? "No se ha evaluado el Potencial" : gridBox);
+    }
+
+    const loadUser = async () => {
+
+        const searchParams = new URLSearchParams(location.search);
+        const idEmpleadoParam = searchParams.get('id_empleado');
+
+        const data = { id_empleado: idEmpleadoParam };
+
+        if (data.id_empleado == null) {
+            const userProp = JSON.parse(localStorage.getItem('employeeData'));
+
+            cargarUsuario(userProp);
+            cargarGridBox(userProp);
+        } else {
+            cargarUsuario(data);
+            cargarGridBox(data);
+        }
+
+    }
+
+    useEffect(() => {
+        loadUser();
+    }, []);
+
     return (
+
         <div className="dashboard-container">
             <Navbar />
 
@@ -68,16 +134,17 @@ const UserDashboard = () => {
                     <div className="persona-info">
                         <div className="left-column">
                             <div className="headers">
-                                <p>{employeeData.primer_nombre} {employeeData.segundo_nombre} {employeeData.primer_apellido} {employeeData.segundo_apellido}</p>
+                                <p>{user.primer_nombre} {user.segundo_nombre} {user.primer_apellido} {user.segundo_apellido}</p>
                             </div>
                         </div>
                         
                     </div>
                     <div className="right-column">
                         <div className="persona-info">
-                        <p><strong>Puesto:</strong> {employeeData.id_perfil_puesto}</p>
-                        <p><strong>Departamento:</strong> {employeeData.id_departamento}</p>
-                        <p><strong>Fecha Ingreso:</strong> {employeeData.fecha_ingreso}</p>
+                        <p><strong>Puesto:</strong> {user.nombre_perfil}</p>
+                        <p><strong>Departamento:</strong> {user.nombre_departamento}</p>
+                        <p><strong>Fecha Ingreso:</strong> {user.fecha_ingreso}</p>
+                        <p><strong>Pais:</strong> chipichipi</p>
                         </div>
                     </div>
 
@@ -86,18 +153,18 @@ const UserDashboard = () => {
 
             <div className="Potential-Assessment-box">
                 Evaluación de Potencial
-                <td className="info-box">No se ha evaluado el Potencial</td>
+                <td className="info-box">{gridBox.resultado_evaluacion_potencial == null ? "No se ha evaluado el Potencial" : gridBox.resultado_evaluacion_potencial}</td>
             </div>
 
 
             <div className="Performance_Assessment-box">
                 Evaluación de Desempeño
-                <td className="info-box">No se ha evaluado el Desempeño</td>
+                <td className="info-box">{gridBox.resultado_evaluacion_desempeño == null ? "No se ha evaluado el Desempeño" : gridBox.resultado_evaluacion_desempeño}</td>
             </div>
 
             <div className="Competencies_Assessment-box">
                 Evaluación de Competencias
-                <td className="info-box">No se han evaluado las Competencias</td>
+                <td className="info-box">{gridBox.resultado_evaluacion_competencias == null ? "No se han evaluado las Competencias" : gridBox.resultado_evaluacion_competencias}</td>
             </div>
 
             <div className="performance-grid">
@@ -137,9 +204,6 @@ const UserDashboard = () => {
             </div> */}
             <br></br>
         </div>
-
-
-
     );
 };
 

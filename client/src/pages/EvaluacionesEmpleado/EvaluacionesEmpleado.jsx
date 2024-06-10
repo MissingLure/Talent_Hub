@@ -72,12 +72,12 @@ const EvaluacionesEmpleado = () => {
   };
 
   const handleAction = (action) => {
-    setShowPopup(false);
-    if (action === 'Dashboard') {
-      navigate('/user-dashboard');
-    } else if (action === 'Evaluar') {
-      navigate(`/evaluacion-empleado?id_empleado=${selectedEmployeeInfo.id_empleado}`);
-    }
+      setShowPopup(false);
+      if (action === 'Dashboard') {
+        navigate(`/user-dashboard?id_empleado=${selectedEmployeeInfo.id_empleado}`); 
+      } else if (action === 'Evaluar') {
+        navigate(`/evaluacion-empleado?id_empleado=${selectedEmployeeInfo.id_empleado}`);
+      }
   };
 
   useEffect(() => {
