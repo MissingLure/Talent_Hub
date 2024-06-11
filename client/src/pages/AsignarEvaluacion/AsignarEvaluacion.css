@@ -3,7 +3,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     background-color: #d8d8db;
     animation: fadeInAnimation 1s forwards;
@@ -60,7 +60,7 @@
 
 .habilidads-container {
     margin-top: 20px;
-    width: 100%;
+    width: 80%;
     height: auto;
     background-color: #cccbcb;
     display: flex;
@@ -106,7 +106,7 @@
     border: none;
     width: 150px;
     height: 30px;
-    border-radius: 20px;;
+    border-radius: 20px;
 }
 
 .asign-container button:hover {

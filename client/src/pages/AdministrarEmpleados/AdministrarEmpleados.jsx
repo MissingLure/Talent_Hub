@@ -97,6 +97,7 @@ const AdministarEmpleados = () => {
   };
 
   const handleModifyEmployeeClick = (empleado) => {
+    console.log (empleado)
     setSelectedEmployee(empleado);
     setShowPopupModificar(true);
   };
@@ -451,7 +452,7 @@ const AdministarEmpleados = () => {
           {/* <button onClick={handleClosePopup}>X</button> */}
           <div>
             <ModificarEmpleadoPopUp
-              selectedEmployee={selectedEmployee}
+              employee={selectedEmployee}
               cancel={() => setShowPopupModificar(false)}
             />
           </div>
