@@ -76,6 +76,7 @@ async function crear_usuario(request, response) {
     sal: "sal",
     rol: rol,
   };
+ 
 
   if (!isEmail(correo)) {
     errorMessages.push("Formato de correo invalido.");
@@ -91,6 +92,7 @@ async function crear_usuario(request, response) {
     errorMessages.push("Usuario ya existe.");
   }
 
+  console.log(errorMessages)
   if (errorMessages.length) {
     response.status(400).send({ details: errorMessages });
   } else {
