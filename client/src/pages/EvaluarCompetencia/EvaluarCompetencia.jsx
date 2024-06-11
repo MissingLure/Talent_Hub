@@ -24,6 +24,7 @@ function EvaluarCompetencia() {
   const [preguntas, setPreguntas] = useState([]);
 
   const [isEvaluado, setIsEvaluado] = useState(false);
+  const [resultado, setResultado] = useState();
 
   const validarPreguntas = () => {
     for (let i = 0; i < preguntas.length; i++) {
@@ -48,6 +49,8 @@ function EvaluarCompetencia() {
     let cont_1 = 0;
     let cont_2 = 0;
 
+    console.log(preguntas);
+
     preguntas.forEach((pregunta) => {
       if (pregunta.resultado === 1) ++cont_1;
 
@@ -55,6 +58,8 @@ function EvaluarCompetencia() {
     });
 
     res = cont_1 + cont_2 * 2;
+
+    console.log(res);
 
     return res;
   };
@@ -70,7 +75,8 @@ function EvaluarCompetencia() {
     setPreguntas(newPreguntas);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (!validarPreguntas()) {
       alert("Por favor llene todos los campos");
       return;
@@ -86,8 +92,9 @@ function EvaluarCompetencia() {
         alert("Error al guardar la evaluacion");
         return;
       }
+    });
 
-      /*
+    /*
       const cal = calcularResultado(preguntas);
       const resGridBox = await gridBoxApi.updateGridBoxRequest(
         params.idEmpleado,
@@ -100,10 +107,13 @@ function EvaluarCompetencia() {
       }
         */
 
-      setIsEvaluado(true);
+    const cal = calcularResultado(preguntas);
 
-      alert("Evaluacion guardada con exito");
-    });
+    setResultado(cal);
+
+    setIsEvaluado(true);
+
+    alert("Evaluacion guardada con exito");
   };
 
   const renderItemInformacion = (label, value) => {
@@ -163,6 +173,7 @@ function EvaluarCompetencia() {
       setPreguntas(preguntas);
 
       setIsEvaluado(estaEvaluado(preguntas));
+      setResultado(calcularResultado(preguntas));
     } catch (error) {
       console.log(error);
       navigate("/error404");
@@ -234,7 +245,7 @@ function EvaluarCompetencia() {
       <div className="flex justify-center mt-10">
         {!isEvaluado ? (
           <button
-            onClick={handleSubmit}
+            onClick={(e) => handleSubmit(e)}
             className="bg-[#333356] hover:bg-[#40406a] transition-all text-white px-4 py-2 hover:pl-3 hover:pb-3 rounded-md"
           >
             Guardar Evaluacion
@@ -243,7 +254,7 @@ function EvaluarCompetencia() {
           <div className="bg-green-400 font-bold p-4 text-white rounded-md ">
             <p>Ya esta evaluado</p>
             <p className="text-green-700 font-bold hover:text-green-900 transition-colors cursor-pointer mt-4">
-              Su resultado es: {calcularResultado(preguntas)}
+              Su resultado es: {resultado}
             </p>
           </div>
         )}
