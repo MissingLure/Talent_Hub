@@ -7,14 +7,17 @@ import { Link } from "react-router-dom";
 import competenciasApi from "../../api/competencias.api";
 import competenciaHabilidadesApi from "../../api/competencias.habilidades.api";
 import habilidadesPreguntasApi from "../../api/habilidades.preguntas.api";
+import CrearCompetencia from "../CrearCompetencias/CrearCompetencias";
 
 const BibliotecaCompetencias = () => {
   const [competencias, setCompetencias] = useState([]);
   const [competencia, setCompetencia] = useState("");
   const [detalles, setDetalles] = useState([]);
   const [showInformation, setShowInformation] = useState(false);
+  const [addEmployee, setAddEmployee] = useState(false);
 
   const [showPopup, setSHowPopup] = useState(false);
+  const [showPopup2, setSHowPopup2] = useState(false);
   const [showAssignPositions, setShowAssignPositions] = useState(false);
 
   const [puestos, setPuestos] = useState();
@@ -33,6 +36,7 @@ const BibliotecaCompetencias = () => {
   
   const handleClosePopup = () => {
     setSHowPopup(false);
+    setSHowPopup2(false);
   };
 
   const handleGetCompetencia = async (idCompetencia) => {
@@ -78,10 +82,9 @@ const BibliotecaCompetencias = () => {
       <h1>
         <b>Biblioteca De Competencias</b>
       </h1>
+      <h4>Encuentra todas las competencias aqui.</h4>
       <div>
-        <Link className="biblioteca-competencias" to="/crear-competencias">
-          <button type="submit">Crear Competencias</button>
-        </Link>
+          <button className="boton" onClick={() => setSHowPopup2(true)}>Crear Competencias</button>
       </div>
       <div className="competencias-container">
         {competencias.map((competencia, index) => (
@@ -121,6 +124,20 @@ const BibliotecaCompetencias = () => {
           </div>
         </div>
       )}
+
+        {showPopup2 && (
+            <div className="popups2">
+                  <button onClick={handleClosePopup}>X</button>
+                <div >
+                    <CrearCompetencia
+                    open={addEmployee}
+                    // eslint-disable-next-line react/no-unknown-property
+                    cancel={() => setAddEmployee(false)}
+                /> 
+                    
+                </div>
+            </div>
+          )}
     </div>
   );
 };
