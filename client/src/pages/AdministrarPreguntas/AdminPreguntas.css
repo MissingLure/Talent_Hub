@@ -19,6 +19,16 @@
     border-radius: 20px;
 }
 
+.questions-admin-container h4{
+    font-size: 13px;
+    font-family:monospace;
+  }
+.questions-admin-container h2{
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 10px;
+}
+
 .questions-admin-container button:hover{
     background-color: #444462;
 }
@@ -39,6 +49,16 @@
     color: white;
     border: none;
     border-radius: 2px;
+}
+
+.evaluations-actions button{
+    background-color: #96264A;
+    width:240px;
+    margin: 10px;
+}
+
+.evaluations-actions button:hover{
+    background-color: #199930;
 }
 
 .search-options {
