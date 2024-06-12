@@ -156,8 +156,9 @@ const AdministrarEncuestas = () => {
       </h2>
       <br></br>
       <h4>Crea tus preguntas para competencias especificas.</h4>
-     
-      <div className="crearPregunta-form">
+
+      <div>
+        <br></br>
         <label>Competencia: </label>
         {competencias.length > 0 ? (
           <select
@@ -188,7 +189,7 @@ const AdministrarEncuestas = () => {
 
         <label>Habilidad: </label>
         {habilidades.length > 0 ? (
-          <select 
+          <select
             onChange={(e) => {
               const habilidadF = findHabilidadById(e.target.value);
 
@@ -225,10 +226,8 @@ const AdministrarEncuestas = () => {
           type="text"
           value={pregunta_habilidad}
           onChange={(e) => setPregunta(e.target.value)}
-          placehold
-          er="Ingrese la pregunta"
+          placeholder="Ingrese la pregunta"
         />
-        <br/>
         <div>
           <button
             className="botonEliminarFilas"
@@ -238,7 +237,11 @@ const AdministrarEncuestas = () => {
           </button>
           <button onClick={handleAgregarFila}>Agregar a la tabla</button>
         </div>
-        <div className="tabla-container">
+      </div>
+
+      <br></br>
+
+      <div className="tabla-container">
         <table>
           <thead>
             <tr>
@@ -269,11 +272,6 @@ const AdministrarEncuestas = () => {
           </tbody>
         </table>
       </div>
-      </div>
-
-      <br></br>
-
-      
       <br></br>
       <div>
         {filasTabla.length > 0 ? (
