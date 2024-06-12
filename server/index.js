@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan("dev"));
 
+const surveyRoutes = require("./routes/surveyRoutes");
 const userRoutes = require("./routes/userRoutes");
 const dataRoutes = require("./routes/dataRoutes");
 const createRoutes = require("./routes/createRoutes");
@@ -29,7 +30,7 @@ const departamentosRoutes = require("./routes/departamentosRoutes");
 const puestosRoutes = require("./routes/puestosRoutes");
 const metaEmpleadoResultadoRoutes = require("./routes/metaEmpleadoResultadoRoutes");
 
-
+app.use("/api", surveyRoutes);
 app.use("/user", userRoutes);
 app.use("/data", dataRoutes);
 app.use("/create", createRoutes);
