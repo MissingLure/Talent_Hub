@@ -41,7 +41,7 @@ const nombresEmpleados = [
 const EvaluacionesEmpleado = () => {
   const accessToken = localStorage.getItem("accessToken");
   const decoded = jwtDecode(accessToken);
-  console.log("Decoded role:", decoded.rol);
+  //console.log("Decoded role:", decoded.rol);
   const employeeData = JSON.parse(localStorage.getItem("employeeData"));
   const navigate = useNavigate();
 
@@ -79,7 +79,7 @@ const EvaluacionesEmpleado = () => {
 
   const handleSaveNotaPotencial = (employee, nota) => {
     // Implement the logic to save the grade, e.g., make an API call to save the grade
-    console.log(`Saving grade for ${employee.primer_nombre} ${employee.primer_apellido}: ${nota}`);
+   // console.log(`Saving grade for ${employee.primer_nombre} ${employee.primer_apellido}: ${nota}`);
   };
 
   const handleGetEmployees = (bossId) => {
@@ -88,11 +88,11 @@ const EvaluacionesEmpleado = () => {
         bossId: bossId,
       })
       .then((response) => {
-        console.log(response.data.data);
+     //   console.log(response.data.data);
         setEmpleados(response.data.data);
       })
       .catch((error) => {
-        console.log(error.response.data.data);
+     //   console.log(error.response.data.data);
       });
   };
 
@@ -101,7 +101,8 @@ const EvaluacionesEmpleado = () => {
       if (action === 'Dashboard') {
         navigate(`/user-dashboard?id_empleado=${selectedEmployeeInfo.id_empleado}`); 
       } else if (action === 'Evaluar') {
-        navigate(`/evaluacion-empleado?id_empleado=${selectedEmployeeInfo.id_empleado}`);
+        console.log("Hmmmm")
+        navigate(`/evaluar-competencia?id_empleado=${selectedEmployeeInfo.id_empleado}`);
       }
   };
 

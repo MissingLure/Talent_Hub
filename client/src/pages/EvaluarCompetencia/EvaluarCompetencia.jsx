@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams,useSearchParams, useNavigate } from "react-router-dom";
 import evalaucionesApi from "../../api/evaluaciones.competencias.api";
 import empleadoApi from "../../api/empleado.api";
 import ItemCompetencia from "../../components/EvaluacionCompetencia/ItemCompetencia";
@@ -16,7 +16,10 @@ function EvaluarCompetencia() {
     {resumen: value, pregunta_habilidad: value, competencia: value, resultado: value}
     */
 
-  const params = useParams();
+ // const params = useParams();
+ const [searchParams] = useSearchParams();
+
+ const idEmpleado = searchParams.get('id_empleado');
   const navigate = useNavigate();
 
   const [empleado, setEmpleado] = useState({});
@@ -120,7 +123,7 @@ function EvaluarCompetencia() {
   const loadEvaluacion = async (idEmpleado) => {
     try {
       const resEmpleado = await empleadoApi.getEmpleadoById(idEmpleado);
-
+     
       if (
         !resEmpleado ||
         resEmpleado.status < 200 ||
@@ -133,10 +136,11 @@ function EvaluarCompetencia() {
       const emp = resEmpleado.data.data;
 
       setEmpleado(emp);
-
+      console.log(emp)
       const resEvaluacion =
         await evalaucionesApi.getEvaluacionesCompetenciasByEmpleado(idEmpleado);
 
+        console.log(resEvaluacion)
       if (
         !resEvaluacion ||
         resEvaluacion.status < 200 ||
@@ -158,11 +162,12 @@ function EvaluarCompetencia() {
         )
           loadCompetencias.push(pregunta.nombre_competencia);
       });
-
+ 
       setCompetencias(loadCompetencias);
       setPreguntas(preguntas);
 
       setIsEvaluado(estaEvaluado(preguntas));
+     
     } catch (error) {
       console.log(error);
       navigate("/error404");
@@ -203,11 +208,19 @@ function EvaluarCompetencia() {
 
   useEffect(() => {
     const loadEmpleado = async () => {
-      if (!params.idEmpleado || params.idEmpleado.length === 0) {
-        navigate("/error404");
-      }
+      const resEvaluacion = await evalaucionesApi.getEvaluacionesCompetenciasByEmpleado(idEmpleado);
+      console.log(resEvaluacion.data.data)
 
-      await loadEvaluacion(params.idEmpleado);
+   
+
+      await loadEvaluacion(idEmpleado);
+
+      if (resEvaluacion.data.data.length === 0) {
+        navigate("/evaluaciones-empleado");
+        alert("Este empleado no tiene preguntas.");
+       // return;
+      } 
+
     };
 
     loadEmpleado();

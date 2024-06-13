@@ -140,12 +140,12 @@ const AdminPreguntas = () => {
             <h2><b>Administrar Evaluaciones</b></h2>
             <div className="evaluations-actions">
                 <button>
-                <Link to ="/core-competences-general">
+                <Link to ="/administrar-preguntas/core-competences-general">
                     Evaluacion Competencia
                 </Link>
                 </button>
                 <button>
-                <Link to ="/potential-competiences-general">
+                <Link to ="/administrar-preguntas/potential-competiences-general">
                     Evaluacion Potencial
                 </Link>
                 </button>

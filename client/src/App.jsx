@@ -19,6 +19,7 @@ import EncuestasEmpleado from './pages/Encuestas/Encuestas';
 import CoreCompetences from './pages/CoreCompetences/CoreCompetences';
 import PotencialCompetences from './pages/PotentialCompetiences/PotencialCompetiences';
 import EvaluacionesPendientes from "./pages/EvaluacionesPendientes/EvaluacionesPendientes";
+import EvaluarCompetencia from './pages/EvaluarCompetencia/EvaluarCompetencia';
 // import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
 // import VerPreguntas from './pages/VerPreguntas/Preguntas';
 
@@ -38,11 +39,12 @@ function App() {
           <Route path='/evaluaciones-empleado' element={<EvaluacionesEmpleado/>}/>
           <Route path="/evaluaciones-pendientes" element={<EvaluacionesPendientes />} />
           <Route path='/evaluacion-empleado' element={<EvaluacionEmpleado/>}/>
+          <Route path='/evaluar-competencia' element={<EvaluarCompetencia/>}/>
           <Route path='/crear-competencias' element={<CrearCompetencias/>}/>
           <Route path='/administrar-preguntas' element={<AdministrarPreguntas/>}/>
           <Route path='/competencias' element={<BibliotecaCompetencias/>}/>
-          <Route path='/administrar-encuestas/core-competences-general' element={<CoreCompetences/>}/>
-          <Route path='/administrar-encuestas/potential-competiences-general' element={<PotencialCompetences/>}/>
+          <Route path='/administrar-preguntas/core-competences-general' element={<CoreCompetences/>}/>
+          <Route path='/administrar-preguntas/potential-competiences-general' element={<PotencialCompetences/>}/>
           <Route path='/inicio' element={<Inicio/>}/>
           <Route path='/box-grid' element={<BoxGrid/>}/>
           <Route path='/administrar-encuestas'element={<AdministrarEncuestas/>}/>
