@@ -4,7 +4,7 @@ import nav from "../UserDashboard/ENCABEZADO.jpg";
 import avatar from "../UserDashboard/avatar.png";
 import Navbar from "../../components/Navbar/Navbar";
 import { jwtDecode } from "jwt-decode";
-// import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import dashboardApi from "../../api/dashboard.api";
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
@@ -31,6 +31,7 @@ const UserDashboard = () => {
     const [gridBox, setGridBox] = useState({});
 
     let InformacioUser;
+    let indice;
     const cargarUsuario = async (data) => {
         try {
             const response = await dashboardApi.getEmpleadoRequest(data.id_empleado);
@@ -60,6 +61,35 @@ const UserDashboard = () => {
             if (response.status === 200) {
                 InformacioUser = response.data;
                 setGridBox(InformacioUser.data);
+                switch (gridBox.coory) {
+                    case 1:
+                        indice = 6;
+                        break;
+                    case 2:
+                        indice = 3;
+                        break;
+                    case 3:
+                        indice = 0;
+                        break;
+                    default:
+                        indice = -1;
+                        break;
+                }
+                switch (gridBox.coorx) {
+                    case 1:
+                        indice+=0;
+                        break;
+                    case 2:
+                        indice+=1;
+                        break;
+                    case 3:
+                        indice+=2;
+                        break;
+                    default:
+                        indice = -1;
+                        break;
+                }
+
             }
 
         } catch (error) {
@@ -144,7 +174,7 @@ const UserDashboard = () => {
                         <p><strong>Puesto:</strong> {user.nombre_perfil}</p>
                         <p><strong>Departamento:</strong> {user.nombre_departamento}</p>
                         <p><strong>Fecha Ingreso:</strong> {user.fecha_ingreso}</p>
-                        <p><strong>Pais:</strong> chipichipi</p>
+                        <p><strong>Pais:</strong> HONDURAS </p>
                         </div>
                     </div>
 
@@ -169,13 +199,19 @@ const UserDashboard = () => {
 
             <div className="performance-grid">
                 {items.map((item, index) => (
-                    <div key={index} className="grid-item">
+                    <div key={index} className="grid-item" 
+                    //otro color para el background del grid 1c7120 o 525061 o 2A2942 o otro 991922
+                    // 0 1 2
+                    // 3 4 5
+                    // 6 7 8
+                    style = {{backgroundColor: indice == index ? "#CD1C2C" : "#991922" }}
+                    >
                         {item}
+                        {8 == index ? '' : ''} 
+                        
                     </div>
                 ))}
             </div>
-
-
 
             {/* <div className="Recommendations">
                 <table>
