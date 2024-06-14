@@ -52,9 +52,9 @@ const AsignarEvaluacion = () => {
       setErrorMessages(errors);
     } else {
       axios
-        .post("http://localhost:4000/create/asignar-habilidades", {
-          idPuesto: idPuesto,
-          competencias: competenciasPuesto,
+        .post("http://localhost:4000/competencias-por-puesto/", {
+          id_perfil_puesto: idPuesto,
+          id_competencia_habilidad: competenciasPuesto.idCompetecnia,
         })
         .then((response) => {
           console.log(response.data.data);
@@ -136,8 +136,8 @@ const AsignarEvaluacion = () => {
           <select
             onChange={(e) => {
               let selectedIndex = e.target.value;
-              setIdCompetencia(competencias[selectedIndex].id_habilidad);
-              setNombreCompetencia(competencias[selectedIndex].nombre_habilidad);
+              setIdCompetencia(competencias[selectedIndex].id_competencia);
+              setNombreCompetencia(competencias[selectedIndex].nombre_competencia);
             }}
           >
             <option selected disabled hidden>
