@@ -92,13 +92,14 @@ const UserDashboard = () => {
 
     const IndiceCalc= async () => {
         
+        
         if(gridBox.resultado_evaluacion_potencial !=null && gridBox.resultado_evaluacion_desempeño != null && gridBox.resultado_evaluacion_competencias != null){
             let tmp;
             let letraPot;
-            if(gridBox.resultado_evaluacion_potencial >= 90*0.9){
+            if(gridBox.resultado_evaluacion_potencial >= 0.9){
                 tmp = 0;
                 letraPot = 'A';
-            }else if( 90*0.65 <= gridBox.resultado_evaluacion_potencial && gridBox.resultado_evaluacion_potencial < 90*0.9 ){
+            }else if( 0.65 <= gridBox.resultado_evaluacion_potencial && gridBox.resultado_evaluacion_potencial < 0.9 ){
                 tmp = 3;
                 letraPot = 'B';
             }else {
@@ -108,10 +109,10 @@ const UserDashboard = () => {
             
             let tmp1;
             let letraComp;
-            if(gridBox.resultado_evaluacion_competencias/268 >= 0.9){
+            if(gridBox.resultado_evaluacion_competencias >= 0.9){
                 tmp1 = 3;
                 letraComp = 'A';
-            }else if( 0.7 <= gridBox.resultado_evaluacion_competencias/268 && gridBox.resultado_evaluacion_competencias/268 <0.9 ){
+            }else if( 0.7 <= gridBox.resultado_evaluacion_competencias && gridBox.resultado_evaluacion_competencias <0.9 ){
                 tmp1 = 2;
                 letraComp = 'B';
             }else {
@@ -121,10 +122,10 @@ const UserDashboard = () => {
 
             let tmp2;
             let letraDes;
-            if(gridBox.resultado_evaluacion_desempeño >= 151){
+            if(gridBox.resultado_evaluacion_desempeño >= 0.755){
                 tmp2 = 3;
                 letraDes = 'A';
-            }else if( 100 <= gridBox.resultado_evaluacion_desempeño && gridBox.resultado_evaluacion_desempeño < 151 ){
+            }else if( 0.5 <= gridBox.resultado_evaluacion_desempeño && gridBox.resultado_evaluacion_desempeño < 0.755 ){
                 tmp2 = 2;
                 letraDes = 'B';
             }else {
@@ -140,8 +141,10 @@ const UserDashboard = () => {
             }
 
             setResult(result);
+            //pim 
             setIndice(tmp + Math.floor((tmp1+tmp2)/2) -1);
         }
+        //setIndice(3);
     }
 
     useEffect(() => {
