@@ -29,9 +29,10 @@ const UserDashboard = () => {
 
     const [user, setUser] = useState({});
     const [gridBox, setGridBox] = useState({});
+    const [indice, setIndice] = useState(-1);
+    const [result, setResult] = useState({});
 
     let InformacioUser;
-    let indice;
     const cargarUsuario = async (data) => {
         try {
             const response = await dashboardApi.getEmpleadoRequest(data.id_empleado);
@@ -71,7 +72,6 @@ const UserDashboard = () => {
     }
 
     const loadUser = async () => {
-
         const searchParams = new URLSearchParams(location.search);
         const idEmpleadoParam = searchParams.get('id_empleado');
 
@@ -86,12 +86,68 @@ const UserDashboard = () => {
             cargarUsuario(data);
             cargarGridBox(data);
         }
+        
+    }
 
+
+    const IndiceCalc= async () => {
+        
+        if(gridBox.resultado_evaluacion_potencial !=null && gridBox.resultado_evaluacion_desempeño != null && gridBox.resultado_evaluacion_competencias != null){
+            let tmp;
+            let letraPot;
+            if(gridBox.resultado_evaluacion_potencial >= 90*0.9){
+                tmp = 0;
+                letraPot = 'A';
+            }else if( 90*0.65 <= gridBox.resultado_evaluacion_potencial && gridBox.resultado_evaluacion_potencial < 90*0.9 ){
+                tmp = 3;
+                letraPot = 'B';
+            }else {
+                tmp = 6;
+                letraPot = 'C';
+            }
+            
+            let tmp1;
+            let letraComp;
+            if(gridBox.resultado_evaluacion_competencias/268 >= 0.9){
+                tmp1 = 3;
+                letraComp = 'A';
+            }else if( 0.7 <= gridBox.resultado_evaluacion_competencias/268 && gridBox.resultado_evaluacion_competencias/268 <0.9 ){
+                tmp1 = 2;
+                letraComp = 'B';
+            }else {
+                tmp1 = 1;
+                letraComp = 'C';
+            }
+
+            let tmp2;
+            let letraDes;
+            if(gridBox.resultado_evaluacion_desempeño >= 151){
+                tmp2 = 3;
+                letraDes = 'A';
+            }else if( 100 <= gridBox.resultado_evaluacion_desempeño && gridBox.resultado_evaluacion_desempeño < 151 ){
+                tmp2 = 2;
+                letraDes = 'B';
+            }else {
+                tmp2 = 1;
+                letraDes = 'C';
+            }
+            
+            //potencial esta inverso 1 2 3, en vez de 3 2 1
+            const result = {
+                letraPot,
+                letraComp,
+                letraDes,
+            }
+
+            setResult(result);
+            setIndice(tmp + Math.floor((tmp1+tmp2)/2) -1);
+        }
     }
 
     useEffect(() => {
         loadUser();
-
+        IndiceCalc();
+        
     }, []);
 
     return (
@@ -154,18 +210,18 @@ const UserDashboard = () => {
 
             <div className="Potential-Assessment-box">
                 Evaluación de Potencial
-                <td className="info-box">{gridBox.resultado_evaluacion_potencial == null ? "No se ha evaluado el Potencial" : gridBox.resultado_evaluacion_potencial}</td>
+                <td className="info-box">{result.letraPot == null  ? "No se ha evaluado el Potencial" : result.letraPot }</td>
             </div>
 
 
             <div className="Performance_Assessment-box">
                 Evaluación de Desempeño
-                <td className="info-box">{gridBox.resultado_evaluacion_desempeño == null ? "No se ha evaluado el Desempeño" : gridBox.resultado_evaluacion_desempeño}</td>
+                <td className="info-box">{result.letraDes == null ? "No se ha evaluado el Desempeño" : result.letraDes}</td>
             </div>
 
             <div className="Competencies_Assessment-box">
                 Evaluación de Competencias
-                <td className="info-box">{gridBox.resultado_evaluacion_competencias == null ? "No se han evaluado las Competencias" : gridBox.resultado_evaluacion_competencias}</td>
+                <td className="info-box">{result.letraComp == null ? "No se han evaluado las Competencias" : result.letraComp}</td>
             </div>
 
             <div className="performance-grid">
@@ -176,7 +232,7 @@ const UserDashboard = () => {
                     // 3 4 5
                     // 6 7 8
                     
-                    style = {{backgroundColor:  ((gridBox.coory -1) *3 + gridBox.coorx -1) == index ? "#CD1C2C" : "#991922" }}
+                    style = {{backgroundColor:  indice == index ? "#CD1C2C" : "#991922" }}
                     >
                         {item}
                         {8 == index ? '' : ''} 
