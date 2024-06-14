@@ -61,35 +61,6 @@ const UserDashboard = () => {
             if (response.status === 200) {
                 InformacioUser = response.data;
                 setGridBox(InformacioUser.data);
-                switch (gridBox.coory) {
-                    case 1:
-                        indice = 6;
-                        break;
-                    case 2:
-                        indice = 3;
-                        break;
-                    case 3:
-                        indice = 0;
-                        break;
-                    default:
-                        indice = -1;
-                        break;
-                }
-                switch (gridBox.coorx) {
-                    case 1:
-                        indice+=0;
-                        break;
-                    case 2:
-                        indice+=1;
-                        break;
-                    case 3:
-                        indice+=2;
-                        break;
-                    default:
-                        indice = -1;
-                        break;
-                }
-
             }
 
         } catch (error) {
@@ -120,10 +91,10 @@ const UserDashboard = () => {
 
     useEffect(() => {
         loadUser();
+
     }, []);
 
     return (
-
         <div className="dashboard-container">
             <Navbar />
 
@@ -204,7 +175,8 @@ const UserDashboard = () => {
                     // 0 1 2
                     // 3 4 5
                     // 6 7 8
-                    style = {{backgroundColor: indice == index ? "#CD1C2C" : "#991922" }}
+                    
+                    style = {{backgroundColor:  ((gridBox.coory -1) *3 + gridBox.coorx -1) == index ? "#CD1C2C" : "#991922" }}
                     >
                         {item}
                         {8 == index ? '' : ''} 
@@ -212,7 +184,6 @@ const UserDashboard = () => {
                     </div>
                 ))}
             </div>
-
             {/* <div className="Recommendations">
                 <table>
                     <tbody>
