@@ -28,7 +28,7 @@
 .search-options {
   margin: 10px;
   background-color: rgb(232, 232, 232);
-  width: 50%;
+  width: 600px;
   height: 60px;
   border-radius: 5px;
   display: flex;
@@ -131,6 +131,7 @@
   top: 0;
 }
 
+
 .container4 th {
   width: auto;
   /* max-height: 70px; */
@@ -172,7 +173,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 150%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;

@@ -305,7 +305,7 @@ const AdministarEmpleados = () => {
                 <th>Departamento</th>
                 <th>Puesto</th>
                 <th>Pais</th>
-                <th> </th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -323,7 +323,7 @@ const AdministarEmpleados = () => {
                     <td>{empleado.id_pais}</td>
                     <td className="butne">
                       <button onClick={() => handleSelectEmployee(empleado)}>
-                        <img src={inform} />
+                        <img src={inform} width={40} height={40}/>
                       </button>
                     </td>
                   </tr>
