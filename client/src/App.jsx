@@ -18,6 +18,7 @@ import CrearEncuestas from './pages/Encuesta/Encuesta';
 import EncuestasEmpleado from './pages/Encuestas/Encuestas';
 import CoreCompetences from './pages/CoreCompetences/CoreCompetences';
 import PotencialCompetences from './pages/PotentialCompetiences/PotencialCompetiences';
+import NotasDesempenio from './pages/NotasDesempeno/NotasDesempeno';
 // import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
 // import VerPreguntas from './pages/VerPreguntas/Preguntas';
 
@@ -30,6 +31,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Login/>}/>
           <Route path='/user-dashboard' element={<UserDashboard/>}/>
+
+          <Route path='/notas_desempeno' element={<NotasDesempenio/>}/>
           
           {/* <Route path='/mostrar-info' element={<MostrarInfo/>}/> */}
           {/* <Route path='/ver-preguntas' element={<VerPreguntas/>}/> */}

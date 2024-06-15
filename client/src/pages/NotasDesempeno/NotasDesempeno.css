@@ -1,0 +1,139 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    
+}
+
+.navbar {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.survey-containers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #d8d8db;
+    animation: fadeInAnimation 1s forwards;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+.top-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;  
+    padding-left: 10px; 
+}
+
+.botons:hover {
+    background-color: #cd1c2c;
+}
+
+.botons {
+    background-color: #333356;
+    border-radius: 5px;
+    width: 120px;
+    height: auto;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.top-containers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;  
+    background-color: #7e0a12;
+    border: 1.5px solid black;
+    width: 80%;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+.top-containers h1 {
+    font-size: 28px; 
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.filter-container {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-container label {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #333356;
+}
+
+.filter-container input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #333356;
+    font-size: 14px;
+}
+
+.table-container {
+    width: 80%;
+    margin: 20px 0;
+    overflow-x: auto; 
+    max-height: 600px; 
+    overflow-y: auto;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; 
+}
+
+thead {
+    background-color: #333356;
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #333356;
+    text-align: left;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+th {
+    background-color: #333356;
+    color: white;
+    font-size: 14px;
+}
+
+td {
+    background-color: #f0f0f0;
+    font-size: 14px;
+}
+
+@keyframes fadeInAnimation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
