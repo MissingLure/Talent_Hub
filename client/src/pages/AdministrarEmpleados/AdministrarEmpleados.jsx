@@ -306,8 +306,8 @@ const AdministarEmpleados = () => {
       employee.segundo_nombre.toLowerCase().includes(search.toLowerCase()) ||
       employee.primer_apellido.toLowerCase().includes(search.toLowerCase()) ||
       employee.segundo_apellido.toLowerCase().includes(search.toLowerCase())) &&
-    (selectDepartamento === '' || employee.nombre_departamento === selectDepartamento) && 
-    (selectPuesto === '' || employee.nombre_perfil === selectPuesto)
+    (selectDepartamento === '' || employee.id_departamento=== selectDepartamento) && 
+    (selectPuesto === '' || employee.id_perfil_puesto === selectPuesto)
   );
 
 
@@ -318,11 +318,11 @@ const AdministarEmpleados = () => {
       <h2> Administrar Empleados</h2>
       <h4>Manten el orden de tus empleados activos.</h4>
       <br></br>
-      <div className="search-options">
+      <div className="search-options" style={{width:'1100px'}}>
         <div>
           <label>Departamento</label>
           <select value={selectDepartamento} onChange={(e)=>setSelectDepartamento(e.target.value)}>
-                  <option value =''>Seleccione un departamento...</option>
+                  <option value =''>Seleccione un Departamento...</option>
                   {departamento.map((e)=> 
                       <option key={e.id_departamento} value={e.id_departamento}>
                         {e.nombre_departamento}
@@ -374,9 +374,13 @@ const AdministarEmpleados = () => {
                     <td>{employee.nombre_perfil}</td>
                     <td>{employee.id_pais}</td>
                     <td className="butne">
-                      <button onClick={() => handleSelectEmployee(employee)}>
+                      <button onClick={() => handleInformationClick(
+                        employee.id_empleado,employee.id_jefe
+                )}>
                         <img src={inform} width={40} height={40}/>
                       </button>
+                      <button onClick={()=> handleModifyEmployeeClick(employee)}><img src={editar} width={25} height={10}/></button>
+                      <button onClick={()=> handleSelectEmployee(employee)}><img src={borrar} width={35} height={10}/></button>
                     </td>
                   </tr>
                 ))
@@ -393,7 +397,7 @@ const AdministarEmpleados = () => {
 
       {showBossPopup && (
         <div className="popup">
-          <div className="information-popup-content">
+          <div className="information-popup-content" style={{backgroundColor:'#2a2942',width:'300px',color:'white'}}>
             <div className="employee-info">
               <h3>
                 <b>Empleado</b>
@@ -419,7 +423,7 @@ const AdministarEmpleados = () => {
                     <b>Jefe</b>
                   </h3>
                   <label>Asignar jefe: </label>
-                  <select onChange={(e) => setSelectedBoss(e.target.value)}>
+                  <select onChange={(e) => setSelectedBoss(e.target.value)} style={{backgroundColor:'white',color:'black'}}>
                     <option selected disabled hidden>
                       Seleccionar...
                     </option>
@@ -437,7 +441,8 @@ const AdministarEmpleados = () => {
                     )}
                   </select>
                   <button
-                    type="button"
+                    type="button"  
+                    style={{backgroundColor:'#CD1C2C', marginTop:'15px'}}
                     onClick={() =>
                       handleSetBoss(selectedEmployee.id_empleado, selectedBoss)
                     }
@@ -454,7 +459,7 @@ const AdministarEmpleados = () => {
                             <button onClick={handleClosePopup}>Eliminar</button>
                         </div> */}
             <div>
-              <button onClick={handleClosePopup}>Cerrar</button>
+              <button onClick={handleClosePopup} style={{backgroundColor:'#CD1C2C', marginTop:'15px'}}>Cerrar</button>
             </div>
           </div>
         </div>
@@ -480,19 +485,6 @@ const AdministarEmpleados = () => {
               {selectedEmployee.primer_apellido}
             </h3>
             <br></br>
-            <button onClick={() => handleModifyEmployeeClick(selectedEmployee)}>
-              Modificar Empleado
-            </button>
-            <button
-              onClick={() =>
-                handleInformationClick(
-                  selectedEmployee.id_empleado,
-                  selectedEmployee.id_jefe
-                )
-              }
-            >
-              Información Jefe
-            </button>
             <button onClick={() => handleDeleteEmployee(selectedEmployee.id_empleado)}>Eliminar Empleado</button>
             <button onClick={handleClosePopup}>Cerrar</button>
           </div>
