@@ -1,7 +1,7 @@
 import  { useEffect, useState } from "react";
 import './AdministrarUsuarios.css';
 import axios from "axios";
-import inform from '../../images/info.png';
+import deletear from '../../images/delete.png'
 import editar from '../../images/editar.png';
 import Navbar from "../../components/Navbar/Navbar";
 import ModificarUsuarioPopUp from "../ModificarUsuarios/ModificarUsuarioPopUp";
@@ -209,7 +209,7 @@ const AdministarUsuarios = () => {
                                         <td>{getRoleName(user.rol)}</td>
                                         <td>
                                             <button onClick={() => setShowPopupModificar(true)}><img src={editar} alt='Editar' ></img></button>
-                                            <button onClick={() => handleInfo(user)}><img src={inform} alt="Info" /></button> 
+                                            <button onClick={() => handleInfo(user)}><img src={deletear} alt="Delete" /></button> 
                                         </td>
                                     </tr>
                                 ))
@@ -225,7 +225,7 @@ const AdministarUsuarios = () => {
                 {showPopup2 && (
                     <div className="popups">
                         <div className="popups2-content">
-                            <h3>Esta seguro de borrar el usuario?</h3>
+                            <h3>Esta seguro de borrar {selectedUser.correo}</h3>
                             <br/>
                             <button onClick={() => handleDeleteUser(selectedUser)}>Eliminar Usuario</button>
                             <button onClick={handleCloseUser}>Cerrar</button>

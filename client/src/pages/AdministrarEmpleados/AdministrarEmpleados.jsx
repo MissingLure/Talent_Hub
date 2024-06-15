@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./AdministrarEmpleados.css";
 import axios from "axios";
 import inform from "../../images/info.png";
+import borrar from '../../images/delete.png';
+import editar from '../../images/editar.png';
 import CrearEmpleado from "../CrearEmpleado/CrearEmpleado";
 import Navbar from "../../components/Navbar/Navbar";
 import Modal from "react-modal";
@@ -22,6 +24,9 @@ const AdministarEmpleados = () => {
   const [selectedBoss, setSelectedBoss] = useState("");
   const [email, setEmail] = useState("");
   const [selectedEmployee, setSelectedEmployee] = useState("");
+  const [search,setSearch] = useState('');
+  const [selectDepartamento, setSelectDepartamento] = useState('');
+  const [selectPuesto,setSelectPuesto] = useState('');
 
   //popups
   const [showPopup, setShowPopup] = useState(false);
@@ -267,10 +272,52 @@ const AdministarEmpleados = () => {
     // setShowAddUserPopup(true);
   };
 
+      const handleGetPuestos = () => {
+        axios.get('http://localhost:4000/data/obtener-puestos')
+            .then((response) => {
+                setPuestos(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    };
+
+    const handleGetDepartamentos = () => {
+        axios.get('http://localhost:4000/data/obtener-departamentos ')
+            .then((response) => {
+                setDepartamentos(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            }
+
   useEffect(() => {
     handleGetEmployees();
     handleGetBosses();
   }, []);
+
+  const filteredEmployees = empleados.filter(employee =>
+    (employee.primer_nombre.toLowerCase().includes(search.toLowerCase()) ||
+      employee.segundo_nombre.toLowerCase().includes(search.toLowerCase()) ||
+      employee.primer_apellido.toLowerCase().includes(search.toLowerCase()) ||
+      employee.segundo_apellido.toLowerCase().includes(search.toLowerCase())) &&
+    (selectDepartamento === '' || employee.nombre_departamento === selectDepartamento) && 
+    (selectPuesto === '' || employee.nombre_perfil)
+  );
+
+  const handleSearchChange=(e) =>{
+    setSearch(e.target.value);
+  }
+
+  const handleDepartamentoChange=(e)=>{
+    setSelectDepartamento(e.target.value);
+  }
+  
+  const handlePuestoChange= (e) =>{
+    setSelectPuesto(e.target.value);
+  }
+
 
   return (
     <div className="administrar-empleados">
@@ -280,13 +327,15 @@ const AdministarEmpleados = () => {
       <br></br>
       <div className="search-options">
         <div>
-          <label>Filtro</label>
-          <select></select>
-          <input placeholder="Buscar..." />
-          <button className="search-button" onClick={handleBuscar}>
-            Buscar
-          </button>
+          <label>Departamento</label>
+          <select>
 
+          </select>
+          <label>Puesto</label>
+          <select>
+
+          </select>
+          <input placeholder="Buscar nombre..." onChange={handleSearchChange}/>
           <button className="add-button" onClick={() => setShowPopup(true)}>
             Crear
           </button>
@@ -309,20 +358,20 @@ const AdministarEmpleados = () => {
               </tr>
             </thead>
             <tbody>
-              {empleados.length > 0 ? (
-                empleados.map((empleado) => (
-                  <tr key={empleado.id_empleado}>
-                    <td>{empleado.id_empleado}</td>
+              {filteredEmployees.length > 0 ? (
+                filteredEmployees.map((employee) => (
+                  <tr key={employee.id_empleado}>
+                    <td>{employee.id_empleado}</td>
                     <td>
-                      {empleado.primer_nombre} {empleado.segundo_nombre}{" "}
-                      {empleado.primer_apellido} {empleado.segundo_apellido}
+                      {employee.primer_nombre} {employee.segundo_nombre}{" "}
+                      {employee.primer_apellido} {employee.segundo_apellido}
                     </td>
-                    <td>{empleado.id_jefe}</td>
-                    <td>{empleado.nombre_departamento}</td>
-                    <td>{empleado.nombre_perfil}</td>
-                    <td>{empleado.id_pais}</td>
+                    <td>{employee.id_jefe}</td>
+                    <td>{employee.nombre_departamento}</td>
+                    <td>{employee.nombre_perfil}</td>
+                    <td>{employee.id_pais}</td>
                     <td className="butne">
-                      <button onClick={() => handleSelectEmployee(empleado)}>
+                      <button onClick={() => handleSelectEmployee(employee)}>
                         <img src={inform} width={40} height={40}/>
                       </button>
                     </td>
