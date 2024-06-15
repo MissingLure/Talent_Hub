@@ -17,12 +17,13 @@
 /* -------------------------- */
 
 .flechaArriba {
+  display: flex;
   grid-row: span 3 / span 3;
   background-color: #333356;
   color: white;
 
   align-content: center;
-  align-items: center;
+ justify-content: center;
 
   padding: 20px 40px;
 
@@ -42,7 +43,7 @@
   font-size: 1.25rem; /* 20px */
   line-height: 1.75rem; /* 28px */
 
-
+  padding: 0 10px;
 
   transform: rotate(180deg);
 }
