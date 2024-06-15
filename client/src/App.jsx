@@ -21,6 +21,7 @@ import CoreCompetences from "./pages/CoreCompetences/CoreCompetences";
 import PotencialCompetences from "./pages/PotentialCompetiences/PotencialCompetiences";
 
 import EvaluacionesPendientes from "./pages/EvaluacionesPendientes/EvaluacionesPendientes";
+import MetasEmpleado from "./pages/MetasEmpleado/MetasEmpleado";
 // import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
 // import VerPreguntas from './pages/VerPreguntas/Preguntas';
 
@@ -53,6 +54,8 @@ function App() {
             path="/evaluaciones-pendientes"
             element={<EvaluacionesPendientes />}
           />
+          <Route path="/metas-empleado" element={<MetasEmpleado />} />
+          {/*La ruta de evaluaciones pendientes*/}
 
           <Route path="/crear-competencias" element={<CrearCompetencias />} />
           <Route

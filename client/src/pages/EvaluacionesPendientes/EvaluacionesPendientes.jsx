@@ -11,7 +11,7 @@ import Modal from "react-modal";
 
 const EvaluacionesPendientes = () => {
   const [evaluaciones, setEvaluaciones] = useState([]);
-  JSON.parse(localStorage.getItem("employeeData"));
+  const employeeData = JSON.parse(localStorage.getItem("employeeData"));
   const [id_persona, setId_persona] = useState(employeeData.id_user);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const EvaluacionesPendientes = () => {
   /*Aqui se encarga de cargar los datos al cosito de evaluaciones y chequiaria si son del user que le tocan */
   const handleGetEvaluacion = (id) => {
     axios
-      .get("http://localhost:4000/data//evaluaciones-pendientes")
+      .get("http://localhost:4000/evaluaciones-pendientes")
       .then((response) => {
         setEvaluaciones(response.data.data);
       })
@@ -42,7 +42,7 @@ const EvaluacionesPendientes = () => {
       </h2>
       <br />
       <div className="body-container-evaluaciones">
-        <div className="container3 evaluaciones">
+        <div className="container3-evaluaciones">
           <table>
             <thead>
               <tr>

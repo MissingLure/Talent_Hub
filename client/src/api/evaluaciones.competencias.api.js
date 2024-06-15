@@ -26,6 +26,17 @@ const getEvaluacionesCompetenciasRequest = async () => {
   }
 };
 
+const getEvaluacionesPendientesRequest = async () => {
+  try {
+    const res = await axios.get(rutaBase + "evaluaciones-pendientes");
+
+    return res;
+  } catch (error) {
+    console.log(error);
+
+    return null;
+  }
+};
 // Es importante que newEvaluacion sea un objeto con los atributos exactamente iguales
 // a como estan en la base de datos
 
@@ -84,4 +95,5 @@ export default {
   putEvaluacionCompetenciaRequest,
   deleteEvaluacionCompetenciaRequest,
   getEvaluacionesCompetenciasByEmpleado,
+  getEvaluacionesPendientesRequest,
 };
