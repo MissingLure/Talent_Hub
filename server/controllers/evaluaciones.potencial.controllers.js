@@ -1,4 +1,5 @@
 const evaluacionesPotencialServ = require("../services/evaluaciones.potencial.services");
+const { employeeExists } = require("../controllers/validationController");
 
 const SelectEvalucionesPendientes = async (req, res) => {
     try {
@@ -159,14 +160,12 @@ const getEvaluacionesPotencialByEmpleadoController = async (req, res) => {
     try {
         const { idEmpleado } = req.params;
 
-        // Primero deberia validadr si existe el empleado OJO
+        // Validar si el empleado existe
+        
 
-        const result =
-            await evaluacionesPotencialServ.selectEvaluacionCompetenciasByEmpleadoService(
-                idEmpleado
-            );
+        const result = await evaluacionesPotencialServ.selectEvaluacionPotencialByEmpleadoService(idEmpleado);
 
-        if (!result) {
+        if (!result || result.length === 0) {
             return res.status(404).json({
                 message: "No se encontraron datos.",
                 data: result,

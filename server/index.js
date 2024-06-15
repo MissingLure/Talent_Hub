@@ -23,6 +23,7 @@ const competenciasRoutes = require("./routes/competencias.routes");
 const competenciasHabilidadesRoutes = require("./routes/competencias.habilidades.routes");
 const habilidadesPreguntasRoutes = require("./routes/habilidades.preguntas.routes");
 const evaluacionesCompetenciasRoutes = require("./routes/evaluaciones.competencias.routes");
+const evaluacionesPotencialRoutes = require("./routes/evaluaciones.potencial.routes");
 const dashboardRoutes = require("./routes/dashboard.routes");
 const gridBoxRoutes = require("./routes/gridBoxRoute");
 const departamentosRoutes = require("./routes/departamentosRoutes");
@@ -46,6 +47,7 @@ app.use("/evaluaciones-competencias", evaluacionesCompetenciasRoutes);
 app.use("/puestos", puestosRoutes);
 app.use("/meta-empleado-resultado", metaEmpleadoResultadoRoutes);
 app.use("/dashboard", dashboardRoutes);
+app.use("/evaluaciones-potenciales",evaluacionesPotencialRoutes);
 console.log(process.env.TALENT_HUB_DB);
 
 
