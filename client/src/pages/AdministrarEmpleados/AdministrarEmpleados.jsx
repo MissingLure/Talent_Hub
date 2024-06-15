@@ -27,6 +27,8 @@ const AdministarEmpleados = () => {
   const [search,setSearch] = useState('');
   const [selectDepartamento, setSelectDepartamento] = useState('');
   const [selectPuesto,setSelectPuesto] = useState('');
+  const [puesto, setPuesto] = useState([]);
+  const [departamento, setDepartamento]=useState([]);
 
   //popups
   const [showPopup, setShowPopup] = useState(false);
@@ -275,7 +277,7 @@ const AdministarEmpleados = () => {
       const handleGetPuestos = () => {
         axios.get('http://localhost:4000/data/obtener-puestos')
             .then((response) => {
-                setPuestos(response.data.data);
+                setPuesto(response.data.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -285,7 +287,7 @@ const AdministarEmpleados = () => {
     const handleGetDepartamentos = () => {
         axios.get('http://localhost:4000/data/obtener-departamentos ')
             .then((response) => {
-                setDepartamentos(response.data.data);
+                setDepartamento(response.data.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -295,6 +297,8 @@ const AdministarEmpleados = () => {
   useEffect(() => {
     handleGetEmployees();
     handleGetBosses();
+    handleGetDepartamentos();
+    handleGetPuestos();
   }, []);
 
   const filteredEmployees = empleados.filter(employee =>
@@ -303,20 +307,9 @@ const AdministarEmpleados = () => {
       employee.primer_apellido.toLowerCase().includes(search.toLowerCase()) ||
       employee.segundo_apellido.toLowerCase().includes(search.toLowerCase())) &&
     (selectDepartamento === '' || employee.nombre_departamento === selectDepartamento) && 
-    (selectPuesto === '' || employee.nombre_perfil)
+    (selectPuesto === '' || employee.nombre_perfil === selectPuesto)
   );
 
-  const handleSearchChange=(e) =>{
-    setSearch(e.target.value);
-  }
-
-  const handleDepartamentoChange=(e)=>{
-    setSelectDepartamento(e.target.value);
-  }
-  
-  const handlePuestoChange= (e) =>{
-    setSelectPuesto(e.target.value);
-  }
 
 
   return (
@@ -328,14 +321,24 @@ const AdministarEmpleados = () => {
       <div className="search-options">
         <div>
           <label>Departamento</label>
-          <select>
-
+          <select value={selectDepartamento} onChange={(e)=>setSelectDepartamento(e.target.value)}>
+                  <option value =''>Seleccione un departamento...</option>
+                  {departamento.map((e)=> 
+                      <option key={e.id_departamento} value={e.id_departamento}>
+                        {e.nombre_departamento}
+                      </option>
+                  )}
           </select>
           <label>Puesto</label>
-          <select>
-
+          <select value={selectPuesto} onChange={(e)=>setSelectPuesto(e.target.value)} >
+                  <option value=''>Seleccione un Puesto...</option>
+                  {puesto.map((e)=> 
+                    <option key={e.id_perfil_puesto} value={e.id_perfil_puesto}>
+                        {e.nombre_perfil}
+                    </option>
+                  )}
           </select>
-          <input placeholder="Buscar nombre..." onChange={handleSearchChange}/>
+          <input placeholder="Buscar nombre..." onChange={(e)=>setSearch(e.target.value)}/>
           <button className="add-button" onClick={() => setShowPopup(true)}>
             Crear
           </button>
