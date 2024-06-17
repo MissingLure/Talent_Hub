@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
 import './PotencialCompetiences.css'
 import { Link } from "react-router-dom";
-import axios from 'axios';
+
 
 const PotencialCompetiences=()=>{
     // const [empleados, setEmpleados] = useState([]);
