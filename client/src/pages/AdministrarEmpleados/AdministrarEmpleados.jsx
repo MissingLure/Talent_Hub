@@ -181,7 +181,18 @@ const AdministarEmpleados = () => {
     }
   };
 
-  
+  //IMPLEMENTACION DE CONSEGUIR ENCUESTAS SEGUN PERFIL DE PUESTO
+  const handleSurveysByJobProfileId = async (jobProfileId) => {
+    try {
+      const response = await axios.fetch(`http://localhost:3000/api/surveys/job-profile/${jobProfileId}`);
+
+      console.log("Surveys by job profile id:", response.data);
+
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  };
 
   const handleGetUser = (empleado) => {
     setEmployee(empleado);
