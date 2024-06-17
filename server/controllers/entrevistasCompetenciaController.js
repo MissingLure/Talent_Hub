@@ -22,6 +22,19 @@ async function obtenerEntrevistaPorId(req, res) {
     }
 }
 
+async function obtenerEntrevistaPorPuesto(req, res) {
+    try {
+        const resultado = await entrevistasCompetenciaService.obtenerPorPuesto(req.params.id_perfil_puesto);
+        if (resultado) {
+            res.json(resultado);
+        } else {
+            res.status(404).send({ message: "Entrevista no encontrada" });
+        }
+    } catch (error) {
+        res.status(500).send({ message: "Error al obtener la entrevista" });
+    }
+}
+
 async function insertarEntrevista(req, res) {
     try {
         const nuevaEntrevista = await entrevistasCompetenciaService.insertar(req.body);
@@ -55,4 +68,5 @@ module.exports = {
     insertarEntrevista,
     actualizarEntrevista,
     eliminarEntrevista,
+    obtenerEntrevistaPorPuesto,
 };

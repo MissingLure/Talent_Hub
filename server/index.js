@@ -29,7 +29,7 @@ const departamentosRoutes = require("./routes/departamentosRoutes");
 const puestosRoutes = require("./routes/puestosRoutes");
 const metaEmpleadoResultadoRoutes = require("./routes/metaEmpleadoResultadoRoutes");
 const entrevistasCompetenciaRoutes = require("./routes/entrevistasCompetenciaRoutes");
-
+const competenciasPorPuesto = require('./routes/competenciasPuestosRoutes');
 
 app.use("/user", userRoutes);
 app.use("/data", dataRoutes);
@@ -48,6 +48,7 @@ app.use("/puestos", puestosRoutes);
 app.use("/meta-empleado-resultado", metaEmpleadoResultadoRoutes);
 app.use("/entrevistas-competencia", entrevistasCompetenciaRoutes);
 app.use("/dashboard", dashboardRoutes);
+app.use('/competencias-por-puesto', competenciasPorPuesto);
 console.log(process.env.TALENT_HUB_DB);
 
 

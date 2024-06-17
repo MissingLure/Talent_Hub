@@ -30,6 +30,16 @@ async function obtenerPorId(id) {
     }
 }
 
+async function obtenerPorPuesto(id) {
+    try {
+        const resultado = await knex('entrevistas_competencia_habilidad').where({ id_perfil_puesto: id });
+        return resultado;
+    } catch (error) {
+        console.log('Error obteniendo la entrevista por ID:', error);
+        return false;
+    }
+}
+
 async function insertar(data) {
     try {
         const { id_entrevistas_competencia, descripcion, Nombre, Lenguaje, TipoEncuesta } = data;
@@ -71,5 +81,6 @@ module.exports = {
     obtenerPorId,
     insertar,
     actualizar,
-    eliminar
+    eliminar,
+    obtenerPorPuesto,
 };
