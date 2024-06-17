@@ -1,9 +1,6 @@
 const crypto = require("crypto");
 const { async } = require("q");
 
-
-
-
 const { DB_Config } = require("../config.js");
 const knex = require("knex")({
   client: "mysql2",
@@ -35,11 +32,23 @@ async function obtenerPuestos() {
 }
 
 async function obtenerEmpleado(idEmpleado) {
-  console.log(idEmpleado);
   const empleado = await knex
     .select("*")
     .from("empleados")
-    .where("id_empleado", idEmpleado);
+    .where("id_empleado", idEmpleado)
+    .join(
+      "perfiles_puestos",
+      "empleados.id_perfil_puesto",
+      "=",
+      "perfiles_puestos.id_perfil_puesto"
+    )
+    .join(
+      "departamentos",
+      "empleados.id_departamento",
+      "=",
+      "departamentos.id_departamento"
+    );
+
   return empleado;
 }
 
@@ -83,14 +92,15 @@ async function obtenerEvaluaciones() {
 }
 
 async function obtenerCompetenciaHabilidad() {
-    try {
-       
-        const competenciaHabilidad = await knex.select('*').from('competencia_habilidad');
-        return competenciaHabilidad;
-      } catch (error) {
-        console.error('Error:', error);
-        throw error; 
-      }
+  try {
+    const competenciaHabilidad = await knex
+      .select("*")
+      .from("competencia_habilidad");
+    return competenciaHabilidad;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
 }
 
 async function obtenerPreguntas() {
@@ -246,5 +256,5 @@ module.exports = {
   obtenerHabilidadesPorPuesto,
   obtenerEvaluacion,
   obtenerUsuario,
-  obtenerCompetenciaHabilidad
+  obtenerCompetenciaHabilidad,
 };

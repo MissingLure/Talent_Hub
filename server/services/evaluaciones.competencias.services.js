@@ -95,11 +95,37 @@ const deleteEvaluacionCompetenciasService = async (
 const selectEvaluacionCompetenciasByEmpleadoService = async (id_empleado) => {
   try {
     const result = await db("evaluacion_competencias")
-      .where({ id_empleado })
+      .where({
+        id_empleado: id_empleado,
+      })
+      .join(
+        "competencia_habilidad_pregunta",
+        "evaluacion_competencias.id_competencia_habilidad_pregunta",
+        "=",
+        "competencia_habilidad_pregunta.id_competencia_habilidad_pregunta"
+      )
+      .join(
+        "habilidad_pregunta",
+        "competencia_habilidad_pregunta.id_competencia_habilidad_pregunta",
+        "habilidad_pregunta.id_competencia_habilidad_pregunta"
+      )
+      .join(
+        "competencia_habilidad",
+        "habilidad_pregunta.id_competencia_habilidad",
+        "=",
+        "competencia_habilidad.id_competencia_habilidad"
+      )
+      .join(
+        "competencias",
+        "competencia_habilidad.id_competencia",
+        "=",
+        "competencias.id_competencia"
+      )
       .select(
-        "id_evaluacion_competencias",
-        "id_competencia_habilidad_pregunta",
-        "resultado"
+        "evaluacion_competencias.id_evaluacion_competencias",
+        "competencias.nombre_competencia",
+        "competencia_habilidad_pregunta.pregunta_habilidad",
+        "evaluacion_competencias.resultado"
       );
 
     return result;

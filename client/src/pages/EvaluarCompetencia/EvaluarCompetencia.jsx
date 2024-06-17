@@ -49,19 +49,17 @@ function EvaluarCompetencia() {
     let cont_1 = 0;
     let cont_2 = 0;
 
-    console.log(preguntas);
+    const mejorNota = (preguntas.length + 1) * 2;
 
     preguntas.forEach((pregunta) => {
-      if (pregunta.resultado === 1) ++cont_1;
+      if (pregunta.resultado === "1" || pregunta.resultado === 1) ++cont_1;
 
-      if (pregunta.resultado === 2) ++cont_2;
+      if (pregunta.resultado === "2" || pregunta.resultado === 2) ++cont_2;
     });
 
-    res = cont_1 + cont_2 * 2;
+    res = (cont_1 + cont_2 * 2) / mejorNota;
 
-    console.log(res);
-
-    return res;
+    return res.toFixed(1);
   };
 
   const handleChangePregunta = (id, value) => {
@@ -94,20 +92,19 @@ function EvaluarCompetencia() {
       }
     });
 
-    /*
-      const cal = calcularResultado(preguntas);
-      const resGridBox = await gridBoxApi.updateGridBoxRequest(
-        params.idEmpleado,
-        { resultado_evaluacion_competencias: cal }
-      );
-
-      if (!resGridBox || resGridBox.status < 200 || resGridBox.status >= 300) {
-        alert("Error al guardar la evaluacion");
-        return;
-      }
-        */
-
     const cal = calcularResultado(preguntas);
+
+    console.log(cal);
+
+    const resGridBox = await gridBoxApi.updateGridBoxRequest(
+      params.idEmpleado,
+      { resultado_evaluacion_competencias: cal }
+    );
+
+    if (!resGridBox || resGridBox.status < 200 || resGridBox.status >= 300) {
+      alert("Error al guardar la evaluacion");
+      return;
+    }
 
     setResultado(cal);
 
@@ -142,7 +139,7 @@ function EvaluarCompetencia() {
 
       const emp = resEmpleado.data.data;
 
-      setEmpleado(emp);
+      setEmpleado(emp[0]);
 
       const resEvaluacion =
         await evalaucionesApi.getEvaluacionesCompetenciasByEmpleado(idEmpleado);
@@ -173,7 +170,10 @@ function EvaluarCompetencia() {
       setPreguntas(preguntas);
 
       setIsEvaluado(estaEvaluado(preguntas));
-      setResultado(calcularResultado(preguntas));
+
+      if (estaEvaluado(preguntas)) {
+        setResultado(calcularResultado(preguntas));
+      }
     } catch (error) {
       console.log(error);
       navigate("/error404");
