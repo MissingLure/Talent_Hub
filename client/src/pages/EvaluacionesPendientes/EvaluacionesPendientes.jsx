@@ -21,7 +21,7 @@ const EvaluacionesPendientes = () => {
   /*Aqui se encarga de cargar los datos al cosito de evaluaciones y chequiaria si son del user que le tocan */
   const handleGetEvaluacion = (id) => {
     axios
-      .get("http://localhost:4000/evaluaciones-competencias/evaluaciones-pendientes")
+      .get("http://localhost:4000/evaluaciones-pendientes")
       .then((response) => {
         setEvaluaciones(response.data.data);
       })
@@ -40,7 +40,7 @@ const EvaluacionesPendientes = () => {
       <h2><b>Evaluaciones Pendientes</b></h2>
       <br />
       <div className="body-container-evaluaciones">
-        <div className="container3 evaluaciones">
+        <div className="container3-evaluaciones">
           <table>
             <thead>
               <tr>

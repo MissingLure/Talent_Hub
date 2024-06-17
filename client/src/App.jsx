@@ -19,6 +19,7 @@ import EncuestasEmpleado from './pages/Encuestas/Encuestas';
 import CoreCompetences from './pages/CoreCompetences/CoreCompetences';
 import PotencialCompetences from './pages/PotentialCompetiences/PotencialCompetiences';
 import EvaluacionesPendientes from "./pages/EvaluacionesPendientes/EvaluacionesPendientes";
+import MetasEmpleado from "./pages/MetasEmpleado/MetasEmpleado";
 // import MostrarInfo from './pages/MostrarInfo/MostrarInfo';
 // import VerPreguntas from './pages/VerPreguntas/Preguntas';
 
@@ -32,23 +33,51 @@ function App() {
           
           {/* <Route path='/mostrar-info' element={<MostrarInfo/>}/> */}
           {/* <Route path='/ver-preguntas' element={<VerPreguntas/>}/> */}
-          <Route path='/administrar-empleados' element={<AdministarEmpleados/>}/>
-          <Route path='/administrar-usuarios' element={<AdministarUsuarios/>}/>
-          <Route path='/crear-empleado' element={<CrearEmpleado/>}/>
-          <Route path='/evaluaciones-empleado' element={<EvaluacionesEmpleado/>}/>
-          <Route path="/evaluaciones-pendientes" element={<EvaluacionesPendientes />} />
-          <Route path='/evaluacion-empleado' element={<EvaluacionEmpleado/>}/>
-          <Route path='/crear-competencias' element={<CrearCompetencias/>}/>
-          <Route path='/administrar-preguntas' element={<AdministrarPreguntas/>}/>
-          <Route path='/competencias' element={<BibliotecaCompetencias/>}/>
-          <Route path='/administrar-encuestas/core-competences-general' element={<CoreCompetences/>}/>
-          <Route path='/administrar-encuestas/potential-competiences-general' element={<PotencialCompetences/>}/>
-          <Route path='/inicio' element={<Inicio/>}/>
-          <Route path='/box-grid' element={<BoxGrid/>}/>
-          <Route path='/administrar-encuestas'element={<AdministrarEncuestas/>}/>
-          <Route path='/crear-encuestas'element={<CrearEncuestas/>}/>
-          <Route path='/encuestas-empleado'element={<EncuestasEmpleado/>}/>
-          <Route path='/asignar-evaluacion' element={<AsignarEvaluacion/>}/>
+          <Route
+            path="/administrar-empleados"
+            element={<AdministarEmpleados />}
+          />
+          <Route
+            path="/administrar-usuarios"
+            element={<AdministarUsuarios />}
+          />
+          <Route path="/crear-empleado" element={<CrearEmpleado />} />
+          <Route
+            path="/evaluaciones-empleado"
+            element={<EvaluacionesEmpleado />}
+          />
+          <Route path="/evaluacion-empleado" element={<EvaluacionEmpleado />} />
+          {/*La ruta de evaluaciones pendientes*/}
+          <Route
+            path="/evaluaciones-pendientes"
+            element={<EvaluacionesPendientes />}
+          />
+                    <Route path="/metas-empleado" element={<MetasEmpleado />} />
+                    {/*La ruta de evaluaciones pendientes*/}
+
+          <Route path="/crear-competencias" element={<CrearCompetencias />} />
+          <Route
+            path="/administrar-preguntas"
+            element={<AdministrarPreguntas />}
+          />
+          <Route path="/competencias" element={<BibliotecaCompetencias />} />
+          <Route
+            path="/administrar-encuestas/core-competences-general"
+            element={<CoreCompetences />}
+          />
+          <Route
+            path="/administrar-encuestas/potential-competiences-general"
+            element={<PotencialCompetences />}
+          />
+          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/box-grid" element={<BoxGrid />} />
+          <Route
+            path="/administrar-encuestas"
+            element={<AdministrarEncuestas />}
+          />
+          <Route path="/crear-encuestas" element={<CrearEncuestas />} />
+          <Route path="/encuestas-empleado" element={<EncuestasEmpleado />} />
+          <Route path="/asignar-evaluacion" element={<AsignarEvaluacion />} />
         </Routes>
       </Router>
     </div>
