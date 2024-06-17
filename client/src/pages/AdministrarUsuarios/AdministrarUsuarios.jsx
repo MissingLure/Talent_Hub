@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import './AdministrarUsuarios.css';
 import axios from "axios";
-import inform from '../../images/info.png';
+import deletear from '../../images/delete.png'
+import editar from '../../images/editar.png';
 import Navbar from "../../components/Navbar/Navbar";
 import ModificarUsuarioPopUp from "../ModificarUsuarios/ModificarUsuarioPopUp";
+
 
 const AdministarUsuarios = () => {
     const [showAddUserPopup, setShowAddUserPopup] = useState(false);
@@ -17,8 +19,10 @@ const AdministarUsuarios = () => {
     const [userExists, setUserExists] = useState(false);
 
     //User data
-    const [user, setUser] = useState(''); 
+    const [user, setUser] = useState([]); 
     const [employee, setEmployee] = useState('');
+    const [search,setSearch] = useState('');
+    const [selectRol, setSelectRol] = useState('');
 
     //Informacion usuario
     const [numeroIdentidad, setNumeroIdentidad] = useState('');
@@ -149,6 +153,19 @@ const AdministarUsuarios = () => {
         handleGetUsuarios();
     }, []);
 
+    const handleSearchChange = (e) => {
+        setSearch(e.target.value);
+    }
+
+    const handleRolChange = (e) => {
+        setSelectRol(e.target.value);
+    }
+
+    const filteredUsers = usuarios.filter(user =>
+        user.correo.toLowerCase().includes(search) &&
+        (selectRol === '' || user.rol == selectRol)
+    );
+
     return (
         <div className="administrar-usuarios">
             <Navbar />
@@ -156,10 +173,15 @@ const AdministarUsuarios = () => {
             <h4>Manten orden de los empleados con acceso a la página web.</h4>
             <div className="search-options">
                 <div>
-                    <label>Filtro</label>
-                    <select></select>
-                    <input placeholder="Buscar..." />
-                    <button className="search-button">Buscar</button>
+                    <label>Rol</label>
+                    <select value={selectRol} onChange={handleRolChange} style={{backgroundColor:'#656379', color: 'white', marginLeft:'5px'}}>
+                        <option hidden value=''>Seleccione</option>
+                        <option value='' >Seleccione</option>
+                        <option value='0'>Administrador</option>
+                        <option value='1'>Jefe</option>
+                        <option value='2'>Empledao</option>
+                    </select>
+                    <input placeholder="Buscar correo..." onChange={handleSearchChange}/>
                     <button className="add-button" onClick={() => setShowAddUserPopup(true)}>
                         Crear
                     </button>
@@ -171,22 +193,23 @@ const AdministarUsuarios = () => {
                         <thead>
                             <tr>
                                 <th>ID Usuario</th>
+                                <th>Correo</th> 
                                 <th>ID Empleado</th>
-                                <th>Correo</th>
                                 <th>Rol</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {usuarios.length > 0 ? (
-                                usuarios.map((users) => (
-                                    <tr key={users.id_usuario}>
-                                        <td>{users.id_usuario}</td>
-                                        <td>{users.id_empleado}</td>
-                                        <td>{users.correo}</td>
-                                        <td>{getRoleName(users.rol)}</td>
+                            {filteredUsers.length > 0 ? (
+                                filteredUsers.map((user) => (
+                                    <tr key={user.id_usuario}>
+                                        <td>{user.id_usuario}</td>
+                                        <td>{user.correo}</td>
+                                        <td>{user.id_empleado}</td>                     
+                                        <td>{getRoleName(user.rol)}</td>
                                         <td>
-                                            <button onClick={() => handleInfo(users)}><img src={inform} alt="Info" /></button>
+                                            <button onClick={() => setShowPopupModificar(true)}><img src={editar} alt='Editar' ></img></button>
+                                            <button onClick={() => handleInfo(user)}><img src={deletear} alt="Delete" /></button> 
                                         </td>
                                     </tr>
                                 ))
@@ -202,10 +225,9 @@ const AdministarUsuarios = () => {
                 {showPopup2 && (
                     <div className="popups">
                         <div className="popups2-content">
-                            <h3>Acciones con Usuario</h3>
-                            <br />
-                            <button onClick={() => setShowPopupModificar(true)}>Modificar Usuario</button>
-                            <button onClick={() => handleDeleteUser(selectedUser.id_usuario)}>Eliminar Usuario</button>
+                            <h3>Esta seguro de borrar {selectedUser.correo}</h3>
+                            <br/>
+                            <button onClick={() => handleDeleteUser(selectedUser)}>Eliminar Usuario</button>
                             <button onClick={handleCloseUser}>Cerrar</button>
                         </div>
                     </div>
@@ -216,6 +238,7 @@ const AdministarUsuarios = () => {
                         <div>
                             <ModificarUsuarioPopUp
                                 user={selectedUser}
+                                
                                 onClose={() => setShowPopupModificar(false)}
                             />
                         </div>

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./AdministrarEmpleados.css";
 import axios from "axios";
 import inform from "../../images/info.png";
+import borrar from '../../images/delete.png';
+import editar from '../../images/editar.png';
 import CrearEmpleado from "../CrearEmpleado/CrearEmpleado";
 import Navbar from "../../components/Navbar/Navbar";
 import Modal from "react-modal";
@@ -22,6 +24,11 @@ const AdministarEmpleados = () => {
   const [selectedBoss, setSelectedBoss] = useState("");
   const [email, setEmail] = useState("");
   const [selectedEmployee, setSelectedEmployee] = useState("");
+  const [search,setSearch] = useState('');
+  const [selectDepartamento, setSelectDepartamento] = useState('');
+  const [selectPuesto,setSelectPuesto] = useState('');
+  const [puesto, setPuesto] = useState([]);
+  const [departamento, setDepartamento]=useState([]);
 
   //popups
   const [showPopup, setShowPopup] = useState(false);
@@ -267,10 +274,43 @@ const AdministarEmpleados = () => {
     // setShowAddUserPopup(true);
   };
 
+      const handleGetPuestos = () => {
+        axios.get('http://localhost:4000/data/obtener-puestos')
+            .then((response) => {
+                setPuesto(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    };
+
+    const handleGetDepartamentos = () => {
+        axios.get('http://localhost:4000/data/obtener-departamentos ')
+            .then((response) => {
+                setDepartamento(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            }
+
   useEffect(() => {
     handleGetEmployees();
     handleGetBosses();
+    handleGetDepartamentos();
+    handleGetPuestos();
   }, []);
+
+  const filteredEmployees = empleados.filter(employee =>
+    (employee.primer_nombre.toLowerCase().includes(search.toLowerCase()) ||
+      employee.segundo_nombre.toLowerCase().includes(search.toLowerCase()) ||
+      employee.primer_apellido.toLowerCase().includes(search.toLowerCase()) ||
+      employee.segundo_apellido.toLowerCase().includes(search.toLowerCase())) &&
+    (selectDepartamento === '' || employee.id_departamento=== selectDepartamento) && 
+    (selectPuesto === '' || employee.id_perfil_puesto === selectPuesto)
+  );
+
+
 
   return (
     <div className="administrar-empleados">
@@ -278,15 +318,27 @@ const AdministarEmpleados = () => {
       <h2> Administrar Empleados</h2>
       <h4>Manten el orden de tus empleados activos.</h4>
       <br></br>
-      <div className="search-options">
+      <div className="search-options" style={{width:'1100px'}}>
         <div>
-          <label>Filtro</label>
-          <select></select>
-          <input placeholder="Buscar..." />
-          <button className="search-button" onClick={handleBuscar}>
-            Buscar
-          </button>
-
+          <label>Departamento</label>
+          <select value={selectDepartamento} onChange={(e)=>setSelectDepartamento(e.target.value)}>
+                  <option value =''>Seleccione un Departamento...</option>
+                  {departamento.map((e)=> 
+                      <option key={e.id_departamento} value={e.id_departamento}>
+                        {e.nombre_departamento}
+                      </option>
+                  )}
+          </select>
+          <label>Puesto</label>
+          <select value={selectPuesto} onChange={(e)=>setSelectPuesto(e.target.value)} >
+                  <option value=''>Seleccione un Puesto...</option>
+                  {puesto.map((e)=> 
+                    <option key={e.id_perfil_puesto} value={e.id_perfil_puesto}>
+                        {e.nombre_perfil}
+                    </option>
+                  )}
+          </select>
+          <input placeholder="Buscar nombre..." onChange={(e)=>setSearch(e.target.value)}/>
           <button className="add-button" onClick={() => setShowPopup(true)}>
             Crear
           </button>
@@ -305,26 +357,30 @@ const AdministarEmpleados = () => {
                 <th>Departamento</th>
                 <th>Puesto</th>
                 <th>Pais</th>
-                <th> </th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {empleados.length > 0 ? (
-                empleados.map((empleado) => (
-                  <tr key={empleado.id_empleado}>
-                    <td>{empleado.id_empleado}</td>
+              {filteredEmployees.length > 0 ? (
+                filteredEmployees.map((employee) => (
+                  <tr key={employee.id_empleado}>
+                    <td>{employee.id_empleado}</td>
                     <td>
-                      {empleado.primer_nombre} {empleado.segundo_nombre}{" "}
-                      {empleado.primer_apellido} {empleado.segundo_apellido}
+                      {employee.primer_nombre} {employee.segundo_nombre}{" "}
+                      {employee.primer_apellido} {employee.segundo_apellido}
                     </td>
-                    <td>{empleado.id_jefe}</td>
-                    <td>{empleado.nombre_departamento}</td>
-                    <td>{empleado.nombre_perfil}</td>
-                    <td>{empleado.id_pais}</td>
+                    <td>{employee.id_jefe}</td>
+                    <td>{employee.nombre_departamento}</td>
+                    <td>{employee.nombre_perfil}</td>
+                    <td>{employee.id_pais}</td>
                     <td className="butne">
-                      <button onClick={() => handleSelectEmployee(empleado)}>
-                        <img src={inform} />
+                      <button onClick={() => handleInformationClick(
+                        employee.id_empleado,employee.id_jefe
+                )}>
+                        <img src={inform} width={40} height={40}/>
                       </button>
+                      <button onClick={()=> handleModifyEmployeeClick(employee)}><img src={editar} width={25} height={10}/></button>
+                      <button onClick={()=> handleSelectEmployee(employee)}><img src={borrar} width={35} height={10}/></button>
                     </td>
                   </tr>
                 ))
@@ -341,7 +397,7 @@ const AdministarEmpleados = () => {
 
       {showBossPopup && (
         <div className="popup">
-          <div className="information-popup-content">
+          <div className="information-popup-content" style={{backgroundColor:'#2a2942',width:'300px',color:'white'}}>
             <div className="employee-info">
               <h3>
                 <b>Empleado</b>
@@ -367,7 +423,7 @@ const AdministarEmpleados = () => {
                     <b>Jefe</b>
                   </h3>
                   <label>Asignar jefe: </label>
-                  <select onChange={(e) => setSelectedBoss(e.target.value)}>
+                  <select onChange={(e) => setSelectedBoss(e.target.value)} style={{backgroundColor:'white',color:'black'}}>
                     <option selected disabled hidden>
                       Seleccionar...
                     </option>
@@ -385,7 +441,8 @@ const AdministarEmpleados = () => {
                     )}
                   </select>
                   <button
-                    type="button"
+                    type="button"  
+                    style={{backgroundColor:'#CD1C2C', marginTop:'15px'}}
                     onClick={() =>
                       handleSetBoss(selectedEmployee.id_empleado, selectedBoss)
                     }
@@ -402,7 +459,7 @@ const AdministarEmpleados = () => {
                             <button onClick={handleClosePopup}>Eliminar</button>
                         </div> */}
             <div>
-              <button onClick={handleClosePopup}>Cerrar</button>
+              <button onClick={handleClosePopup} style={{backgroundColor:'#CD1C2C', marginTop:'15px'}}>Cerrar</button>
             </div>
           </div>
         </div>
@@ -428,19 +485,6 @@ const AdministarEmpleados = () => {
               {selectedEmployee.primer_apellido}
             </h3>
             <br></br>
-            <button onClick={() => handleModifyEmployeeClick(selectedEmployee)}>
-              Modificar Empleado
-            </button>
-            <button
-              onClick={() =>
-                handleInformationClick(
-                  selectedEmployee.id_empleado,
-                  selectedEmployee.id_jefe
-                )
-              }
-            >
-              Información Jefe
-            </button>
             <button onClick={() => handleDeleteEmployee(selectedEmployee.id_empleado)}>Eliminar Empleado</button>
             <button onClick={handleClosePopup}>Cerrar</button>
           </div>
