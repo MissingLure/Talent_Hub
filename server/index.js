@@ -47,7 +47,7 @@ app.use("/evaluaciones-competencias", evaluacionesCompetenciasRoutes);
 app.use("/puestos", puestosRoutes);
 app.use("/meta-empleado-resultado", metaEmpleadoResultadoRoutes);
 app.use("/dashboard", dashboardRoutes);
-app.use("/evaluacion-potencial",evaluacionesPotencialRoutes);
+app.use("/evaluaciones-potenciales",evaluacionesPotencialRoutes);
 console.log(process.env.TALENT_HUB_DB);
 
 
