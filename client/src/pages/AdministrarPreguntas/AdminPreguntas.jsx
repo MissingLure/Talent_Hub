@@ -208,13 +208,13 @@ const AdminPreguntas = () => {
                 <div>
                     <select onChange={(e) => {
                         let selectedIndex = e.target.value;
-                        setIdHabilidad(habilidades[selectedIndex].id_habilidad);
-                        setNombreHabilidad(habilidades[selectedIndex].nombre_habilidad);
+                        setIdHabilidad(habilidades[selectedIndex].id_competencia);
+                        setNombreHabilidad(habilidades[selectedIndex].nombre_competencia);
                     }}>
                         <option selected disabled hidden>Seleccionar habilidad...</option>
                         {habilidades.length > 0 ? (
                             habilidades.map((habilidad, index) => (
-                                <option key={index} value={index}>{habilidad.nombre_habilidad}</option>
+                                <option key={index} value={index}>{habilidad.nombre_competencia}</option>
                             ))
                         ) : (
                             <option>No hay datos.</option>

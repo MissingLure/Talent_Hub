@@ -75,8 +75,8 @@ async function obtenerCompetencias() {
 async function obtenerHabilidades() {
   const habilidades = await knex
     .select("*")
-    .from("habilidades")
-    .orderBy("nombre_habilidad");
+    .from("competencias")
+    .orderBy("nombre_competencia");
   return habilidades;
 }
 

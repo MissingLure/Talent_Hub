@@ -1,10 +1,22 @@
 import React from "react";
 import { useEffect, useState } from 'react';
 import Navbar from "../../components/Navbar/Navbar";
+import axios from "axios";
 import './PotencialCompetiences.css'
 import { Link } from "react-router-dom";
 
 const PotencialCompetiences=()=>{
+    // const [empleados, setEmpleados] = useState([]);
+
+    // const handleGetEmployees = () => {
+    //     axios.get('http://localhost:4000/data/obtener-empleados')
+    //     .then((response) => {
+    //         setEmpleados(response.data.data);
+    //     })
+    //     .catch((error) => {
+    //         console.log(error.response.data.data);
+    //     })
+    // };
 
     return(
         <div className="survey-containers">
@@ -23,8 +35,12 @@ const PotencialCompetiences=()=>{
                     <br></br>
                     Central Office
                 </h1>
+                
+                    
             </div>
-
+            <div className="total-titles">
+                    <h2>TOTAL: </h2>
+                </div>
             <div className="survey-type">
                 <div className="evaluation-titles">
                     <h2>Behaviors Evaluation</h2>
@@ -73,6 +89,8 @@ const PotencialCompetiences=()=>{
                 </div>
                 
             </div>
+
+            
 
         </div>
 

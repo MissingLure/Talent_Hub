@@ -123,6 +123,14 @@ const selectEvaluacionCompetenciasByEmpleadoService = async (id_empleado) => {
   }
 };
 
+const selectEmpleadosWithEvaluacionesCompetenciaService = async() =>{
+  try{
+
+  } catch (error){
+
+  }
+}
+
 module.exports = {
   selectEvaluacionCompetenciasByEmpleadoService,
   selectEvaluacionesCompetenciasService,
