@@ -32,7 +32,7 @@ const AdminPreguntas = () => {
     };
 
     const handleGetHabilidades = () => {
-        axios.get('http://localhost:4000/data/obtener-habilidades')
+        axios.get('http://localhost:4000/competencias/')
         .then((response) => {
             setHabilidades(response.data.data);
         })
@@ -93,7 +93,7 @@ const AdminPreguntas = () => {
     }
 
     const handleObtenerEncuesta = () => {
-        axios.post('http://localhost:4000/data/obtener-evaluacion', {idPuesto: idPuesto})
+        axios.get('http://localhost:4000/entrevistas-competencia/obtener-por-id-entrevistas-competencia/:id_perfil_puesto', {idPuesto: idPuesto})
         .then((response) => {
             console.log(response.data.data);
             if(response.data.success) {
@@ -232,7 +232,7 @@ const AdminPreguntas = () => {
                             <p key={index}>{error}</p>
                         ))
                     ) : (
-                        <p></p> // You might consider omitting this line since it renders an empty paragraph.
+                        <p></p> 
                     )}
                 </div>
 

@@ -222,7 +222,7 @@ async function obtenerEncuestas() {
 async function obtenerHabilidadesPorPuesto(idPuesto) {
   const habilidades = await knex
     .select("*")
-    .from("perfil_puesto_habilidades")
+    .from("perfiles_puestos_habilidad")
     .where("id_pefil_puesto", idPuesto);
   return habilidades;
 }
