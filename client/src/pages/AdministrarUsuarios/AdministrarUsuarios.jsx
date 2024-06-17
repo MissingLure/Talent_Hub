@@ -58,8 +58,9 @@ const AdministarUsuarios = () => {
     };
 
     const handleGetUser = (empleado) => {
-        setEmployee(empleado);
-        axios.post('http://localhost:4000/user/get-employee-user', { employeeId: empleado.id_empleado })
+     //   setEmployee(empleado);
+        console.log(empleado)
+        axios.post('http://localhost:4000/user/get-employee-user', { employeeId: empleado })
             .then((response) => {
                 if (response.data.success) {
                     setUser(response.data.data);
@@ -76,10 +77,13 @@ const AdministarUsuarios = () => {
 
     const handleDeleteUser = async (id_usuario) => {
         try {
+            console.log(id_usuario)
           const response = await axios.delete(
             `http://localhost:4000/user/delete-user/${id_usuario}`
           );
           console.log("Usuario eliminado exitosamente:", response.data);
+          handleGetEmployees();
+          handleGetUsuarios();
         } catch (error) {
           console.error("Hubo un error eliminando el usuario!", error);
         }
@@ -107,12 +111,13 @@ const AdministarUsuarios = () => {
             correo: correo,
             contrasena: contraseña,
         };
-
-        if(handleGetUser(idEmpleado)){
+        console.log(userData)
+        if(handleGetUser(userData.idEmpleado)){
             alert('Este empleado ya tiene usuario.');
             setErrorMessages(['Error creating user']);
             return;
         }
+
         axios.post('http://localhost:4000/create/crear-usuario', userData)
             .then((response) => {
                 if (response.data.success) {
@@ -122,11 +127,18 @@ const AdministarUsuarios = () => {
                     handleCloseUser1();
                 } else {
                     setErrorMessages(response.data.details || ['Error creating user']);
+                    handleGetEmployees();
+                    handleGetUsuarios();
                 }
             })
             .catch((error) => {
                 setErrorMessages(error.response.data.data || ['Error creating user']);
+                handleGetEmployees();
+                handleGetUsuarios();
             });
+
+           
+        
     };
 
     const closeForm = () => {
@@ -269,7 +281,7 @@ const AdministarUsuarios = () => {
                                     </select>
                                 </div>
                                 <div>
-                                    <input placeholder="Número de identidad" value={employee.numero_identidad || ''} readOnly />
+                                    <input placeholder="Número de identidad" value={employee.numero_identidad || ''} readOnly='true' />
                                 </div>
                                 <div>
                                     <input placeholder="Correo electrónico" onChange={(e) => setCorreo(e.target.value)} />

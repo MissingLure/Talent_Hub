@@ -37,9 +37,23 @@ body, html {
 .top-buttons {
     width: 100%;
     display: flex;
-    justify-content: flex-start;
-    margin-top: 10px;  /* Añadir espacio entre el botón y el navbar */
-    padding-left: 10px;  /* Añadir espacio entre el botón y el borde izquierdo */
+    margin-bottom: 15px;
+    margin-left: 20px;
+    height: 30px;
+    align-items: center;
+    /* text-align: right; */
+    margin-top: 120px;
+    background-color: #7e0a12;
+    border: 1.5px solid black;
+    width: 65%;
+    color:white;
+    height: auto;
+}
+
+
+.survey-containers h2{
+    font-size: x-large;
+    font-weight: bold;
 }
 
 .botons:hover {
@@ -68,10 +82,11 @@ body, html {
     margin-bottom: 15px;  /* Ajuste para mayor separación del contenido */
     background-color: #7e0a12;
     border: 1.5px solid black;
-    width: 80%;
-    color: white;
-    padding: 12px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-top: -25px;
+    padding: 10px;
+    margin-left:20px;
 }
 
 .top-containers h1 {
@@ -135,16 +150,16 @@ th, td {
 th {
     background-color: #333356;
     color: white;
-    font-size: 14px;
+    width: 5%;
+    height: 90px;
+    margin-top: -150px;
+    /* margin-bottom: 30px; */
+    margin-left: 960px;
+    display: flex;
+    justify-content: center;
 }
 
-td {
-    background-color: #f0f0f0;
-    font-size: 14px;
-}
-
-/* Animación de fadeIn */
-@keyframes fadeInAnimation {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+.total-titles h2 {
+    transform: rotate(-90deg);
+    font-size: medium;
 }

@@ -32,24 +32,23 @@ async function obtenerPuestos() {
 }
 
 async function obtenerEmpleado(idEmpleado) {
-  const empleado = await knex
-    .select("*")
-    .from("empleados")
-    .where("id_empleado", idEmpleado)
-    .join(
-      "perfiles_puestos",
-      "empleados.id_perfil_puesto",
-      "=",
-      "perfiles_puestos.id_perfil_puesto"
-    )
-    .join(
-      "departamentos",
-      "empleados.id_departamento",
-      "=",
-      "departamentos.id_departamento"
-    );
-
-  return empleado;
+  try {
+    const empleado = await knex
+      .select("*")
+      .from("empleados")
+      .where("id_empleado", idEmpleado)
+      .join(
+        "perfiles_puestos",
+        "empleados.id_perfil_puesto",
+        "=",
+        "perfiles_puestos.id_perfil_puesto"
+      )
+      .join("departamentos", "empleados.id_departamento", "=", "departamentos.id_departamento");
+    return empleado[0];
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 }
 
 async function getByEmail(correo) {
@@ -73,8 +72,8 @@ async function obtenerCompetencias() {
 async function obtenerHabilidades() {
   const habilidades = await knex
     .select("*")
-    .from("habilidades")
-    .orderBy("nombre_habilidad");
+    .from("competencias")
+    .orderBy("nombre_competencia");
   return habilidades;
 }
 

@@ -30,7 +30,7 @@
 /*tabla*/
 .container5{
     /* margin-top:25px;  */
-    width: 65%; 
+    width: 90%; 
     max-height: 535px; 
     margin-top: 10px;
     margin-bottom: 20px;
@@ -104,6 +104,13 @@ margin-top: 5px;
     width: 65%;
     color:white;
     height: auto;
+}
+
+.topContainerTable{
+    background-color: #7e0a12;
+    border: 1.5px solid black;
+    color:white;
+   
 }
 
 .core-containers h2{
@@ -314,24 +321,39 @@ margin-top: 5px;
     margin:20px;
 }
 
-.categories {
+.categoriesCore {
     color: black;
     background-color: #b8b8b8;
-    height: 70px;
-    width: 15%;
-    display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -15px;
-    border: 1.5px solid black;
+    border: 1px solid black;
+    font-size: 30px;
+}
+
+.evaluationTitleCore {
+    color: white;
+    background-color: #2a2942;
+    justify-content: center;
+    align-items: center;
+    margin-left:20px;
+    border: 1px solid black;
+    font-size: 30px;
 }
 
 .categores2 {
     color: black;
-    background-color: #f2f2f2;
+    background-color: #d6d4d4;
     width: 30%; /* Ajusta este valor según sea necesario */
     padding: 10px;
 }
+
+
+.num-evaluacion {
+    color: black;
+    background-color: #ffffff;
+    border: 1px solid black;
+}
+
 
 .total-titles {
     background-color: #aeaaaa;
@@ -347,4 +369,24 @@ margin-top: 5px;
 .total-titles h2 {
     transform: rotate(-90deg);
     font-size: small;
+}
+
+.rotated-title-empleado {
+    writing-mode: vertical-rl;
+    border: 1px solid black;
+    background-color: #25283b;
+    color: white;
+}
+
+.rotated-title-pais {
+    writing-mode: vertical-rl;
+    border: 1px solid black;
+    background-color: #c9b71a;
+}
+
+
+
+.blackthing{
+    background-color: #918383;
+    border: 1px solid black;
 }

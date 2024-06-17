@@ -3,7 +3,7 @@ import React from "react";
 function ItemPregunta({ pregunta, handleChange, disabled = false }) {
 
     let preguntaContent = pregunta.pregunta_habilidad;
-
+      
     if(!preguntaContent.match(/^¿/))
         preguntaContent = `¿${preguntaContent}`;
 

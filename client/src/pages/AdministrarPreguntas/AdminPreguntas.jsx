@@ -142,12 +142,12 @@ const AdminPreguntas = () => {
             <h4>Dividida en Perfil De Puesto, Competencia, Desempeño y Potencial.</h4>
             <div className="evaluations-actions">
                 <button>
-                <Link to ="/administrar-encuestas/core-competences-general">
+                <Link to ="/administrar-preguntas/core-competences-general">
                     Evaluacion Competencia
                 </Link>
                 </button>
                 <button>
-                <Link to ="/administrar-encuestas/potential-competiences-general">
+                <Link to ="/administrar-preguntas/potential-competiences-general">
                     Evaluacion Potencial
                 </Link>
                 </button>
@@ -210,13 +210,13 @@ const AdminPreguntas = () => {
                 <div>
                     <select onChange={(e) => {
                         let selectedIndex = e.target.value;
-                        setIdHabilidad(habilidades[selectedIndex].id_habilidad);
-                        setNombreHabilidad(habilidades[selectedIndex].nombre_habilidad);
+                        setIdHabilidad(habilidades[selectedIndex].id_competencia);
+                        setNombreHabilidad(habilidades[selectedIndex].nombre_competencia);
                     }}>
                         <option selected disabled hidden>Seleccionar habilidad...</option>
                         {habilidades.length > 0 ? (
                             habilidades.map((habilidad, index) => (
-                                <option key={index} value={index}>{habilidad.nombre_habilidad}</option>
+                                <option key={index} value={index}>{habilidad.nombre_competencia}</option>
                             ))
                         ) : (
                             <option>No hay datos.</option>
