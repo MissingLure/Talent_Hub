@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import './AdministrarUsuarios.css';
 import axios from "axios";
 import inform from '../../images/info.png';
@@ -13,7 +13,7 @@ const AdministarUsuarios = () => {
     const [responseMessage, setResponseMessage] = useState('');
     const [empleados, setEmpleados] = useState([]);
     const [usuarios, setUsuarios] = useState([]);
-    const [selectedUser, setSelectedUser] = useState('');
+    const [selectedUser, setSelectedUser] = useState(null);
     const [userExists, setUserExists] = useState(false);
 
     //User data
@@ -205,7 +205,7 @@ const AdministarUsuarios = () => {
                             <h3>Acciones con Usuario</h3>
                             <br />
                             <button onClick={() => setShowPopupModificar(true)}>Modificar Usuario</button>
-                            <button onClick={() => handleDeleteUser(selectedUser)}>Eliminar Usuario</button>
+                            <button onClick={() => handleDeleteUser(selectedUser.id_usuario)}>Eliminar Usuario</button>
                             <button onClick={handleCloseUser}>Cerrar</button>
                         </div>
                     </div>

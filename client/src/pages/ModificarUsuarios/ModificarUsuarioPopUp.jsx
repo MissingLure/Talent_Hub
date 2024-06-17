@@ -1,21 +1,18 @@
-import Navbar from "../../components/Navbar/Navbar.jsx";
-import { Link } from 'react-router-dom';
-import UserDashboard from '../UserDashboard/UserDashboard.jsx';
-import { useNavigate } from 'react-router-dom';
-import logo from '../../images/hanes-logo.png';
-import React, { useEffect, useState } from 'react';
-import axios from "axios";
-import { jwtDecode } from "jwt-decode";
+import React, { useState, useEffect } from 'react';
 import './ModificarUsuarioPopUp.css';
 
-const ModificarUsuarioPopUp = ({ onClose }) => {
-    const handleBack = () => {
-        onClose(); // Esta función cierra la ventana emergente al hacer clic en "Regresar"
-    };
-
+const ModificarUsuarioPopUp = ({ onClose, user }) => {
     const [correo, setCorreo] = useState('');
     const [id, setId] = useState('');
     const [rol, setRol] = useState('');
+
+    useEffect(() => {
+        if (user) {
+            setCorreo(user.correo);
+            setId(user.id_empleado);
+            setRol(user.rol);
+        }
+    }, [user]);
 
     const handleCorreoChange = (event) => {
         setCorreo(event.target.value);
@@ -29,9 +26,35 @@ const ModificarUsuarioPopUp = ({ onClose }) => {
         setRol(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Lógica para guardar los cambios
+
+        const updateData = {};
+        if (correo) updateData.correo = correo;
+        if (id) updateData.id_empleado = id;
+        if (rol) updateData.rol = rol;
+
+        try {
+            const response = await fetch(`http://localhost:9000/update/usuario/${user.id_usuario}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updateData),
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                alert(result.message); // Show success message
+                onClose(); // Close the popup on success
+            } else {
+                const error = await response.json();
+                alert(error.message); // Show error message
+            }
+        } catch (error) {
+            console.error('Error updating user:', error);
+            alert('Error updating user'); // Show error message
+        }
     };
 
     return (
@@ -54,7 +77,7 @@ const ModificarUsuarioPopUp = ({ onClose }) => {
                         </div>
                         <div className="button-wrapper-usuario">
                             <button type="submit">Guardar cambios</button>
-                            <button type="button" onClick={handleBack}>Regresar</button>
+                            <button type="button" onClick={onClose}>Regresar</button>
                         </div>
                     </form>
                 </div>
