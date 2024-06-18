@@ -1,13 +1,12 @@
 /* Asegura que el contenedor principal ocupe toda la altura de la pantalla */
 .create-questions {
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Centra verticalmente */
-  min-height: 100vh; /* 100% de la altura de la ventana */
-  background-color: #F5F5F5;
-  padding: 0; /* Remueve cualquier padding */
-  margin: 0; /* Remueve cualquier margin */
+  background-color: #d8d8db;
+  animation: fadeInAnimation 1s forwards;
 }
 
 /* Estilo para el título */
@@ -17,49 +16,66 @@
   margin-bottom: 20px;
 }
 
-/* Estilo para el formulario */
 .logins-form {
-  background-color: #FFFFFF;
+  background-color: #333356;
   padding: 20px;
   border-radius: 8px;
+  color:white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 50%; /* Ajusta el ancho según sea necesario */
+  width: 50%; 
 }
 
-/* Estilo para las etiquetas de texto */
 .logins-form label {
   font-size: 16px;
   margin-bottom: 5px;
 }
 
-/* Estilo para los inputs y selects */
 .logins-form input,
 .logins-form select {
-  width: 100%;
+  width: 50%;
   padding: 10px;
+  color:black;
+  margin-left: 15px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-/* Estilo para los botones */
+.preguntasContainer{
+  
+}
+
 .Agregar,
-.Eliminars,
+.Eliminars {
+  background-color: #cd1c2c;
+  color: white;
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 29px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
 .Fin {
-  background-color: #4A4A7A;
+  background-color: #322db9;
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  margin-left: 15px;
+  border-radius: 20px;
   cursor: pointer;
   margin-bottom: 10px;
 }
 
 /* Estilo hover para los botones */
 .Agregar:hover,
-.Eliminars:hover,
+.Eliminars:hover {
+  background-color: #9c1621;
+}
+
 .Fin:hover {
-  background-color: #3A3A6A;
+  background-color: #161449;
 }
 
 /* Contenedor general */

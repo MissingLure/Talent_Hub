@@ -12,6 +12,7 @@ import AdministrarPreguntas from './pages/AdministrarPreguntas/AdminPreguntas';
 import BibliotecaCompetencias from './pages/BibliotecaCompetencias/BibliotecaCompetencias';
 import Inicio from './pages/Inicio/Inicio';
 import BoxGrid from './pages/BoxGrid/BoxGrid';
+import EvaluacionesPendientes from './pages/EvaluacionesPendientes/EvaluacionesPendientes';
 import AsignarEvaluacion from './pages/AsignarEvaluacion/AsignarEvaluacion';
 import AdministrarEncuestas from './pages/AdministrarEncuestas/AministrarEncuestas'
 import CrearEncuestas from './pages/Encuesta/Encuesta';
@@ -51,6 +52,8 @@ function App() {
           <Route path='/administrar-preguntas/potential-competiences-general' element={<PotencialCompetences/>}/>
           <Route path='/inicio' element={<Inicio/>}/>
           <Route path='/box-grid' element={<BoxGrid/>}/>
+          <Route path='/evaluaciones-pendientes' element={<EvaluacionesPendientes/>}/>
+          <Route path='/metas-empleado' element={<MetasEmpleado/>}/>
           <Route path='/administrar-encuestas'element={<AdministrarEncuestas/>}/>
           <Route path='/crear-encuestas'element={<CrearEncuestas/>}/>
           <Route path='/encuestas-empleado'element={<EncuestasEmpleado/>}/>

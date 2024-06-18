@@ -54,10 +54,7 @@ const Navbar = ({roleValue}) => {
         
         </li>
         
-          {/* <li className="nav-item">
-          <Link className='nav-item' to="/evaluaciones-empleado">Inicio</Link>
-        </li> 
-         */}
+        
         {(rol == 0 || rol == 1) && (
         <li className="nav-item" onMouseEnter={() => handleDropdown('rendimiento')}>
           Rendimiento
@@ -65,9 +62,9 @@ const Navbar = ({roleValue}) => {
             <ul className="dropdown">
               {rol == 0 && (
                 <li onClick={handleClickSubOption}>
-                  <Link className="nav-link" to="/crear-encuestas">
+                  {/* <Link className="nav-link" to="/crear-encuestas">
                     Crear Encuesta
-                  </Link>
+                  </Link> */}
                   <Link className="nav-link" to="/administrar-preguntas">
                     Administrar Evaluaciones
                   </Link>
@@ -80,6 +77,7 @@ const Navbar = ({roleValue}) => {
               {rol == 1 && (
                 
                 <li onClick={handleClickSubOption}>
+                  <Link className='nav-link' to="/evaluaciones-pendientes">Evaluaciones Pendientes</Link>
                   <Link className="nav-link" to="/evaluaciones-empleado">
                     Evaluar Empleados
                   </Link>

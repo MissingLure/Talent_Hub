@@ -92,7 +92,7 @@ const EvaluacionesEmpleado = () => {
         setEmpleados(response.data.data);
       })
       .catch((error) => {
-     //   console.log(error.response.data.data);
+       console.log(error.response.data.data);
       });
   };
 
@@ -120,7 +120,8 @@ const EvaluacionesEmpleado = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="Empleados-TITULO">Evaluacion Empleado</div>
+      <div className="Empleados-TITULO">Evaluar Empleados</div>
+      <h4>Los empleados pueden ser evaluados por Competencias, Desempeño y Potencial</h4>
       <div className="col-6 tab p-5">
         {decoded.rol == 0 && (
           <ul>
@@ -190,8 +191,6 @@ const EvaluacionesEmpleado = () => {
           </div>
         </div>
         {decoded.rol == 1 && (
-          <div className="Prueba">
-            Prueba
             <div className="competencia-container">
               {empleados.length > 0 ? (
                 empleados.map((empleado, index) => (
@@ -209,7 +208,6 @@ const EvaluacionesEmpleado = () => {
                 <p>No tiene empleados bajo su cargo</p>
               )}
             </div>
-          </div>
         )}
         {showPopup && (
           <div className="popup">
@@ -223,6 +221,9 @@ const EvaluacionesEmpleado = () => {
               </button>
               <button onClick={handlePotencialPopupOpen}>
                 Evaluar Potencial
+              </button>
+              <button onClick={handlePotencialPopupOpen}>
+                Evaluar Desempeño
               </button>
               <button onClick={handlePopupClose}>Cerrar</button>
             </div>
