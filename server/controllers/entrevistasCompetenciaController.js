@@ -24,6 +24,7 @@ async function obtenerEntrevistaPorId(req, res) {
 
 async function obtenerEntrevistaPorPuesto(req, res) {
     try {
+        console.log(req.params.id_perfil_puesto);
         const resultado = await entrevistasCompetenciaService.obtenerPorPuesto(req.params.id_perfil_puesto);
         if (resultado) {
             res.json(resultado);

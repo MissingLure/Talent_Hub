@@ -9,7 +9,7 @@ const AdminPreguntas = () => {
     const [errorMessages, setErrorMessages] = useState([]);
     const [questions, setQuestions] = useState([]);
     const [puestos, setPuestos] = useState([]);
-    const [idPuesto, setIdPuesto] = useState('');
+    const [id_perfil_puesto, setid_perfil_puesto] = useState('');
     const [habilidades, setHabilidades] = useState([]);
     const [habilidadesPuesto, setHabilidadesPuesto] = useState([]);
 
@@ -55,7 +55,7 @@ const AdminPreguntas = () => {
     const handleAgregarHabilidad = () => {
         setErrorMessages([]);
         let errors = [];
-        if (idPuesto == '') {
+        if (id_perfil_puesto == '') {
             errors.push('Debe seleccionar un perfil de puesto.');
             let error = 'Debe seleccionar un perfil de puesto.';
             setErrorMessages([...errorMessages, error]);
@@ -82,7 +82,7 @@ const AdminPreguntas = () => {
         if(errors.length > 0) {
             setErrorMessages(errors);
         } else {
-            axios.post('http://localhost:4000/create/asignar-habilidades', {idPuesto: idPuesto, habilidades: habilidadesPuesto})
+            axios.post('http://localhost:4000/create/asignar-habilidades', {id_perfil_puesto: id_perfil_puesto, habilidades: habilidadesPuesto})
             .then((response) => {
                 console.log(response.data.data);
             })
@@ -93,11 +93,12 @@ const AdminPreguntas = () => {
     }
 
     const handleObtenerEncuesta = () => {
-        axios.get('http://localhost:4000/entrevistas-competencia/obtener-por-id-entrevistas-competencia/:id_perfil_puesto', {idPuesto: idPuesto})
+        console.log(id_perfil_puesto);
+        axios.get(`http://localhost:4000/entrevistas-competencia/obtener-por-id-perfil-puesto/${id_perfil_puesto}`)
         .then((response) => {
-            console.log(response.data.data);
-            if(response.data.success) {
-                setEvaluacion(response.data.data);
+            console.log(response.data);
+            if(response.data) {
+                setEvaluacion(response.data);
             } else {
                 setEvaluacion([]);
             }
@@ -115,7 +116,7 @@ const AdminPreguntas = () => {
         setShowAdminPositions(false);
         setHabilidadesPuesto([]);
         setErrorMessages([]);
-        setIdPuesto('');
+        setid_perfil_puesto('');
         setIdHabilidad('');
         setNombreHabilidad('');
     }
@@ -162,7 +163,7 @@ const AdminPreguntas = () => {
             <div className="search-options">
                 <div>
                     <label>Filtro</label>
-                    <select onChange={(e) => setIdPuesto(e.target.value)}>
+                    <select onChange={(e) => setid_perfil_puesto(e.target.value)}>
                         <option selected disabled hidden>Seleccionar perfil...</option>
                         {puestos.length > 0 ? (
                             puestos.map((puesto) => (
@@ -181,7 +182,7 @@ const AdminPreguntas = () => {
                     <div>
                         {evaluacion.map((question, index) => (
                             <div key={index}>
-                                <p>{question[0].comportamiento}</p>
+                                <p>{question.Nombre}</p>
                             </div>
                         ))}
                     </div>
@@ -195,7 +196,7 @@ const AdminPreguntas = () => {
                     <div className="popup-content">
                     <div>
                     <h4><b>Administrar Perfil de Puesto</b></h4>
-                    <select  onChange={(e) => setIdPuesto(e.target.value)}>
+                    <select  onChange={(e) => setid_perfil_puesto(e.target.value)}>
                         <option selected disabled hidden>Seleccionar perfil de puesto...</option>
                         {puestos.length > 0 ? (
                             puestos.map((puesto) => (
