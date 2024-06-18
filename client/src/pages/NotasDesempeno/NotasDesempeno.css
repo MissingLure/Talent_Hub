@@ -1,22 +1,4 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow-x: hidden;
-    display: flex;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
-/* Estilos para el navbar */
-.navbar {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-}
 
 /* Estilos para el contenedor principal */
 .survey-containers {
