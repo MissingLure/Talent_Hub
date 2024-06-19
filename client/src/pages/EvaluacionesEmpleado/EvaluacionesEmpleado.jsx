@@ -213,7 +213,7 @@ const EvaluacionesEmpleado = () => {
         {showPopup && (
           <div className="popup">
             <div className="popup-content">
-              <h3>Acciones para {selectedEmployeeInfo}</h3>
+              <h3>Acciones para {selectedEmployee}</h3>
               <button onClick={() => handleAction("Dashboard")}>
                 Dashboard
               </button>
@@ -234,7 +234,7 @@ const EvaluacionesEmpleado = () => {
           <div>
             
             <EvaluarPotencial
-              selectedEmployee={selectedEmployeeInfo}
+              selectedEmployee={selectedEmployee}
               cancel={handlePotencialPopupClose}
               save = {handleSaveNotaPotencial}
             />

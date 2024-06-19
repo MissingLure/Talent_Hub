@@ -6,15 +6,15 @@ import Modal from "react-modal";
 import PropTypes from "prop-types";
 
 
-const EvaluarPotencial = ({ selectedEmployeeInfo, cancel, save }) => {
+const EvaluarPotencial = ({ selectedEmployee, cancel, save }) => {
     const [nota, setNota] = useState('');
     const fechaActual = new Date;
     const fecha = new Date(fechaActual.getFullYear() - 18, fechaActual.getMonth(), fechaActual.getDate());
     const fechaActualFormateada = fechaActual.toISOString().split('T')[0];
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (selectedEmployee) => {
       const data={
-      id_empleado:selectedEmployeeInfo.id_empleado,
+      id_empleado:selectedEmployee.id_empleado,
       resultado: nota,
       Fecha_limite: fechaActualFormateada,
       }
@@ -36,9 +36,9 @@ const EvaluarPotencial = ({ selectedEmployeeInfo, cancel, save }) => {
           console.log(error);
       })
       //actualizar grid-box
-      console.log(selectedEmployeeInfo.id_empleado);
+      console.log(selectedEmployee.id_empleado);
       const resGridBox = await gridBoxApi.updateGridBoxRequest(
-        selectedEmployeeInfo.id_empleado,
+        selectedEmployee.id_empleado,
         { resultado_evaluacion_potencial: nota }
       );
       console.log(resGridBox);
@@ -48,7 +48,7 @@ const EvaluarPotencial = ({ selectedEmployeeInfo, cancel, save }) => {
     return (
         <div className="evaluar-potencial-popup">
           <div className="contenido-empleado">
-            <h3 className="titulo-empleado">Asignar Nota  {selectedEmployeeInfo.primer_nombre}</h3>
+            <h3 className="titulo-empleado">Asignar Nota  {selectedEmployee}</h3>
             <div className="formulario-container-empleado">
               <div className="input-wrapper-empleado">
                 <label htmlFor="nota">Nota</label>
@@ -73,7 +73,7 @@ const EvaluarPotencial = ({ selectedEmployeeInfo, cancel, save }) => {
 }
 
 EvaluarPotencial.propTypes = {
-    //selectedEmployeeInfo: PropTypes.object.isRequired,
+    //selectedEmployee: PropTypes.object.isRequired,
     cancel: PropTypes.func.isRequired,
   };
 
