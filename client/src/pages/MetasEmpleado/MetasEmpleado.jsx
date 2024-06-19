@@ -16,7 +16,7 @@ const MetasEmpleado = () => {
 
   const handleGetMetasPorEmpleado = async () => {
     try {
-      const response = await metasApi.getMetasPorEmpleado(id_empleado);
+      const response = await metasApi.getMetasPorEmpleado(1000001);
       console.log("API Response:", response);
 
       const metasData = response.data || [];

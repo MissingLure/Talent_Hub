@@ -214,8 +214,6 @@ const AdministarUsuarios = () => {
                                         <td>{user.id_empleado}</td>                     
                                         <td>{getRoleName(user.rol)}</td>
                                         <td>
-                                            <button onClick={() => setShowPopupModificar(true)}><img src={editar}width={15} height={10} /></button>
-                                            <button onClick={() => handleInfo(user)}><img src={deletear} width={25} height={10} /></button> 
                                             <button onClick={() => {
                                                 setSelectedUser(user); // Set the selected user
                                                 setShowPopupModificar(true); // Show the modification popup

@@ -184,7 +184,7 @@ const AdminPreguntas = () => {
             </Link>
           </button>
           <button className="questions-admin-container button">
-            <Link to="/administrar-preguntas/potential-competiences-general">
+            <Link to="/potencial-competiences">
               Evaluacion Potencial
             </Link>
           </button>
