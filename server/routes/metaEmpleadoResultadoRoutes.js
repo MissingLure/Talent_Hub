@@ -8,5 +8,6 @@ router.get("/obtener-metas-empleado-resultado", metaEmpleadoResultadoController.
 router.post("/agregar-meta-empleado-resultado", metaEmpleadoResultadoController.insertarMetaEmpleadoResultado);
 router.put("/actualizar-meta-empleado-resultado/:id_metas_empleado_resultado", metaEmpleadoResultadoController.actualizarMetaEmpleadoResultado);
 router.delete("/eliminar-meta-empleado-resultado/:id_metas_empleado_resultado", metaEmpleadoResultadoController.eliminarMetaEmpleadoResultado);
+router.get('/obtener-metas-empleado/:id_empleado', metaEmpleadoResultadoController.obtenerMetasPorEmpleado);
 
 module.exports = router;

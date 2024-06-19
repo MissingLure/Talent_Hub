@@ -1,76 +1,63 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import "./MetasEmpleado.css";
-import inform from "../../images/info.png";
-import search from "../../images/search.png";
-import add from "../../images/add.png";
 import Navbar from "../../components/Navbar/Navbar";
+import metasApi from '../../api/metas.api';
 
 const MetasEmpleado = () => {
   const [metas, setMetas] = useState([]);
-  const employeeData = JSON.parse(localStorage.getItem("employeeData"));
-  const [id_persona, setId_persona] = useState(employeeData.id_user);
-  const [editar, setEditar] = useState("Editar");
   const [modoEdicion, setModoEdicion] = useState(false);
-
-  //tabla editable
-  const [data, setData] = useState([
-    { id: 1, nombre: "Meta 1", estado: "100%", peso: "25%" },
-    { id: 2, nombre: "Meta 2", estado: "80%", peso: "50%" },
-  ]);
-
-  const [editMode, setEditMode] = useState({
-    rowIndex: null,
-    columnName: null,
-  });
-
-  const handleDoubleClick = (rowIndex, columnName) => {
-    if (modoEdicion) {
-      setEditMode({ rowIndex, columnName });
-    }
-  };
-
-  const handleBlur = (e, rowIndex, columnName) => {
-    const newData = [...data];
-    newData[rowIndex][columnName] = e.target.textContent;
-    setData(newData);
-    setEditMode({ rowIndex: null, columnName: null });
-  };
-
-  const handleKeyPress = (e, rowIndex, columnName) => {
-    if (e.key === "Enter") {
-      handleBlur(e, rowIndex, columnName);
-    }
-  };
+  const [editMeta, setEditMeta] = useState(null);
+  const employeeData = JSON.parse(localStorage.getItem("employeeData"));
+  const id_empleado = employeeData.id_empleado;
 
   useEffect(() => {
-    handleGetMetas(id_persona);
+    handleGetMetasPorEmpleado();
   }, []);
 
-  const handleGetMetas = (id) => {
-    // Aquí realizarías la llamada a la API para obtener las metas del empleado
-    // Ejemplo de llamada GET utilizando axios
-    /*
-    axios
-      .get(`http://localhost:4000/metas-empleado/${id}`)
-      .then((response) => {
-        setMetas(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching metas:", error);
-      });
-    */
+  const handleGetMetasPorEmpleado = async () => {
+    try {
+      const response = await metasApi.getMetasPorEmpleado(id_empleado);
+      console.log("API Response:", response);
+
+      const metasData = response.data || [];
+      console.log("Metas Data:", metasData);
+      setMetas(metasData);
+    } catch (error) {
+      console.error("Error fetching metas:", error);
+    }
   };
 
-  /*Botones */
+  const handleEditClick = (meta) => {
+    setModoEdicion(true);
+    setEditMeta({ ...meta });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditMeta((prevMeta) => ({
+      ...prevMeta,
+      [name]: value,
+    }));
+  };
+
+  const handleUpdateMeta = async () => {
+    try {
+      await metasApi.editarMeta(editMeta.id_metas_empleado_resultado, editMeta);
+      setModoEdicion(false);
+      setEditMeta(null);
+      handleGetMetasPorEmpleado();
+    } catch (error) {
+      console.error("Error updating meta:", error);
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setModoEdicion(false);
+    setEditMeta(null);
+  };
+
   const handleCrear = () => {
     // Función para manejar la creación de una nueva meta
-  };
-
-  const handleEditarClick = () => {
-    setModoEdicion(!modoEdicion);
-    setEditar(modoEdicion ? "Editar" : "Guardar");
   };
 
   const handleEliminar = () => {
@@ -81,7 +68,6 @@ const MetasEmpleado = () => {
     // Función para manejar la entrega de una meta
   };
 
-  /*Slider */
   const CustomSlider = ({ min, max, step, defaultValue, onChange }) => {
     const [value, setValue] = useState(defaultValue);
 
@@ -123,50 +109,65 @@ const MetasEmpleado = () => {
                 <th>Metas</th>
                 <th>Estado</th>
                 <th>Peso</th>
-                <th> </th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {data.map((meta, rowIndex) => (
-                <tr key={meta.id}>
-                  <td
-                    onDoubleClick={() => handleDoubleClick(rowIndex, "nombre")}
-                    contentEditable={
-                      editMode.rowIndex === rowIndex &&
-                      editMode.columnName === "nombre"
-                    }
-                    onBlur={(e) => handleBlur(e, rowIndex, "nombre")}
-                    onKeyPress={(e) => handleKeyPress(e, rowIndex, "nombre")}
-                    suppressContentEditableWarning={true}
-                  >
-                    {meta.nombre}
-                  </td>
-                  <td>{meta.estado}</td>
-                  <td
-                    onDoubleClick={() => handleDoubleClick(rowIndex, "peso")}
-                    contentEditable={
-                      editMode.rowIndex === rowIndex &&
-                      editMode.columnName === "peso"
-                    }
-                    onBlur={(e) => handleBlur(e, rowIndex, "peso")}
-                    onKeyPress={(e) => handleKeyPress(e, rowIndex, "peso")}
-                    suppressContentEditableWarning={true}
-                  >
-                    {meta.peso}
-                  </td>
-                  <td>
-                    <input
-                      type="checkbox"
-                      name="seleccion"
-                      /* Aquí actualiza si ya completó la meta */
-                    />
-                  </td>
+              {metas.length > 0 ? (
+                metas.map((meta) => (
+                  <tr key={meta.id_metas_empleado_resultado}>
+                    <td>{meta.meta_titulo}</td>
+                    <td>{meta.meta_descripcion}</td>
+                    <td>{meta.meta_peso}</td>
+                    <td>
+                      <button onClick={() => handleEditClick(meta)}>Editar</button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4">No metas available.</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
       </div>
+
+      {modoEdicion && editMeta && (
+        <div className="edit-form">
+          <h3>Editar Meta</h3>
+          <label>
+            Título:
+            <input
+              type="text"
+              name="meta_titulo"
+              value={editMeta.meta_titulo}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Descripción:
+            <input
+              type="text"
+              name="meta_descripcion"
+              value={editMeta.meta_descripcion}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Peso:
+            <input
+              type="number"
+              name="meta_peso"
+              value={editMeta.meta_peso}
+              onChange={handleInputChange}
+            />
+          </label>
+          <button onClick={handleUpdateMeta}>Guardar</button>
+          <button onClick={handleCancelEdit}>Cancelar</button>
+        </div>
+      )}
 
       <div className="body-container-metas">
         <div className="container3-metas">
@@ -178,13 +179,15 @@ const MetasEmpleado = () => {
             </thead>
             <tbody>
               <tr>
-                <CustomSlider
-                  defaultValue={0}
-                  min={0}
-                  max={2}
-                  step={1}
-                  onChange={(value) => console.log(`Slider value: ${value}`)}
-                />
+                <td>
+                  <CustomSlider
+                    defaultValue={0}
+                    min={0}
+                    max={100}
+                    step={1}
+                    onChange={(value) => console.log(`Slider value: ${value}`)}
+                  />
+                </td>
               </tr>
             </tbody>
           </table>
@@ -195,8 +198,8 @@ const MetasEmpleado = () => {
         <button className="button-derecha" onClick={handleCrear}>
           Crear
         </button>
-        <button className="button-derecha" onClick={handleEditarClick}>
-          {editar}
+        <button className="button-derecha" onClick={() => setModoEdicion(!modoEdicion)}>
+          {modoEdicion ? "Guardar" : "Editar"}
         </button>
         <button className="button-eliminar" onClick={handleEliminar}>
           Eliminar

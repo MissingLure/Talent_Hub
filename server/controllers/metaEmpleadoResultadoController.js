@@ -9,6 +9,21 @@ async function obtenerMetasEmpleadoResultado(req, res) {
   }
 }
 
+async function obtenerMetasPorEmpleado(req, res) {
+  const { id_empleado } = req.params;
+  try {
+      const metas = await metaEmpleadoResultadoService.obtenerById(id_empleado);
+      if (metas) {
+          res.json(metas);
+      } else {
+          res.status(404).json({ success: false, message: 'No se encontraron metas para el empleado con el ID proporcionado.' });
+      }
+  } catch (error) {
+      console.error('Error al obtener metas por empleado:', error);
+      res.status(500).json({ success: false, message: 'Ocurrió un error al obtener metas por empleado.' });
+  }
+}
+
 async function insertarMetaEmpleadoResultado(req, res) {
   try {
     const nuevoResultado = await metaEmpleadoResultadoService.insertar(
@@ -48,4 +63,5 @@ module.exports = {
   insertarMetaEmpleadoResultado,
   actualizarMetaEmpleadoResultado,
   eliminarMetaEmpleadoResultado,
+  obtenerMetasPorEmpleado,
 };
