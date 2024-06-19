@@ -1,20 +1,15 @@
-/* .App {
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
+
 .tituloComp{
-  font-size: 24px;
+  font-size: 14px;
   margin-bottom: 8px 
 }
+
 .competences-container{
-  font-family: 'Times New Roman', Times, serif;
   display: flex;
+  background-color: #333356;
   flex-direction: column;
   align-items: center;
-  animation: fadeInAnimation 1s forwards; 
-  
+  animation: fadeInAnimation 1s forwards;
 }
 
 .competences-form {
@@ -25,14 +20,14 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #64637a;
+  background-color: #333356;
   align-items: center;
-  background-color: #d8d8db;
-  height: 100vh;
+  height: 40%;
+  color: white;
 }
 
 .competences-form input{
-  width: 50%;
+  width: 100%;
   padding: 20px;
   margin-bottom: 16px;
   box-sizing: border-box;
@@ -42,13 +37,13 @@
 
 .competences-form
 textarea {
-  width: 50%;
+  width: 100%;
   padding: 20px;
   margin-bottom: 16px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
-  height: 40vh;
+  height: 30%;
 }
 
 .competences-form label {
@@ -57,9 +52,8 @@ textarea {
 }
 
 
-
 .competences-form button {
-  background-color: #2e2d40;
+  background-color: #cd1c2c;
   margin-top: 18px;
   color: white;
   padding: 10px 15px;

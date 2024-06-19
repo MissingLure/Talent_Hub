@@ -33,7 +33,7 @@ const BibliotecaCompetencias = () => {
 
     return setCompetencias([]);
   };
-  
+
   const handleClosePopup = () => {
     setSHowPopup(false);
     setSHowPopup2(false);
@@ -62,7 +62,7 @@ const BibliotecaCompetencias = () => {
       setShowInformation(true);
       setSHowPopup(true);
     }
- };
+  };
 
   const handleAssignPositionsOpen = () => {
     setShowAssignPositions(true);
@@ -84,7 +84,7 @@ const BibliotecaCompetencias = () => {
       </h1>
       <h4>Encuentra todas las competencias aqui.</h4>
       <div>
-          <button className="boton" onClick={() => setSHowPopup2(true)}>Crear Competencias</button>
+        <button className="boton" onClick={() => setSHowPopup2(true)}>Crear Competencias</button>
       </div>
       <div className="competencias-container">
         {competencias.map((competencia, index) => (
@@ -109,7 +109,7 @@ const BibliotecaCompetencias = () => {
                 detalles.map((detalle, index) => (
                   <div key={index}>
                     {" "}
-                    {}
+                    { }
                     <div className="information">
                       <h4>{detalle.nombre_habilidad}</h4>
                       <p>{detalle.comportamiento_habilidad}</p>
@@ -125,19 +125,18 @@ const BibliotecaCompetencias = () => {
         </div>
       )}
 
-        {showPopup2 && (
-            <div className="popups2">
-                  <button onClick={handleClosePopup}>X</button>
-                <div >
-                    <CrearCompetencia
-                    open={addEmployee}
-                    // eslint-disable-next-line react/no-unknown-property
-                    cancel={() => setAddEmployee(false)}
-                /> 
-                    
-                </div>
-            </div>
-          )}
+      {showPopup2 && (
+        <div className="popups3">
+          
+          <div >
+            <CrearCompetencia
+              open={addEmployee}
+              cancel={() => setAddEmployee(false)}
+            />
+          </div>
+          <button onClick={handleClosePopup}>X</button>
+        </div>
+      )}
     </div>
   );
 };

@@ -103,6 +103,8 @@ const EvaluacionesEmpleado = () => {
       } else if (action === 'Evaluar') {
         console.log("Hmmmm")
         navigate(`/evaluar-competencia?id_empleado=${selectedEmployeeInfo.id_empleado}`);
+      }else if (action ==='Metas'){
+        navigate(`/metas-empleado?id_empleado=${selectedEmployeeInfo.id_empleado}`);
       }
   };
 
@@ -121,7 +123,6 @@ const EvaluacionesEmpleado = () => {
     <div>
       <Navbar></Navbar>
       <div className="Empleados-TITULO">Evaluar Empleados</div>
-      <h4>Los empleados pueden ser evaluados por Competencias, Desempeño y Potencial</h4>
       <div className="col-6 tab p-5">
         {decoded.rol == 0 && (
           <ul>
@@ -222,7 +223,7 @@ const EvaluacionesEmpleado = () => {
               <button onClick={handlePotencialPopupOpen}>
                 Evaluar Potencial
               </button>
-              <button onClick={handlePotencialPopupOpen}>
+              <button onClick={() => handleAction("Metas")}>
                 Evaluar Desempeño
               </button>
               <button onClick={handlePopupClose}>Cerrar</button>

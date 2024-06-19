@@ -1,24 +1,3 @@
-/* PotencialCompetences.css */
-
-/* Reset de márgenes y padding en body y html */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow-x: hidden;
-    
-}
-
-/* Estilos para el navbar */
-.navbar {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-}
 
 /* Estilos para el contenedor principal */
 .survey-containers {
@@ -37,23 +16,9 @@ body, html {
 .top-buttons {
     width: 100%;
     display: flex;
-    margin-bottom: 15px;
-    margin-left: 20px;
-    height: 30px;
-    align-items: center;
-    /* text-align: right; */
-    margin-top: 120px;
-    background-color: #7e0a12;
-    border: 1.5px solid black;
-    width: 65%;
-    color:white;
-    height: auto;
-}
-
-
-.survey-containers h2{
-    font-size: x-large;
-    font-weight: bold;
+    justify-content: flex-start;
+    margin-top: 10px;  /* Añadir espacio entre el botón y el navbar */
+    padding-left: 10px;  /* Añadir espacio entre el botón y el borde izquierdo */
 }
 
 .botons:hover {
@@ -82,11 +47,10 @@ body, html {
     margin-bottom: 15px;  /* Ajuste para mayor separación del contenido */
     background-color: #7e0a12;
     border: 1.5px solid black;
-    display: flex;
-    align-items: center;
-    margin-top: -25px;
-    padding: 10px;
-    margin-left:20px;
+    width: 80%;
+    color: white;
+    padding: 12px;
+    text-align: center;
 }
 
 .top-containers h1 {
@@ -127,18 +91,18 @@ body, html {
 
 
 /* Estilos para la tabla */
-table {
+.table-container table {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed; /* Fuerza que la tabla tenga un ancho fijo */
 }
 
-thead {
+.table-container thead {
     background-color: #333356;
     color: white;
 }
 
-th, td {
+.table-container th, td {
     padding: 10px;
     border: 1px solid #333356;
     text-align: left;
@@ -147,19 +111,19 @@ th, td {
     text-overflow: ellipsis; /* Agrega puntos suspensivos (...) para el contenido que no cabe */
 }
 
-th {
+.table-container th {
     background-color: #333356;
     color: white;
-    width: 5%;
-    height: 90px;
-    margin-top: -150px;
-    /* margin-bottom: 30px; */
-    margin-left: 960px;
-    display: flex;
-    justify-content: center;
+    font-size: 14px;
 }
 
-.total-titles h2 {
-    transform: rotate(-90deg);
-    font-size: medium;
+.table-container td {
+    background-color: #f0f0f0;
+    font-size: 14px;
+}
+
+/* Animación de fadeIn */
+@keyframes fadeInAnimation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }

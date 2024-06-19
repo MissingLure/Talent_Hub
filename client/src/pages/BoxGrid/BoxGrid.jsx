@@ -213,7 +213,7 @@ const BoxGrid = () => {
             </div>
 
             <div className="flechaAbajo">
-              <p className="text-xl "> Flechita Abajo</p>
+              <p className="text-xl ">Desempeño & Competencias</p>
             </div>
 
             {newItems.map((item, index) => (

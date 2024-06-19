@@ -94,7 +94,7 @@ const selectEvaluacionCompetenciasByEmpleadoService = async (id_empleado) => {
       .join(
         "habilidad_pregunta",
         "competencia_habilidad_pregunta.id_competencia_habilidad_pregunta",
-        "habilidad_pregunta.id_competencia_habilidad_pregunta"
+        "habilidad_pregunta.id_competencia"
       )
       .join(
         "competencia_habilidad",
