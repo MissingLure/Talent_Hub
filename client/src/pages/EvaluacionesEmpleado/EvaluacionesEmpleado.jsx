@@ -78,8 +78,7 @@ const EvaluacionesEmpleado = () => {
   };
 
   const handleSaveNotaPotencial = (employee, nota) => {
-    // Implement the logic to save the grade, e.g., make an API call to save the grade
-   // console.log(`Saving grade for ${employee.primer_nombre} ${employee.primer_apellido}: ${nota}`);
+    
   };
 
   const handleGetEmployees = (bossId) => {
@@ -214,7 +213,7 @@ const EvaluacionesEmpleado = () => {
         {showPopup && (
           <div className="popup">
             <div className="popup-content">
-              <h3>Acciones para {selectedEmployee}</h3>
+              <h3>Acciones para {selectedEmployeeInfo}</h3>
               <button onClick={() => handleAction("Dashboard")}>
                 Dashboard
               </button>
@@ -235,7 +234,7 @@ const EvaluacionesEmpleado = () => {
           <div>
             
             <EvaluarPotencial
-              selectedEmployee={selectedEmployee}
+              selectedEmployee={selectedEmployeeInfo}
               cancel={handlePotencialPopupClose}
               save = {handleSaveNotaPotencial}
             />

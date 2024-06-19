@@ -61,13 +61,12 @@ const CrearEmpleado = ({ open, accept, cancel }) => {
             telefono: telefono,
             numeroIdentidad: identidad,
             direccion: direccion,
-            pais: pais,
             fechaNacimiento: fechaNacimiento,
             fechaIngreso: fechaIngreso,
             idPerfilPuesto: perfilPuesto,
             idDepartamento: departamento,
         }
-
+        
         axios.post('http://localhost:4000/create/agregar-empleado', empleado)
             .then((response) => {
                 if (response.data.success) {
@@ -163,8 +162,10 @@ const CrearEmpleado = ({ open, accept, cancel }) => {
                 </div>
                 <div>
                     <label>Departamento: </label>
+                    
                     <select onChange={(e) => setDepartamento(e.target.value)}>
                         <option selected disabled hidden>Seleccionar departamento</option>
+
                         {departamentos.map((departamento) => (
                             <option key={departamento.id_departamento} value={departamento.id_departamento}>
                                 {departamento.nombre_departamento}

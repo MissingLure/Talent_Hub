@@ -37,6 +37,7 @@ async function obtenerGridBox_porID(id_empleado) {
 }
 
 async function updateGridBox(req, res) {
+  const updates =req;
   const result = await knex('9_grid_box').where({ id_empleado }).update(updates);
   return result;
 }

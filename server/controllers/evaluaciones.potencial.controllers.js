@@ -69,13 +69,13 @@ const postEvaluacionPotencialController = async (req, res) => {
     try {
         const newEvaluacionPotencial = req.body;
         const result =
-            await evaluacionesPotencialServ.insertEvaluacionCompetenciasService(
-                newEvaluacionCompetencias
+            await evaluacionesPotencialServ.insertEvaluacionPotencialService(
+                newEvaluacionPotencial
             );
-
         return res.status(201).json({
             message: "Registro exitoso.",
             data: result,
+            
         });
     } catch (error) {
         console.log(error);
