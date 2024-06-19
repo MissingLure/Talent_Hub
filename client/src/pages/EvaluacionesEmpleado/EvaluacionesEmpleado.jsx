@@ -47,6 +47,7 @@ const EvaluacionesEmpleado = () => {
 
   const [showPopup, setShowPopup] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState("");
+  
   const [selectedEmployeeInfo, setSelectedEmployeeInfo] = useState();
 
   const coreCompetence = nombresEmpleados.slice(0, 5);
@@ -235,6 +236,7 @@ const EvaluacionesEmpleado = () => {
             
             <EvaluarPotencial
               selectedEmployee={selectedEmployee}
+              id_empleado={selectedEmployeeInfo.id_empleado}
               cancel={handlePotencialPopupClose}
               save = {handleSaveNotaPotencial}
             />

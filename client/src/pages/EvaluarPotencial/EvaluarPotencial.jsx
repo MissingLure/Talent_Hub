@@ -6,20 +6,20 @@ import Modal from "react-modal";
 import PropTypes from "prop-types";
 
 
-const EvaluarPotencial = ({ selectedEmployee, cancel, save }) => {
+const EvaluarPotencial = ({ selectedEmployee,id_empleado, cancel, save }) => {
     const [nota, setNota] = useState('');
     const fechaActual = new Date;
     const fecha = new Date(fechaActual.getFullYear() - 18, fechaActual.getMonth(), fechaActual.getDate());
     const fechaActualFormateada = fechaActual.toISOString().split('T')[0];
 
-    const handleSubmit = async (selectedEmployee) => {
+    const handleSubmit = async () => {
       const data={
-      id_empleado:selectedEmployee.id_empleado,
+      id_empleado:id_empleado,
       resultado: nota,
       Fecha_limite: fechaActualFormateada,
       }
       console.log(data);
-        axios.post('http://localhost:4000/evaluaciones-potenciales/',data).then((response) => {
+      await  axios.post('http://localhost:4000/evaluaciones-potenciales/',data).then((response) => {
           if (response.data.success) {
             //console.log(response.data);
             setResponseMessage(response.data.details);
@@ -36,9 +36,9 @@ const EvaluarPotencial = ({ selectedEmployee, cancel, save }) => {
           console.log(error);
       })
       //actualizar grid-box
-      console.log(selectedEmployee.id_empleado);
+      console.log(id_empleado);
       const resGridBox = await gridBoxApi.updateGridBoxRequest(
-        selectedEmployee.id_empleado,
+        id_empleado,
         { resultado_evaluacion_potencial: nota }
       );
       console.log(resGridBox);
