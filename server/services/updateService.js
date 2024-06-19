@@ -1,5 +1,6 @@
 const crypto = require("crypto");
 const { async } = require("q");
+const db = require('../db.js');
 
 const { DB_Config } = require("../config.js");
 const knex = require("knex")({
@@ -66,8 +67,30 @@ async function actualizarUsuario(employeeID) {
   }
 }
 
+async function updateUsuario(id_usuario, updateData) {
+  const updateFields = {};
+
+  if (updateData.id_empleado) {
+    updateFields.id_empleado = updateData.id_empleado;
+  }
+  if (updateData.correo) {
+    updateFields.correo = updateData.correo;
+  }
+  if (updateData.rol) {
+    updateFields.rol = updateData.rol;
+  }
+
+  const result = await db('usuarios')
+    .where({ id_usuario })
+    .update(updateFields);
+
+  return result;
+}
+
+
 module.exports = {
   asignarJefe,
   actualizarEmpleado,
   actualizarUsuario,
+  updateUsuario
 };

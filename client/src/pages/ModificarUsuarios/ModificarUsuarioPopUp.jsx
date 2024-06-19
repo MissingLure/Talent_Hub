@@ -35,7 +35,7 @@ const ModificarUsuarioPopUp = ({ onClose, user }) => {
         if (rol) updateData.rol = rol;
 
         try {
-            const response = await fetch(`http://localhost:9000/update/usuario/${user.id_usuario}`, {
+            const response = await fetch(`http://localhost:4000/update/usuario/${user.id_usuario}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,15 +45,15 @@ const ModificarUsuarioPopUp = ({ onClose, user }) => {
 
             if (response.ok) {
                 const result = await response.json();
-                alert(result.message); // Show success message
-                onClose(); // Close the popup on success
+                alert(result.message); 
+                onClose(); 
             } else {
                 const error = await response.json();
-                alert(error.message); // Show error message
+                alert(error.message); 
             }
         } catch (error) {
             console.error('Error updating user:', error);
-            alert('Error updating user'); // Show error message
+            alert('Error updating user'); 
         }
     };
 

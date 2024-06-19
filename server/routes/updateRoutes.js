@@ -8,4 +8,6 @@ const { authenticateToken } = require("../middleware/auth");
 router.post('/asignar-jefe', updateController.asignar_jefe);
 router.put('/actualizar-empleado/:employeeID', updateController.actualizar_Empleado)
 router.put('/actualizar-usuario/', updateController.actualizarUsuario)
+router.put('/usuario/:id', updateController.actualizarUser);
+
 module.exports = router;

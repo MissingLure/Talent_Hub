@@ -6,7 +6,6 @@ import editar from '../../images/editar.png';
 import Navbar from "../../components/Navbar/Navbar";
 import ModificarUsuarioPopUp from "../ModificarUsuarios/ModificarUsuarioPopUp";
 
-
 const AdministarUsuarios = () => {
     const [showAddUserPopup, setShowAddUserPopup] = useState(false);
     const [showPopup2, setShowPopup2] = useState(false);
@@ -21,7 +20,7 @@ const AdministarUsuarios = () => {
     //User data
     const [user, setUser] = useState([]); 
     const [employee, setEmployee] = useState('');
-    const [search,setSearch] = useState('');
+    const [search, setSearch] = useState('');
     const [selectRol, setSelectRol] = useState('');
 
     //Informacion usuario
@@ -43,7 +42,7 @@ const AdministarUsuarios = () => {
             })
             .catch((error) => {
                 console.log(error.response.data.data);
-            })
+            });
     };
 
     const handleGetUsuarios = () => {
@@ -58,7 +57,6 @@ const AdministarUsuarios = () => {
     };
 
     const handleGetUser = (empleado) => {
-     //   setEmployee(empleado);
         console.log(empleado)
         axios.post('http://localhost:4000/user/get-employee-user', { employeeId: empleado })
             .then((response) => {
@@ -87,7 +85,7 @@ const AdministarUsuarios = () => {
         } catch (error) {
           console.error("Hubo un error eliminando el usuario!", error);
         }
-      };
+    };
 
     const getRoleName = (roleNumber) => {
         const role = Number(roleNumber); 
@@ -101,8 +99,7 @@ const AdministarUsuarios = () => {
             default:
                 return 'Unknown';
         }
-    }
-    
+    };
 
     const handleCrearUsuario = () => {
         const userData = {
@@ -136,9 +133,6 @@ const AdministarUsuarios = () => {
                 handleGetEmployees();
                 handleGetUsuarios();
             });
-
-           
-        
     };
 
     const closeForm = () => {
@@ -148,8 +142,8 @@ const AdministarUsuarios = () => {
     };
 
     const handleInfo = (user) => {
+        setSelectedUser(user); // Set the selected user
         setShowPopup2(true);
-        setSelectedUser(user);
     };
 
     const handleCloseUser1 = () => {
@@ -167,11 +161,11 @@ const AdministarUsuarios = () => {
 
     const handleSearchChange = (e) => {
         setSearch(e.target.value);
-    }
+    };
 
     const handleRolChange = (e) => {
         setSelectRol(e.target.value);
-    }
+    };
 
     const filteredUsers = usuarios.filter(user =>
         user.correo.toLowerCase().includes(search) &&
@@ -191,7 +185,7 @@ const AdministarUsuarios = () => {
                         <option value='' >Seleccione</option>
                         <option value='0'>Administrador</option>
                         <option value='1'>Jefe</option>
-                        <option value='2'>Empledao</option>
+                        <option value='2'>Empleado</option>
                     </select>
                     <input placeholder="Buscar correo..." onChange={handleSearchChange}/>
                     <button className="add-button" onClick={() => setShowAddUserPopup(true)}>
@@ -220,8 +214,15 @@ const AdministarUsuarios = () => {
                                         <td>{user.id_empleado}</td>                     
                                         <td>{getRoleName(user.rol)}</td>
                                         <td>
-                                            <button onClick={() => setShowPopupModificar(true)}><img src={editar} alt='Editar' ></img></button>
-                                            <button onClick={() => handleInfo(user)}><img src={deletear} alt="Delete" /></button> 
+                                            <button onClick={() => {
+                                                setSelectedUser(user); // Set the selected user
+                                                setShowPopupModificar(true); // Show the modification popup
+                                            }}>
+                                                <img src={editar} alt='Editar' />
+                                            </button>
+                                            <button onClick={() => handleInfo(user)}>
+                                                <img src={deletear} alt="Delete" />
+                                            </button> 
                                         </td>
                                     </tr>
                                 ))
@@ -239,18 +240,17 @@ const AdministarUsuarios = () => {
                         <div className="popups2-content">
                             <h3>Esta seguro de borrar {selectedUser.correo}</h3>
                             <br/>
-                            <button onClick={() => handleDeleteUser(selectedUser)}>Eliminar Usuario</button>
+                            <button onClick={() => handleDeleteUser(selectedUser.id_usuario)}>Eliminar Usuario</button>
                             <button onClick={handleCloseUser}>Cerrar</button>
                         </div>
                     </div>
                 )}
 
-                {showPopupModificar && (
+                {showPopupModificar && selectedUser && (
                     <div className="popups">
                         <div>
                             <ModificarUsuarioPopUp
                                 user={selectedUser}
-                                
                                 onClose={() => setShowPopupModificar(false)}
                             />
                         </div>
@@ -304,7 +304,6 @@ const AdministarUsuarios = () => {
                                     <p>{responseMessage}</p>
                                 )}
                             </div>
-                           
                         </div>
                     </div>
                 )}

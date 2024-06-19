@@ -2,6 +2,7 @@ const { response, request } = require("express");
 const {
   asignarJefe,
   actualizarEmpleado,
+  updateUsuario
 } = require("../services/updateService");
 const { emptyFields } = require("../utils/validator");
 const { ids } = require("webpack");
@@ -73,8 +74,27 @@ async function actualizar_Empleado(req, res) {
   }
 }
 
+async function actualizarUser(req, res) {
+  const id_usuario = req.params.id;
+  const updateData = req.body;
+
+  try {
+    const result = await updateUsuario(id_usuario, updateData);
+    if (result > 0) {
+      res.status(200).json({ message: 'Usuario Actualizado' });
+    } else {
+      res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error.' });
+  }
+}
+
+
 module.exports = {
   asignar_jefe,
   actualizar_Empleado,
   actualizarUsuario,
+  actualizarUser
 };
