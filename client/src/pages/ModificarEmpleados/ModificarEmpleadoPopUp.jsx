@@ -4,13 +4,13 @@ import "./ModificarEmpleadoPopUp.css";
 import PropTypes from "prop-types";
 
 const ModificarEmpleadoPopUp = ({ employee, cancel }) => {
-  const [puesto, setPuesto] = useState(employee?.nombre_perfil ?? ""); // Establece un valor predeterminado si employee o su propiedad nombre_perfil es undefined
+  const [puesto, setPuesto] = useState(employee?.nombre_perfil ?? "");
   const [departamento, setDepartamento] = useState(
     employee?.nombre_departamento ?? ""
-  ); // Establece un valor predeterminado si employee o su propiedad nombre_departamento es undefined
-  const [jefe, setJefe] = useState(employee?.id_jefe ?? ""); // Establece un valor predeterminado si employee o su propiedad id_jefe es undefined
-  const [telefono, setTelefono] = useState(employee?.telefono ?? ""); // Establece un valor predeterminado si employee o su propiedad telefono es undefined
-  const [employeeid, setEmployeeID] = useState(employee?.id_empleado ?? ""); // Establece un valor predeterminado si employee o su propiedad id_empleado es undefined
+  );
+  const [jefe, setJefe] = useState(employee?.id_jefe ?? "");
+  const [telefono, setTelefono] = useState(employee?.telefono ?? "");
+  const [employeeid, setEmployeeID] = useState(employee?.id_empleado ?? "");
 
   const [bosses, setBosses] = useState([]);
   const [puestos, setPuestos] = useState([]);
@@ -41,6 +41,7 @@ const ModificarEmpleadoPopUp = ({ employee, cancel }) => {
     axios
       .get("http://localhost:4000/data/obtener-jefes")
       .then((response) => {
+        console.log(response.data.data);
         setBosses(response.data.data);
       })
       .catch((error) => {
@@ -50,7 +51,7 @@ const ModificarEmpleadoPopUp = ({ employee, cancel }) => {
 
   const handleGetDepartamentos = () => {
     axios
-      .get("http://localhost:4000/data/obtener-departamentos ")
+      .get("http://localhost:4000/data/obtener-departamentos")
       .then((response) => {
         setDepartamentos(response.data.data);
       })
@@ -83,7 +84,7 @@ const ModificarEmpleadoPopUp = ({ employee, cancel }) => {
       IDJefe: jefe,
     };
 
-    console.log(updatedEmployee)
+    console.log(updatedEmployee);
 
     if (!employee || !employee.id_empleado) {
       console.error("Empleado no válido");
@@ -98,13 +99,12 @@ const ModificarEmpleadoPopUp = ({ employee, cancel }) => {
       )
       .then((response) => {
         console.log("Empleado actualizado:", response.data);
-       alert("Actualizado");
+        alert("Actualizado");
         cancel();
       })
       .catch((error) => {
         console.error("Error actualizando el empleado:", error);
         alert("Error al actualizar");
-        // alert('Datos del empleado a actualizar:', departamento);
       });
   };
 
@@ -122,8 +122,8 @@ const ModificarEmpleadoPopUp = ({ employee, cancel }) => {
           <form className="formulario-empleado">
             <div className="input-wrapper-empleado">
               <label htmlFor="puesto">Puesto:</label>
-              <select defaultValue={puesto} onChange={handlePuestoChange}>
-                <option disabled hidden>
+              <select value={puesto} onChange={handlePuestoChange}>
+                <option disabled hidden value="">
                   {employee.nombre_perfil}
                 </option>
                 {puestos.map((puesto) => (
@@ -138,11 +138,8 @@ const ModificarEmpleadoPopUp = ({ employee, cancel }) => {
             </div>
             <div className="input-wrapper-empleado">
               <label htmlFor="departamento">Departamento:</label>
-              <select
-                defaultValue={departamento}
-                onChange={handleDepartamentoChange}
-              >
-                <option disabled hidden>
+              <select value={departamento} onChange={handleDepartamentoChange}>
+                <option disabled hidden value="">
                   {employee.nombre_departamento}
                 </option>
                 {departamentos.map((departamento) => (
@@ -167,28 +164,24 @@ const ModificarEmpleadoPopUp = ({ employee, cancel }) => {
             </div>
             <div className="input-wrapper-empleado">
               <label htmlFor="jefe">Jefe:</label>
-              <input
-                type="text"
-                id="jefe"
-                value={jefe}
-                onChange={handleJefeChange}
-                placeholder="Jefe"
-              />
-              {/* <select id='jefe' value={jefe} onChange={handleJefeChange}>
-                                <option selected disabled hidden>Seleccionar...</option>
-                                {bosses.length > 0 ? (
-                                    bosses.map((boss) => (
-                                        <option key={boss[0].id_empleado} value={boss[0].id_empleado}>
-                                            {boss[0].primer_nombre} {boss[0].primer_apellido}
-                                        </option>
-                                    ))
-                                ) : (
-                                    <option>No hay datos</option>
-                                )}
-                            </select> */}
+
+              <select id="jefe" value={jefe} onChange={handleJefeChange}>
+                <option disabled hidden value="">
+                  Seleccionar...
+                </option>
+                {bosses.map((boss) => {
+                  return (
+                    <option key={boss[0].id_empleado} value={boss[0].id_empleado}>
+                      {boss[0].primer_nombre} {boss[0].primer_apellido}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
             <div className="button-wrapper-empleado">
-              <button onClick={() => handleSubmit()}>Guardar cambios</button>
+              <button type="button" onClick={handleSubmit}>
+                Guardar cambios
+              </button>
               <button type="button" onClick={cancel}>
                 Cancelar
               </button>
@@ -204,4 +197,5 @@ ModificarEmpleadoPopUp.propTypes = {
   employee: PropTypes.object.isRequired,
   cancel: PropTypes.func.isRequired,
 };
+
 export default ModificarEmpleadoPopUp;
