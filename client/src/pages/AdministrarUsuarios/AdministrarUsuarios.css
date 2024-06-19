@@ -148,7 +148,6 @@
   border-collapse: collapse;
   border-radius: 5px;
   border: 1px solid #000000;
-  border-radius: 5px;
 }
 
 .container4 tr {
@@ -160,7 +159,7 @@
 .container4 td {
   background-color: #ffffff;
   color: #000000;
-  padding: 8px;
+  padding: 4px;
   text-align: left;
 }
 

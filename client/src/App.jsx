@@ -12,13 +12,13 @@ import AdministrarPreguntas from './pages/AdministrarPreguntas/AdminPreguntas';
 import BibliotecaCompetencias from './pages/BibliotecaCompetencias/BibliotecaCompetencias';
 import Inicio from './pages/Inicio/Inicio';
 import BoxGrid from './pages/BoxGrid/BoxGrid';
+import EvaluacionesPendientes from './pages/EvaluacionesPendientes/EvaluacionesPendientes';
 import AsignarEvaluacion from './pages/AsignarEvaluacion/AsignarEvaluacion';
 import AdministrarEncuestas from './pages/AdministrarEncuestas/AministrarEncuestas'
 import CrearEncuestas from './pages/Encuesta/Encuesta';
 import EncuestasEmpleado from './pages/Encuestas/Encuestas';
 import CoreCompetences from './pages/CoreCompetences/CoreCompetences';
 import PotencialCompetences from './pages/PotentialCompetiences/PotencialCompetiences';
-import EvaluacionesPendientes from "./pages/EvaluacionesPendientes/EvaluacionesPendientes";
 import MetasEmpleado from "./pages/MetasEmpleado/MetasEmpleado";
 import NotasDesempenio from './pages/NotasDesempeno/NotasDesempeno';
 import EvaluarCompetencia from './pages/EvaluarCompetencia/EvaluarCompetencia';
@@ -51,6 +51,7 @@ function App() {
           <Route path='/administrar-preguntas/potential-competiences-general' element={<PotencialCompetences/>}/>
           <Route path='/inicio' element={<Inicio/>}/>
           <Route path='/box-grid' element={<BoxGrid/>}/>
+          <Route path='/metas-empleado' element={<MetasEmpleado/>}/>
           <Route path='/administrar-encuestas'element={<AdministrarEncuestas/>}/>
           <Route path='/crear-encuestas'element={<CrearEncuestas/>}/>
           <Route path='/encuestas-empleado'element={<EncuestasEmpleado/>}/>

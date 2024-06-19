@@ -10,22 +10,15 @@ const Encuesta = () => {
   const [lenguaje, setLenguaje] = useState("");
   const [pregunta, setPregunta] = useState("");
   const [preguntas, setPreguntas] = useState([]);
-  const [question, setQUestion] = useState([]);
-  const [questions, setQuestions] = useState([]);
+  const [selectPuesto, setSelectPuesto] = useState('');
+  const [puesto, setPuesto] = useState([]);
   const [responseMessage, setResponseMessage] = useState([]);
   const [errorMessages, setErrorMessages] = useState([]);
-  const [competencias, setCompetencias] = useState([]);
-  const [habilidades, setHabilidades] = useState([]);
   const opcionesLenguaje = ["Español", "Inglés"];
-  const [busquedaTexto, setBusquedaTexto] = useState("");
   const [data, setData] = useState([]);
   const [Busqueda, SetBusqueda] = useState(data);
   const [selectedRows, setSelectedRows] = useState([]);
   const [counter, setCounter] = useState(1);
-
-  const handleCrearEncuesta = () => {
-    console.log(preguntas);
-  };
 
   const columns = [
     {
@@ -41,8 +34,8 @@ const Encuesta = () => {
   ];
 
   useEffect(() => {
-    SetBusqueda(data);
-  }, [data]);
+    handleGetPuestos();
+  }, []);
 
   const handleAgregarFila = () => {
     if (pregunta && lenguaje) {
@@ -94,7 +87,17 @@ const Encuesta = () => {
     .catch((error)=>{
       console.log(error);
     })
-  }
+  };
+
+  const handleGetPuestos = () => {
+    axios.get('http://localhost:4000/data/obtener-puestos')
+      .then((response) => {
+        setPuesto(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  };
 
   const handleEliminarFilasMarcadas = () => {
     const newData = data.filter((row) => !selectedRows.includes(row.index));
@@ -126,7 +129,7 @@ const Encuesta = () => {
       <Navbar />
       <div className="container">
         <h2 className="tituloCrearEncuesta"><b>Crear Encuesta</b> </h2>
-
+        <h4>Crea las encuestas para un puesto de trabajo especifico.</h4>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -137,15 +140,19 @@ const Encuesta = () => {
 
         <div className="logins-form">
           <div>
-            <label>Nombre:</label>
-          </div>
-          <div>
+            <label>Nombre de Encuesta:</label>
             <input placeholder="Ingrese nombre de encuesta" onChange={(e) => setNombreEncuesta(e.target.value)} />
           </div>
           <div>
-            <label>Tipo de encuesta</label>
+            <label>Perfil de Puesto:</label>
+            <select onChange={(e) => setSelectPuesto(e.target.value)}>
+              <option hidden disabled selected>
+                Seleccione el perfil de puesto...
+              </option>
+            </select>
           </div>
           <div>
+            <label>Tipo de encuesta:</label>
             <select onChange={(e) => setTipoEncuesta(e.target.value)}>
               <option hidden disabled selected>
                 Seleccione tipo de encuesta...
@@ -156,8 +163,6 @@ const Encuesta = () => {
           </div>
           <div>
             <label>Lenguaje:</label>
-          </div>
-          <div>
             <select value={lenguaje} onChange={(e) => setLenguaje(e.target.value)}>
               <option value="">Seleccione un lenguaje...</option>
               {opcionesLenguaje.map((opcion, index) => (
@@ -169,17 +174,20 @@ const Encuesta = () => {
           </div>
           <div>
             <label>Pregunta:</label>
-          </div>
-          <div>
             <input type="text" className="inputs" value={pregunta} onChange={(e) => setPregunta(e.target.value)} placeholder="Ingrese la pregunta" />
           </div>
+          <br/>
           <div>
+          <button className="Eliminars" onClick={handleEliminarFilasMarcadas}>
+              Eliminar Preguntas
+            </button>
             <button className="Agregar" onClick={handleAgregarFila}>
               Agregar Pregunta
             </button>
+            
           </div>  
 
-          <div style={{ height: 40, width: '100%' }}>
+          <div>
             <DataTable
               id="Data"
               columns={columns}
@@ -199,12 +207,7 @@ const Encuesta = () => {
 
           <br />
           <div>
-            <button className="Eliminars" onClick={handleEliminarFilasMarcadas}>
-              Eliminar Preguntas
-            </button>
-          </div>
-          <br />
-          <div>
+            
             <button className="Fin" onClick={handleAgregarPregunta}>
               Finalizar Encuesta
             </button>

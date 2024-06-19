@@ -126,7 +126,7 @@
   background-color: #4d4c5f;
 }
 
-.popups2 {
+.popups3 {
   position: fixed;
   top: 0;
   left: 0;
@@ -139,24 +139,22 @@
   z-index: 999;
 }
 
-.popups2-content{
-  background-color: #fff;
-padding: 20px;
-border-radius: 8px;
-text-align: center;
+.popups3-content{
+  background-color: #333356;
+  padding: 15px;
+  border-radius: 8px;
+  color: black;
+  text-align: center;
 }
 
-.popups2-content h3{
+.popups3-content h3{
   font-size: 20px;
   font-weight: bold;
   margin:5px;
 }
 
-.popups2-content button{
-  margin-top:-630px;
-  /* padding: 10px 20px; */
-  /* border: none; */
-  /* border-radius: 5px; */
+.popups3-content button{
+  margin-top:130px;
   background-color: #2a2942;
   color: #fff;
   cursor: pointer;

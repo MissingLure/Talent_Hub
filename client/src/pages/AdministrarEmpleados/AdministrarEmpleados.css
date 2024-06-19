@@ -47,12 +47,11 @@
 .search-options {
   margin: 10px;
   background-color: rgb(232, 232, 232);
-  width: 600px;
-  height: 100px;
+  width: 50%;
+  height: 400px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
-  align-content: center;
   align-items: center;
 }
 
@@ -250,7 +249,7 @@
 }
 
 .container3 th {
-  width: auto;
+  width: 100%;
   background-color: #333356;
   color: #ffffff;
   border: 1px solid black;
@@ -263,8 +262,6 @@
   border-collapse: collapse;
   border-radius: 5px;
   border: 1px solid #000000;
-  border-radius: 5px;
-
 }
 
 .container3 tr {
@@ -279,8 +276,10 @@
 .container3 td {
   background-color: #ffffff;
   color: #000000;
-  padding: 8px;
-  text-align: center;
+  width: fit-content;
+  padding: 4px;
+  text-align: left;
+  overflow-y: auto;
 }
 
 .container3 td:hover {

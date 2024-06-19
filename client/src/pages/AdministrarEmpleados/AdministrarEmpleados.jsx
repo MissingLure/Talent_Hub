@@ -156,19 +156,6 @@ const AdministarEmpleados = () => {
   //     setShowPopup2(false);
   // }
 
-  const handleGetUsuarios = () => {
-    axios
-      .get("http://localhost:4000/data/obtener-usuario")
-      .then((response) => {
-        setUsuarios(response.data.data);
-        // setUserExists(true);
-      })
-      .catch((error) => {
-        setErrorMessages(error.response.data.data);
-        // setUserExists(false);
-      });
-  };
-
   const handleDeleteEmployee = async (id_empleado) => {
     try {
       const response = await axios.delete(
@@ -194,75 +181,7 @@ const AdministarEmpleados = () => {
     }
   };
 
-  const handleGetUser = (empleado) => {
-    setEmployee(empleado);
-    axios
-      .post("http://localhost:4000/user/get-employee-user", {
-        employeeId: empleado.id_empleado,
-      })
-      .then((response) => {
-        if (response.data.success) {
-          setUser(response.data.data);
-          setErrorMessages([]);
-        } else {
-          setErrorMessages(response.data.details);
-        }
-        setUserExists(response.data.success);
-      })
-      .catch((error) => {
-        setErrorMessages(error.response.data.details);
-      });
-
-    setShowAddUserPopup(true);
-  };
-
-  const getRoleName = (roleNumber) => {
-    switch (roleNumber) {
-      case 0:
-        return "Admin";
-      case 1:
-        return "Jefe";
-      case 2:
-        return "Empleado";
-      // Agrega más casos según sea necesario
-      default:
-        return "Unknown";
-    }
-  };
-
-  const handleCrearUsuario = () => {
-    const userData = {
-      idEmpleado: employee.id_empleado,
-      rol: rol,
-      correo: correo,
-      contrasena: contrasena,
-    };
-
-    const userAlreadyExists = usuarios.some(
-      (user) => user.correo === selectedEmployee.correo
-    );
-    if (userAlreadyExists) {
-      setErrorMessages((prev) => [...prev, "El usuario ya existe."]);
-      setUserExists(true);
-      alert("Usuario ya existe. Revisa la seccion de Usuario!");
-      return;
-    }
-    axios
-      .post("http://localhost:4000/create/crear-usuario", userData)
-      .then((response) => {
-        console.log(response.data.data);
-        if (response.data.success) {
-          setResponseMessage(response.data.details);
-          setErrorMessages([]);
-          alert("Usuario creado con exito");
-        } else {
-          setErrorMessages(response.data.details);
-        }
-      })
-      .catch((error) => {
-        setErrorMessages(error.response.data.details);
-      });
-  };
+  
   const handleInformationClick = (employeeId, bossId) => {
     handleGetEmployee(employeeId);
     handleGetBoss(bossId);
@@ -329,7 +248,7 @@ const AdministarEmpleados = () => {
       <h2> Administrar Empleados</h2>
       <h4>Manten el orden de tus empleados activos.</h4>
       <br></br>
-      <div className="search-options" style={{width:'1100px'}}>
+      <div className="search-options" >
         <div>
           <label>Departamento</label>
           <select value={selectDepartamento} onChange={(e)=>setSelectDepartamento(e.target.value)}>
@@ -367,7 +286,6 @@ const AdministarEmpleados = () => {
                 <th>ID Jefe</th>
                 <th>Departamento</th>
                 <th>Puesto</th>
-                <th>Pais</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -383,15 +301,12 @@ const AdministarEmpleados = () => {
                     <td>{employee.id_jefe}</td>
                     <td>{employee.nombre_departamento}</td>
                     <td>{employee.nombre_perfil}</td>
-                    <td>{employee.id_pais}</td>
-                    <td className="butne">
-                      <button onClick={() => handleInformationClick(
-                        employee.id_empleado,employee.id_jefe
-                )}>
+                    <td>
+                      <button onClick={() => handleInformationClick(employee.id_empleado,employee.id_jefe)}>
                         <img src={inform} width={40} height={40}/>
                       </button>
                       <button onClick={()=> handleModifyEmployeeClick(employee)}><img src={editar} width={25} height={10}/></button>
-                      <button onClick={()=> handleSelectEmployee(employee)}><img src={borrar} width={35} height={10}/></button>
+                      <button onClick={()=> handleSelectEmployee(employee)}><img src={borrar} width={25} height={10}/></button>
                     </td>
                   </tr>
                 ))
@@ -408,7 +323,7 @@ const AdministarEmpleados = () => {
 
       {showBossPopup && (
         <div className="popup">
-          <div className="information-popup-content" style={{backgroundColor:'#2a2942',width:'300px',color:'white'}}>
+          <div className="information-popup-content" style={{backgroundColor:'#2a2942',width:'100%',color:'white'}}>
             <div className="employee-info">
               <h3>
                 <b>Empleado</b>

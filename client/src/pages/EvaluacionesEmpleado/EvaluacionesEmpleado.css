@@ -3,17 +3,16 @@
   }
 
   .Empleados-TITULO {
-    font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 24px;
     text-align: center;
     margin-bottom: 1%;
   }
   
   .Prueba{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
     font-weight: bold;
-    font-size: 14px;
+    font-size: 18px;
     text-align: center;
     margin-bottom: 1%;
   }

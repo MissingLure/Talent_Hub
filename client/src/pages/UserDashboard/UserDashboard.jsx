@@ -195,37 +195,6 @@ const UserDashboard = () => {
   return (
     <div className="dashboard-container">
       <Navbar />
-
-      {/* 
-            <div className="CultureWorkClimateSurvey-box">
-            Culture & Work Climate Survey
-            </div> */}
-
-      {/* <div className="info-table">
-                <table>
-                    <tbody>
-                        <tr>
-                        <th colSpan="3" className="title">Información</th>
-                        </tr>
-                        <tr>
-                            <td>Nombre</td>
-                            <td>{employeeData.primer_nombre} {employeeData.segundo_nombre} {employeeData.primer_apellido} {employeeData.segundo_apellido}</td>
-                        </tr>
-                        <tr>
-                            <td>Puesto</td>
-                            <td>{employeeData.id_perfil_puesto}</td>
-                        </tr>
-                        <tr>
-                            <td>Departamento</td>
-                            <td>{employeeData.id_departamento}</td>
-                        </tr>
-                        <tr>
-                            <td>Numero de Telefono</td>
-                            <td>{employeeData.telefono}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div> */}
       <div className="info-container">
         <div className="profile">
           <div className="persona-info">
@@ -248,9 +217,6 @@ const UserDashboard = () => {
               </p>
               <p>
                 <strong>Fecha Ingreso:</strong> {user.fecha_ingreso}
-              </p>
-              <p>
-                <strong>Pais:</strong> HONDURAS{" "}
               </p>
             </div>
           </div>

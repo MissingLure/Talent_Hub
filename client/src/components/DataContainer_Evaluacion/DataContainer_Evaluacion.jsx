@@ -31,7 +31,7 @@ const DataContainer = ({ data }) => {
           </div>
         ))
       ) : (
-        <p>No tiene evaluaciones pendientes.</p>
+        <p>No tiene encuestas pendientes.</p>
       )}
     </div>
   );
