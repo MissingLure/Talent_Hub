@@ -16,7 +16,7 @@ const knex = require("knex")({
 
 async function agregarEmpleado(empleado) {
   try {
-    const result = await knex.raw("CALL CrearEmpleado(?,?,?,?,?,?,?,?,?,?,?);", [
+    const result = await knex.raw("CALL CrearEmpleado(?,?,?,?,?,?,?,?,?,?);", [
       empleado.primer_nombre,
       empleado.segundo_nombre,
       empleado.primer_apellido,
@@ -25,7 +25,6 @@ async function agregarEmpleado(empleado) {
       empleado.fecha_nacimiento,
       empleado.numero_identidad,
       empleado.direccion,
-      empleado.id_pais,
       empleado.id_perfil_puesto,
       empleado.id_departamento,
     ]);

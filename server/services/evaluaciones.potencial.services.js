@@ -44,11 +44,14 @@ const selectEvaluacionPotencialService = async (
 const insertEvaluacionPotencialService = async (
   newEvaluacionCompetencias
 ) => {
+  const {id_empleado,resultado, Fecha_limite}=newEvaluacionCompetencias;
+  
   try {
-    const result = await db("evaluacion_potencial").insert(
-      newEvaluacionCompetencias
+    const result = await db.raw(
+      `INSERT INTO evaluacion_potencial VALUES(GENERAR_ID_EVALUACION_POTENCIAL(),?, ?, ?)`,
+      [id_empleado,resultado, Fecha_limite]
     );
-
+    
     return result;
   } catch (error) {
     console.log(error);

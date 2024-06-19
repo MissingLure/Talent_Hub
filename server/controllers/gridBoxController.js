@@ -97,10 +97,11 @@ async function obtenerGridBox_porID_Handler(req, res) {
 
 async function updateGridBoxHandler(req, res) {
   const { id_empleado } = req.params;
+  console.log(id_empleado);
   const updates = req.body;
-
+  console.log(updates);
   try {
-    const rowsUpdated = await gridBoxServ.updateGridBox(id_empleado, updates);
+    const rowsUpdated = await gridBoxServ.updateGridBox(updates, id_empleado);
 
     if (rowsUpdated > 0) {
       res

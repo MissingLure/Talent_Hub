@@ -32,7 +32,7 @@ async function obtenerPorId(id) {
 
 async function obtenerPorPuesto(id) {
     try {
-        const resultado = await knex('entrevistas_competencia_habilidad').where({ id_perfil_puesto: id });
+        const resultado = await knex('entrevistas_competencia_habilidad').join('entrevistas_competencia','entrevistas_competencia_habilidad.id_entrevistas_competencia','=','entrevistas_competencia.id_entrevistas_competencia').where({ id_perfil_puesto: id });
         return resultado;
     } catch (error) {
         console.log('Error obteniendo la entrevista por ID:', error);
