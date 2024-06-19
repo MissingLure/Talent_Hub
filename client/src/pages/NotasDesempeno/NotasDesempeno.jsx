@@ -12,7 +12,7 @@ const NotasDesempeno = () => {
         const fetchEmployeesAndEvaluations = async () => {
             try {
                 
-                //API para conseguir los empleados de la base de datos
+                
                 const employeesResponse = await axios.get("http://localhost:4000/data/obtener-empleados");
                 console.log('Employees response data:', employeesResponse.data);
 
@@ -23,7 +23,7 @@ const NotasDesempeno = () => {
                     const fetchEvaluationsPromises = employeesData.map(async (employee) => {
                         try {
 
-                            //Cambiar por las respectivas APIs para conseguir las notas de desempeño por empleado
+
                             const evaluationResponse = await axios.get(`http://localhost:4000/evaluaciones-potenciales/by-empleado/${employee.id_empleado}`);
                             console.log(`Evaluation response for employee ${employee.id_empleado}:`, evaluationResponse.data);
 

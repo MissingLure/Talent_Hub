@@ -1,6 +1,6 @@
 
 
-/* Estilos para el contenedor principal */
+
 .survey-containers {
     display: flex;
     margin: 0;
@@ -10,17 +10,17 @@
     min-height: 100vh;
     background-color: #d8d8db;
     animation: fadeInAnimation 1s forwards;
-    padding: 0;  /* Asegurarse de que no haya padding */
+    padding: 0;  
     box-sizing: border-box;
 }
 
-/* Estilos para los botones superiores */
+
 .top-buttons {
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    margin-top: 10px;  /* Añadir espacio entre el botón y el navbar */
-    padding-left: 10px;  /* Añadir espacio entre el botón y el borde izquierdo */
+    margin-top: 10px; 
+    padding-left: 10px;  
 }
 
 .botons:hover {
@@ -43,12 +43,12 @@
     border: none;
 }
 
-/* Estilos para los contenedores superiores */
+
 .top-containers {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 15px;  /* Ajuste para mayor separación del contenido */
+    margin-bottom: 15px;  
     background-color: #7e0a12;
     width: 100%;
     color: white;
@@ -57,12 +57,12 @@
 }
 
 .top-containers h1 {
-    font-size: 28px;  /* Incrementar el tamaño de la fuente */
+    font-size: 28px;  
     line-height: 1.2;
     font-weight: bold;
 }
 
-/* Estilos para el contenedor del filtro */
+
 .filter-container {
     margin: 10px 0;
     display: flex;
@@ -83,21 +83,21 @@
     font-size: 14px;
 }
 
-/* Estilos para el contenedor de la tabla */
+
 .table-container {
     width: 80%;
     margin: 20px; 
-    overflow-x: auto; /* Scroll horizontal si es necesario */
-    max-height: 600px; /* Ejemplo de altura máxima */
-    overflow-y: auto; /* Scroll vertical si el contenido excede la altura máxima */
+    overflow-x: auto; 
+    max-height: 600px; 
+    overflow-y: auto; 
 }
 
-/* Estilos para la tabla */
+
 table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 5px;
-    table-layout: fixed; /* Fuerza que la tabla tenga un ancho fijo */
+    table-layout: fixed; 
 }
 
 thead {
@@ -109,9 +109,9 @@ th, td {
     padding: 10px;
     border-radius: 5px;
     border: 5px solid #f0f0f0;
-    white-space: nowrap; /* Evita el salto de línea en el texto largo */
-    overflow: hidden; /* Oculta el contenido que sobresale */
-    text-overflow: ellipsis; /* Agrega puntos suspensivos (...) para el contenido que no cabe */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
 }
 
 th {
@@ -133,7 +133,7 @@ td {
     padding: inherit;
 }
 
-/* Animación de fadeIn */
+
 @keyframes fadeInAnimation {
     0% { opacity: 0; }
     100% { opacity: 1; }
