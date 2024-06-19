@@ -48,7 +48,7 @@ function App() {
           <Route path='/administrar-preguntas' element={<AdministrarPreguntas/>}/>
           <Route path='/competencias' element={<BibliotecaCompetencias/>}/>
           <Route path='/administrar-preguntas/core-competences-general' element={<CoreCompetences/>}/>
-          <Route path='/administrar-preguntas/potential-competiences-general' element={<PotencialCompetences/>}/>
+          <Route path='/potencial-competiences' element={<PotencialCompetences/>}/>
           <Route path='/inicio' element={<Inicio/>}/>
           <Route path='/box-grid' element={<BoxGrid/>}/>
           <Route path='/metas-empleado' element={<MetasEmpleado/>}/>

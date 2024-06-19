@@ -1,161 +1,131 @@
-.survey-containers {
+.potencial-survey-containers {
     display: flex;
+    margin: 0;
     flex-direction: column;
-    /* text-align: left; */
-    align-items: left;
-    width: 100%;
-    height: 100vh;
-    background-color: #d8d8db;
-    animation: fadeInAnimation 1s forwards; 
-}
-
-.top-containers {
-    display: flex;
-    margin-bottom: 15px;
-    margin-left: 20px;
-    height: 30px;
     align-items: center;
-    /* text-align: right; */
-    margin-top: 120px;
-    background-color: #7e0a12;
-    border: 1.5px solid black;
-    width: 65%;
-    color:white;
-    height: auto;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #d8d8db;
+    animation: potencial-fadeInAnimation 1s forwards;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-
-.survey-containers h2{
-    font-size: x-large;
-    font-weight: bold;
-}
-
-.botons:hover{
-    background-color: #cd1c2c;
-  }
-  
-.botons{
-background-color: #333356;
-border-radius: 20px;
-width: 150px;
-height:auto;
-color:white;
-/* margin-left: 10px; */
-margin-bottom:-20px;
-margin-top: 20px;
-}
-.survey-containers h1{
-    font-size: 36px;
-    line-height: 2; 
-    margin: auto;
-    font-weight: bold;
-}
-
-.data-titles {
-    width: 25%;
-    /* background-color: #63647a; */
-    /* color: white; */
-}
-
-.data-values {
-    width: 50%;
-    margin-right: 20px;
-    background-color: #f3f3f3;
-}
-
-
-.bottom-containers {
-    display: flex;
-    height: 30px;
-    margin-top: 15px;
-}
-
-.questions-lists {
-    height: auto;
+.potencial-top-buttons {
     width: 100%;
     display: flex;
-    /* justify-content: center; */
+    justify-content: flex-start;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.potencial-botons {
+    transform: scale(1.1);
+    box-shadow: 2px 2px 0px #7e0a12;
+    background-color: #333356;
+    border-radius: 5px;
+    width: 120px;
+    height: auto;
+    color: white;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+}
+
+.potencial-top-containers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: #7e0a12;
+    width: 100%;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+.potencial-top-containers h1 {
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.potencial-filter-container {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.potencial-filter-container label {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #333356;
+}
+
+.potencial-filter-container input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #333356;
+    font-size: 14px;
+}
+
+.potencial-table-container {
+    width: 80%;
+    margin: 20px;
+    overflow-x: auto;
+    max-height: 600px;
     overflow-y: auto;
 }
 
-.question-holders {
+.potencial-table {
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 5px;
+    table-layout: fixed;
 }
 
-.surveys-actions {
-    margin: 5px;
-}
-
-.survey-types {
-    display: flex;
-}
-
-
-.evaluation-titles {
+.potencial-thead {
+    background-color: #333356;
     color: white;
-    background-color: #2a2942;
-    height: 70px;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -15px;
-    margin-left:20px;
 }
 
-.inform{
-    color: white;
-    background-color: #742772;
-    height: 130px;
-    width: 50%;
-    border: 1.5px solid black;
-    display: flex;
-    align-items: center;
-    margin-top: -25px;
+.potencial-th, .potencial-td {
     padding: 10px;
-    margin-left:20px;
+    border-radius: 5px;
+    border: 5px solid #f0f0f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
 }
 
-.survey-containers p{
-    margin:20px;
-}
-
-.categories {
-    color: black;
-    background-color: #b8b8b8;
-    height: 70px;
-    width: 15%;
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    margin-top: -15px;
-    border: 1.5px solid black;
-}
-
-.categories2 {
-    color: black;
-    background-color: #f2f2f2;
-    height: 120px;
-    width: 15%;
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    padding: 20px;
-    margin-top: -15px;
-    border: 1.5px solid black;
-}
-
-
-.total-titles {
-    background-color: #aeaaaa;
+.potencial-th {
+    background-color: #333356;
     color: white;
-    width: 5%;
-    height: 90px;
-    margin-top: -150px;
-    /* margin-bottom: 30px; */
-    margin-left: 960px;
-    display: flex;
-    justify-content: center;
+    font-size: 16px;
+    text-align: center;
+}
+
+.potencial-td {
+    background-color: #f0f0f0;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.potencial-nota {
+    text-align: center;
+    padding: inherit;
+}
+
+@keyframes potencial-fadeInAnimation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .total-titles h2 {

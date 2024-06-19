@@ -1,8 +1,8 @@
-import React from "react";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from "../../components/Navbar/Navbar";
 import './PotencialCompetiences.css';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 const PotencialCompetiences = () => {
     const [employees, setEmployees] = useState([]);
@@ -11,17 +11,20 @@ const PotencialCompetiences = () => {
     useEffect(() => {
         const fetchEmployeesAndEvaluations = async () => {
             try {
-                // Fetch the list of employees
+                
+                //API para conseguir los empleados de la base de datos
                 const employeesResponse = await axios.get("http://localhost:4000/data/obtener-empleados");
                 console.log('Employees response data:', employeesResponse.data);
 
                 if (employeesResponse.data.success) {
                     const employeesData = employeesResponse.data.data;
 
-                    // Fetch evaluations for each employee
+                    
                     const fetchEvaluationsPromises = employeesData.map(async (employee) => {
                         try {
-                            const evaluationResponse = await axios.get(`http://localhost:4000/evaluaciones-potenciales/by-empleado/${employee.id_empleado}`);
+
+                            //Cambiar por las respectivas APIs para conseguir las notas de desempeño por empleado
+                            const evaluationResponse = await axios.get(`http://localhost:4000/evaluaciones-competencias/by-empleado/${employee.id_empleado}`);
                             console.log(`Evaluation response for employee ${employee.id_empleado}:`, evaluationResponse.data);
 
                             if (evaluationResponse.data.data && evaluationResponse.data.data.length > 0) {
@@ -78,42 +81,42 @@ const PotencialCompetiences = () => {
     }, []);
 
     return (
-        <div className="survey-containers">
-            <Navbar/>
-            <div className="data-titles">
-                    <button className="botons">
-                       <Link to='/administrar-preguntas'>
-                       Regresar
-                       </Link>
-                    </button>
-                </div>
-            <div className="top-containers">
-                <h1>Potential Competencies<br />Central Office</h1>
+        <div className="potencial-survey-containers">
+            <Navbar />
+            <div className="potencial-top-buttons">
+                <button className="potencial-botons">
+                    <Link to='/administrar-preguntas'>
+                        Regresar
+                    </Link>
+                </button>
             </div>
-            <div className="table-container">
-                <table>
-                    <thead>
+            <div className="potencial-top-containers">
+                <h1>Potencial Competencies<br />Central Office</h1>
+            </div>
+            <div className="potencial-table-container">
+                <table className="potencial-table">
+                    <thead className="potencial-thead">
                         <tr>
-                            <th>Nombre del Empleado</th>
-                            <th>Nota de Evaluación</th>
+                            <th className="potencial-th">Nombre del Empleado</th>
+                            <th className="potencial-th">Resultado Desempeño</th>
                         </tr>
                     </thead>
                     <tbody>
                         {loading ? (
                             <tr>
-                                <td colSpan="2">Cargando...</td>
+                                <td className="potencial-td" colSpan="2">Cargando...</td>
                             </tr>
                         ) : (
                             employees.length > 0 ? (
                                 employees.map(employee => (
                                     <tr key={employee.id}>
-                                        <td>{employee.name}</td>
-                                        <td>{employee.evaluation}</td>
+                                        <td className="potencial-td">{employee.name}</td>
+                                        <td className="potencial-td">{employee.evaluation}</td>
                                     </tr>
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="2">No se encontraron empleados.</td>
+                                    <td className="potencial-td" colSpan="2">No se encontraron empleados.</td>
                                 </tr>
                             )
                         )}

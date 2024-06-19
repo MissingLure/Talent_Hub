@@ -91,7 +91,7 @@ const NotasDesempeno = () => {
                 </button>
             </div>
             <div className="top-containers">
-                <h1>Desempeño Competencies<br />Central Office</h1>
+                <h1>Desempeño Competencies<br />Central Office</h1>
             </div>
             <div className="table-container">
                 <table>
