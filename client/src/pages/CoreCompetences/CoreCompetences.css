@@ -10,7 +10,7 @@
     animation: fadeInAnimation 1s forwards; 
 }
 
-.top-contain{
+.top-containCore{
     display: flex;
     margin:15px;
     height: 35px;
@@ -28,7 +28,7 @@
 }
 
 /*tabla*/
-.container5{
+.container5Core{
     /* margin-top:25px;  */
     width: 90%; 
     max-height: 535px; 
@@ -41,7 +41,7 @@
 
 
 
-.container5 table{
+.container5Core table{
     /* width:auto;
     margin:30px;
     border: 1.5px solid black;
@@ -59,7 +59,7 @@
 }
 
 
-.container5 td{
+.container5Core td{
     padding: 15px;
     /* text-align: center; */
     border: 1.5px solid black;
@@ -68,7 +68,7 @@
    
 } 
 
-.container5 td:hover{
+.container5Core td:hover{
     background-color: #000000;
 }
 
@@ -106,7 +106,7 @@ margin-top: 5px;
     height: auto;
 }
 
-.topContainerTable{
+.topContainerTableCore{
     background-color: #7e0a12;
     border: 1.5px solid black;
     color:white;
@@ -125,48 +125,48 @@ margin-top: 5px;
     font-weight: bold;
 }
 
-.data-title-all {
+.data-title-allCore {
     width: 15%;
     margin:5px;    
     background-color: #742772;
     color: white;
 }
 
-.data-title-1-2{
+.data-title-1-2Core{
     width: 15%;
     margin:5px; 
     background-color: #bf8f00;
     color: white;
 }
 
-.data-title-3 {
+.data-title-3Core {
     width: 15%;
     margin:5px; 
     background-color: #002060;
     color: white;
 }
-.data-title-4 {
+.data-title-4Core {
     width: 15%;
     margin:5px; 
     background-color: #00b050;
     color: white;
 }
 
-.data-title-5 {
+.data-title-5Core {
     width: 15%;
     margin:5px; 
     background-color: black;
     color: white;
 }
 
-.data-title-6 {
+.data-title-6Core {
     width: 15%;
     margin:5px; 
     background-color: #7030a0;
     color: white;
 }
 
-.data-title-7{
+.data-title-7Core{
     width: 15%;
     margin:5px; 
     background-color: #5b9bd5;
@@ -174,7 +174,7 @@ margin-top: 5px;
 }
 
 
-.bottoms-container {
+.bottoms-containerCore {
     display: flex;
     height: 35px;
     margin-left: 15px;
@@ -317,7 +317,7 @@ margin-top: 5px;
 }
 
 
-.survey-containers p{
+.survey-containersCore p{
     margin:20px;
 }
 

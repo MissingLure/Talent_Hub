@@ -160,41 +160,41 @@ const CoreCompetences = () => {
 
 
   return (
-    <div className="survey-containers">
+    <div className="survey-containersCore">
       <Navbar />
 
-      <div className="top-contain">
-        <div className="data-title-all">
+      <div className="top-containCore">
+        <div className="data-title-allCore">
           <label>All</label>
         </div>
-        <div className="data-title-1-2">
+        <div className="data-title-1-2Core">
           <label>Position 1/2</label>
         </div>
-        <div className="data-title-3">
+        <div className="data-title-3Core">
           <label>Position 3</label>
         </div>
-        <div className="data-title-4">
+        <div className="data-title-4Core">
           <label>Position 4</label>
         </div>
       </div>
 
-      <div className="bottoms-container">
-        <div className="data-title-5">
+      <div className="bottoms-containerCore">
+        <div className="data-title-5Core">
           <label>Position 5</label>
         </div>
-        <div className="data-title-6">
+        <div className="data-title-6Core">
           <label>Position 6</label>
         </div>
-        <div className="data-title-7">
+        <div className="data-title-7Core">
           <label>Position 7</label>
         </div>
       </div>
 
-      <div className="container5">
+      <div className="container5Core">
         <table>
           <thead>
             <tr>
-              <th className="topContainerTable" colspan="2">
+              <th className="topContainerTableCore" colspan="2">
                 <h1>
                   Core Competencies
                   <br></br>

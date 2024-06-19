@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from "react";
+import { useEffect, useState } from 'react';
 import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
 import './PotencialCompetiences.css'
 import { Link } from "react-router-dom";
-
 
 const PotencialCompetiences=()=>{
     // const [empleados, setEmpleados] = useState([]);
@@ -20,14 +20,14 @@ const PotencialCompetiences=()=>{
 
     return(
         <div className="survey-containers">
-            <Navbar />
-            <div className="top-buttons">
-                <button className="botons">
-                    <Link to='/administrar-preguntas'>
-                        Regresar
-                    </Link>
-                </button>
-            </div>
+            <Navbar/>
+            <div className="data-titles">
+                    <button className="botons">
+                       <Link to='/administrar-preguntas'>
+                       Regresar
+                       </Link>
+                    </button>
+                </div>
             <div className="top-containers">
                 
                 <h1>
@@ -93,6 +93,7 @@ const PotencialCompetiences=()=>{
             
 
         </div>
+
     );
 };
 

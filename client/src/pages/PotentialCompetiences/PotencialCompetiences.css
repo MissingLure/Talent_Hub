@@ -1,41 +1,15 @@
-/* PotencialCompetences.css */
-
-/* Reset de márgenes y padding en body y html */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow-x: hidden;
-    
-}
-
-/* Estilos para el navbar */
-.navbar {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* Estilos para el contenedor principal */
 .survey-containers {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* text-align: left; */
+    align-items: left;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     background-color: #d8d8db;
-    animation: fadeInAnimation 1s forwards;
-    padding: 0;  /* Asegurarse de que no haya padding */
-    box-sizing: border-box;
+    animation: fadeInAnimation 1s forwards; 
 }
 
-/* Estilos para los botones superiores */
-.top-buttons {
-    width: 100%;
+.top-containers {
     display: flex;
     margin-bottom: 15px;
     margin-left: 20px;
@@ -56,31 +30,84 @@ body, html {
     font-weight: bold;
 }
 
-.botons:hover {
+.botons:hover{
     background-color: #cd1c2c;
+  }
+  
+.botons{
+background-color: #333356;
+border-radius: 20px;
+width: 150px;
+height:auto;
+color:white;
+/* margin-left: 10px; */
+margin-bottom:-20px;
+margin-top: 20px;
 }
-
-.botons {
-    background-color: #333356;
-    border-radius: 5px;
-    width: 120px;
-    height: auto;
-    color: white;
-    padding: 12px;
-    text-align: center;
-    text-decoration: none;
-    margin-left: 10px;
-    font-size: 16px;
+.survey-containers h1{
+    font-size: 36px;
+    line-height: 2; 
+    margin: auto;
     font-weight: bold;
 }
 
-/* Estilos para los contenedores superiores */
-.top-containers {
+.data-titles {
+    width: 25%;
+    /* background-color: #63647a; */
+    /* color: white; */
+}
+
+.data-values {
+    width: 50%;
+    margin-right: 20px;
+    background-color: #f3f3f3;
+}
+
+
+.bottom-containers {
+    display: flex;
+    height: 30px;
+    margin-top: 15px;
+}
+
+.questions-lists {
+    height: auto;
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    overflow-y: auto;
+}
+
+.question-holders {
+    width: 100%;
+}
+
+.surveys-actions {
+    margin: 5px;
+}
+
+.survey-types {
+    display: flex;
+}
+
+
+.evaluation-titles {
+    color: white;
+    background-color: #2a2942;
+    height: 70px;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 15px;  /* Ajuste para mayor separación del contenido */
-    background-color: #7e0a12;
+    margin-top: -15px;
+    margin-left:20px;
+}
+
+.inform{
+    color: white;
+    background-color: #742772;
+    height: 130px;
+    width: 50%;
     border: 1.5px solid black;
     display: flex;
     align-items: center;
@@ -89,66 +116,38 @@ body, html {
     margin-left:20px;
 }
 
-.top-containers h1 {
-    font-size: 28px;  /* Incrementar el tamaño de la fuente */
-    line-height: 1.2;
-    font-weight: bold;
+.survey-containers p{
+    margin:20px;
 }
 
-/* Estilos para el contenedor del filtro */
-.filter-container {
-    margin: 10px 0;
+.categories {
+    color: black;
+    background-color: #b8b8b8;
+    height: 70px;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -15px;
+    border: 1.5px solid black;
 }
 
-.filter-container label {
-    margin-right: 10px;
-    font-size: 14px;
-    color: #333356;
-}
-
-.filter-container input {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #333356;
-    font-size: 14px;
-}
-
-/* Estilos para el contenedor de la tabla */
-.table-container {
-    width: 80%;
-    margin: 20px 0;
-    overflow-x: auto; /* Scroll horizontal si es necesario */
-    max-height: 600px; /* Ejemplo de altura máxima */
-    overflow-y: auto; /* Scroll vertical si el contenido excede la altura máxima */
+.categories2 {
+    color: black;
+    background-color: #f2f2f2;
+    height: 120px;
+    width: 15%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 20px;
+    margin-top: -15px;
+    border: 1.5px solid black;
 }
 
 
-/* Estilos para la tabla */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed; /* Fuerza que la tabla tenga un ancho fijo */
-}
-
-thead {
-    background-color: #333356;
-    color: white;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #333356;
-    text-align: left;
-    white-space: nowrap; /* Evita el salto de línea en el texto largo */
-    overflow: hidden; /* Oculta el contenido que sobresale */
-    text-overflow: ellipsis; /* Agrega puntos suspensivos (...) para el contenido que no cabe */
-}
-
-th {
-    background-color: #333356;
+.total-titles {
+    background-color: #aeaaaa;
     color: white;
     width: 5%;
     height: 90px;
