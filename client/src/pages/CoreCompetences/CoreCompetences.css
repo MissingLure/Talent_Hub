@@ -201,6 +201,13 @@ margin-top: 5px;
     display: flex;
 }
 
+.coreCompetenceTitle {
+    color: white;
+    font-weight: bold;
+    font-size: 60px;
+    text-align: center;
+
+}
 
 .behavior-title {
     color: white;
@@ -217,6 +224,8 @@ margin-top: 5px;
 .inform-all{
     color: white;
     background-color: #742772;
+    font-size: 20px;
+    text-align: center;
     /* height: auto; */
     width: 77%;
     /* border: 1.5px solid black; */
@@ -231,6 +240,8 @@ margin-top: 5px;
 .inform12{
     color: white;
     background-color: #bf8f00;
+    font-size: 20px;
+    text-align: center;
     /* height: auto; */
     width: 77%;
     /* border: 1.5px solid black; */
@@ -246,6 +257,8 @@ margin-top: 5px;
 .inform3{
     color: white;
     background-color: #002060;
+    font-size: 20px;
+    text-align: center;
     /* height: auto; */
     width: 77%;
     /* border: 1.5px solid black; */
@@ -261,6 +274,8 @@ margin-top: 5px;
 .inform4{
     color: white;
     background-color: #00b050;
+    font-size: 20px;
+    text-align: center;
     /* height: auto; */
     width: 77%;
     /* border: 1.5px solid black; */
@@ -276,6 +291,8 @@ margin-top: 5px;
 .inform5{
     color: white;
     background-color: black;
+    font-size: 20px;
+    text-align: center;
     /* height: auto; */
     width: 77%;
     /* border: 1.5px solid black; */
@@ -291,6 +308,8 @@ margin-top: 5px;
 .inform6{
     color: white;
     background-color: #7030a0;
+    font-size: 20px;
+    text-align: center;
     /* height: auto; */
     width: 77%;
     /* border: 1.5px solid black; */
@@ -305,6 +324,8 @@ margin-top: 5px;
 .inform7{
     color: white;
     background-color: #5b9bd5;
+    font-size: 20px;
+    text-align: center;
     /* height: auto; */
     width: 77%;
     /* border: 1.5px solid black; */
@@ -376,12 +397,14 @@ margin-top: 5px;
     border: 1px solid black;
     background-color: #25283b;
     color: white;
+    width: 10%;
 }
 
 .rotated-title-pais {
     writing-mode: vertical-rl;
     border: 1px solid black;
     background-color: #c9b71a;
+   width: 10%;
 }
 
 
@@ -390,3 +413,8 @@ margin-top: 5px;
     background-color: #918383;
     border: 1px solid black;
 }
+
+.small-row {
+    height: 20px; /* Adjust the height as needed */
+  }
+  

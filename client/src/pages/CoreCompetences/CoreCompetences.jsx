@@ -4,10 +4,6 @@ import "./CoreCompetences.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 const CoreCompetences = () => {
-    
-
-
-
   const behave1 = [
     // 1
 
@@ -156,9 +152,6 @@ const CoreCompetences = () => {
     "Identifies and manages risks associated with production processes and develop and implement risk mitigation plans.",
   ];
 
-
-
-
   return (
     <div className="survey-containersCore">
       <Navbar />
@@ -195,73 +188,47 @@ const CoreCompetences = () => {
           <thead>
             <tr>
               <th className="topContainerTableCore" colspan="2">
-                <h1>
+                <h1 className="coreCompetenceTitle">
                   Core Competencies
                   <br></br>
                   Central Office
                 </h1>{" "}
               </th>
 
-              <th className="rotated-title-empleado">Raise</th>
+              <th className="rotated-title-empleado">Empleados</th>
             </tr>
 
             <tr>
-              <th className="evaluationTitleCore">Behaviors Evaluation</th>
-              <th className="categoriesCore">Categories</th>
-              <th className="rotated-title-pais"> Raise </th>
+              <th className="evaluationTitleCore" colspan="2">
+                Behaviors Evaluation
+              </th>
+              <th className="rotated-title-pais"> Sofia Diaz </th>
             </tr>
           </thead>
-
           <tbody>
-            {behave1.map((behave, index) => (
-              <tr>
-                <td className="inform-all">{behave}</td>
-                <td className="categores2">{category1[index]}</td>
-                <td className="num-evaluacion">2</td>
-              </tr>
-            ))}
-
-            {behave2.map((behave, index) => (
-              <tr>
-                <td className="inform12">{behave}</td>
-                <td className="categores2">{category2[index]}</td>
-              </tr>
-            ))}
-
-            {behave3.map((behave, index) => (
-              <tr>
-                <td className="inform3">{behave}</td>
-                <td className="categores2">{category3[index]}</td>
-              </tr>
-            ))}
-
-            {behave4.map((behave, index) => (
-              <tr>
-                <td className="inform4">{behave}</td>
-                <td className="categores2">{category4[index]}</td>
-              </tr>
-            ))}
-
-            {behave5.map((behave, index) => (
-              <tr>
-                <td className="inform5">{behave}</td>
-                <td className="categores2">{category5[index]}</td>
-              </tr>
-            ))}
-
-            {behave6.map((behave, index) => (
-              <tr>
-                <td className="inform6">{behave}</td>
-                <td className="categores2">{category6[index]}</td>
-              </tr>
-            ))}
-
-            {behave7.map((behave, index) => (
-              <tr>
-                <td className="inform7">{behave}</td>
-                <td className="categores2">{category7[index]}</td>
-              </tr>
-            ))}
+            <tr>
+              <td className="inform-all" colspan="2">All</td>
+              <td className="num-evaluacion">2</td>
+            </tr>
+            <tr>
+              <td className="inform12" colspan="2">It/Manager</td>
+            </tr>
+            <tr>
+              <td className="inform3" colspan="2">Engineer</td>
+            </tr>
+            <tr>
+              <td className="inform4" colspan="2">Analyst</td>
+            </tr>
+            <tr>
+              <td className="inform5" colspan="2">Coordinator</td>
+            </tr>
+            <tr>
+              <td className="inform6" colspan="2">Assistant</td>
+            </tr>
+            <tr>
+              <td className="inform7" colspan="2">Comederos</td>
+            </tr>
+            
           </tbody>
         </table>
       </div>
