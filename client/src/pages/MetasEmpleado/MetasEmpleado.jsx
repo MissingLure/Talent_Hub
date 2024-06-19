@@ -7,6 +7,12 @@ import search from "../../images/search.png";
 import add from "../../images/add.png";
 import Navbar from "../../components/Navbar/Navbar";
 
+import { jwtDecode } from "jwt-decode";
+import { useLocation } from "react-router-dom";
+import dashboardApi from "../../api/dashboard.api";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 const MetasEmpleado = () => {
   const [metas, setMetas] = useState([]);
   const employeeData = JSON.parse(localStorage.getItem("employeeData"));
@@ -14,11 +20,43 @@ const MetasEmpleado = () => {
   const [editar, setEditar] = useState("Editar");
   const [modoEdicion, setModoEdicion] = useState(false);
 
+  const accessToken = localStorage.getItem("accessToken");
+  const decoded = jwtDecode(accessToken);
+  const datos = JSON.parse(localStorage.getItem(""));
+
+  const searchParams = new URLSearchParams(location.search);
+  const idEmpleadoParam = searchParams.get("id_empleado");
+
+  const dataID = { idEmpleado: idEmpleadoParam };
+
   //tabla editable
   const [data, setData] = useState([
     { id: 1, nombre: "Meta 1", estado: "100%", peso: "25%" },
     { id: 2, nombre: "Meta 2", estado: "80%", peso: "50%" },
   ]);
+
+  const handleData = () => {
+    const metas = {
+      email: email,
+      password: password,
+    };
+    axios
+      .post("http://localhost:4000/user/get-user", userData)
+      .then((response) => {
+        localStorage.setItem("accessToken", response.data.accessToken);
+        localStorage.setItem("refreshToken", response.data.refreshToken);
+        localStorage.setItem(
+          "employeeData",
+          JSON.stringify(response.data.data)
+        );
+        setErrorMessages([]);
+        navigate("/inicio");
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        setErrorMessages(error.response.data.details);
+      });
+  };
 
   const [editMode, setEditMode] = useState({
     rowIndex: null,
